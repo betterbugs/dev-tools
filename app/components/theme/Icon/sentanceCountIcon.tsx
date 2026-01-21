@@ -1,0 +1,165 @@
+import * as React from "react";
+
+const SentanceCountIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="Layer_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width="24"
+    height="24"
+    viewBox="0 0 64 64"
+    enableBackground="new 0 0 64 64"
+    xmlSpace="preserve"
+    fill="currentColor"
+    {...props}
+  >
+    <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+    <g
+      id="SVGRepo_tracerCarrier"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <g id="SVGRepo_iconCarrier">
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        x1={22}
+        y1={6}
+        x2={64}
+        y2={6}
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        x1={22}
+        y1={16}
+        x2={56}
+        y2={16}
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        x1={22}
+        y1={26}
+        x2={64}
+        y2={26}
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        x1={22}
+        y1={36}
+        x2={58}
+        y2={36}
+      />
+      <g>
+        <g>
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            points="59,48 59,46 57,46 "
+          />
+          <line
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            strokeDasharray="4,2"
+            x1={55}
+            y1={46}
+            x2={26}
+            y2={46}
+          />
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            points="25,46 23,46 23,48 "
+          />
+          <line
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            strokeDasharray="3,2"
+            x1={23}
+            y1={50}
+            x2={23}
+            y2={53}
+          />
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            points="23,54 23,56 25,56 "
+          />
+          <line
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            strokeDasharray="4,2"
+            x1={27}
+            y1={56}
+            x2={56}
+            y2={56}
+          />
+          <polyline
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            points="57,56 59,56 59,54 "
+          />
+          <line
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            strokeDasharray="3,2"
+            x1={59}
+            y1={53}
+            x2={59}
+            y2={49}
+          />
+        </g>
+      </g>
+      <g>
+        <polyline
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinejoin="bevel"
+          strokeMiterlimit={10}
+          points="10,58 17,51 10,44 "
+        />
+        <g>
+          <line
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeMiterlimit={10}
+            x1={17}
+            y1={51}
+            x2={0}
+            y2={51}
+          />
+        </g>
+      </g>
+    </g>
+  </svg>
+);
+
+export default SentanceCountIcon;

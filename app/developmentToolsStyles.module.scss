@@ -1,0 +1,154 @@
+@import "./styles/variables.scss";
+// serach box css
+.searchInput {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+
+  input {
+    background: #ffffff1a;
+    border-radius: 50px;
+    padding: 2px 24px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 16px;
+    width: 400px;
+    opacity: 50%;
+    outline: none;
+    transition: all 0.3s linear;
+
+    &:focus {
+      opacity: 1;
+      &::placeholder {
+        opacity: 0%;
+      }
+    }
+
+    &::placeholder {
+      color: #ffffffa6;
+      font-size: 16px;
+      transition: all 0.3s linear;
+    }
+    @media (max-width: 600px) {
+      width: 370px;
+      opacity: 1;
+      height: 50px;
+      padding: 2px 20px;
+      padding-right: 95px;
+    }
+    @media (min-width: 768px) {
+      height: 50px;
+    }
+  }
+}
+
+// tab background color
+.tabBackgroundColor {
+  background: linear-gradient(91.15deg, #11e498 11.3%, #05bae2 101.69%);
+  border: 1px solid $primary;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 1);
+  color: black;
+}
+
+.tabHoverBackground {
+  &:hover {
+    background: rgba(0, 218, 146, 0.32);
+  }
+}
+
+// content card hover effect
+.contentCardHoverEffect {
+  border-left: 2px solid #11e498;
+  div > p > svg {
+    color: #11e498;
+  }
+  &:hover {
+    div > p > svg {
+      color: black;
+    }
+    background: linear-gradient(92.9deg, #00d1ff 23.92%, #16fca9 100.19%);
+    transform: scale(0.4);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    z-index: 0;
+    transition: all 0.3s ease-in-out;
+    color: black;
+    border-left: 2px solid transparent;
+    /* Box shadow to match the background shape */
+    box-shadow: 2px 2px 4px rgb(28, 75, 65);
+  }
+}
+
+// details page css
+.converterButton {
+  background: $primary;
+}
+.clearButton {
+  background: rgb(255, 79, 108);
+}
+.copyButton {
+  background: #00d0ff9a;
+}
+
+/* Webkit custom scrollbar styles */
+.scrollbar {
+  overflow: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05); /* Firefox */
+}
+
+/* Scrollbar track (background of the scrollbar) */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Scrollbar thumb (the actual slider) */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Scrollbar thumb on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.25) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar track */
+.scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+/* Modern scrollbar for code blocks */
+.modernScrollbar {
+  overflow: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(17, 228, 152, 0.4) rgba(255, 255, 255, 0.05); /* Firefox - using primary color */
+}
+
+.modernScrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.modernScrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(17, 228, 152, 0.5) 0%, rgba(5, 186, 226, 0.5) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.modernScrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(17, 228, 152, 0.7) 0%, rgba(5, 186, 226, 0.7) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.modernScrollbar::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}

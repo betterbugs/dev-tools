@@ -1,0 +1,84 @@
+@import "../../../styles/variables";
+
+.accordion {
+  :global {
+    .ant-collapse {
+      .ant-collapse-item {
+        .ant-collapse-header {
+          padding: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+.collapse {
+  :global(.ant-collapse) {
+    background-color: transparent !important;
+
+    :global(.ant-collapse-expand-icon) {
+      color: white !important;
+      order: 2;
+    }
+
+    @media (min-width: 1024px) {
+      :global(.ant-collapse-header) {
+        padding: 16px 0px 16px 0px !important;
+      }
+    }
+
+    @media (max-width: 564px) {
+      :global(.ant-collapse-header) {
+        padding: 0px !important;
+        align-items: center !important;
+      }
+    }
+
+    :global(.ant-collapse-content-box) {
+      padding: 0px 0px 20px 0px !important;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.hoverEffect {
+  &:hover {
+    svg {
+      color: white;
+      font-weight: 700;
+    }
+  }
+}
+
+.integrationContent {
+  &::-webkit-scrollbar {
+    height: 4px !important;
+    width: 4px !important;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $secondary;
+    border-radius: 15px;
+  }
+}

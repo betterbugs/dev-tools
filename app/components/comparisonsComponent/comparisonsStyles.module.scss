@@ -1,0 +1,62 @@
+.ctaBackground {
+  background-image: url("/images/comparesions/Footer-cta.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+// .testimonialCard {
+//   margin-top: 40px;
+//   background: linear-gradient(180deg, #000000 0%, rgba(102, 102, 102, 0) 100%);
+//   border-top: 1px solid #00da92;
+//   border-right: 1px solid #00da92;
+//   border-left: 1px solid #00da92;
+//   border-bottom: 0;
+//   border-radius: 20px;
+// }
+
+.ctaCardGridBg {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+}
+
+.collapse {
+  :global(.ant-collapse) {
+    background-color: transparent !important;
+
+    :global(.ant-collapse-expand-icon) {
+      color: white !important;
+      order: 2;
+    }
+
+    @media (min-width: 1024px) {
+      :global(.ant-collapse-header) {
+        padding: 0px 0px 16px 0px !important;
+      }
+    }
+
+    @media (max-width: 564px) {
+      :global(.ant-collapse-header) {
+        padding: 16px 0px 16px 0px !important;
+        align-items: center !important;
+      }
+    }
+
+    :global(.ant-collapse-content-box) {
+      padding: 0px 0px 20px 0px !important;
+    }
+  }
+}
+
+.borderBottom {
+  &:last-child {
+    border-bottom: 5px solid #00da92;
+  }
+}

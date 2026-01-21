@@ -1,0 +1,70 @@
+{
+  "name": "@betterbugs/dev-tools",
+  "version": "0.1.0",
+  "description": "A comprehensive collection of free, open-source development tools",
+  "keywords": [
+    "development-tools",
+    "dev-tools",
+    "text-converter",
+    "code-formatter",
+    "json-formatter",
+    "html-converter",
+    "markdown-converter",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
+  "author": "BetterBugs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/betterbugs/dev-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/betterbugs/dev-tools/issues"
+  },
+  "homepage": "https://github.com/betterbugs/dev-tools#readme",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@betterbugs/web-sdk": "0.0.29",
+    "@faker-js/faker": "9.4.0",
+    "@monaco-editor/react": "4.6.0",
+    "@types/turndown": "5.0.5",
+    "animejs": "3.2.2",
+    "antd": "5.16.2",
+    "framer-motion": "11.2.6",
+    "javascript-obfuscator": "4.1.1",
+    "js-user-country": "1.0.1",
+    "lodash.debounce": "4.0.8",
+    "marked": "15.0.6",
+    "next": "14.2.1",
+    "next-pwa": "5.6.0",
+    "qrcode.react": "^4.2.0",
+    "react": "18.2.0",
+    "react-animated-cursor": "2.11.2",
+    "react-content-loader": "7.0.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.51.5",
+    "react-responsive": "10.0.0",
+    "react-toastify": "11.0.3",
+    "sass": "1.75.0",
+    "turndown": "7.2.0"
+  },
+  "devDependencies": {
+    "@types/animejs": "^3.1.12",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
