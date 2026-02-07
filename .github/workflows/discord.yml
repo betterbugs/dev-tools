@@ -1,0 +1,151 @@
+name: Discord Notifications
+
+on:
+  pull_request:
+    types: [opened, closed, reopened, synchronize]
+  issues:
+    types: [opened, closed, reopened]
+  issue_comment:
+    types: [created, edited, deleted]
+  release:
+    types: [published, created, edited, deleted]
+  push:
+    branches:
+      - main
+      - develop
+  watch:
+    types: [started]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: github.event.repository != null
+    steps:
+      - name: Extract event data
+        id: extract
+        run: |
+          EVENT_TYPE="${{ github.event_name }}"
+          REPO_NAME="${{ github.repository }}"
+          REPO_URL="${{ github.server_url }}/${{ github.repository }}"
+          
+          case "$EVENT_TYPE" in
+            pull_request)
+              TITLE="${{ github.event.pull_request.title }}"
+              AUTHOR="${{ github.event.pull_request.user.login }}"
+              EVENT_URL="${{ github.event.pull_request.html_url }}"
+              ACTION="${{ github.event.action }}"
+              DESCRIPTION="Pull Request $ACTION: $TITLE"
+              COLOR="3447003"
+              ;;
+            issues)
+              TITLE="${{ github.event.issue.title }}"
+              AUTHOR="${{ github.event.issue.user.login }}"
+              EVENT_URL="${{ github.event.issue.html_url }}"
+              ACTION="${{ github.event.action }}"
+              DESCRIPTION="Issue $ACTION: $TITLE"
+              COLOR="11027200"
+              ;;
+            issue_comment)
+              TITLE="${{ github.event.issue.title }}"
+              AUTHOR="${{ github.event.comment.user.login }}"
+              EVENT_URL="${{ github.event.comment.html_url }}"
+              ACTION="${{ github.event.action }}"
+              COMMENT_BODY="${{ github.event.comment.body }}"
+              COMMENT_BODY="${COMMENT_BODY:0:100}..."
+              DESCRIPTION="Comment $ACTION on: $TITLE"
+              COLOR="10181046"
+              ;;
+            release)
+              TITLE="${{ github.event.release.name }}"
+              AUTHOR="${{ github.event.release.author.login }}"
+              EVENT_URL="${{ github.event.release.html_url }}"
+              ACTION="${{ github.event.action }}"
+              DESCRIPTION="Release $ACTION: $TITLE"
+              COLOR="6632143"
+              ;;
+            push)
+              TITLE="${{ github.event.ref }}"
+              AUTHOR="${{ github.event.pusher.name }}"
+              EVENT_URL="$REPO_URL/commit/${{ github.sha }}"
+              COMMITS_COUNT="${{ github.event.commits }}"
+              COMMITS_COUNT=${#COMMITS_COUNT[@]}
+              DESCRIPTION="Push to $TITLE ($COMMITS_COUNT commits)"
+              COLOR="2105893"
+              ;;
+            watch)
+              TITLE="Repository Starred"
+              AUTHOR="${{ github.event.sender.login }}"
+              EVENT_URL="$REPO_URL"
+              DESCRIPTION="$AUTHOR starred the repository"
+              COLOR="16776960"
+              ;;
+            *)
+              TITLE="Unknown Event"
+              AUTHOR="Unknown"
+              EVENT_URL="$REPO_URL"
+              DESCRIPTION="Event type: $EVENT_TYPE"
+              COLOR="9807270"
+              ;;
+          esac
+          
+          echo "event_type=$EVENT_TYPE" >> $GITHUB_OUTPUT
+          echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
+          echo "repo_url=$REPO_URL" >> $GITHUB_OUTPUT
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "event_url=$EVENT_URL" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "color=$COLOR" >> $GITHUB_OUTPUT
+
+      - name: Send Discord notification
+        continue-on-error: true
+        run: |
+          PAYLOAD=$(cat <<EOF
+          {
+            "username": "BetterBugs GitHub Bot",
+            "avatar_url": "https://github.com/fluidicon.png",
+            "embeds": [
+              {
+                "title": "${{ steps.extract.outputs.title }}",
+                "description": "${{ steps.extract.outputs.description }}",
+                "url": "${{ steps.extract.outputs.event_url }}",
+                "color": ${{ steps.extract.outputs.color }},
+                "fields": [
+                  {
+                    "name": "Repository",
+                    "value": "${{ steps.extract.outputs.repo_name }}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Event Type",
+                    "value": "${{ steps.extract.outputs.event_type }}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Author",
+                    "value": "${{ steps.extract.outputs.author }}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Repository Link",
+                    "value": "[${{ steps.extract.outputs.repo_name }}](${{ steps.extract.outputs.repo_url }})",
+                    "inline": true
+                  }
+                ],
+                "timestamp": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+              }
+            ]
+          }
+          EOF
+          )
+          
+          curl -X POST \
+            -H 'Content-type: application/json' \
+            --data "$PAYLOAD" \
+            ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Log notification status
+        if: always()
+        run: |
+          echo "✅ Discord notification workflow completed for ${{ steps.extract.outputs.event_type }} event"
+          echo "💡 If webhook is not configured, the notification step fails silently (continue-on-error: true)"
