@@ -1,141 +1,91 @@
 # Contributing to BetterBugs Development Tools
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing to this project.
+Thank you for your interest in contributing to our project. We welcome contributions of all kinds including bug reports, feature suggestions, documentation improvements, and code contributions. Your feedback and support help make this project better for everyone.
 
-## 🤝 How to Contribute
+Please read through this document before submitting any issues or pull requests to ensure we have the necessary information to respond effectively.
 
-### Reporting Bugs
+## Reporting Bugs and Issues
 
-Before creating a bug report, please check if the issue has already been reported. If it hasn't, create a new issue with:
+Before reporting a bug, please check our [open issues](https://github.com/betterbugs/dev-tools/issues) to see if it has already been reported. If it has, please add any additional information that might be helpful. If not, please [create a new issue](https://github.com/betterbugs/dev-tools/issues/new/choose) and include:
 
-- **Clear title**: Brief description of the issue
-- **Description**: Detailed explanation of the problem
-- **Steps to reproduce**: How to reproduce the issue
-- **Expected behavior**: What should happen
-- **Actual behavior**: What actually happens
-- **Environment**: Browser, OS, Node.js version
-- **Screenshots**: If applicable
+- A clear, descriptive title
+- Detailed description of the issue
+- Steps to reproduce the behavior
+- Expected behavior
+- Actual behavior
+- Environment information (browser, OS, Node.js version)
+- Screenshots or error messages if applicable
 
-### Suggesting Features
+## Suggesting Enhancements
 
-We welcome feature suggestions! When suggesting a feature:
+We welcome ideas for improvements and new tools. Please [create a new issue](https://github.com/betterbugs/dev-tools/issues/new/choose) with your suggestion and include:
 
-- Check if the feature has already been requested
-- Provide a clear description of the feature
-- Explain why it would be useful
-- Provide examples or mockups if possible
+- A clear description of the enhancement
+- Why this would be useful
+- Any relevant examples or use cases
 
-### Adding New Tools
+## Self Assigning Issues
 
-We're always looking to add more useful development tools! Here's how:
+To express interest in working on an issue, simply comment on it to let us know. Maintainers will assign it to you or discuss next steps if needed.
 
-1. **Check if the tool already exists** or is similar to an existing one
-2. **Create the tool component** in `app/components/developmentToolsComponent/`
-3. **Add tool metadata** to `app/libs/developmentToolsConstant.tsx`
-4. **Add route path** to `app/libs/constants.tsx`
-5. **Test thoroughly** before submitting
+## Code Contributions
 
-### Code Contributions
+Please ensure your pull request adheres to the following guidelines:
 
-#### Getting Started
+- Search [open pull requests](https://github.com/betterbugs/dev-tools/pulls) to ensure your change hasn't already been submitted
+- Target the `develop` branch with your pull request
+- Rebase your branch with the latest changes from `develop` before opening your PR
+- Follow the existing code style and conventions
+- Test your changes locally before submitting
+- Use TypeScript for all new code
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/dev-tools.git`
-3. Create a branch: `git checkout -b feature/your-feature-name`
-4. Make your changes
-5. Test your changes
-6. Commit: `git commit -m 'Add: description of changes'`
-7. Push: `git push origin feature/your-feature-name`
-8. Open a Pull Request
+## Commit Messages
 
-#### Coding Standards
+This project follows [Conventional Commits](https://www.conventionalcommits.org/). Please use one of the following commit types:
 
-- **TypeScript**: Use TypeScript for all new files
-- **Components**: Use functional components with hooks
-- **Naming**: Follow existing naming conventions
-  - Components: PascalCase (e.g., `MyNewTool.tsx`)
-  - Files: camelCase for utilities, PascalCase for components
-- **Formatting**: Use consistent indentation (2 spaces)
-- **Comments**: Add comments for complex logic
-- **Imports**: Organize imports (external first, then internal)
+- `feat` - A new feature
+- `fix` - A bug fix
+- `perf` - A performance improvement
+- `refactor` - Code refactoring
+- `docs` - Documentation changes
+- `style` - Code formatting (no logic changes)
+- `test` - Test additions or changes
+- `ci` - CI/CD changes
+- `chore` - Other changes
 
-#### Component Structure
+Examples:
+- `feat(tools): add markdown to html converter`
+- `fix(ui): resolve responsive layout on mobile`
+- `docs: update installation guide`
 
-```typescript
-"use client";
-import React, { useState } from "react";
-import styles from "./toolStyles.module.scss";
+Releases and changelog updates are automated via CI. Do not manually edit CHANGELOG.md.
 
-const MyNewTool = () => {
-  const [input, setInput] = useState("");
-  
-  // Tool logic here
-  
-  return (
-    <div className={styles.container}>
-      {/* UI here */}
-    </div>
-  );
-};
+## Code Quality
 
-export default MyNewTool;
-```
+- Use TypeScript for all new files
+- Follow the existing code style in the repository
+- Test your changes work locally before submitting
+- Ensure no console errors or warnings
 
-#### Testing
+## Testing
 
-Before submitting:
-- Test the tool with various inputs
-- Test on different browsers (Chrome, Firefox, Safari)
-- Test responsive design (mobile, tablet, desktop)
-- Check for console errors
-- Verify accessibility
+Test your changes locally before submitting a pull request:
 
-#### Commit Messages
+- Test with various inputs and edge cases
+- Test on different browsers (Chrome, Firefox, Safari, Edge)
+- Test responsive design on mobile, tablet, and desktop viewports
+- Verify accessibility where applicable
 
-Use clear, descriptive commit messages:
+## Documentation
 
-- `Add: New text case converter tool`
-- `Fix: JSON validator error handling`
-- `Update: Improve tool descriptions`
-- `Refactor: Clean up component structure`
+We love documentation contributions! Whether it's more complete descriptions, new examples, or better formatting, any help improving the documentation is appreciated.
 
-### Pull Request Process
+## Community
 
-1. **Update documentation** if needed
-2. **Ensure tests pass** (if applicable)
-3. **Update CHANGELOG.md** with your changes
-4. **Request review** from maintainers
-5. **Address feedback** promptly
+Join us on [Discord](https://discord.com/invite/HF8XjwVtPh) to connect with the community and core team. Please be respectful and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-### Code Review
+## Questions?
 
-All submissions require review. We'll review for:
-- Code quality and style
-- Functionality and correctness
-- Performance considerations
-- Accessibility
-- Documentation
+For questions or concerns, please reach out to us at dev@betterbugs.io.
 
-## 📋 Development Setup
-
-See [README.md](README.md) for installation instructions.
-
-## 🎯 Areas for Contribution
-
-- **New Tools**: Add useful development tools
-- **Bug Fixes**: Fix existing issues
-- **Performance**: Optimize existing tools
-- **UI/UX**: Improve user experience
-- **Documentation**: Improve docs
-- **Accessibility**: Improve accessibility
-- **Testing**: Add tests
-
-## 📞 Questions?
-
-- Open an issue for questions
-- Check existing issues and discussions
-- Review the codebase for examples
-
-## 🙏 Thank You!
-
-Your contributions make this project better for everyone. We appreciate your time and effort!
+Thank you for your interest and contributions to BetterBugs🪲.

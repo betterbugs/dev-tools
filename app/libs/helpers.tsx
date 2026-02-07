@@ -8,4 +8,8 @@ const detectBrowser = () => {
   return "chrome";
 };
 
-export { detectBrowser };
+const cn = (...classes: (string | undefined | null | false)[]): string => {
+  return classes.filter(Boolean).join(" ");
+};
+
+export { detectBrowser, cn };

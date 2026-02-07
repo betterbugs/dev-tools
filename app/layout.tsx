@@ -9,12 +9,12 @@ import {
   LayoutContextModel,
   LayoutContextProvider,
 } from './contexts/layoutContexts';
-import { ThemeProvider, useTheme } from './contexts/themeContext';
+import { ThemeProvider } from './contexts/themeContext';
 import FooterComponent from './components/layout/footer/footerComponent';
 import AnimatedCursor from 'react-animated-cursor';
-import { usePathname } from 'next/navigation';
 import { useMediaQuery } from 'react-responsive';
 import { Suspense, useContext } from 'react';
+import { CookiesProvider } from 'react-cookie';
 
 const inter = Poppins({
   subsets: ['latin'],
@@ -22,7 +22,6 @@ const inter = Poppins({
 });
 
 const MyApp = ({ children }: { children: JSX.Element }): JSX.Element => {
-  const path = usePathname();
   const { isClient }: LayoutContextModel = useContext(LayoutContext);
 
   const isDesktopOrLaptop = useMediaQuery({
@@ -46,44 +45,46 @@ const MyApp = ({ children }: { children: JSX.Element }): JSX.Element => {
       </head>
       <body className={inter.className} suppressHydrationWarning={true}>
         <Suspense>
-          <LayoutContextProvider>
-            <ThemeProvider>
-              <div className="relative">
-                {isClient && isDesktopOrLaptop && (
-                  <AnimatedCursor
-                    innerSize={8}
-                    outerSize={50}
-                    outerAlpha={0.2}
-                    innerScale={0.7}
-                    outerScale={3}
-                    color="0, 218, 146"
-                    showSystemCursor={true}
-                    clickables={[
-                      'a',
-                      'input[type="text"]',
-                      'input[type="email"]',
-                      'input[type="number"]',
-                      'input[type="submit"]',
-                      'input[type="image"]',
-                      'label[for]',
-                      'select',
-                      'textarea',
-                      'button',
-                      'link',
-                      {
-                        target: '.custom',
-                      },
-                    ]}
-                  />
-                )}
-                <Suspense>
-                  <HeaderComponent />
-                </Suspense>
-                {children}
-                <FooterComponent />
-              </div>
-            </ThemeProvider>
-          </LayoutContextProvider>
+          <CookiesProvider>
+            <LayoutContextProvider>
+              <ThemeProvider>
+                <div className="relative">
+                  {isClient && isDesktopOrLaptop && (
+                    <AnimatedCursor
+                      innerSize={8}
+                      outerSize={50}
+                      outerAlpha={0.2}
+                      innerScale={0.7}
+                      outerScale={3}
+                      color="0, 218, 146"
+                      showSystemCursor={true}
+                      clickables={[
+                        'a',
+                        'input[type="text"]',
+                        'input[type="email"]',
+                        'input[type="number"]',
+                        'input[type="submit"]',
+                        'input[type="image"]',
+                        'label[for]',
+                        'select',
+                        'textarea',
+                        'button',
+                        'link',
+                        {
+                          target: '.custom',
+                        },
+                      ]}
+                    />
+                  )}
+                  <Suspense>
+                    <HeaderComponent />
+                  </Suspense>
+                  {children}
+                  <FooterComponent />
+                </div>
+              </ThemeProvider>
+            </LayoutContextProvider>
+          </CookiesProvider>
         </Suspense>
       </body>
     </html>

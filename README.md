@@ -4,7 +4,7 @@ A comprehensive collection of free, open-source development tools built with Nex
 
 ## 🚀 Features
 
-- **100+ Development Tools**: Text converters, code formatters, validators, generators, and more
+- **40+ Development Tools**: Text converters, code formatters, validators, generators, and more
 - **Modern Stack**: Built with Next.js 14, React 18, TypeScript, and Tailwind CSS
 - **Fast & Responsive**: Optimized performance with server-side rendering
 - **PWA Support**: Progressive Web App capabilities for offline access
@@ -189,9 +189,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Documentation](https://docs.betterbugs.io)
 - [BetterBugs Main Product](https://app.betterbugs.io)
 
+## License
+
+Licensed under the MIT License. Free for personal and commercial use.
+
 ## 📊 Stats
 
-- 100+ Development Tools
+- 40+ Development Tools
 - Built with Next.js 14
 - TypeScript throughout
 - Fully responsive design

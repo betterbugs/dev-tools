@@ -7,6 +7,39 @@ import { Col, Row } from "antd";
 import { Extension_URL } from "@/app/libs/constants";
 import { detectBrowser } from "@/app/libs/helpers";
 import EdgeIcon from "../../theme/Icon/edgeIcon";
+import { SocialTooltip } from "@/app/components/ui/socialTooltip";
+import { DiscordLogo, InstagramLogo, LinkedinLogo, XLogo } from "@phosphor-icons/react";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://discord.com/invite/HF8XjwVtPh",
+    ariaLabel: "Discord",
+    tooltip: "Discord",
+    Icon: DiscordLogo,
+    color: "#5865F2",
+  },
+  {
+    href: "https://www.instagram.com/betterbugshq/",
+    ariaLabel: "Instagram",
+    tooltip: "Instagram",
+    Icon: InstagramLogo,
+    color: "#E1306C",
+  },
+  {
+    href: "https://twitter.com/BetterBugs",
+    ariaLabel: "Twitter",
+    tooltip: "Twitter",
+    Icon: XLogo,
+    color: "#1DA1F2",
+  },
+  {
+    href: "https://www.linkedin.com/company/betterbugs/",
+    ariaLabel: "LinkedIn",
+    tooltip: "LinkedIn",
+    Icon: LinkedinLogo,
+    color: "#0077B5",
+  },
+];
 
 const FooterComponent = () => {
   const searchParams = useSearchParams();
@@ -39,12 +72,13 @@ const FooterComponent = () => {
                   utmSource ? `?utm_source=${utmSource}` : ""
                 }`}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className="text-white/80 hover:text-white text-base font-medium transition-colors">
                   Login
                 </div>
               </Link>
-              <Link target="_blank" href={Extension_URL}>
+              <Link target="_blank" rel="noopener noreferrer" href={Extension_URL}>
                 <button className="group flex items-center gap-2 px-5 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-gradient-to-r hover:from-[#16fca9] hover:to-[#00d1ff] hover:text-black transition-all duration-300 shadow-lg hover:shadow-[#16fca9]/50">
                   {browser === "edge" ? (
                     <EdgeIcon className="w-5 h-5" />
@@ -62,10 +96,11 @@ const FooterComponent = () => {
                   </span>
                   <span className="bg-black text-white text-xs font-normal py-1 px-2.5 rounded-full">
                     FREE
-                  </span>
+                  </span>   
                 </button>
               </Link>
             </div>
+            <SocialTooltip items={SOCIAL_LINKS} />
           </div>
         </div>
 

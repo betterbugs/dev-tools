@@ -16,12 +16,21 @@ node_modules
 coverage
 .nyc_output
 
+# Lockfiles
+yarn.lock
+pnpm-lock.yaml
+
 # Next.js
 .next/
 out/
 build
 dist
 dist-ssr
+
+# PWA - Auto-generated source maps (machine-specific paths)
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
 
 # Production
 *.local
