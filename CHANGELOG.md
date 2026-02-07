@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/betterbugs/dev-tools/compare/v1.0.0...v1.1.0) (2026-02-07)
+
+
+### Features
+
+* add Discord notifications workflow for various GitHub events ([66ad9ba](https://github.com/betterbugs/dev-tools/commit/66ad9ba91f21e59678ecbd2a4cc58c7737d492d9))
+
 # 1.0.0 (2026-02-07)
 
 
