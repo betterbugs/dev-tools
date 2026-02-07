@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/betterbugs/dev-tools/compare/v1.1.0...v1.2.0) (2026-02-07)
+
+
+### Features
+
+* enhance Discord notifications with author details and profile links ([098aaeb](https://github.com/betterbugs/dev-tools/commit/098aaeb9c576398260432f0c2c3175236248eb95))
+
 # [1.1.0](https://github.com/betterbugs/dev-tools/compare/v1.0.0...v1.1.0) (2026-02-07)
 
 
