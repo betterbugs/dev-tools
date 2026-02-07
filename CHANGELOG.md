@@ -1,3 +1,10 @@
+# 1.0.0 (2026-02-07)
+
+
+### Bug Fixes
+
+* **ci:** update Node.js to 20 for semantic-release compatibility ([34092b6](https://github.com/betterbugs/dev-tools/commit/34092b673e15c212520ba439889ef11078b62dc7))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org) for commit guidelines.
