@@ -32,6 +32,19 @@ We welcome ideas for improvements and new tools. There's no permission needed—
 
 To express interest in working on an issue, simply comment on it to let us know. Maintainers will assign it to you or discuss next steps if needed.
 
+## Branch Strategy
+
+**Branch purposes:**
+- **main**: Always reflects the latest stable and released code
+- **develop**: Contains accepted changes that will be part of the next release
+
+**For all contributors:**
+- Create a new branch from `develop`
+- Open pull requests against `develop` (not `main`)
+
+**For regular contributors:**
+If your work depends on unreleased features or changes, base your work directly on `develop`. Pull requests merged into `develop` are considered accepted for now, but remain under maintainer control. Our team decides which changes move from `develop` to `main` for release, and may revert or modify any merged code if needed.
+
 ## Code Contributions
 
 Please ensure your pull request adheres to the following guidelines:
