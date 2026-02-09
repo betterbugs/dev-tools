@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/betterbugs/dev-tools/compare/v1.2.0...v1.3.0) (2026-02-09)
+
+
+### Features
+
+* add development tools API and enhance header components ([8aaad6a](https://github.com/betterbugs/dev-tools/commit/8aaad6a6e901d578924a8964addf697462a258f7))
+
 # [1.2.0](https://github.com/betterbugs/dev-tools/compare/v1.1.0...v1.2.0) (2026-02-07)
 
 
