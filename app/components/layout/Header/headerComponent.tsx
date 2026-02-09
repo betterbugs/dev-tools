@@ -10,7 +10,7 @@ import {
 } from '@/app/contexts/layoutContexts';
 import CrossIcon from '../../theme/Icon/crossIcon';
 import MenuIcon from '../../theme/Icon/menuIcon';
-import { Extension_URL } from '@/app/libs/constants';
+import { Extension_URL, WEB_URL } from '@/app/libs/constants';
 import DownOutlinedIcon from '../../theme/Icon/downOutlinedIcon';
 import hederStyles from '../Header/headerStyles.module.scss';
 import { detectBrowser } from '@/app/libs/helpers';
@@ -206,7 +206,7 @@ const HeaderComponent = () => {
     {
       key: '1',
       label: 'Products',
-      url: '/',
+      url: `${WEB_URL}`,
       dropdown: [
         {
           label: <ProductMenuComponent {...{ setCollapsed }} />,
@@ -216,7 +216,7 @@ const HeaderComponent = () => {
     {
       key: '2',
       label: 'Solutions',
-      url: '/',
+      url: `${WEB_URL}`,
       dropdown: [
         {
           label: <SolutionMenuComponent {...{ setCollapsed }} />,
@@ -226,7 +226,7 @@ const HeaderComponent = () => {
     {
       key: '3',
       label: 'Integrations',
-      url: '/',
+      url: `${WEB_URL}`,
       dropdown: [
         {
           label: <ResourceMenuComponent {...{ setCollapsed }} />,
@@ -236,7 +236,7 @@ const HeaderComponent = () => {
     {
       key: '4',
       label: 'Resources',
-      url: '/',
+      url: `${WEB_URL}`,
       dropdown: [
         {
           label: <ToolsMenuComponent {...{ setCollapsed }} />,
@@ -244,10 +244,10 @@ const HeaderComponent = () => {
       ],
     },
     // { key: "4", label: "Blog", url: "/blog" },
-    { key: '5', label: 'Pricing', url: '/pricing' },
+    { key: '5', label: 'Pricing', url: `${WEB_URL}/pricing` },
     // { key: "6", label: "Developer Tools", url: "/development-tools" },
-    { key: '6', label: 'BB for Support', url: '/customer-support' },
-    { key: '7', label: 'MCP', url: '/mcp' },
+    { key: '6', label: 'BB for Support', url: `${WEB_URL}/customer-support` },
+    { key: '7', label: 'MCP', url: `${WEB_URL}/mcp` },
   ];
 
   const responsiveContentHeader = [
@@ -255,25 +255,25 @@ const HeaderComponent = () => {
       key: '1',
       header: 'Products',
       content: <ProductMenuComponent {...{ setCollapsed }} />,
-      url: '/',
+      url: `${WEB_URL}`,
     },
     {
       key: '2',
       header: 'Solutions',
       content: <SolutionMenuComponent {...{ setCollapsed }} />,
-      url: '/',
+      url: `${WEB_URL}`,
     },
     {
       key: '3',
       header: 'Integration',
       content: <ResourceMenuComponent {...{ setCollapsed }} />,
-      url: '/',
+      url: `${WEB_URL}`,
     },
     {
       key: '4',
       header: 'Resources',
       content: <ToolsMenuComponent {...{ setCollapsed }} />,
-      url: '/',
+      url: `${WEB_URL}`,
     },
   ];
 
@@ -321,7 +321,7 @@ const HeaderComponent = () => {
       >
         <div className="relative">
           <div className="container mx-auto flex items-center justify-between py-3">
-            <Link href="/" className="flex items-center">
+            <Link href={`${WEB_URL}`} className="flex items-center">
               <Image
                 src="/images/bb-logo.svg"
                 width={190}
@@ -436,7 +436,7 @@ const HeaderComponent = () => {
               >
                 <MenuIcon className="w-10 h-10" />
               </div>
-              <Link href="/">
+              <Link href={`${WEB_URL}`}>
                 <Image
                   src="/images/bb-logo.svg"
                   width={150}

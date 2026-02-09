@@ -5,6 +5,7 @@ import Link from 'next/link';
 import BlogsIcon from '../theme/Icon/blogsIcon';
 import DeveloperIcon from '../theme/Icon/developersLogIcon';
 import MCPIcon from '../theme/Icon/mcpIcon';
+import { WEB_URL } from '@/app/libs/constants';
 
 const ToolsMenuComponent = ({
   setCollapsed,
@@ -21,7 +22,7 @@ const ToolsMenuComponent = ({
         <ul className="grid mt-2 pr-2">
           <li className="md:px-2 py-1.5">
             <Link
-              href="/blog"
+              href={`${WEB_URL}/blog`}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 text-sm"
             >
               <span className="mt-0.5">
@@ -32,7 +33,7 @@ const ToolsMenuComponent = ({
           </li>
           <li className="md:px-2 py-1.5">
             <Link
-              href="/development-tools"
+              href={`${WEB_URL}/development-tools`}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 text-sm"
             >
               <span className="mt-0.5">
@@ -43,7 +44,7 @@ const ToolsMenuComponent = ({
           </li>
           <li className="md:px-2 py-1.5">
             <Link
-              href="/mcp"
+              href={`${WEB_URL}/mcp`}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 text-sm"
             >
               <span className="mt-0.5">
@@ -61,7 +62,7 @@ const ToolsMenuComponent = ({
         <ul className="grid mt-6">
           <li className="md:px-3 py-1.5">
             <Link
-              href="/blog"
+              href={`${WEB_URL}/blog`}
               onClick={handleClick}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 text-sm"
             >
@@ -73,7 +74,7 @@ const ToolsMenuComponent = ({
           </li>
           <li className="md:px-3 py-1.5">
             <Link
-              href="/development-tools"
+              href={`${WEB_URL}/development-tools`}
               onClick={handleClick}
               className="flex items-center gap-2 px-3 py-2 rounded-md text-white/80 hover:text-white hover:bg-white/5 text-sm"
             >

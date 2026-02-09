@@ -14,6 +14,7 @@ import { TeamsIcon } from '../theme/Icon/teamsIcon';
 import { TrillioIcon } from '../theme/Icon/trillioIcon';
 import { SentryIcon } from '../theme/Icon/sentryIcon';
 import { AzureBoardIcon } from '../theme/Icon/azureBoardIcon';
+import { WEB_URL } from '@/app/libs/constants';
 
 const KnowledgeHubMenu = [
   {
@@ -28,61 +29,61 @@ const IntegrationMenu = [
   {
     icon: <JiraIcon />,
     label: 'Jira',
-    url: '/integration/jira',
+    url: `${WEB_URL}/integration/jira`,
     des: 'Create bug reports to share as Jira issues to your projects.',
   },
   {
     icon: <LinearIcon />,
     label: 'Linear',
-    url: '/integration/linear',
+    url: `${WEB_URL}/integration/linear`,
     des: 'Share bug reports as Linear issues in your workspace.',
   },
   {
     icon: <SlackIcon />,
     label: 'Slack',
-    url: '/integration/slack',
+    url: `${WEB_URL}/integration/slack`,
     des: 'Send instant bug reports as messages to your channels.',
   },
   {
     icon: <TeamsIcon />,
     label: 'MS Teams',
-    url: '/integration/teams',
+    url: `${WEB_URL}/integration/teams`,
     des: 'Share bug reports as messages to your Teams channels.',
   },
   {
     icon: <SentryIcon />,
     label: 'Sentry',
-    url: '/integration/sentry',
+    url: `${WEB_URL}/integration/sentry`,
     des: 'Get all event logs and error stack traces from Sentry within your bug report.',
   },
   {
     icon: <ClickupIcon />,
     label: 'ClickUp',
-    url: '/integration/clickup',
+    url: `${WEB_URL}/integration/clickup`,
     des: 'Capture bugs and share them instantly as ClickUp tasks.   ',
   },
   {
     icon: <AsanaIcon />,
     label: 'Asana',
-    url: '/integration/asana',
+    url: `${WEB_URL}/integration/asana`,
     des: 'Create bug reports and share as tasks to your Asana projects.',
   },
   {
     icon: <GithubIcon />,
     label: 'GitHub',
-    url: '/integration/github',
+    url: `${WEB_URL}/integration/github`,
     des: 'Raise issues directly on GitHub repos with detailed bug reports.',
   },
   {
     icon: <TrillioIcon />,
     label: 'Trello',
-    url: '/integration/trello',
+    url: `${WEB_URL}/integration/trello`,
     des: 'Create Trello Cards for your workspaces with bug reports. ',
   },
   {
     icon: <AzureBoardIcon />,
     label: 'Azure Boards',
-    url: '/integration/azure-boards',
+    url: `${WEB_URL}/integration/azure-boards`,
     des: 'Share bug reports instantly to Azure Boards as Azure work items.',
   },
 ];

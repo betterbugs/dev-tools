@@ -1,8 +1,8 @@
-"use client";
-import Link from "next/link";
-import React from "react";
-import SEOComponent from "./components/theme/SEOComponent/SEOComponent";
-import { SEO_META } from "./libs/constants";
+'use client';
+import Link from 'next/link';
+import React from 'react';
+import SEOComponent from './components/theme/SEOComponent/SEOComponent';
+import { SEO_META, WEB_URL } from './libs/constants';
 
 const NotFound = () => {
   return (
@@ -24,20 +24,20 @@ const NotFound = () => {
               Page your looking is not found.
             </h1>
             <span className="text-base font-normal text-white/70">
-              Please{" "}
+              Please{' '}
               <Link
-                href="/" target="_blank"
+                href={WEB_URL}
                 className="text-white/70 font-medium underline hover:underline"
               >
                 Go back
-              </Link>{" "}
-              or visit{" "}
+              </Link>{' '}
+              or visit{' '}
               <Link
-                href="/"
+                href={WEB_URL}
                 className="text-white/70 font-medium underline hover:underline"
               >
                 Homepage
-              </Link>{" "}
+              </Link>{' '}
             </span>
           </div>
         </div>

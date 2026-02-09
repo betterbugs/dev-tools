@@ -14,43 +14,49 @@ import FounderIcon from '../theme/Icon/founderIcon';
 import DeveloperIcon from '../theme/Icon/developersLogIcon';
 import AllFeatureIcon from '../theme/Icon/allFeatureIcon';
 import AnnotationIcon from '../theme/Icon/annotationIcon';
+import { WEB_URL } from '@/app/libs/constants';
 
 const FeaturesMenu = [
   {
     icon: <RecordingIcon />,
     label: 'Record Screens',
-    url: '/feature',
+    url: `${WEB_URL}/feature`,
     id: 'feature-1',
   },
   {
     icon: <AnnotationIcon />,
     label: 'Create Markups',
-    url: '/feature',
+    url: `${WEB_URL}/feature`,
     id: 'feature-2',
   },
   {
     icon: <DevelopersLogIcon />,
     label: 'Developer Logs',
-    url: '/feature',
+    url: `${WEB_URL}/feature`,
     id: 'feature-3',
   },
-  { icon: <ReportIcon />, label: 'Rewind', url: '/feature', id: 'feature-4' },
+  {
+    icon: <ReportIcon />,
+    label: 'Rewind',
+    url: `${WEB_URL}/feature`,
+    id: 'feature-4',
+  },
   {
     icon: <CollaborationIcon />,
     label: 'Collaborate with Team',
-    url: '/feature',
+    url: `${WEB_URL}/feature`,
     id: 'feature-5',
   },
   {
     icon: <AllFeatureIcon />,
     label: 'Integrate with Project Tools',
-    url: '/feature',
+    url: `${WEB_URL}/feature`,
     id: 'feature-6',
   },
   {
     icon: <AIIcon />,
     label: 'AI Assistant',
-    url: '/ai-assistant',
+    url: `${WEB_URL}/ai-assistant`,
   },
 ];
 
@@ -58,20 +64,28 @@ const BB_FOR = [
   {
     icon: <QualityIcon />,
     label: 'QA Engineers',
-    url: '/solution/qa-engineers',
+    url: `${WEB_URL}/solution/qa-engineers`,
   },
   {
     icon: <DeveloperIcon className="mx-1" />,
     label: 'Developers',
-    url: '/solution/developers',
+    url: `${WEB_URL}/solution/developers`,
   },
-  { icon: <ManagerIcon />, label: 'Managers', url: '/solution/managers' },
+  {
+    icon: <ManagerIcon />,
+    label: 'Managers',
+    url: `${WEB_URL}/solution/managers`,
+  },
   {
     icon: <SupportTeamIcon />,
     label: 'Support Teams',
-    url: '/solution/support-teams',
+    url: `${WEB_URL}/solution/support-teams`,
   },
-  { icon: <FounderIcon />, label: 'Founders', url: '/solution/founders' },
+  {
+    icon: <FounderIcon />,
+    label: 'Founders',
+    url: `${WEB_URL}/solution/founders`,
+  },
 ];
 
 interface ProductMenuComponentProps {

@@ -9,6 +9,7 @@ import TwitterIcon from '../../theme/Icon/twitterIcon';
 import { Col, Row } from 'antd';
 import YouTubeIcon from '../../theme/Icon/youTubeIcon';
 import DiscordIcon from '../../theme/Icon/discordIcon';
+import { WEB_URL } from '@/app/libs/constants';
 
 const FooterComponent = () => {
   const pathname = usePathname();
@@ -44,11 +45,11 @@ const FooterComponent = () => {
   }, [pathname]);
 
   const footerMenu = [
-    { label: 'BetterBugs', url: '/' },
-    { label: 'Our Story', url: '/our-story' },
+    { label: 'BetterBugs', url: `${WEB_URL}` },
+    { label: 'Our Story', url: `${WEB_URL}/our-story` },
     // { label: "Change log", url: "/" },
     // { label: "Customers", url: "/" },
-    { label: 'Blog', url: '/blog' },
+    { label: 'Blog', url: `${WEB_URL}/blog` },
     {
       label: 'Docs',
       url: 'https://docs.betterbugs.io/overview/welcome-to-betterbugs',
@@ -56,48 +57,62 @@ const FooterComponent = () => {
   ];
 
   const InformationMenu = [
-    { label: 'Terms & Conditions', url: '/terms-and-condition' },
-    { label: 'Privacy Policy', url: '/privacy-policy' },
-    { label: 'Cancellations & Refunds', url: '/cancellations-and-refunds' },
+    { label: 'Terms & Conditions', url: `${WEB_URL}/terms-and-condition` },
+    { label: 'Privacy Policy', url: `${WEB_URL}/privacy-policy` },
+    {
+      label: 'Cancellations & Refunds',
+      url: `${WEB_URL}/cancellations-and-refunds`,
+    },
     // { label: "Glossary Terms", url: "/glossary" },
   ];
 
   const FeaturesMenu = [
-    { label: 'Record Screens', url: '/feature', id: 'feature-1' },
+    { label: 'Record Screens', url: `${WEB_URL}/feature`, id: 'feature-1' },
 
-    { label: 'Create Markups', url: '/feature', id: 'feature-2' },
+    { label: 'Create Markups', url: `${WEB_URL}/feature`, id: 'feature-2' },
 
-    { label: 'Developer Logs', url: '/feature', id: 'feature-3' },
+    { label: 'Developer Logs', url: `${WEB_URL}/feature`, id: 'feature-3' },
 
-    { label: 'Rewind', url: '/feature', id: 'feature-4' },
+    { label: 'Rewind', url: `${WEB_URL}/feature`, id: 'feature-4' },
 
-    { label: 'Collaborate with Team', url: '/feature', id: 'feature-5' },
+    {
+      label: 'Collaborate with Team',
+      url: `${WEB_URL}/feature`,
+      id: 'feature-5',
+    },
 
-    { label: 'Integrate with Project Tools', url: '/feature', id: 'feature-6' },
+    {
+      label: 'Integrate with Project Tools',
+      url: `${WEB_URL}/feature`,
+      id: 'feature-6',
+    },
 
-    { label: 'AI Assistant', url: '/ai-assistant' },
+    { label: 'AI Assistant', url: `${WEB_URL}/ai-assistant` },
   ];
 
   const IntegrationsMenu = [
-    { label: 'Slack', url: '/integration/slack' },
-    { label: 'Jira', url: '/integration/jira' },
-    { label: 'Linear', url: '/integration/linear' },
-    { label: 'ClickUp', url: '/integration/clickup' },
-    { label: 'Asana', url: '/integration/asana' },
-    { label: 'GitHub', url: '/integration/github' },
-    { label: 'MS Teams', url: '/integration/teams' },
-    { label: 'Trello', url: '/integration/trello' },
-    { label: 'Sentry', url: '/integration/sentry' },
-    { label: 'Azure Boards', url: '/integration/azure-boards' },
+    { label: 'Slack', url: `${WEB_URL}/integration/slack` },
+    { label: 'Jira', url: `${WEB_URL}/integration/jira` },
+    { label: 'Linear', url: `${WEB_URL}/integration/linear` },
+    { label: 'ClickUp', url: `${WEB_URL}/integration/clickup` },
+    { label: 'Asana', url: `${WEB_URL}/integration/asana` },
+    { label: 'GitHub', url: `${WEB_URL}/integration/github` },
+    { label: 'MS Teams', url: `${WEB_URL}/integration/teams` },
+    { label: 'Trello', url: `${WEB_URL}/integration/trello` },
+    { label: 'Sentry', url: `${WEB_URL}/integration/sentry` },
+    { label: 'Azure Boards', url: `${WEB_URL}/integration/azure-boards` },
   ];
 
   const UsecasesMenu = [
-    { label: 'QA Engineers', url: '/solution/qa-engineers' },
-    { label: 'Developers', url: '/solution/developers' },
-    { label: 'Managers', url: '/solution/managers' },
-    { label: 'Support Teams', url: '/solution/support-teams' },
-    { label: 'Founders', url: '/solution/founders' },
-    { label: 'Comparisons', url: '/comparisons/betterbugs-io-vs-bugherd' },
+    { label: 'QA Engineers', url: `${WEB_URL}/solution/qa-engineers` },
+    { label: 'Developers', url: `${WEB_URL}/solution/developers` },
+    { label: 'Managers', url: `${WEB_URL}/solution/managers` },
+    { label: 'Support Teams', url: `${WEB_URL}/solution/support-teams` },
+    { label: 'Founders', url: `${WEB_URL}/solution/founders` },
+    {
+      label: 'Comparisons',
+      url: `${WEB_URL}/comparisons/betterbugs-io-vs-bugherd`,
+    },
   ];
 
   // const PartnershipMenu = [
@@ -240,7 +255,7 @@ const FooterComponent = () => {
         <Row className="py-14 flex items-center justify-between border-t border-t-light-primary">
           <Col span={24} md={15} lg={15}>
             <div className="flex flex-wrap items-center gap-3 lg:gap-1">
-              <Link href="/" className="flex-shrink-0">
+              <Link href={`${WEB_URL}`} className="flex-shrink-0">
                 <Image
                   src="/images/bb-logo.svg"
                   width={580}

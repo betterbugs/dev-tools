@@ -1,7 +1,8 @@
-"use client";
-import { useState } from "react";
-import glossaryStyles from "../../../glossary/glossaryStyles.module.scss";
-import Link from "next/link";
+'use client';
+import { useState } from 'react';
+import glossaryStyles from '../../../glossary/glossaryStyles.module.scss';
+import Link from 'next/link';
+import { WEB_URL } from '@/app/libs/constants';
 
 interface GlossaryTabComponentProps {
   tab?: any;
@@ -24,11 +25,11 @@ const GlossaryTabComponent = (props: GlossaryTabComponentProps) => {
       <div className="mt-4 customTabNavbar gap-[10px] md:gap-[14px]">
         <p
           className={`${glossaryStyles.tabTitle}  ${
-            activeTab === 0 ? glossaryStyles.activeTab : ""
+            activeTab === 0 ? glossaryStyles.activeTab : ''
           }`}
-          onClick={() => handleTabClick(0, "0-9")}
+          onClick={() => handleTabClick(0, '0-9')}
           style={{
-            transition: "all 0.2s ease-out",
+            transition: 'all 0.2s ease-out',
           }}
         >
           0-9
@@ -37,11 +38,11 @@ const GlossaryTabComponent = (props: GlossaryTabComponentProps) => {
           <div key={index} className="customNavTabContainer">
             <p
               className={`${glossaryStyles.tabTitle} ${
-                activeTab === s.id ? "activeTab" : ""
+                activeTab === s.id ? 'activeTab' : ''
               }`}
               onClick={() => handleTabClick(s.id, s.attributes?.Name)}
               style={{
-                transition: "all 0.3s ease-out",
+                transition: 'all 0.3s ease-out',
               }}
             >
               {s.attributes?.Title}
@@ -56,14 +57,14 @@ const GlossaryTabComponent = (props: GlossaryTabComponentProps) => {
         >
           {tab?.map((s: any, index: number) => (
             <div key={index} className={glossaryStyles.customNavTabContainer}>
-              <Link href={`/glossary`} target="_blank">
+              <Link href={`${WEB_URL}/glossary`} target="_blank">
                 <p
                   className={`${glossaryStyles.slugTabTitle} ${
                     activeTab.key === s.key && glossaryStyles.activeTab
                   }`}
                   onClick={() => handleTabClick(s)}
                   style={{
-                    transition: "all 0.3s ease-out",
+                    transition: 'all 0.3s ease-out',
                   }}
                 >
                   {s.title}

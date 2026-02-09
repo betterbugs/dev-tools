@@ -10,26 +10,35 @@ import SupportTeamIcon from '../theme/Icon/supportTeamIcon';
 import FounderIcon from '../theme/Icon/founderIcon';
 import Image from 'next/image';
 import ComaresionBugHeardIcon from '../theme/Icon/comaresionBugHeardIcon';
+import { WEB_URL } from '@/app/libs/constants';
 // import { fetchComparisonAPI } from '@/api/comparison';
 
 const RoleMenu = [
   {
     icon: <QualityIcon />,
     label: 'QA Engineers',
-    url: '/solution/qa-engineers',
+    url: `${WEB_URL}/solution/qa-engineers`,
   },
   {
     icon: <DeveloperIcon className="mx-1 " />,
     label: 'Developers',
-    url: '/solution/developers',
+    url: `${WEB_URL}/solution/developers`,
   },
-  { icon: <ManagerIcon />, label: 'Managers', url: '/solution/managers' },
+  {
+    icon: <ManagerIcon />,
+    label: 'Managers',
+    url: `${WEB_URL}/solution/managers`,
+  },
   {
     icon: <SupportTeamIcon />,
     label: 'Support Teams',
-    url: '/solution/support-teams',
+    url: `${WEB_URL}/solution/support-teams`,
   },
-  { icon: <FounderIcon />, label: 'Founders', url: '/solution/founders' },
+  {
+    icon: <FounderIcon />,
+    label: 'Founders',
+    url: `${WEB_URL}/solution/founders`,
+  },
 ];
 
 // Default fallback menu
@@ -37,7 +46,7 @@ const defaultComparesionsMenu = [
   {
     icon: <ComaresionBugHeardIcon />,
     label: 'BetterBugs.io vs. BugHerd',
-    url: '/comparisons/betterbugs-io-vs-bugherd',
+    url: `${WEB_URL}/comparisons/betterbugs-io-vs-bugherd`,
   },
 ];
 
