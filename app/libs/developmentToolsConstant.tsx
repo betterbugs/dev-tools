@@ -8314,7 +8314,7 @@ family[1]: "Beth"`,
   },
   [`csv-to-excel-file-convertor`]: {
     hero_section: {
-      title: 'CSV to Excel File Convertor',
+      title: 'CSV to Excel File Converter',
       description:
         'Convert CSV files to Excel (.xlsx) with delimiter and encoding options.',
     },
@@ -9175,8 +9175,7 @@ family[1]: "Beth"`,
   [`rgb-to-hex-converter`]: {
     hero_section: {
       title: 'RGB to Hex Converter',
-      description:
-        'Convert HEX colors (#RGB, #RGBA, #RRGGBB, #RRGGBBAA) to RGB/RGBA instantly.',
+      description: 'Convert RGB/RGBA color values to HEX format instantly.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -9191,36 +9190,31 @@ family[1]: "Beth"`,
       about_description: [
         {
           description:
-            'This tool converts HEX color values into RGB or RGBA. It supports short and long HEX formats, with or without alpha.',
+            'This tool converts RGB or RGBA color values into HEX format. It supports integer channels (0–255) and optional alpha.',
         },
         {
           description:
-            'Paste one or more HEX values and get readable CSS rgb()/rgba() output or raw numeric channels.',
+            'Paste rgb(R,G,B) or rgba(R,G,B,A) values and get #RRGGBB or #RRGGBBAA output.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Hex to RGB Converter',
+      guide_title: 'Using the RGB to Hex Converter',
       guide_description: 'Convert in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Paste HEX:',
+          step_title: 'Enter RGB/RGBA:',
           step_description:
-            'Enter one or more HEX values (#FA0, #FFAA00, #FFAA00CC).',
+            'Enter RGB values (e.g., 255, 0, 128) or rgb(255,0,128) / rgba(255,0,128,0.5).',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Choose output:',
-          step_description: 'Toggle CSS rgb()/rgba() or raw numeric channels.',
+          step_title: 'Convert:',
+          step_description: 'Click Convert to generate HEX values.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Convert:',
-          step_description: 'Click Convert to generate RGB/RGBA values.',
-        },
-        {
-          step_key: 'Step 4:',
           step_title: 'Copy/Clear:',
           step_description: 'Copy the result or clear to start again.',
         },
@@ -9233,27 +9227,26 @@ family[1]: "Beth"`,
         {
           title: 'Design & theming',
           description:
-            'Quickly translate style guide HEX colors into CSS rgb()/rgba() values.',
+            'Turn RGB values from design tools into HEX for CSS and code.',
         },
         {
           title: 'Accessibility tweaks',
           description:
-            'Adjust alpha and verify color channels for contrast testing.',
+            'Convert RGB to HEX for contrast checks and theme variables.',
         },
         {
           title: 'Data migration',
           description:
-            'Convert stored HEX to channel values for graphics or analytics.',
+            'Convert stored RGB channel values to HEX for APIs or configs.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Hex to RGB Converter – Convert HEX to RGB/RGBA',
+      meta_title: 'RGB to Hex Converter – Convert RGB to HEX Online',
       meta_description:
-        'Convert HEX colors (#RGB, #RGBA, #RRGGBB, #RRGGBBAA) to RGB/RGBA online. Copy-ready CSS output.',
-      og_title: 'Hex to RGB – Free Online Color Converter',
-      og_description:
-        'Paste HEX values and get rgb()/rgba() or raw channels instantly. Supports alpha.',
+        'Convert RGB/RGBA color values to HEX format online. Copy-ready HEX output.',
+      og_title: 'RGB to Hex – Free Online Color Converter',
+      og_description: 'Paste RGB or rgba() values and get HEX instantly.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -9873,21 +9866,21 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Chrome Version Detector?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'This tool detects your Google Chrome (or Chromium-based browser) version using the User‑Agent string and, when available, User‑Agent Client Hints.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It also shows engine and mobile/ChromeOS context so you can share accurate browser details for support or QA.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Chrome Version Detector',
+      guide_description: 'Check your Chrome version in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
@@ -9898,13 +9891,13 @@ family[1]: "Beth"`,
           step_key: 'Step 2:',
           step_title: 'Review summary:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'See detected Chrome version, engine, and mobile/ChromeOS status.',
         },
         {
           step_key: 'Step 3:',
           step_title: 'View JSON:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Open the All Details section for the full JSON payload.',
         },
         {
           step_key: 'Step 4:',
@@ -9919,86 +9912,87 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Bug reports & support',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Share your Chrome version when reporting issues or contacting support.',
         },
         {
-          title: 'App compatibility',
+          title: 'Compatibility checks',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Confirm Chrome version for extensions, features, or polyfills.',
         },
         {
           title: 'Testing & analytics',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Understand Chrome version distribution for QA and product decisions.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'What Version of Chrome Do I Have – Chrome Version Detector',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Detect your Google Chrome browser version instantly. See engine, mobile status, and ChromeOS context.',
+      og_title: 'Chrome Version Detector – Free Online Tool',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Instantly view your Chrome version and related details. Copy results for support.',
       og_image: '/images/og-images/Cover.png',
     },
   },
 
   [`json-to-typescript`]: {
     hero_section: {
-      title: 'Json to Typescript Converter',
+      title: 'JSON to TypeScript Converter',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Convert JSON data into TypeScript interfaces and types instantly. Perfect for generating type definitions from API responses or config files.',
     },
     development_tools_list: [
+      { tool: 'JSON Prettifier', url: PATHS.JSON_PRETTIFIER },
+      { tool: 'JSON Minifier', url: PATHS.JSON_MINIFIER },
+      { tool: 'JSON Validator', url: PATHS.JSON_VALIDATOR },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the JSON to TypeScript Converter?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The JSON to TypeScript converter generates TypeScript interfaces and type definitions from your JSON data. It infers types from sample values so you get ready-to-use types for your codebase.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It’s useful for API integration, config typing, and keeping TypeScript in sync with JSON structures without manual typing.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the JSON to TypeScript Converter',
+      guide_description: 'Convert JSON to TypeScript in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste or upload JSON:',
+          step_description:
+            'Enter your JSON object in the input area or upload a JSON file.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Configure options:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Choose root type name, optional nullability, and array vs tuple preference if available.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Generate TypeScript:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Click Generate to get TypeScript interfaces. Copy the output into your project.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Copy or download:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the generated types or download as a .ts file for use in your codebase.',
         },
       ],
     },
@@ -10007,29 +10001,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'API integration',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate types from API response samples for type-safe fetch or axios calls.',
         },
         {
-          title: 'App compatibility',
+          title: 'Config typing',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Create TypeScript types from config JSON for environment or app settings.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Documentation',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Document data structures by turning JSON examples into type definitions.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'JSON to TypeScript Converter – Generate Types from JSON',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Convert JSON to TypeScript interfaces and types online. Generate type definitions from JSON for API integration and config typing.',
+      og_title: 'JSON to TypeScript Converter – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Generate TypeScript types from JSON instantly. Perfect for APIs and config files.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10037,55 +10031,56 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Random CSV Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate random CSV data with configurable columns, rows, and formats. Perfect for testing, demos, and seeding data.',
     },
     development_tools_list: [
-      { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
+      { tool: 'JSON Generator', url: PATHS.RANDOM_JSON_DATA_GENERATOR },
+      { tool: 'CSV to TXT', url: PATHS.CSV_TO_TEXT_CONVERTER },
+      { tool: 'TXT to CSV', url: PATHS.TXT_TO_CSV_CONVERTER },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Random CSV Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The random CSV generator creates sample CSV data with configurable columns, row count, and delimiter. You can define column types (string, number, date, etc.) and get realistic-looking CSV for tests and demos.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It’s useful for testing import/export flows, populating spreadsheets, and generating fixture data without manual editing.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the Random CSV Generator',
+      guide_description: 'Generate CSV in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Set columns and types:',
+          step_description:
+            'Add column names and choose types (e.g. string, number, date, email).',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Set row count and delimiter:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Choose how many rows to generate and the delimiter (comma, semicolon, tab).',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Generate CSV:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Click Generate to create the CSV. Copy or download the result.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Copy or download:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the CSV to clipboard or download as a .csv file for use in tests or spreadsheets.',
         },
       ],
     },
@@ -10094,29 +10089,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Testing imports',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate sample CSV to test file upload and parsing in your app.',
         },
         {
-          title: 'App compatibility',
+          title: 'Demos and prototypes',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Populate tables and spreadsheets with realistic data for demos.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Fixture data',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Create CSV fixtures for automated tests and staging environments.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Random CSV Generator – Create Sample CSV Data',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate random CSV data with configurable columns and formats. Perfect for testing, demos, and fixture data.',
+      og_title: 'Random CSV Generator – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create sample CSV data instantly. Useful for testing and demos.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10124,55 +10119,50 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Random GUID Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate random GUIDs (UUIDs) instantly. Create one or many UUID v4 values for identifiers, testing, and database keys.',
     },
     development_tools_list: [
-      { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
+      { tool: 'Random String Generator', url: PATHS.RANDOM_STRING_GENERATOR },
+      { tool: 'JSON Generator', url: PATHS.RANDOM_JSON_DATA_GENERATOR },
       { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Random GUID Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The random GUID generator creates UUID v4 (globally unique identifiers) that are suitable for primary keys, trace IDs, and any context that needs unique values.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'You can generate one or multiple GUIDs and copy them with a chosen separator. It’s useful for development, testing, and database seeding.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the Random GUID Generator',
+      guide_description: 'Generate GUIDs in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Set count and separator:',
+          step_description:
+            'Choose how many GUIDs to generate and the separator (newline, comma, etc.) when copying.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Generate GUIDs:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Click Generate to create UUID v4 values. Copy or download the list.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Copy or use:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the GUIDs to clipboard or download as a file for use in your app or database.',
         },
       ],
     },
@@ -10181,29 +10171,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Database keys',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate unique IDs for primary keys, foreign keys, and entity identifiers.',
         },
         {
-          title: 'App compatibility',
+          title: 'Testing and fixtures',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Create stable or random GUIDs for test data and mock APIs.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Trace IDs and logging',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Generate request or correlation IDs for distributed tracing and logs.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Random GUID Generator – Generate UUIDs Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate random GUIDs (UUID v4) instantly. Create one or many unique identifiers for databases, testing, and APIs.',
+      og_title: 'Random GUID Generator – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create UUID v4 values instantly. Perfect for keys, testing, and trace IDs.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10211,55 +10201,50 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Random Text From Regex',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate random text that matches a regex pattern. Perfect for test data, fuzzing, and validating input handling.',
     },
     development_tools_list: [
-      { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
+      { tool: 'JavaScript Regex Tester', url: PATHS.JAVASCRIPT_REGEX_TESTER },
+      { tool: 'Random String Generator', url: PATHS.RANDOM_STRING_GENERATOR },
       { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Random Text From Regex Tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'This tool generates random strings that conform to a given regular expression. You enter a regex pattern and get sample strings that match it.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for creating test data that fits validation rules, fuzzing inputs, and checking how your app handles valid or edge-case strings.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the Random Text From Regex Tool',
+      guide_description: 'Generate matching text in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter regex pattern:',
+          step_description:
+            'Type or paste your regular expression (e.g. ^[a-zA-Z0-9]{8,}$).',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Set count and options:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Choose how many strings to generate and any options (e.g. max length, separator).',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Generate and copy:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Click Generate to create matching strings. Copy or download the result.',
         },
       ],
     },
@@ -10268,29 +10253,30 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Test data',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate inputs that match your validation regex for unit and integration tests.',
         },
         {
-          title: 'App compatibility',
+          title: 'Fuzzing and edge cases',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Produce varied strings that satisfy a pattern to stress-test parsing and validation.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Documentation and demos',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Create example values for docs or UI demos that match a specified format.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title:
+        'Random Text From Regex – Generate Strings Matching a Pattern',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate random text that matches a regex pattern. Useful for test data, fuzzing, and validation testing.',
+      og_title: 'Random Text From Regex – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create random strings that match your regex. Perfect for testing and demos.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10298,55 +10284,50 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'QR Code Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate QR codes from text or URLs instantly. Customize size, format, and download for print or digital use.',
     },
     development_tools_list: [
+      { tool: 'Barcode Generator', url: PATHS.BARCODE_GENERATOR },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
       { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
       { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the QR Code Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The QR code generator creates scannable QR codes from any text or URL. You can set size and format and download the image.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for sharing links, contact info, Wi‑Fi credentials, or small payloads in print, apps, and web.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the QR Code Generator',
+      guide_description: 'Create a QR code in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter content:',
+          step_description:
+            'Type or paste the text or URL you want to encode in the QR code.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Set options:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Choose size, error correction level, and format (PNG/SVG) if available.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Generate and download:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Click Generate to create the QR code. Download or copy the image for use.',
         },
       ],
     },
@@ -10355,29 +10336,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Links and URLs',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Encode URLs for flyers, packaging, or in-app “scan to open” flows.',
         },
         {
-          title: 'App compatibility',
+          title: 'Contact and Wi‑Fi',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Generate vCard or Wi‑Fi QR codes for easy sharing of contact or network details.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Testing and demos',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Create QR codes for testing scanner apps or demo flows.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'QR Code Generator – Create QR Codes Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate QR codes from text or URLs. Customize size and format and download for print or digital use.',
+      og_title: 'QR Code Generator – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create QR codes instantly. Perfect for links, contact info, and testing.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10385,55 +10366,53 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Random Address Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate random street addresses for testing forms, databases, and demos. Customize format and locale.',
     },
     development_tools_list: [
+      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
+      {
+        tool: 'Random Username Generator',
+        url: PATHS.RANDOM_USERNAME_GENERATOR,
+      },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
       { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
       { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Random Address Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The random address generator creates realistic-looking street addresses for use in testing and development. Addresses are synthetic and not tied to real locations.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for form testing, database seeding, and demos where you need placeholder address data without using real personal information.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the Random Address Generator',
+      guide_description: 'Generate addresses in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Set options:',
+          step_description:
+            'Choose count, format (single line / multi-line), and locale if available.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Generate:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Click Generate to create random addresses in the output area.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Copy or download:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the addresses or download as CSV/text for use in your project.',
         },
       ],
     },
@@ -10442,29 +10421,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Form and UI testing',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Populate address fields in forms and checkout flows without real data.',
         },
         {
-          title: 'App compatibility',
+          title: 'Database seeding',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Fill dev or test databases with realistic address data for demos and tests.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Privacy-safe demos',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Use synthetic addresses in screenshots, videos, or live demos.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Random Address Generator – Create Test Addresses Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate random street addresses for testing forms, databases, and demos. Free online tool on BetterBugs.io.',
+      og_title: 'Random Address Generator – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create synthetic addresses for testing and demos. No real personal data.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10472,55 +10451,50 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'HTML Code Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate HTML code from structured input or templates. Build markup for forms, tables, and common elements quickly.',
     },
     development_tools_list: [
+      { tool: 'HTML Validator', url: PATHS.HTML_VALIDATOR },
+      { tool: 'HTML Prettify', url: PATHS.HTML_PRETTIFY },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
-      { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
+      { tool: 'HTML to Markdown', url: PATHS.HTML_TO_MARKDOWN },
+      { tool: 'HTML Escape', url: PATHS.HTML_ESCAPE },
+      { tool: 'HTML Viewer', url: PATHS.HTML_VIEWER },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the HTML Code Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The HTML code generator helps you create valid HTML markup from structured options or templates, so you can build forms, tables, and common sections without writing every tag by hand.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for prototyping, learning HTML structure, and quickly producing boilerplate markup for integration into larger projects.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the HTML Code Generator',
+      guide_description: 'Generate HTML in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Choose type:',
+          step_description:
+            'Select the kind of HTML you want (e.g. form, table, list) and set options.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Generate:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Click Generate to create the HTML code in the output area.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Copy or edit:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the generated HTML into your project or edit it further in the editor.',
         },
       ],
     },
@@ -10529,29 +10503,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Prototyping',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Quickly create HTML snippets for forms, tables, or layouts.',
         },
         {
-          title: 'App compatibility',
+          title: 'Learning',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'See how structured options map to HTML markup for study and reference.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Boilerplate',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Generate standard markup to paste into CMS or codebases.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'HTML Code Generator – Create HTML Markup Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Generate HTML code from structured input. Build forms, tables, and common elements quickly. Free tool on BetterBugs.io.',
+      og_title: 'HTML Code Generator – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Create valid HTML markup from templates and options. No coding required.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10559,55 +10533,50 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'HTML Viewer',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Render HTML in a live preview. Paste or type HTML and see the result instantly in the browser.',
     },
     development_tools_list: [
+      { tool: 'HTML Validator', url: PATHS.HTML_VALIDATOR },
+      { tool: 'HTML Prettify', url: PATHS.HTML_PRETTIFY },
+      { tool: 'HTML Code Generator', url: PATHS.HTML_CODE_GENERATOR },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
-      { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
+      { tool: 'HTML to Markdown', url: PATHS.HTML_TO_MARKDOWN },
+      { tool: 'Strip HTML', url: PATHS.STRIP_HTML },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the HTML Viewer?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The HTML viewer renders your HTML markup in a live preview so you can see how it looks without leaving the page. Paste or type HTML and view the result in real time.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for debugging markup, checking layout and styles, and quickly testing snippets in a sandboxed iframe.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the HTML Viewer',
+      guide_description: 'Preview HTML in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste or type HTML:',
+          step_description:
+            'Add your HTML code to the input area. The preview updates as you type.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'View result:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Check the live preview panel to see how your HTML renders.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Copy or edit:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the HTML for use elsewhere or edit it and refresh the preview.',
         },
       ],
     },
@@ -10616,29 +10585,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Debugging markup',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'See how HTML and inline styles render without deploying.',
         },
         {
-          title: 'App compatibility',
+          title: 'Snippet testing',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Test small HTML fragments before adding them to a full page.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Learning',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Experiment with HTML and CSS and see results immediately.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'HTML Viewer – Live HTML Preview Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Render HTML in a live preview. Paste or type HTML and see the result instantly. Free tool on BetterBugs.io.',
+      og_title: 'HTML Viewer – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Preview HTML in real time. No uploads, runs in your browser.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10650,83 +10619,78 @@ family[1]: "Beth"`,
         'Invert HEX colors and images; copy inverted HEX and download processed images.',
     },
     development_tools_list: [
-      { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
-      { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
+      { tool: 'Random Color Generator', url: PATHS.RANDOM_COLOR_GENERATOR },
+      { tool: 'Hex to RGB', url: PATHS.HEX_TO_RGB_CONVERTER },
+      { tool: 'RGB to Hex', url: PATHS.RGB_TO_HEX_CONVERTER },
+      { tool: 'Color Picker', url: PATHS.COLOR_PICKER_TOOL },
+      { tool: 'Word Count Tool', url: PATHS.WORD_COUNT_TOOL },
+      { tool: 'Character Count Tool', url: PATHS.CHARACTER_COUNT_TOOL },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Color Inverter?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Color Inverter converts HEX colors to their inverted (complement) values and can process images to produce inverted versions.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Use it for design contrast checks, accessibility testing, or creating negative/alternate color variants. Copy inverted HEX or download processed images.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to Use the Color Inverter',
+      guide_description: 'Invert colors in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter HEX or upload image:',
+          step_description:
+            'Paste a HEX color (e.g. #FF5733) or upload an image to invert.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Get inverted result:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'View the inverted HEX or image in the output area.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Copy or download:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy inverted HEX to clipboard or download the processed image.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
+      how_use_title: "How It's Used",
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Design & contrast',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Quickly see complementary colors and check contrast for accessibility.',
         },
         {
-          title: 'App compatibility',
+          title: 'Image processing',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Create negative or inverted image variants for assets or demos.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Accessibility testing',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Verify how inverted or high-contrast variants look for UI elements.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Color Inverter – Invert HEX & Images Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Invert HEX colors and images; copy inverted HEX and download processed images. Free online tool on BetterBugs.io.',
+      og_title: 'Color Inverter – Developer Utility Tools',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Invert HEX colors and images instantly. Copy inverted HEX or download processed images.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10735,55 +10699,53 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'String Difference Checker',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Compare two strings side-by-side and highlight character- or word-level differences instantly.',
     },
     development_tools_list: [
+      { tool: 'Text Compare', url: PATHS.TEXT_COMPARE },
+      { tool: 'Code Compare', url: PATHS.CODE_COMPARE_TOOL },
+      { tool: 'JSON Compare', url: PATHS.JSON_COMPARE },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
+      { tool: 'Word Count', url: PATHS.WORD_COUNT_TOOL },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the String Difference Checker?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The String Difference Checker compares two strings and highlights added, removed, and unchanged characters or words.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It runs entirely in your browser—no data is uploaded. Useful for code review, config diffs, and text validation.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the String Difference Checker',
+      guide_description: 'Compare two strings in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste or type string 1:',
+          step_description: 'Enter the first string in the left input.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Paste or type string 2:',
+          step_description: 'Enter the second string in the right input.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Review diff:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'See character- or word-level differences highlighted.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+          step_title: 'Copy or clear:',
+          step_description: 'Copy results or clear inputs to compare again.',
         },
       ],
     },
@@ -10792,29 +10754,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Code and config review',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Compare two versions of a file or config to spot changes quickly.',
         },
         {
-          title: 'App compatibility',
+          title: 'Text validation',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Check that user input or API output matches expected strings.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'QA and debugging',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Verify copy, error messages, or serialized data against a baseline.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'String Difference Checker – Compare Two Strings Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Compare two strings side-by-side and highlight character- or word-level differences. No data uploaded.',
+      og_title: 'String Difference Checker – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Compare two strings instantly with highlighted diffs. Perfect for code review and text validation.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10822,7 +10784,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Text Repeater',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Repeat any text a set number of times with optional separators. Free online tool for bulk text generation.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -10833,44 +10795,38 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Text Repeater?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Text Repeater repeats your input text a specified number of times. You can add a separator between repetitions (e.g. newline, comma, space).',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for generating bulk placeholder content, test data, or repeated strings for development and testing.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Text Repeater',
+      guide_description: 'Repeat text in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter text:',
+          step_description: 'Type or paste the text you want to repeat.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Set count and separator:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Choose how many times to repeat and the separator (newline, comma, space, or none).',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Get output:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'View the repeated text and copy or download as needed.',
         },
       ],
     },
@@ -10879,29 +10835,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Placeholder content',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate repeated lines or blocks for UI mockups and demos.',
         },
         {
-          title: 'App compatibility',
+          title: 'Test data',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Create bulk strings for load testing or input validation tests.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Formatting',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Quickly build comma- or newline-separated lists from a single value.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Text Repeater – Repeat Text Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Repeat any text a set number of times with optional separators. Free tool for bulk text and test data.',
+      og_title: 'Text Repeater – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Repeat text instantly with configurable count and separators.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10909,7 +10865,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Sorting List',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Sort a list of items alphabetically, by length, or numerically. Free online tool for organizing lists.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -10920,44 +10876,39 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Sorting List tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Sorting List tool lets you sort a list of lines or items in ascending or descending order—by alphabet, length, or numeric value.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for organizing word lists, tags, IDs, or any line-based data quickly.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Sorting List tool',
+      guide_description: 'Sort your list in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste your list:',
+          step_description:
+            'Enter or paste one item per line in the input area.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Choose sort mode:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Select alphabetical, by length, or numeric and ascending or descending.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Get sorted output:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'View the sorted list and copy or download as needed.',
         },
       ],
     },
@@ -10966,29 +10917,27 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Data organization',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Order tags, keywords, or IDs for reports and dashboards.',
         },
         {
-          title: 'App compatibility',
+          title: 'Content and SEO',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Sort keyword or category lists for sitemaps and content planning.',
         },
         {
-          title: 'Testing & analytics',
-          description:
-            'Understand OS distribution across users for QA and product decisions.',
+          title: 'Testing',
+          description: 'Generate ordered test data for dropdowns and list UIs.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Sorting List – Sort Items Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
-      og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Sort a list alphabetically, by length, or numerically. Free tool for organizing lists and line-based data.',
+      og_title: 'Sorting List – Developer Utility',
+      og_description: 'Sort lists instantly with configurable order and mode.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10996,7 +10945,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Shuffle Letters',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Randomly shuffle the letters in any word or text. Free online tool for games, puzzles, and creative writing.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11007,44 +10956,37 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Shuffle Letters tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Shuffle Letters tool randomly rearranges the characters in your text—per word or for the whole input.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for word games, anagrams, obfuscation, or generating randomized strings.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Shuffle Letters tool',
+      guide_description: 'Shuffle letters in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter text:',
+          step_description:
+            'Type or paste the word or text you want to shuffle.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Choose mode:',
+          step_description: 'Shuffle per word or shuffle the entire string.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
-          step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+          step_title: 'Get result:',
+          step_description: 'View the shuffled output and copy as needed.',
         },
       ],
     },
@@ -11053,29 +10995,28 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Word games',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Create anagrams or scrambled words for puzzles and quizzes.',
         },
         {
-          title: 'App compatibility',
+          title: 'Testing',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Generate randomized strings for input validation and fuzzing.',
         },
         {
-          title: 'Testing & analytics',
-          description:
-            'Understand OS distribution across users for QA and product decisions.',
+          title: 'Creative writing',
+          description: 'Shuffle letters for brainstorming or obfuscating text.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Shuffle Letters – Randomize Text Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Randomly shuffle letters in words or text. Free tool for games, anagrams, and testing.',
+      og_title: 'Shuffle Letters – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Shuffle letters in text instantly with per-word or full-string mode.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11083,7 +11024,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Shuffle Text Lines',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Randomly shuffle the order of lines in your text. Free online tool for randomizing lists and line-based data.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11094,44 +11035,37 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Shuffle Text Lines tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Shuffle Text Lines tool randomly reorders the lines in your input, one line per item.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for randomizing lists, quiz order, test data, or any line-based content.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Shuffle Text Lines tool',
+      guide_description: 'Shuffle lines in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste your list:',
+          step_description:
+            'Enter or paste one item per line in the input area.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Shuffle:',
+          step_description: 'Click Shuffle to randomize the line order.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
-          step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+          step_title: 'Copy result:',
+          step_description: 'Copy the shuffled list or download as needed.',
         },
       ],
     },
@@ -11140,29 +11074,26 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
-          description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+          title: 'Quizzes and surveys',
+          description: 'Randomize question or option order to avoid bias.',
         },
         {
-          title: 'App compatibility',
-          description:
-            'Check OS and architecture before installing drivers or software.',
+          title: 'Test data',
+          description: 'Shuffle list data for load testing and sampling.',
         },
         {
-          title: 'Testing & analytics',
-          description:
-            'Understand OS distribution across users for QA and product decisions.',
+          title: 'Content and lists',
+          description: 'Randomize playlist, checklist, or tag order.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Shuffle Text Lines – Randomize Line Order Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Randomly shuffle the order of lines in your text. Free tool for lists and line-based data.',
+      og_title: 'Shuffle Text Lines – Developer Utility',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Shuffle lines instantly for quizzes, test data, and lists.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11171,7 +11102,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Random IP Generator',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Generate random IPv4 addresses instantly. Free online tool for testing, development, and networking.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11182,44 +11113,36 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Random IP Generator?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Random IP Generator creates random IPv4 addresses for testing, development, and simulation.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Useful for load testing, firewall rules, mock data, and networking demos—not for real traffic.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'Using the Random IP Generator',
+      guide_description: 'Generate IPs in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Set count:',
+          step_description: 'Choose how many random IPs you need.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Generate:',
+          step_description: 'Click Generate to create random IPv4 addresses.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
-          step_description:
-            'Open the All Details section for the complete JSON payload.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
-          step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+          step_title: 'Copy or download:',
+          step_description: 'Copy the list or download as a file.',
         },
       ],
     },
@@ -11228,29 +11151,27 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Testing',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Generate test IPs for firewall, geo, or rate-limit logic.',
         },
         {
-          title: 'App compatibility',
-          description:
-            'Check OS and architecture before installing drivers or software.',
+          title: 'Mock data',
+          description: 'Populate logs or dashboards with random IP addresses.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Development',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Simulate multiple clients or IP-based features without real traffic.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Random IP Generator – Generate IPv4 Addresses Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
-      og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Generate random IPv4 addresses for testing and development. Free online tool.',
+      og_title: 'Random IP Generator – Developer Utility',
+      og_description: 'Create random IPs instantly for testing and mock data.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11258,7 +11179,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'JSON Compare',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Compare two JSON objects side by side. Highlight differences, missing keys, and value changes instantly.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11269,44 +11190,44 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the JSON Compare tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The JSON Compare tool lets you diff two JSON objects side by side. It highlights added, removed, and changed keys so you can quickly understand what has changed between versions.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It is ideal for comparing API responses, config files, or any structured JSON data when debugging issues or reviewing changes.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to use the JSON Compare tool',
+      guide_description: 'Compare two JSON payloads in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste left JSON:',
+          step_description:
+            'Add the original or baseline JSON to the left input.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Paste right JSON:',
+          step_description: 'Add the new or modified JSON to the right input.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Run comparison:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Click the compare button to highlight differences between the two JSON objects.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Review and copy:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Inspect added, removed, and changed fields, then copy results or JSON as needed.',
         },
       ],
     },
@@ -11315,29 +11236,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'API response diffing',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Compare API responses between environments or versions to spot breaking changes.',
         },
         {
-          title: 'App compatibility',
+          title: 'Config & schema changes',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'See exactly what changed between two JSON config files or schema definitions.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Debugging & regression checks',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Quickly identify unexpected JSON differences that may cause bugs in production.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'JSON Compare – Diff JSON Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Compare two JSON objects side by side. Highlight differences, missing keys, and value changes for APIs and config files.',
+      og_title: 'JSON Compare – Online JSON Diff Tool',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Diff two JSON payloads instantly. Visualize added, removed, and changed keys for faster debugging.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11345,7 +11266,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Text Compare',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Compare two text snippets or files side by side. Highlight differences, additions, and removals instantly.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11356,44 +11277,44 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the Text Compare tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The Text Compare tool shows differences between two text snippets or documents side by side. It highlights added, removed, and modified lines so you can quickly see what changed.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Use it for comparing code, configuration files, documentation, or any plain text content without needing a full diff client.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to use the Text Compare tool',
+      guide_description: 'Compare two pieces of text in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste original text:',
+          step_description:
+            'Add the original or older version of the text to the left input.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
-          step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+          step_title: 'Paste modified text:',
+          step_description: 'Add the new or updated text to the right input.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Run comparison:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Click the compare button to generate a side‑by‑side diff with highlights.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Review changes:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Scroll through the diff to inspect additions, deletions, and modifications.',
         },
       ],
     },
@@ -11402,29 +11323,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Code & config reviews',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Compare code snippets or config files when reviewing pull requests or investigating issues.',
         },
         {
-          title: 'App compatibility',
+          title: 'Document revisions',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'See what changed between two versions of copy, specs, or documentation.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Content QA',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Verify edits from teammates or tools by diffing text before publishing.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'Text Compare – Online Text Diff Tool',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Compare two text snippets or documents side by side and highlight differences instantly.',
+      og_title: 'Text Compare – Free Online Diff',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Visualize differences between two pieces of text. Highlight additions, removals, and changes for faster reviews.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11432,7 +11353,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'URL Decode',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Decode percent‑encoded URLs into readable text. Turn encoded query strings, paths, and parameters back into their original form.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11443,44 +11364,45 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the URL Decode tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The URL Decode tool converts percent‑encoded strings (like %20, %3A, %2F) back into human‑readable text. It is useful when inspecting encoded URLs, query parameters, or callback data.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'It helps developers debug redirects, webhooks, and integrations where URL‑encoded data is passed between systems.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to use the URL Decode tool',
+      guide_description: 'Decode URL‑encoded text in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Paste encoded text:',
+          step_description:
+            'Add the URL‑encoded string (full URL or part of it) into the input area.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Decode the value:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Click the decode button to convert all percent‑encoded sequences to plain text.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Review result:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Check the decoded output for readable paths, parameters, or payloads.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Copy or reuse:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the decoded text or use it in logs, documentation, or debugging tools.',
         },
       ],
     },
@@ -11489,29 +11411,29 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Debugging callbacks & webhooks',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Decode URL‑encoded payloads sent by third‑party APIs or webhooks.',
         },
         {
-          title: 'App compatibility',
+          title: 'Analyzing query strings',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Turn encoded query parameters into readable key‑value pairs for troubleshooting.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Inspecting redirect URLs',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Decode long redirect URLs to understand where they lead and what data they include.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'URL Decode – Decode URL‑Encoded Text Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Decode percent‑encoded URLs and query strings into readable text. Useful for debugging redirects, webhooks, and query parameters.',
+      og_title: 'URL Decode – Online Decoder Tool',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Convert URL‑encoded strings back to plain text. Quickly inspect encoded paths, parameters, and payloads.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -11519,7 +11441,7 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'URL Encode',
       description:
-        'Detect your Chrome browser version, engine, mobile status, and ChromeOS — instantly.',
+        'Encode text for safe use in URLs. Convert spaces and special characters into percent‑encoded values.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -11530,44 +11452,45 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Operating System Detector?',
+      about_title: 'What is the URL Encode tool?',
       about_description: [
         {
           description:
-            'This tool identifies your OS (Windows, macOS, Linux, Android, iOS, ChromeOS) and version by combining User‑Agent parsing with modern User‑Agent Client Hints (platform/platformVersion/architecture).',
+            'The URL Encode tool converts text into a URL‑safe format by replacing spaces and special characters with percent‑encoded sequences.',
         },
         {
           description:
-            'When high‑entropy UA hints are available (Chromium), it reports precise platform version and architecture (x64/ARM64). Otherwise, it provides the best‑effort result from the User‑Agent string.',
+            'Use it when building query strings, callback URLs, or any link where parameters must be safely transmitted over HTTP.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Operating System Detector',
-      guide_description: 'Check your OS in a few steps:',
+      guide_title: 'How to use the URL Encode tool',
+      guide_description: 'Encode text for URLs in a few steps:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Open the tool:',
-          step_description: 'Detection runs automatically on page load.',
+          step_title: 'Enter text to encode:',
+          step_description:
+            'Paste or type the text, query string, or parameter value you want to encode.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Review summary:',
+          step_title: 'Run encoding:',
           step_description:
-            'See detected OS and version, platform/platformVersion, and architecture.',
+            'Click the encode button to convert unsafe characters into percent‑encoded values.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View JSON:',
+          step_title: 'Review encoded output:',
           step_description:
-            'Open the All Details section for the complete JSON payload.',
+            'Confirm the encoded string is ready to be used in URLs or API calls.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy/Refresh:',
+          step_title: 'Copy and integrate:',
           step_description:
-            'Copy the details to clipboard or refresh to re-run detection.',
+            'Copy the encoded text into your application code, configuration, or tooling.',
         },
       ],
     },
@@ -11576,35 +11499,35 @@ family[1]: "Beth"`,
       how_use_description: 'Common use cases:',
       point: [
         {
-          title: 'IT support & triage',
+          title: 'Building query strings',
           description:
-            "Identify a user's OS and version quickly for accurate troubleshooting.",
+            'Encode parameter values to safely include them in URLs without breaking syntax.',
         },
         {
-          title: 'App compatibility',
+          title: 'Generating callback URLs',
           description:
-            'Check OS and architecture before installing drivers or software.',
+            'Prepare redirect and callback URLs for OAuth, SSO, and third‑party integrations.',
         },
         {
-          title: 'Testing & analytics',
+          title: 'Encoding data for APIs',
           description:
-            'Understand OS distribution across users for QA and product decisions.',
+            'Ensure text data is URL‑safe before sending it in API requests or webhooks.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'What Operating System Do I Have – OS & Version Detector',
+      meta_title: 'URL Encode – Encode Text for URLs Online',
       meta_description:
-        'Detect your Operating System (Windows, macOS, Linux, Android, iOS, ChromeOS), version, platform and architecture online.',
-      og_title: 'Operating System Detector – OS & Version',
+        'Encode text into URL‑safe format. Convert spaces and special characters into percent‑encoded sequences for query strings and redirects.',
+      og_title: 'URL Encode – Online Encoder Tool',
       og_description:
-        'Instantly view your OS, version, platformVersion and architecture. Copy results for support.',
+        'Convert text to URL‑encoded form instantly. Safely build query strings, callback URLs, and API parameters.',
       og_image: '/images/og-images/Cover.png',
     },
   },
   [`text-to-html-entities-convertor`]: {
     hero_section: {
-      title: 'Text to HTML Entities Convertor',
+      title: 'Text to HTML Entities Converter',
       description:
         'Convert any text into HTML entities instantly for safe web usage or encoding special characters.',
     },
@@ -11617,7 +11540,7 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Text to HTML Entities Convertor?',
+      about_title: 'What is the Text to HTML Entities Converter?',
       about_description: [
         {
           description:
@@ -11630,7 +11553,7 @@ family[1]: "Beth"`,
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to Use the Text to HTML Entities Convertor',
+      guide_title: 'How to Use the Text to HTML Entities Converter',
       guide_description: 'Follow these simple steps:',
       steps: [
         {
@@ -11681,10 +11604,10 @@ family[1]: "Beth"`,
     },
     meta_data: {
       meta_title:
-        'Text to HTML Entities Convertor – Encode Special Characters Online',
+        'Text to HTML Entities Converter – Encode Special Characters Online',
       meta_description:
         'Convert plain text into HTML entities safely and instantly. Encode special characters for web pages and applications.',
-      og_title: 'Text to HTML Entities Convertor – Online Tool',
+      og_title: 'Text to HTML Entities Converter – Online Tool',
       og_description:
         'Quickly convert text into HTML entities to prevent rendering issues or XSS vulnerabilities. Copy the result instantly.',
       og_image: '/images/og-images/Cover.png',
