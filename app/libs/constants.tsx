@@ -34,6 +34,7 @@ import RoundingCalculator from '../components/developmentToolsComponent/rounding
 import SentenceCounterComponent from '../components/developmentToolsComponent/sentenceCounterComponent';
 import SortNumbers from '../components/developmentToolsComponent/sortNumbers';
 import SortWords from '../components/developmentToolsComponent/sortWords';
+import SudokuSolver from '../components/developmentToolsComponent/sudokuSolver';
 import TextToOneLine from '../components/developmentToolsComponent/textToOneLine';
 import TxtToCsvConverter from '../components/developmentToolsComponent/txtToCsvConverter';
 import UpperCaseConverterComponent from '../components/developmentToolsComponent/upperCaseConverterComponent';
@@ -1589,6 +1590,13 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/sudoku-solver',
+      title: 'Sudoku Solver & Generator',
+      description: 'Solve Sudoku puzzles instantly or generate new ones with difficulty levels.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1767,6 +1775,7 @@ export const PATHS = {
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
+  SUDOKU_SOLVER: '/sudoku-solver',
 };
 
 export const developmentToolsRoutes = [
@@ -2465,6 +2474,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
+  },
+  {
+    path: PATHS.SUDOKU_SOLVER,
+    component: <SudokuSolver />,
   },
 ];
 
