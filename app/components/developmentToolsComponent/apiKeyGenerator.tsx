@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 type Charset = {
   upper: boolean;
@@ -71,19 +71,19 @@ const ApiKeyGenerator: React.FC = () => {
   const [autoUpdate, setAutoUpdate] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const run = () => {
+  const run = useCallback(() => {
     const clampedLen = Math.max(4, Math.min(256, Number(length) || 32));
     const clampedCount = Math.max(1, Math.min(100, Number(count) || 1));
     const gSize = groupSize && groupSize > 0 ? Math.max(1, Math.min(32, Number(groupSize) || 0)) : null;
     const out: string[] = [];
     for (let i = 0; i < clampedCount; i++) out.push(generateKey(clampedLen, charset, { groupSize: gSize, prefix, suffix }));
     setKeys(out);
-  };
+  }, [length, count, groupSize, charset, prefix, suffix]);
 
   useEffect(() => {
     if (!autoUpdate) return;
     run();
-  }, [length, count, groupSize, charset, prefix, suffix, autoUpdate]);
+  }, [run, autoUpdate]);
 
   const onCopy = async () => {
     try {
