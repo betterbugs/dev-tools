@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 type Mode = "nth" | "sequence";
 
@@ -50,14 +50,14 @@ const FibonacciCalculator: React.FC = () => {
     }
   };
 
-  const computeNth = (n: number): string => {
+  const computeNth = useCallback((n: number): string => {
     // Interpret n according to zeroIndexed toggle: if one-indexed, compute F(n) where input 1 -> F(1)=1
     const effective = zeroIndexed ? BigInt(n) : BigInt(Math.max(n, 1) - 1);
     const [fn] = fibFastDoubling(effective);
     return formatBigInt(fn, thousandsSep);
-  };
+  }, [zeroIndexed, thousandsSep]);
 
-  const computeSequence = (count: number): string => {
+  const computeSequence = useCallback((count: number): string => {
     // Build sequence up to count terms. If includeZero is true, start from F(0)=0, else start from F(1)=1.
     if (count === 0) return "";
     const result: string[] = [];
@@ -71,7 +71,7 @@ const FibonacciCalculator: React.FC = () => {
     }
     const sep = separator === "comma" ? ", " : separator === "space" ? " " : "\n";
     return result.join(sep);
-  };
+  }, [includeZero, thousandsSep, separator]);
 
   useEffect(() => {
     if (!autoConvert) return;
@@ -85,7 +85,7 @@ const FibonacciCalculator: React.FC = () => {
     } else {
       setOutput(computeSequence(n));
     }
-  }, [input, autoConvert, mode, includeZero, thousandsSep, separator, zeroIndexed]);
+  }, [input, autoConvert, mode, computeNth, computeSequence]);
 
   const onConvert = () => {
     const n = parseNonNegativeInt(input);

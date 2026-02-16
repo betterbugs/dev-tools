@@ -17169,4 +17169,79 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`sudoku-solver`]: {
+    hero_section: {
+      title: 'Sudoku Solver & Generator',
+      description:
+        'A free online tool to solve Sudoku puzzles instantly and generate new puzzles with different difficulty levels.',
+    },
+    development_tools_list: [
+      { tool: 'Random Number Generator', url: PATHS.RANDOM_NUMBER_GENERATOR },
+      { tool: 'Sorting List', url: PATHS.SORTING_LIST },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Sudoku Solver?',
+      about_description: [
+        {
+          description:
+            'The Sudoku Solver is a powerful tool that allows you to solve any 9x9 Sudoku puzzle instantly. It uses an advanced backtracking algorithm to find the solution.',
+        },
+        {
+          description:
+            'Additionally, it features a Sudoku Generator that can create new puzzles with varying difficulty levels: Easy, Medium, and Hard (Hard Level).',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use',
+      guide_description: 'Using the tool is simple:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Generate or Input:',
+          step_description:
+            'Click "Generate" to create a new puzzle, or manually enter numbers into the grid.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Select Difficulty:',
+          step_description:
+            'If generating, select the difficulty level (Easy, Medium, Hard Level) from the dropdown.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Solve:',
+          step_description:
+            'Click "Solve" to see the solution instantly.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Use Cases',
+      how_use_description: 'Great for:',
+      point: [
+        {
+          title: 'Entertainment',
+          description: 'Play and solve Sudoku puzzles for fun.',
+        },
+        {
+          title: 'Learning',
+          description: 'Understand Sudoku strategies and logic.',
+        },
+        {
+          title: 'Testing',
+          description: 'Test Sudoku solving algorithms and logic.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Sudoku Solver & Generator - Online Tool',
+      meta_description:
+        'Solve Sudoku puzzles instantly and generate new ones with difficulty levels. Free online tool.',
+      og_title: 'Sudoku Solver & Generator - Developer Utility',
+      og_description:
+        'Solve and generate Sudoku puzzles. Features Easy, Medium, and Hard levels.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 };
