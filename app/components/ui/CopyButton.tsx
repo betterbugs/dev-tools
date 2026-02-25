@@ -38,7 +38,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({
       aria-label="Copy to clipboard"
       disabled={!text}
     >
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2 cursor-pointer">
         {copied ? (
           <Check size={20} weight="bold" />
         ) : (
