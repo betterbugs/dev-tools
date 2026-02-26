@@ -188,6 +188,7 @@ import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJso
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
+import EpochConverter from '../components/developmentToolsComponent/epochConverter';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -1798,6 +1799,7 @@ export const PATHS = {
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
+  UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
 };
 
 export const developmentToolsRoutes = [
@@ -2512,6 +2514,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.CURL_TO_CODE_CONVERTER,
     component: <CurlToCodeConverter />,
+  },
+  {
+    path: PATHS.UNIX_TIMESTAMP_CONVERTER,
+    component: <EpochConverter />,
   },
 ];
 

@@ -17553,4 +17553,90 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  ['unix-timestamp-converter']: {
+    hero_section: {
+      title: 'Unix Timestamp Converter',
+      description:
+        'The Unix Timestamp Converter on BetterBugs.io is a free tool to convert Unix timestamps to human-readable dates and vice versa.',
+    },
+    development_tools_list: [
+      { tool: 'Date Generator', url: PATHS.RANDOM_DATE_GENERATOR },
+      { tool: 'Time Generator', url: PATHS.RANDOM_CLOCK_TIME_GENERATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Unix Timestamp Converter?',
+      about_description: [
+        {
+          description:
+            'The Unix Timestamp Converter allows you to instantly convert Unix timestamps (seconds or milliseconds) to human-readable dates, or dates to timestamps.',
+        },
+        {
+          description:
+            'This tool is essential for developers debugging logs, database entries, or working with time-series data.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'Step-by-Step Guide',
+      guide_description: 'Using the converter is simple:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter Timestamp or Select Date:',
+          step_description:
+            'Input a Unix timestamp in the text field, or pick a date and time from the calendar.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Select Unit (Optional):',
+          step_description:
+            'Toggle between Seconds and Milliseconds if needed.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'View Results:',
+          step_description:
+            'See the converted Local Time, UTC Time, ISO 8601 string, and relative time instantly.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Use Cases:',
+      how_use_description:
+        'The Unix Timestamp Converter is useful for:',
+      point: [
+        {
+          title: 'Debugging Logs',
+          description:
+            'Convert timestamps from server logs to readable dates to understand when events occurred.',
+        },
+        {
+          title: 'Database Management',
+          description:
+            'Verify and interpret timestamp columns in databases.',
+        },
+        {
+          title: 'API Development',
+          description:
+            'Validate timestamp formats exchanged between services.',
+        },
+        {
+          title: 'Time Calculation',
+          description:
+            'Quickly check relative times (e.g., "how long ago was this timestamp?").',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Unix Timestamp Converter - Developer Utility',
+      meta_description:
+        'Free online Unix Timestamp Converter. Convert between Epoch time and human-readable dates easily. Supports seconds and milliseconds.',
+      og_title: 'Unix Timestamp Converter - Developer Utility',
+      og_description:
+        'Convert between Epoch time and human-readable dates instantly. Supports seconds and milliseconds.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 };
+
+
