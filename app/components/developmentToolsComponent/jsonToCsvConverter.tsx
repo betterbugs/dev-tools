@@ -144,36 +144,38 @@ const JsonToCsvConverter: React.FC = () => {
         <div className="w-full bg-[#FFFFFF1A] rounded-2xl shadow-lg p-8">
           <div className="md:w-[850px] mx-auto space-y-8">
             {/* Options */}
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid sm:grid-cols-[220px_minmax(0,1fr)] gap-3 items-start">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Delimiter</label>
                 <select
                   value={delimiter}
                   onChange={(e) => setDelimiter(e.target.value)}
-                  className="w-full px-3 py-1.5 bg-black/20 border border-white/20 rounded text-white text-sm focus:outline-none focus:border-blue-500"
+                  className="w-full sm:w-44 px-3 py-1.5 bg-black/20 border border-white/20 rounded text-white text-sm focus:outline-none focus:border-blue-500"
                 >
                   <option value=",">Comma (,)</option>
                   <option value=";">Semicolon (;)</option>
                 </select>
               </div>
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  className="accent-primary"
-                  checked={includeHeader}
-                  onChange={(e) => setIncludeHeader(e.target.checked)}
-                />
-                Include Header
-              </label>
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  className="accent-primary"
-                  checked={flatten}
-                  onChange={(e) => setFlatten(e.target.checked)}
-                />
-                Flatten Nested Objects
-              </label>
+              <div className="flex flex-wrap items-center gap-4 sm:mt-7">
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    className="accent-primary"
+                    checked={includeHeader}
+                    onChange={(e) => setIncludeHeader(e.target.checked)}
+                  />
+                  Include Header
+                </label>
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    className="accent-primary"
+                    checked={flatten}
+                    onChange={(e) => setFlatten(e.target.checked)}
+                  />
+                  Flatten Nested Objects
+                </label>
+              </div>
             </div>
 
             {/* Input */}
