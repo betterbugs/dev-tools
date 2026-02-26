@@ -184,6 +184,7 @@ import XmlPrettify from '../components/developmentToolsComponent/xmlPrettify';
 import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJsonConverter';
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
+import EpochConverter from '../components/developmentToolsComponent/epochConverter';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -1767,6 +1768,7 @@ export const PATHS = {
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
+  UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
 };
 
 export const developmentToolsRoutes = [
@@ -2465,6 +2467,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
+  },
+  {
+    path: PATHS.UNIX_TIMESTAMP_CONVERTER,
+    component: <EpochConverter />,
   },
 ];
 
