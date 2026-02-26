@@ -116,6 +116,7 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter'
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
@@ -1109,6 +1110,14 @@ export const developmentToolsCategoryContent: any = {
         'Convert CSV to JSON; set delimiter, header row, and basic type inference.',
     },
   ],
+  Category109_1: [
+    {
+      url: '/json-to-csv',
+      title: 'JSON to CSV Converter',
+      description:
+        'Convert JSON arrays to CSV format with support for nested objects, custom delimiters, and headers.',
+    },
+  ],
   Category110: [
     {
       url: '/markdown-formatter',
@@ -1630,6 +1639,7 @@ export const PATHS = {
   CSV_TO_TEXT_CONVERTER: '/csv-to-text-converter',
   TXT_TO_CSV_CONVERTER: '/txt-to-csv-converter',
   JSON_TO_TEXT: '/json-to-text',
+  JSON_TO_CSV_CONVERTOR: '/json-to-csv',
   HTML_VALIDATOR: '/html-validator',
   JSON_VALIDATOR: '/json-validator',
   CODE_COMPARE_TOOL: '/code-compare-tool',
@@ -2249,6 +2259,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
+  },
+   {
+    path: PATHS.JSON_TO_CSV_CONVERTOR,
+    component: <JsonToCsvConverter />,
   },
   {
     path: PATHS.UTF8_DECODE,
