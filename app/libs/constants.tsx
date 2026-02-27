@@ -125,6 +125,7 @@ import MorseCodeTranslator from '../components/developmentToolsComponent/morseCo
 import NumbersToWordsConverter from '../components/developmentToolsComponent/numbersToWordsConverter';
 import OctalToBinaryConverter from '../components/developmentToolsComponent/octalToBinaryConverter';
 import OctalToDecimalConverter from '../components/developmentToolsComponent/octalToDecimalConverter';
+import PasswordStrengthMeter from '../components/developmentToolsComponent/passwordStrengthMeter';
 import PHPFormatter from '../components/developmentToolsComponent/phpFormatter';
 import PlaceholderImageGenerator from '../components/developmentToolsComponent/placeholderImageGenerator';
 import PxToRemConverter from '../components/developmentToolsComponent/pxToRemConverter';
@@ -1589,6 +1590,14 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/password-strength-meter',
+      title: 'Password Strength Meter',
+      description:
+        'Check your password strength using advanced entropy analysis with real crack-time estimates.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1621,6 +1630,7 @@ export const PATHS = {
   RANDOM_USERNAME_GENERATOR: '/random-username-generator',
   SORT_NUMBER: '/sort-number',
   SORT_WORD: '/sort-word',
+  PASSWORD_STRENGTH_METER: '/password-strength-meter',
   PHONE_NUMBER_EXTRACTOR: '/phone-number-extractor',
   REVERSE_TEXT_GENERATOR: '/reverse-text-generator',
   WORD_TO_NUMBER: '/word-to-number',
@@ -2465,6 +2475,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
+  },
+  {
+    path: PATHS.PASSWORD_STRENGTH_METER,
+    component: <PasswordStrengthMeter />,
   },
 ];
 
