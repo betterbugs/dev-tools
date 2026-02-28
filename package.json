@@ -41,6 +41,8 @@
     "@paddle/paddle-js": "^1.6.2",
     "@phosphor-icons/react": "^2.1.10",
     "@types/turndown": "5.0.5",
+    "ajv": "^8.18.0",
+    "ajv-formats": "^3.0.1",
     "animejs": "3.2.2",
     "antd": "5.16.2",
     "framer-motion": "11.2.6",
