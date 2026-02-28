@@ -109,6 +109,7 @@ import IdnDecode from '../components/developmentToolsComponent/idnDecode';
 import IdnEncode from '../components/developmentToolsComponent/idnEncode';
 import InternetSpeedTest from '../components/developmentToolsComponent/internetSpeedTest';
 import IpToHexConverter from '../components/developmentToolsComponent/ipToHexConverter';
+import Ipv4SubnetCalculator from '../components/developmentToolsComponent/ipv4SubnetCalculator';
 import JavaScriptEscape from '../components/developmentToolsComponent/javascriptEscape';
 import JavascriptRegexTester from '../components/developmentToolsComponent/javascriptRegexTester';
 import JavaScriptTester from '../components/developmentToolsComponent/javascriptTester';
@@ -1589,6 +1590,13 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/ipv4-subnet-calculator',
+      title: 'IPv4 Subnet Calculator',
+      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1732,6 +1740,7 @@ export const PATHS = {
   KILOMETERS_TO_MILES: '/kilometers-to-miles',
   JWT_DECODER: '/jwt-decoder',
   IP_TO_HEX: '/ip-to-hex',
+  IPV4_SUBNET_CALCULATOR: '/ipv4-subnet-calculator',
   WORDS_TO_NUMBERS: '/words-to-numbers',
   NUMBERS_TO_WORDS: '/numbers-to-words',
   FABONACCI_CALCULATOR: '/fabonacci-calculator',
@@ -2305,6 +2314,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.IP_TO_HEX,
     component: <IpToHexConverter />,
+  },
+  {
+    path: PATHS.IPV4_SUBNET_CALCULATOR,
+    component: <Ipv4SubnetCalculator />,
   },
   {
     path: PATHS.WORDS_TO_NUMBERS,

@@ -14195,6 +14195,109 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`ipv4-subnet-calculator`]: {
+    hero_section: {
+      title: 'IPv4 Subnet Calculator',
+      description:
+        'Calculate subnet details like network address, broadcast address, usable host range, and CIDR masks instantly – perfect for network engineers and DevOps professionals.',
+    },
+    development_tools_list: [
+      { tool: 'Random IP Generator', url: PATHS.RANDOM_IP_GENERATOR },
+      { tool: 'IP to Hex Converter', url: PATHS.IP_TO_HEX },
+      { tool: 'What Is My Local IP', url: PATHS.WHAT_IS_MY_LOCAL_IP_ADDRESS },
+      { tool: 'Bitwise Calculator', url: PATHS.BITWISE_CALCULATOR },
+      { tool: 'Decimal to Binary', url: PATHS.DECIMAL_TO_BINARY_CONVERTER },
+      { tool: 'Binary to Decimal', url: PATHS.BINARY_TO_DECIMAL_CONVERTER },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the IPv4 Subnet Calculator?',
+      about_description: [
+        {
+          description:
+            'The IPv4 Subnet Calculator is a specialist tool for network engineers and DevOps professionals that instantly calculates subnet details from an IP address and CIDR prefix or subnet mask.',
+        },
+        {
+          description:
+            'It provides network address, broadcast address, usable host ranges, total and usable host counts, subnet masks, and wildcard masks with binary visualization for deep network planning and infrastructure setup.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use the IPv4 Subnet Calculator',
+      guide_description: 'Follow these simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter IP address:',
+          step_description:
+            'Type or paste the IPv4 address (e.g., 192.168.1.100) into the IP address field.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Specify CIDR or subnet mask:',
+          step_description:
+            'Enter the CIDR prefix (0-32) or subnet mask. Use the "Switch" button to toggle between CIDR and subnet mask input modes.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'View subnet calculations:',
+          step_description:
+            'The calculator instantly displays network address, broadcast address, usable host range, total hosts, subnet mask, and wildcard mask with binary representations.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Use for planning:',
+          step_description:
+            'Use the results for network planning, infrastructure setup, VLAN configuration, and routing table management.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Uses',
+      how_use_description: 'Why you might use this tool:',
+      point: [
+        {
+          title: 'Network Planning',
+          description:
+            'Simplify network planning and infrastructure setup tasks for cloud deployments, on-premises networks, and hybrid environments.',
+        },
+        {
+          title: 'Subnet Management',
+          description:
+            'Calculate subnet details like host ranges, broadcast addresses, and CIDR masks for efficient subnet allocation and management.',
+        },
+        {
+          title: 'VLAN Configuration',
+          description:
+            'Determine correct subnet masks and network addresses when configuring VLANs and routing in enterprise networks.',
+        },
+        {
+          title: 'Network Troubleshooting',
+          description:
+            'Verify IP address assignments, subnet ranges, and broadcast domains when diagnosing network connectivity issues.',
+        },
+        {
+          title: 'IP Address Planning',
+          description:
+            'Plan IP address allocation strategies for organizations and ensure proper utilization of address space.',
+        },
+        {
+          title: 'Learning Networking',
+          description:
+            'Understand subnet calculations, binary representations, and networking concepts with visual binary breakdowns.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'IPv4 Subnet Calculator – Free Online Network Tool',
+      meta_description:
+        'Calculate subnet details, network addresses, broadcast addresses, and CIDR masks instantly. Perfect for network engineers and DevOps professionals.',
+      og_title: 'IPv4 Subnet Calculator – Free Online Tool',
+      og_description:
+        'Quickly calculate subnet information including network address, broadcast address, usable hosts, and wildcard masks. Ideal for network planning and infrastructure setup.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
   [`words-to-numbers`]: {
     hero_section: {
       title: 'Words to Numbers Converter',
