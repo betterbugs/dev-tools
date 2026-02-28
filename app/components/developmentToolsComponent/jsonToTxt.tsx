@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import CopyButton from "../ui/CopyButton";
 
 type Mode = "json-lines" | "keys" | "values" | "key=value" | "path=value";
 
@@ -87,11 +88,6 @@ const JsonToTxt: React.FC = () => {
     if (autoUpdate) convert();
   }, [input, autoUpdate, mode, pretty, uniqueOnly]);
 
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-    } catch {}
-  };
   const onDownload = () => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -201,12 +197,11 @@ const JsonToTxt: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Output</label>
                   <div className="flex items-center gap-2">
-                    <button
-                      onClick={onCopy}
-                      className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
-                    >
-                      Copy
-                    </button>
+                    <CopyButton 
+                      text={output} 
+                      variant="text" 
+                      className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold h-[28px] flex items-center justify-center flex-shrink-0"
+                    />
                     <button onClick={onUploadClick} className="px-3 py-1 bg-primary hover:bg-primary/70 text-black font-bold rounded text-sm transition-colors">Upload</button>
                     <button
                       onClick={onDownload}

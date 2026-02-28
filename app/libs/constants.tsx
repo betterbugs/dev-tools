@@ -183,6 +183,7 @@ import XmlMinify from '../components/developmentToolsComponent/xmlMinify';
 import XmlPrettify from '../components/developmentToolsComponent/xmlPrettify';
 import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJsonConverter';
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
+import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 
 export const WEB_URL = 'https://www.betterbugs.io';
@@ -1589,6 +1590,14 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/curl-to-code-converter',
+      title: 'cURL to Code Converter',
+      description:
+        'Convert cURL commands to JavaScript (Fetch/Axios), Python Requests, Go, or Node.js code instantly.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1767,6 +1776,7 @@ export const PATHS = {
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
+  CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
 };
 
 export const developmentToolsRoutes = [
@@ -2465,6 +2475,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
+  },
+  {
+    path: PATHS.CURL_TO_CODE_CONVERTER,
+    component: <CurlToCodeConverter />,
   },
 ];
 

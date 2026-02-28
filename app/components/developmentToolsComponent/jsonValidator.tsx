@@ -223,6 +223,38 @@ const JsonValidator = () => {
     }, 100);
   };
 
+  const handleSmartRepair = () => {
+    let fixed = jsonInput;
+
+    // 1. Standardize Unicode non-breaking spaces
+    fixed = fixed.replace(/\u00A0/g, " ");
+
+    // 2. Remove trailing commas
+    fixed = fixed.replace(/,\s*([}\]])/g, "$1");
+
+    // 3. Convert single quotes to double quotes (keys and values) & Add quotes to unquoted keys
+    // We use a comprehensive regex to identify tokens and fix them
+    fixed = fixed.replace(
+      /("(?:[^\\"]|\\.)*")|('(?:[^\\']|\\.)*')|([a-zA-Z0-9_]+)\s*:/g,
+      (match, doubleQuoted, singleQuoted, unquotedKey) => {
+        if (doubleQuoted) {
+          return doubleQuoted;
+        }
+        if (singleQuoted) {
+          // Convert single quotes to double quotes, escaping internal double quotes
+          const content = singleQuoted.slice(1, -1).replace(/"/g, '\\"');
+          return `"${content}"`;
+        }
+        if (unquotedKey) {
+          return `"${unquotedKey}":`;
+        }
+        return match;
+      }
+    );
+
+    setJsonInput(fixed);
+  };
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {

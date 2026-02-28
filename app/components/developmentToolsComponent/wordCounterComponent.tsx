@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import CopyButton from "../ui/CopyButton";
 
 const WordCounterComponent = () => {
   const [text, setText] = useState("");
@@ -58,6 +59,13 @@ const WordCounterComponent = () => {
                   >
                     Clear Text
                   </button>
+
+                  <CopyButton 
+                    text={text} 
+                    variant="text" 
+                    className={`${DevelopmentToolsStyles.converterButton} w-[280px] text-black font-bold py-3 px-8 rounded-lg items-center transition-transform transform hover:shadow-[2px_2px_1px_0px_rgba(0,0,0,0.5)] shadow-[3px_3px_2px_0px_rgba(0,0,0,0.5)] ${!text ? "opacity-70 cursor-not-allowed" : ""}`}
+                  />
+                  
                 </div>
               </div>
             </div>
