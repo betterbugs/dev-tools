@@ -16973,6 +16973,88 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`crontab-explainer`]: {
+    hero_section: {
+      title: 'Crontab Explainer',
+      description:
+        'Decode cron expressions into plain English and preview upcoming execution times.',
+    },
+    development_tools_list: [
+      { tool: 'Crontab Generator', url: PATHS.CRONTAB_GENERATOR },
+      { tool: 'Regex Tester', url: PATHS.JAVASCRIPT_REGEX_TESTER },
+    ],
+    development_tools_about_details: {
+      about_title: 'About Crontab Explainer',
+      about_description: [
+        {
+          description:
+            'The Crontab Explainer takes an existing cron expression and translates it into human-readable language. It supports standard 5-field cron syntax and common aliases like @hourly, @daily, @weekly, @monthly, and @yearly.',
+        },
+        {
+          description:
+            'This tool is perfect for understanding cron expressions you find in existing codebases, verifying that your scheduled jobs run at the expected times, and learning how cron syntax works.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use',
+      guide_description: 'Explain a cron expression:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter expression',
+          step_description:
+            'Paste or type a 5-field cron expression (e.g., */5 * * * *) or use an alias like @hourly.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Read explanation',
+          step_description:
+            'View the human-readable description of when the job will run.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Preview executions',
+          step_description:
+            'Check the next 5 scheduled execution times to verify the schedule.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Use Cases',
+      how_use_description: 'When this tool helps:',
+      point: [
+        {
+          title: 'Understanding existing cron jobs',
+          description: 'Decode cron expressions found in legacy code or server configurations.',
+        },
+        {
+          title: 'Verifying schedules',
+          description: 'Confirm that a cron expression runs at the expected times before deployment.',
+        },
+        {
+          title: 'Learning cron syntax',
+          description: 'Experiment with different expressions to understand how cron scheduling works.',
+        },
+        {
+          title: 'Debugging scheduled tasks',
+          description: 'Identify why a job is not running as expected by checking its schedule.',
+        },
+        {
+          title: 'Documentation',
+          description: 'Generate plain English descriptions for cron jobs in your documentation.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Crontab Explainer - Decode Cron Expressions',
+      meta_description:
+        'Translate cron expressions into plain English and preview next execution times. Supports standard syntax and aliases like @hourly, @daily, @weekly.',
+      og_title: 'Crontab Explainer - Developer Utility',
+      og_description: 'Understand cron expressions with human-readable explanations and execution previews.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
   [`morse-code-translator`]: {
     hero_section: {
       title: 'Morse Code Translator',

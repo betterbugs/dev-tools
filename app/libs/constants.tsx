@@ -70,6 +70,7 @@ import CmykToRgbConverter from '../components/developmentToolsComponent/cmykToRg
 import ColorInvertor from '../components/developmentToolsComponent/colorInvertor';
 import ColorPickerTool from '../components/developmentToolsComponent/colorPickerTool';
 import CrontabGenerator from '../components/developmentToolsComponent/crontabGenerator';
+import CrontabExplainer from '../components/developmentToolsComponent/crontabExplainer';
 import CssMinify from '../components/developmentToolsComponent/cssMinify';
 import CssPrettify from '../components/developmentToolsComponent/cssPrettify';
 import CssToLess from '../components/developmentToolsComponent/cssToLess';
@@ -1539,6 +1540,11 @@ export const developmentToolsCategoryContent: any = {
       title: 'Crontab Generator',
       description: 'Generate Crontab.',
     },
+    {
+      url: '/crontab-explainer',
+      title: 'Crontab Explainer',
+      description: 'Explain Crontab expressions in plain English.',
+    },
   ],
   Category169: [
     {
@@ -1766,6 +1772,7 @@ export const PATHS = {
   CSS_TO_SASS: '/css-to-sass',
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
+  CRONTAB_EXPLAINER: '/crontab-explainer',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
 };
 
@@ -2441,6 +2448,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.CRONTAB_GENERATOR,
     component: <CrontabGenerator />,
+  },
+  {
+    path: PATHS.CRONTAB_EXPLAINER,
+    component: <CrontabExplainer />,
   },
   {
     path: PATHS.MORSE_CODE_TRANSLATOR,
