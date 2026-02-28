@@ -63,8 +63,7 @@
     "react-responsive": "10.0.0",
     "react-toastify": "11.0.3",
     "sass": "1.75.0",
-    "turndown": "7.2.0",
-    "zxcvbn": "^4.4.2"
+    "turndown": "7.2.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -77,7 +76,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/zxcvbn": "^4.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
