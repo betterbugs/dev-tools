@@ -3667,7 +3667,7 @@ export const DEVELOPMENTTOOLS: any = {
       { tool: 'Bcrypt Generator', url: PATHS.BCRYPT_GENERATOR },
       { tool: 'Text to HTML Entities', url: PATHS.TEXT_TO_HTML_ENTITIES_CONVERTOR },
       { tool: 'Character Count', url: PATHS.CHARACTER_COUNT_TOOL },
-      { tool: 'MD5 Generator', url: PATHS.RANDOM_USERNAME_GENERATOR },
+      { tool: 'Random Username Generator', url: PATHS.RANDOM_USERNAME_GENERATOR },
       { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
     ],
     development_tools_about_details: {
