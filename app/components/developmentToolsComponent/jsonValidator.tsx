@@ -1,6 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
+const ajv = new Ajv({ allErrors: true, strict: false });
+addFormats(ajv);
 
 interface ValidationResult {
   isValid: boolean;
@@ -178,46 +183,14 @@ const JsonValidator = () => {
       const json = JSON.parse(jsonString);
       const schema = JSON.parse(schemaString);
 
-      // Basic schema validation (simplified version)
-      if (schema.type) {
-        const actualType = Array.isArray(json) ? "array" : typeof json;
-        if (actualType !== schema.type) {
-          errors.push(
-            `Type mismatch: expected ${schema.type}, got ${actualType}`
-          );
-        }
-      }
+      const validate = ajv.compile(schema);
+      const valid = validate(json);
 
-      if (schema.required && Array.isArray(schema.required)) {
-        schema.required.forEach((field: string) => {
-          if (!(field in json)) {
-            errors.push(`Required field missing: ${field}`);
-          }
+      if (!valid && validate.errors) {
+        validate.errors.forEach((err) => {
+          const path = err.instancePath ? err.instancePath.substring(1).replace(/\//g, ".") : "root";
+          errors.push(`${path}: ${err.message}${err.params ? ` (${JSON.stringify(err.params)})` : ""}`);
         });
-      }
-
-      if (
-        schema.properties &&
-        typeof json === "object" &&
-        !Array.isArray(json)
-      ) {
-        Object.entries(schema.properties).forEach(
-          ([key, prop]: [string, any]) => {
-            if (key in json) {
-              const value = json[key];
-              if (prop.type) {
-                const actualType = Array.isArray(value)
-                  ? "array"
-                  : typeof value;
-                if (actualType !== prop.type) {
-                  errors.push(
-                    `Property '${key}' type mismatch: expected ${prop.type}, got ${actualType}`
-                  );
-                }
-              }
-            }
-          }
-        );
       }
     } catch (error: any) {
       errors.push(`Schema validation error: ${error.message}`);
@@ -302,14 +275,71 @@ const JsonValidator = () => {
   const sampleSchemas = {
     user: JSON.stringify(
       {
+        $schema: "http://json-schema.org/draft-07/schema#",
         type: "object",
-        required: ["id", "name", "email"],
+        required: ["id", "name", "email", "address"],
         properties: {
-          id: { type: "number" },
-          name: { type: "string" },
-          email: { type: "string" },
-          age: { type: "number" },
+          id: { type: "integer", minimum: 1 },
+          name: { type: "string", minLength: 2 },
+          email: { type: "string", format: "email" },
+          age: { type: "integer", minimum: 0, maximum: 120 },
           isActive: { type: "boolean" },
+          address: {
+            type: "object",
+            required: ["street", "city"],
+            properties: {
+              street: { type: "string" },
+              city: { type: "string" },
+              zipCode: { type: "string", pattern: "^[0-9]{5}(-[0-9]{4})?$" },
+            },
+          },
+          tags: {
+            type: "array",
+            items: { type: "string" },
+            uniqueItems: true,
+          },
+        },
+      },
+      null,
+      2
+    ),
+    advanced: JSON.stringify(
+      {
+        $schema: "http://json-schema.org/draft-07/schema#",
+        title: "Advanced Schema",
+        definitions: {
+          address: {
+            type: "object",
+            properties: {
+              street: { type: "string" },
+              city: { type: "string" },
+            },
+          },
+        },
+        type: "object",
+        properties: {
+          shipping_address: { $ref: "#/definitions/address" },
+          billing_address: { $ref: "#/definitions/address" },
+          contact: {
+            oneOf: [
+              {
+                type: "object",
+                properties: {
+                  type: { const: "email" },
+                  value: { type: "string", format: "email" },
+                },
+                required: ["type", "value"],
+              },
+              {
+                type: "object",
+                properties: {
+                  type: { const: "phone" },
+                  value: { type: "string", pattern: "^\\+[1-9]\\d{1,14}$" },
+                },
+                required: ["type", "value"],
+              },
+            ],
+          },
         },
       },
       null,
@@ -320,10 +350,10 @@ const JsonValidator = () => {
         type: "object",
         required: ["id", "title", "price"],
         properties: {
-          id: { type: "string" },
+          id: { type: "string", pattern: "^PRD-[0-9]{4}$" },
           title: { type: "string" },
-          price: { type: "number" },
-          category: { type: "string" },
+          price: { type: "number", exclusiveMinimum: 0 },
+          category: { enum: ["electronics", "clothing", "home", "books"] },
           inStock: { type: "boolean" },
         },
       },
@@ -337,320 +367,317 @@ const JsonValidator = () => {
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full bg-[#FFFFFF1A] rounded-2xl shadow-lg p-8">
           <div className="md:w-[850px] mx-auto space-y-8">
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          {/* Input Section */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Enter Value</h2>
-              <div className="flex gap-2">
-                <input
-                  type="file"
-                  accept=".json"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                  id="json-upload"
-                />
-                <label
-                  htmlFor="json-upload"
-                  className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm cursor-pointer transition-colors text-black font-bold"
-                >
-                  Upload
-                </label>
-                <button
-                  onClick={() => setJsonInput("")}
-                  className="px-3 py-1 bg-red hover:bg-red/80 rounded text-sm transition-colors text-black font-bold"
-                >
-                  Clear
-                </button>
-              </div>
-            </div>
-            <textarea
-              value={jsonInput}
-              onChange={(e) => setJsonInput(e.target.value)}
-              placeholder="Paste your JSON here..."
-              className="w-full h-80 p-4 bg-black/20 border border-white/20 rounded-lg text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-blue-500"
-            />
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <label className="text-sm">Format:</label>
-                <select
-                  value={indentSize}
-                  onChange={(e:any) => setIndentSize(Number(e.target.value))}
-                  className="px-2 py-1 bg-black/90 border border-white/20 rounded text-white text-sm"
-                >
-                  <option value={2}>Pretty (2 spaces)</option>
-                  <option value={4}>Pretty (4 spaces)</option>
-                  <option value={0}>Minified</option>
-                </select>
-              </div>
-              <button
-                onClick={handleValidate}
-                disabled={!jsonInput.trim() || isLoading}
-                className="px-4 py-2 text-sm bg-primary hover:bg-primary/80 disabled:bg-gray-600 disabled:cursor-not-allowed rounded transition-colors text-black font-bold"
-              >
-                {isLoading ? "Validating..." : "Validate JSON"}
-              </button>
-            </div>
-          </div>
-
-          {/* Result Section */}
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Result:</h2>
-
-            {validationResults ? (
+            {/* Main Content */}
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Input Section */}
               <div className="space-y-4">
-                {/* Status */}
-                <div
-                  className={`p-3 rounded-lg ${
-                    validationResults.isValid
-                      ? "bg-primary/30 border border-primary/50"
-                      : "bg-red/30 border border-red/50"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-2 h-2 rounded-full ${
-                        validationResults.isValid
-                          ? "bg-primary"
-                          : "bg-red"
-                      }`}
-                    ></div>
-                    <span className="font-medium">
-                      {validationResults.isValid
-                        ? "Valid JSON"
-                        : "Invalid JSON"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Errors */}
-                {validationResults.errors.length > 0 && (
-                  <div className="bg-red border border-red/50 p-3 rounded-lg">
-                    <h3 className="text-black font-medium mb-2">Errors:</h3>
-                    <div className="space-y-1">
-                      {validationResults.errors.map((error, index) => (
-                        <div
-                          key={index}
-                          className="text-black text-sm font-mono"
-                        >
-                          {error}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Warnings */}
-                {validationResults.warnings.length > 0 && (
-                  <div className="bg-white/20 border border-white/50 p-3 rounded-lg">
-                    <h3 className="text-white/90 font-medium mb-2">
-                      Warnings:
-                    </h3>
-                    <div className="space-y-1">
-                      {validationResults.warnings.map((warning, index) => (
-                        <div
-                          key={index}
-                          className="text-white/70 text-sm font-mono"
-                        >
-                          {warning}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Formatted JSON */}
-                {validationResults.formattedJson && (
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-medium">Formatted JSON:</h3>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() =>
-                            copyToClipboard(
-                              validationResults.formattedJson || ""
-                            )
-                          }
-                          className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
-                        >
-                          Copy
-                        </button>
-                        <button
-                          onClick={() =>
-                            downloadJson(
-                              validationResults.formattedJson || "",
-                              "formatted.json"
-                            )
-                          }
-                          className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
-                        >
-                          Download
-                        </button>
-                      </div>
-                    </div>
-                    <pre className="bg-black/20 p-4 rounded-lg overflow-x-auto text-sm font-mono border border-white/20 h-64">
-                      {validationResults.formattedJson}
-                    </pre>
-                  </div>
-                )}
-
-                {/* Statistics */}
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="bg-black/20 p-2 rounded">
-                    <div className="text-lg font-bold text-blue-400">
-                      {validationResults.statistics.totalKeys}
-                    </div>
-                    <div className="text-xs text-gray-300">Keys</div>
-                  </div>
-                  <div className="bg-black/20 p-2 rounded">
-                    <div className="text-lg font-bold text-purple-400">
-                      {validationResults.statistics.maxDepth}
-                    </div>
-                    <div className="text-xs text-gray-300">Depth</div>
-                  </div>
-                  <div className="bg-black/20 p-2 rounded">
-                    <div className="text-lg font-bold text-green-400">
-                      {
-                        Object.keys(validationResults.statistics.dataTypes)
-                          .length
-                      }
-                    </div>
-                    <div className="text-xs text-gray-300">Types</div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-black/20 border border-white/20 rounded-lg p-8 text-center">
-                <div className="text-gray-400 text-sm">
-                  Enter JSON data and click &#34;Validate JSON&#34; to see results
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Advanced Options */}
-        <div className="border-t border-white/10 pt-6">
-          <details className="group">
-            <summary className="cursor-pointer text-lg font-medium mb-4 hover:text-blue-400 transition-colors">
-              Advanced Options (Schema Validation)
-            </summary>
-            <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-sm font-medium mb-4">
-                    Schema Definition
-                  </h3>
-                  <div className="flex gap-2 mb-2 mt-3">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-semibold">Enter Value</h2>
+                  <div className="flex gap-2">
                     <input
                       type="file"
                       accept=".json"
-                      onChange={handleSchemaFileUpload}
+                      onChange={handleFileUpload}
                       className="hidden"
-                      id="schema-upload"
+                      id="json-upload"
                     />
                     <label
-                      htmlFor="schema-upload"
+                      htmlFor="json-upload"
                       className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm cursor-pointer transition-colors text-black font-bold"
                     >
-                      Upload Schema
+                      Upload
                     </label>
                     <button
-                      onClick={() => setSchemaInput("")}
+                      onClick={() => setJsonInput("")}
                       className="px-3 py-1 bg-red hover:bg-red/80 rounded text-sm transition-colors text-black font-bold"
                     >
                       Clear
                     </button>
                   </div>
-                  <select
-                    onChange={(e) =>
-                      setSchemaInput(
-                        sampleSchemas[
-                          e.target.value as keyof typeof sampleSchemas
-                        ] || ""
-                      )
-                    }
-                    className="w-full px-3 py-1 bg-black/90 border border-white/20 rounded text-white text-sm mb-2"
-                  >
-                    <option value="">Select Sample Schema</option>
-                    <option value="user">User Schema</option>
-                    <option value="product">Product Schema</option>
-                  </select>
-                  <textarea
-                    value={schemaInput}
-                    onChange={(e) => setSchemaInput(e.target.value)}
-                    placeholder="Enter your JSON schema..."
-                    className="w-full h-24 p-3 bg-black/20 border border-white/20 rounded text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-purple-500"
-                  />
                 </div>
-                <div>
-                  <h3 className="text-sm font-medium mb-2">
-                    Schema Validation
-                  </h3>
+                <textarea
+                  value={jsonInput}
+                  onChange={(e) => setJsonInput(e.target.value)}
+                  placeholder="Paste your JSON here..."
+                  className="w-full h-80 p-4 bg-black/20 border border-white/20 rounded-lg text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-blue-500"
+                />
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <label className="text-sm">Format:</label>
+                    <select
+                      value={indentSize}
+                      onChange={(e: any) => setIndentSize(Number(e.target.value))}
+                      className="px-2 py-1 bg-black/90 border border-white/20 rounded text-white text-sm"
+                    >
+                      <option value={2}>Pretty (2 spaces)</option>
+                      <option value={4}>Pretty (4 spaces)</option>
+                      <option value={0}>Minified</option>
+                    </select>
+                  </div>
                   <button
-                    onClick={handleSchemaValidate}
-                    disabled={
-                      !jsonInput.trim() || !schemaInput.trim() || isLoading
-                    }
-                    className="w-full px-4 py-1 text-sm bg-primary hover:bg-primary/80 disabled:bg-gray-600 disabled:cursor-not-allowed rounded transition-colors text-black font-bold mt-3"
+                    onClick={handleValidate}
+                    disabled={!jsonInput.trim() || isLoading}
+                    className="px-4 py-2 text-sm bg-primary hover:bg-primary/80 disabled:bg-gray-600 disabled:cursor-not-allowed rounded transition-colors text-black font-bold"
                   >
-                    Validate Against Schema
+                    {isLoading ? "Validating..." : "Validate JSON"}
                   </button>
+                </div>
+              </div>
 
-                  {schemaValidation && (
-                    <div className="mt-4 space-y-2">
-                      <div
-                        className={`p-3 rounded-lg ${
-                          schemaValidation.isValid
-                            ? "bg-primary/30 border border-primary/50"
-                            : "bg-red/30 border border-red/50"
+              {/* Result Section */}
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold">Result:</h2>
+
+                {validationResults ? (
+                  <div className="space-y-4">
+                    {/* Status */}
+                    <div
+                      className={`p-3 rounded-lg ${validationResults.isValid
+                        ? "bg-primary/30 border border-primary/50"
+                        : "bg-red/30 border border-red/50"
                         }`}
-                      >
-                        <div className="flex items-center gap-2">
-                          <div
-                            className={`w-2 h-2 rounded-full ${
-                              schemaValidation.isValid
-                                ? "bg-primary"
-                                : "bg-red"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div
+                          className={`w-2 h-2 rounded-full ${validationResults.isValid
+                            ? "bg-primary"
+                            : "bg-red"
                             }`}
-                          ></div>
-                          <span className="font-medium text-sm">
-                            {schemaValidation.isValid
-                              ? "Schema Valid"
-                              : "Schema Invalid"}
-                          </span>
+                        ></div>
+                        <span className="font-medium">
+                          {validationResults.isValid
+                            ? "Valid JSON"
+                            : "Invalid JSON"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Errors */}
+                    {validationResults.errors.length > 0 && (
+                      <div className="bg-red border border-red/50 p-3 rounded-lg">
+                        <h3 className="text-black font-medium mb-2">Errors:</h3>
+                        <div className="space-y-1">
+                          {validationResults.errors.map((error, index) => (
+                            <div
+                              key={index}
+                              className="text-black text-sm font-mono"
+                            >
+                              {error}
+                            </div>
+                          ))}
                         </div>
                       </div>
+                    )}
 
-                      {schemaValidation.errors.length > 0 && (
-                        <div className="bg-red border border-red/50 p-3 rounded-lg">
-                          <div className="text-black text-sm font-mono">
-                            {schemaValidation.errors.map((error, index) => (
-                              <div key={index}>{error}</div>
-                            ))}
+                    {/* Warnings */}
+                    {validationResults.warnings.length > 0 && (
+                      <div className="bg-white/20 border border-white/50 p-3 rounded-lg">
+                        <h3 className="text-white/90 font-medium mb-2">
+                          Warnings:
+                        </h3>
+                        <div className="space-y-1">
+                          {validationResults.warnings.map((warning, index) => (
+                            <div
+                              key={index}
+                              className="text-white/70 text-sm font-mono"
+                            >
+                              {warning}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Formatted JSON */}
+                    {validationResults.formattedJson && (
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="font-medium">Formatted JSON:</h3>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() =>
+                                copyToClipboard(
+                                  validationResults.formattedJson || ""
+                                )
+                              }
+                              className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
+                            >
+                              Copy
+                            </button>
+                            <button
+                              onClick={() =>
+                                downloadJson(
+                                  validationResults.formattedJson || "",
+                                  "formatted.json"
+                                )
+                              }
+                              className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
+                            >
+                              Download
+                            </button>
                           </div>
+                        </div>
+                        <pre className="bg-black/20 p-4 rounded-lg overflow-x-auto text-sm font-mono border border-white/20 h-64">
+                          {validationResults.formattedJson}
+                        </pre>
+                      </div>
+                    )}
+
+                    {/* Statistics */}
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div className="bg-black/20 p-2 rounded">
+                        <div className="text-lg font-bold text-blue-400">
+                          {validationResults.statistics.totalKeys}
+                        </div>
+                        <div className="text-xs text-gray-300">Keys</div>
+                      </div>
+                      <div className="bg-black/20 p-2 rounded">
+                        <div className="text-lg font-bold text-purple-400">
+                          {validationResults.statistics.maxDepth}
+                        </div>
+                        <div className="text-xs text-gray-300">Depth</div>
+                      </div>
+                      <div className="bg-black/20 p-2 rounded">
+                        <div className="text-lg font-bold text-green-400">
+                          {
+                            Object.keys(validationResults.statistics.dataTypes)
+                              .length
+                          }
+                        </div>
+                        <div className="text-xs text-gray-300">Types</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-black/20 border border-white/20 rounded-lg p-8 text-center">
+                    <div className="text-gray-400 text-sm">
+                      Enter JSON data and click &#34;Validate JSON&#34; to see results
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Advanced Options */}
+            <div className="border-t border-white/10 pt-6">
+              <details className="group">
+                <summary className="cursor-pointer text-lg font-medium mb-4 hover:text-blue-400 transition-colors">
+                  Advanced Options (Schema Validation)
+                </summary>
+                <div className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <h3 className="text-sm font-medium mb-4">
+                        Schema Definition
+                      </h3>
+                      <div className="flex gap-2 mb-2 mt-3">
+                        <input
+                          type="file"
+                          accept=".json"
+                          onChange={handleSchemaFileUpload}
+                          className="hidden"
+                          id="schema-upload"
+                        />
+                        <label
+                          htmlFor="schema-upload"
+                          className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm cursor-pointer transition-colors text-black font-bold"
+                        >
+                          Upload Schema
+                        </label>
+                        <button
+                          onClick={() => setSchemaInput("")}
+                          className="px-3 py-1 bg-red hover:bg-red/80 rounded text-sm transition-colors text-black font-bold"
+                        >
+                          Clear
+                        </button>
+                      </div>
+                      <select
+                        onChange={(e) =>
+                          setSchemaInput(
+                            sampleSchemas[
+                            e.target.value as keyof typeof sampleSchemas
+                            ] || ""
+                          )
+                        }
+                        className="w-full px-3 py-1 bg-black/90 border border-white/20 rounded text-white text-sm mb-2"
+                      >
+                        <option value="">Select Sample Schema</option>
+                        <option value="user">User Schema</option>
+                        <option value="product">Product Schema</option>
+                        <option value="advanced">Advanced Schema</option>
+                      </select>
+                      <textarea
+                        value={schemaInput}
+                        onChange={(e) => setSchemaInput(e.target.value)}
+                        placeholder="Enter your JSON schema..."
+                        className="w-full h-24 p-3 bg-black/20 border border-white/20 rounded text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-purple-500"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-medium mb-2">
+                        Schema Validation
+                      </h3>
+                      <button
+                        onClick={handleSchemaValidate}
+                        disabled={
+                          !jsonInput.trim() || !schemaInput.trim() || isLoading
+                        }
+                        className="w-full px-4 py-1 text-sm bg-primary hover:bg-primary/80 disabled:bg-gray-600 disabled:cursor-not-allowed rounded transition-colors text-black font-bold mt-3"
+                      >
+                        Validate Against Schema
+                      </button>
+
+                      {schemaValidation && (
+                        <div className="mt-4 space-y-2">
+                          <div
+                            className={`p-3 rounded-lg ${schemaValidation.isValid
+                              ? "bg-primary/30 border border-primary/50"
+                              : "bg-red/30 border border-red/50"
+                              }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <div
+                                className={`w-2 h-2 rounded-full ${schemaValidation.isValid
+                                  ? "bg-primary"
+                                  : "bg-red"
+                                  }`}
+                              ></div>
+                              <span className="font-medium text-sm">
+                                {schemaValidation.isValid
+                                  ? "Schema Valid"
+                                  : "Schema Invalid"}
+                              </span>
+                            </div>
+                          </div>
+
+                          {schemaValidation.errors.length > 0 && (
+                            <div className="bg-red border border-red/50 p-3 rounded-lg">
+                              <div className="text-black text-sm font-mono">
+                                {schemaValidation.errors.map((error, index) => (
+                                  <div key={index}>{error}</div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
-                  )}
+                  </div>
                 </div>
+              </details>
+            </div>
+
+            {/* Actions */}
+            <div className="border-t border-white/10 pt-6">
+              <div className="flex justify-center">
+                <button
+                  onClick={clearAll}
+                  className="px-6 py-2 text-sm bg-red hover:bg-red/80 rounded-lg transition-colors text-black font-bold"
+                >
+                  Clear All
+                </button>
               </div>
             </div>
-          </details>
-        </div>
-
-        {/* Actions */}
-        <div className="border-t border-white/10 pt-6">
-          <div className="flex justify-center">
-            <button
-              onClick={clearAll}
-              className="px-6 py-2 text-sm bg-red hover:bg-red/80 rounded-lg transition-colors text-black font-bold"
-            >
-              Clear All
-            </button>
-          </div>
-        </div>
           </div>
         </div>
       </div>
