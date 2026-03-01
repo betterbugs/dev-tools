@@ -100,11 +100,11 @@ const EpochConverter = () => {
           components: {
             Input: {
               colorBgContainer: '#000',
-              borderColor: '#444',
+              colorBorder: '#444',
             },
             DatePicker: {
               colorBgContainer: '#000',
-              borderColor: '#444',
+              colorBorder: '#444',
             },
           }
         }}
