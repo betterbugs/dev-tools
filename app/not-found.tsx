@@ -1,8 +1,8 @@
-'use client';
-import Link from 'next/link';
-import React from 'react';
-import SEOComponent from './components/theme/SEOComponent/SEOComponent';
-import { SEO_META, WEB_URL } from './libs/constants';
+"use client";
+import Link from "next/link";
+import React from "react";
+import SEOComponent from "./components/theme/SEOComponent/SEOComponent";
+import { SEO_META, WEB_URL } from "./libs/constants";
 
 const NotFound = () => {
   return (
@@ -21,24 +21,23 @@ const NotFound = () => {
           </h1>
           <div className="text-center">
             <h1 className="text-base font-normal text-white/70 mt-5">
-              Page your looking is not found.
+              The page you're looking for was not found.
             </h1>
-            <span className="text-base font-normal text-white/70">
-              Please{' '}
+            <div className="mt-6 flex gap-6 justify-center">
+              <Link
+                href="/"
+                className="px-4 py-2 border border-white/40 rounded-md text-white hover:bg-white hover:text-black transition"
+              >
+                Back to Development Tools
+              </Link>
+
               <Link
                 href={WEB_URL}
-                className="text-white/70 font-medium underline hover:underline"
+                className="px-4 py-2 bg-white text-black rounded-md hover:opacity-80 transition"
               >
-                Go back
-              </Link>{' '}
-              or visit{' '}
-              <Link
-                href={WEB_URL}
-                className="text-white/70 font-medium underline hover:underline"
-              >
-                Homepage
-              </Link>{' '}
-            </span>
+                Go to Homepage
+              </Link>
+            </div>
           </div>
         </div>
       </div>

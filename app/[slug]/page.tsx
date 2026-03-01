@@ -21,6 +21,7 @@ import RecorderGradientIcon from "@/app/components/theme/Icon/recorderGradientIc
 import SEOComponent from "@/app/components/theme/SEOComponent/SEOComponent";
 import { detectBrowser } from "@/app/libs/helpers";
 import EdgeIcon from "@/app/components/theme/Icon/edgeIcon";
+import { notFound } from "next/navigation";
 
 const Page = ({ params: { slug } }: { params: { slug: string } }) => {
   const [browser, setBrowser] = useState("chrome");
@@ -29,6 +30,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
     setBrowser(detectBrowser());
   }, []);
   const toolsData = DEVELOPMENTTOOLS[slug];
+  if (!toolsData) {
+    notFound();
+  }
   const {
     hero_section,
     development_tools_list,
@@ -44,7 +48,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
   const pathname = usePathname();
 
   const currentTool = developmentToolsRoutes.find(
-    (tool: any) => tool.path === pathname
+    (tool: any) => tool.path === pathname,
   );
 
   return (
@@ -259,7 +263,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       </span>
                                     )}
                                   </li>
-                                )
+                                ),
                               )}
                             </ul>
                           );
@@ -283,7 +287,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 (exampleItem: any, exampleIndex: number) => {
                                   const isExampleHeading =
                                     exampleItem?.example_input?.startsWith(
-                                      "Example"
+                                      "Example",
                                     );
                                   const isInputOrOutput =
                                     exampleItem?.example_input === "Input" ||
@@ -292,7 +296,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                     typeof exampleItem?.example_output ===
                                     "string";
                                   const isArrayOutput = Array.isArray(
-                                    exampleItem?.example_output
+                                    exampleItem?.example_output,
                                   );
 
                                   return (
@@ -322,7 +326,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                               {exampleItem.example_output.map(
                                                 (
                                                   outputItem: any,
-                                                  outputIndex: number
+                                                  outputIndex: number,
                                                 ) => (
                                                   <p
                                                     key={`output_${index}_${exampleIndex}_${outputIndex}`}
@@ -330,7 +334,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                   >
                                                     {outputItem?.value}
                                                   </p>
-                                                )
+                                                ),
                                               )}
                                             </div>
                                           )}
@@ -338,7 +342,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       )}
                                     </div>
                                   );
-                                }
+                                },
                               )}
                             </div>
                           );
@@ -388,11 +392,11 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                     {text}
                                   </span>
                                 );
-                              }
+                              },
                             )}
                           </p>
                         );
-                      }
+                      },
                     )}
 
                     {development_tools_about_details?.placeholder && (
@@ -404,7 +408,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 {placeholder?.title}
                               </span>
                             </li>
-                          )
+                          ),
                         )}
                       </ul>
                     )}
@@ -430,7 +434,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       )}
                       {development_tools_user_agent_info?.example_string_description && (
                         <p className="text-white/90 text-sm whitespace-pre !mb-4">
-                          {development_tools_user_agent_info?.example_string_description}
+                          {
+                            development_tools_user_agent_info?.example_string_description
+                          }
                         </p>
                       )}
                       {development_tools_user_agent_info?.info_items && (
@@ -449,7 +455,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                     {item?.description}
                                   </span>
                                 </li>
-                              )
+                              ),
                             )}
                           </ul>
                         </div>
@@ -478,10 +484,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               {development_tool_example?.example_input?.title}
                             </p>
                           )}
-                          {development_tool_example?.example_input?.json_data && (
-                            <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                          {development_tool_example?.example_input
+                            ?.json_data && (
+                            <pre
+                              className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}
+                            >
                               <code className="text-white/90 text-sm whitespace-pre">
-                                {development_tool_example?.example_input?.json_data}
+                                {
+                                  development_tool_example?.example_input
+                                    ?.json_data
+                                }
                               </code>
                             </pre>
                           )}
@@ -497,7 +509,10 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                           )}
                           {development_tool_example?.example_outputs?.outputs?.map(
                             (output: any, index: number) => (
-                              <div key={`example_output_${index}`} className="mt-4">
+                              <div
+                                key={`example_output_${index}`}
+                                className="mt-4"
+                              >
                                 {output?.mode && (
                                   <p className="text-white text-base font-medium mb-2">
                                     {output?.mode}
@@ -509,7 +524,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   </p>
                                 )}
                                 {output?.content && (
-                                  <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                                  <pre
+                                    className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}
+                                  >
                                     <code className="text-white/90 text-sm whitespace-pre">
                                       {output?.content}
                                     </code>
@@ -521,7 +538,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   </p>
                                 )}
                               </div>
-                            )
+                            ),
                           )}
                         </div>
                       )}
@@ -564,11 +581,11 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       {text}
                                     </span>
                                   );
-                                }
+                                },
                               )}
                             </p>
                           );
-                        }
+                        },
                       )}
                     </div>
                   )}
@@ -590,7 +607,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 </span>
                               ) : (
                                 <span key={i}>{parts}</span>
-                              )
+                              ),
                             )}
                         </p>
                       </>
@@ -611,10 +628,11 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 {/* Primary Flex Layout for Step Key, Title, and Description */}
                                 <div className="flex items-start flex-wrap">
                                   <span
-                                    className={`text-white/90 font-semibold text-base${guide?.step_key?.includes("Step")
-                                      ? " pr-1"
-                                      : ""
-                                      }`}
+                                    className={`text-white/90 font-semibold text-base${
+                                      guide?.step_key?.includes("Step")
+                                        ? " pr-1"
+                                        : ""
+                                    }`}
                                   >
                                     {guide?.step_key}
                                   </span>
@@ -636,9 +654,12 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                 {p?.steps_points_description
                                                   ?.split(/(".*?")/)
                                                   .map(
-                                                    (part: string, i: number) =>
+                                                    (
+                                                      part: string,
+                                                      i: number,
+                                                    ) =>
                                                       part.startsWith("") &&
-                                                        part.endsWith("") ? (
+                                                      part.endsWith("") ? (
                                                         <span
                                                           key={i}
                                                           className="font-semibold text-white/90"
@@ -649,34 +670,34 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                         <React.Fragment key={i}>
                                                           {part
                                                             .split(
-                                                              /(\/\/.*?\/\/)/
+                                                              /(\/\/.*?\/\/)/,
                                                             )
                                                             .map(
                                                               (
                                                                 sub: string,
-                                                                j: number
+                                                                j: number,
                                                               ) =>
                                                                 sub.startsWith(
-                                                                  "//"
+                                                                  "//",
                                                                 ) &&
-                                                                  sub.endsWith(
-                                                                    "//"
-                                                                  ) ? (
+                                                                sub.endsWith(
+                                                                  "//",
+                                                                ) ? (
                                                                   <span
                                                                     key={`${i}-${j}`}
                                                                     className="font-semibold text-white/90"
                                                                   >
                                                                     {sub.slice(
                                                                       2,
-                                                                      -2
+                                                                      -2,
                                                                     )}
                                                                   </span>
                                                                 ) : (
                                                                   sub
-                                                                )
+                                                                ),
                                                             )}
                                                         </React.Fragment>
-                                                      )
+                                                      ),
                                                   )}
                                               </p>
                                             )}
@@ -686,7 +707,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                   {p?.steps_subpoint?.map(
                                                     (
                                                       sub_p: any,
-                                                      subIndex: number
+                                                      subIndex: number,
                                                     ) => (
                                                       <li key={subIndex}>
                                                         {sub_p?.title && (
@@ -701,14 +722,14 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                               .map(
                                                                 (
                                                                   part: string,
-                                                                  i: number
+                                                                  i: number,
                                                                 ) =>
                                                                   part.startsWith(
-                                                                    ""
+                                                                    "",
                                                                   ) &&
-                                                                    part.endsWith(
-                                                                      ""
-                                                                    ) ? (
+                                                                  part.endsWith(
+                                                                    "",
+                                                                  ) ? (
                                                                     <span
                                                                       key={i}
                                                                       className="font-semibold text-white/90"
@@ -721,51 +742,51 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                                     >
                                                                       {part
                                                                         .split(
-                                                                          /(\/\/.*?\/\/)/
+                                                                          /(\/\/.*?\/\/)/,
                                                                         )
                                                                         .map(
                                                                           (
                                                                             sub: string,
-                                                                            j: number
+                                                                            j: number,
                                                                           ) =>
                                                                             sub.startsWith(
-                                                                              "//"
+                                                                              "//",
                                                                             ) &&
-                                                                              sub.endsWith(
-                                                                                "//"
-                                                                              ) ? (
+                                                                            sub.endsWith(
+                                                                              "//",
+                                                                            ) ? (
                                                                               <span
                                                                                 key={`${i}-${j}`}
                                                                                 className="font-semibold text-white/90"
                                                                               >
                                                                                 {sub.slice(
                                                                                   2,
-                                                                                  -2
+                                                                                  -2,
                                                                                 )}
                                                                               </span>
                                                                             ) : (
                                                                               sub
-                                                                            )
+                                                                            ),
                                                                         )}
                                                                     </React.Fragment>
-                                                                  )
+                                                                  ),
                                                               )}
                                                           </span>
                                                         )}
                                                       </li>
-                                                    )
+                                                    ),
                                                   )}
                                                 </ul>
                                               )}
                                           </li>
-                                        )
+                                        ),
                                       )}
                                     </ul>
                                   )}
                                   <span className="text-base text-white/70">
                                     {parts?.map((part: any, i: any) =>
                                       part.startsWith("") &&
-                                        part.endsWith("") ? (
+                                      part.endsWith("") ? (
                                         <>
                                           <span
                                             key={`description_${i}`}
@@ -776,7 +797,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                         </>
                                       ) : (
                                         part
-                                      )
+                                      ),
                                     )}
                                   </span>
                                 </div>
@@ -785,7 +806,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   <div className="mt-2 text-base text-white/70">
                                     {desParts?.map((part: any, i: any) =>
                                       part.startsWith("") &&
-                                        part.endsWith("") ? (
+                                      part.endsWith("") ? (
                                         <span
                                           key={`description2_${i}`}
                                           className="text-white"
@@ -794,13 +815,13 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                         </span>
                                       ) : (
                                         part
-                                      )
+                                      ),
                                     )}
                                   </div>
                                 )}
                               </div>
                             );
-                          }
+                          },
                         )}
                       </div>
                     )}
@@ -826,18 +847,20 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               how?.heading ? (
                                 <p
                                   key={index}
-                                  className={`${""} ${how?.heading
-                                    ? "!mb-6 !ml-[-20px]"
-                                    : "block text-white font-semibold text-base"
-                                    }`}
+                                  className={`${""} ${
+                                    how?.heading
+                                      ? "!mb-6 !ml-[-20px]"
+                                      : "block text-white font-semibold text-base"
+                                  }`}
                                 >
                                   {how?.heading}
                                 </p>
                               ) : (
                                 <li
                                   key={index}
-                                  className={`${""} ${how?.heading ? "my-6 list-none" : "mb-4"
-                                    }`}
+                                  className={`${""} ${
+                                    how?.heading ? "my-6 list-none" : "mb-4"
+                                  }`}
                                 >
                                   <>
                                     <span className="block text-white/90 font-semibold text-base">
@@ -848,7 +871,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                     </span>
                                   </>
                                 </li>
-                              )
+                              ),
                           )}
                         </ul>
                       </div>
@@ -864,7 +887,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         </h4>
                       )}
                       {Array.isArray(
-                        development_tools_Comparison?.description
+                        development_tools_Comparison?.description,
                       ) &&
                         development_tools_Comparison?.description.map(
                           (d: any, index: any) => (
@@ -874,7 +897,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             >
                               {d?.desc}
                             </p>
-                          )
+                          ),
                         )}
                     </div>
                   )}
@@ -1013,14 +1036,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         <Link key={index} href={tool?.url}>
                           <div className="flex items-center justify-start gap-5">
                             <span
-                              className={`!w-2 !h-2 ml-[-2px] ${tool?.name === "Azure Boards" && "md:ml-[-7px]"
-                                }`}
+                              className={`!w-2 !h-2 ml-[-2px] ${
+                                tool?.name === "Azure Boards" && "md:ml-[-7px]"
+                              }`}
                             >
                               {tool?.icon}
                             </span>
                             <p
-                              className={`text-sm mt-2 ${tool?.name === "Azure Boards" && "md:ml-1"
-                                }`}
+                              className={`text-sm mt-2 ${
+                                tool?.name === "Azure Boards" && "md:ml-1"
+                              }`}
                             >
                               {tool?.name}
                             </p>
