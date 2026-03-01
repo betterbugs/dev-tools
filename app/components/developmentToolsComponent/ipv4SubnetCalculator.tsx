@@ -152,23 +152,15 @@ const Ipv4SubnetCalculator: React.FC = () => {
   );
   const [result, setResult] =
     useState<SubnetResults | null>(null);
-  const [hasSubmitted, setHasSubmitted] =
-    useState<boolean>(false);
 
-  const validate = useCallback(() => {
-    // Don't validate empty inputs until user clicks Calculate
-    if (!hasSubmitted) {
-      setError("");
-      setResult(null);
-      return false;
-    }
 
+  const handleCalculate = useCallback(() => {
     const octet = ipToOctets(ip);
     if (!octet) {
       setError(
         "Invalid IP address. Use format: 0.0.0.0"
       );
-      return false;
+      return;
     }
 
     let cidr: number | null = null;
@@ -183,7 +175,7 @@ const Ipv4SubnetCalculator: React.FC = () => {
         setError(
           "CIDR must be between 0 and 32"
         );
-        return false;
+        return;
       }
     } else {
       const maskOctets = ipToOctets(maskInput);
@@ -191,14 +183,14 @@ const Ipv4SubnetCalculator: React.FC = () => {
         setError(
           "Invalid subnet mask format"
         );
-        return false;
+        return;
       }
       cidr = cidrFromMask(maskInput);
       if (cidr === null) {
         setError(
           "Invalid subnet mask (not contiguous)"
         );
-        return false;
+        return;
       }
     }
 
@@ -217,14 +209,7 @@ const Ipv4SubnetCalculator: React.FC = () => {
         setCidrInput(String(cidr));
       }
     }
-
-    return true;
-  }, [ip, cidrInput, maskInput, inputMode, hasSubmitted]);
-
-  const handleCalculate = useCallback(() => {
-    setHasSubmitted(true);
-    validate();
-  }, [validate]);
+  }, [ip, cidrInput, maskInput, inputMode]);
 
   const ipBinary = useMemo(() => {
     const octets = ipToOctets(ip);
@@ -263,15 +248,7 @@ const Ipv4SubnetCalculator: React.FC = () => {
     setMaskInput("");
     setError("");
     setResult(null);
-    setHasSubmitted(false);
   }, []);
-
-  // Validate when hasSubmitted changes
-  useEffect(() => {
-    if (hasSubmitted) {
-      validate();
-    }
-  }, [ip, cidrInput, maskInput, inputMode, hasSubmitted, validate]);
 
   return (
     <div className="md:mt-8 mt-4 text-white">
