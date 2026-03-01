@@ -45,6 +45,8 @@ function numberToIp(num: number): string {
 
 function createMaskFromCIDR(cidr: number): string {
   if (cidr < 0 || cidr > 32) return "";
+  if (cidr === 0) return "0.0.0.0";
+  if (cidr === 32) return "255.255.255.255";
   const maskNum = (-1 << (32 - cidr)) >>> 0;
   return numberToIp(maskNum);
 }
@@ -74,24 +76,48 @@ function calculateSubnet(ip: string, cidr: number): SubnetResults | null {
   if (!octets || cidr < 0 || cidr > 32) return null;
 
   const ipNum = ipToNumber(octets);
-  const maskNum = (-1 << (32 - cidr)) >>> 0;
+  
+  // Special handling for CIDR 0 to avoid JavaScript bit-shift issues
+  let maskNum: number;
+  if (cidr === 0) {
+    maskNum = 0;
+  } else {
+    maskNum = (-1 << (32 - cidr)) >>> 0;
+  }
   
   const networkNum = ipNum & maskNum;
-  const broadcastNum =
-    networkNum | ((~maskNum) >>> 0);
+  const broadcastNum = networkNum | ((~maskNum) >>> 0);
   
   const hostBits = 32 - cidr;
-  const totalHosts = Math.pow(2, hostBits);
-  const usableHosts = Math.max(
-    0,
-    totalHosts - 2
-  );
-  const firstUsableNum =
-    hostBits === 32 ? networkNum : networkNum + 1;
-  const lastUsableNum =
-    hostBits === 32
-      ? broadcastNum
-      : broadcastNum - 1;
+  const totalHosts = cidr === 32 ? 1 : Math.pow(2, hostBits);
+  
+  // RFC 3021: /31 has 2 usable hosts (point-to-point), /32 has 1 (single host)
+  let usableHosts: number;
+  if (cidr === 32) {
+    usableHosts = 1;
+  } else if (cidr === 31) {
+    usableHosts = 2;
+  } else {
+    usableHosts = Math.max(0, totalHosts - 2);
+  }
+  
+  // Usable host range
+  let firstUsableNum: number;
+  let lastUsableNum: number;
+  
+  if (cidr === 32) {
+    // /32: single host
+    firstUsableNum = networkNum;
+    lastUsableNum = networkNum;
+  } else if (cidr === 31) {
+    // /31: both IPs are usable (RFC 3021 point-to-point)
+    firstUsableNum = networkNum;
+    lastUsableNum = broadcastNum;
+  } else {
+    // Standard case: network + 1 to broadcast - 1
+    firstUsableNum = networkNum + 1;
+    lastUsableNum = broadcastNum - 1;
+  }
 
   const wildcardNum = (~maskNum) >>> 0;
 
@@ -126,8 +152,17 @@ const Ipv4SubnetCalculator: React.FC = () => {
   );
   const [result, setResult] =
     useState<SubnetResults | null>(null);
+  const [hasSubmitted, setHasSubmitted] =
+    useState<boolean>(false);
 
   const validate = useCallback(() => {
+    // Don't validate empty inputs until user clicks Calculate
+    if (!hasSubmitted) {
+      setError("");
+      setResult(null);
+      return false;
+    }
+
     const octet = ipToOctets(ip);
     if (!octet) {
       setError(
@@ -184,9 +219,10 @@ const Ipv4SubnetCalculator: React.FC = () => {
     }
 
     return true;
-  }, [ip, cidrInput, maskInput, inputMode]);
+  }, [ip, cidrInput, maskInput, inputMode, hasSubmitted]);
 
-  useEffect(() => {
+  const handleCalculate = useCallback(() => {
+    setHasSubmitted(true);
     validate();
   }, [validate]);
 
@@ -227,7 +263,15 @@ const Ipv4SubnetCalculator: React.FC = () => {
     setMaskInput("");
     setError("");
     setResult(null);
+    setHasSubmitted(false);
   }, []);
+
+  // Validate when hasSubmitted changes
+  useEffect(() => {
+    if (hasSubmitted) {
+      validate();
+    }
+  }, [ip, cidrInput, maskInput, inputMode, hasSubmitted, validate]);
 
   return (
     <div className="md:mt-8 mt-4 text-white">
@@ -391,7 +435,7 @@ const Ipv4SubnetCalculator: React.FC = () => {
 
             <div className="flex gap-3 mt-6">
               <button
-                onClick={validate}
+                onClick={handleCalculate}
                 className="flex-1 border border-black/30 px-4 py-2 rounded text-sm bg-primary hover:bg-primary/90 text-black font-bold"
               >
                 Calculate
