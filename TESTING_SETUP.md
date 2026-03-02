@@ -184,12 +184,12 @@ it('should render base64-encoder tool for matching slug', () => {
 
 ## GitHub Actions Workflow
 
-Tests are automatically executed:
+Tests are automatically executed by the release workflow:
 - ✅ On every push to `main` and `develop` branches
 - ✅ Before semantic release version bump
 - ✅ Coverage reports uploaded to Codecov
-- ✅ Workflow fails if tests fail (prevents bad releases)
-
+- ✅ Workflow fails if tests fail (prevents bad releases on `main`/`develop`)
+- ℹ️ Note: This workflow currently runs only on `push` events (not on `pull_request`), so PRs are not automatically blocked by CI.
 ## Testing Best Practices Implemented
 
 - ✅ **Isolated Tests** - Each test is independent
