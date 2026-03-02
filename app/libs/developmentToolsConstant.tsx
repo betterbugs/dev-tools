@@ -17553,4 +17553,29 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+
+  'image-diff-viewer': {
+  hero_section: {
+    title: 'Image Comparison Tool',
+    description:
+      'A visual tool to compare two images using side-by-side, slider, and onion skin modes.',
+  },
+  development_tools_list: [],
+  development_tools_about_details: {
+    about_title: 'What is the Image Comparison Tool?',
+    about_description: [
+      {
+        description:
+          'This tool allows developers to compare two images and visually detect differences.',
+      },
+    ],
+  },
+  development_tools_steps_guide: {
+    guide_title: 'Step-by-Step Guide',
+    guide_description: 'How to use the image comparison tool:',
+    steps: [],
+  },
+},
 };
+
+

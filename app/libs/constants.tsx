@@ -188,6 +188,7 @@ import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJso
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
+import ImageDiffViewer from '../components/developmentToolsComponent/imageDiffViewer';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -1727,6 +1728,7 @@ export const PATHS = {
   SHUFFLE_TEXT_LINES: '/shuffle-text-lines',
   RANDOM_IP_GENERATOR: '/random-ip-generator',
   JSON_COMPARE: '/json-compare',
+  IMAGE_DIFF_VIEWER: "/image-diff-viewer",
   TEXT_COMPARE: '/text-compare',
   URL_DECODE: '/url-decode',
   URL_ENCODE: '/url-encode',
@@ -1827,6 +1829,10 @@ export const developmentToolsRoutes = [
     path: PATHS.JSON_MINIFIER,
     component: <JsonMinifierComponent />,
   },
+  {
+  path: PATHS.IMAGE_DIFF_VIEWER,
+  component: <ImageDiffViewer />,
+},
   {
     path: PATHS.JSON_PRETTIFIER,
     component: <JsonPrettifierComponent />,
