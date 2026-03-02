@@ -163,6 +163,7 @@ import TextToHtmlEntitiesConvertor from '../components/developmentToolsComponent
 import TypescriptFormatter from '../components/developmentToolsComponent/typescriptFormatter';
 import UnicodeToAsciiConverter from '../components/developmentToolsComponent/unicodeToAsciiConverter';
 import URLDecode from '../components/developmentToolsComponent/urlDecode';
+import UrlParser from '../components/developmentToolsComponent/urlParser';
 import URLEncode from '../components/developmentToolsComponent/urlEncode';
 import Utf8Decode from '../components/developmentToolsComponent/utf8Decode';
 import Utf8Encode from '../components/developmentToolsComponent/utf8Encode';
@@ -1625,6 +1626,14 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert Unix timestamps to readable dates and vice versa.',
     },
   ],
+  Category179: [
+    {
+      url: '/url-parser',
+      title: 'URL Parser & Query String Editor',
+      description:
+        'Decompose complex URLs into legible components and edit query parameters in a visual table.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1738,6 +1747,7 @@ export const PATHS = {
   JSON_COMPARE: '/json-compare',
   TEXT_COMPARE: '/text-compare',
   URL_DECODE: '/url-decode',
+  URL_PARSER: '/url-parser',
   URL_ENCODE: '/url-encode',
   TEXT_TO_HTML_ENTITIES_CONVERTOR: '/text-to-html-entities-convertor',
   HTML_ENTITIES_TO_TEXT_CONVERTER: '/html-entities-to-text-converter',
@@ -2220,6 +2230,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.URL_DECODE,
     component: <URLDecode />,
+  },
+  {
+    path: PATHS.URL_PARSER,
+    component: <UrlParser />,
   },
   {
     path: PATHS.URL_ENCODE,

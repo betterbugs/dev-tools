@@ -17637,6 +17637,90 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  ['url-parser']: {
+    hero_section: {
+      title: 'URL Parser & Query String Editor',
+      description:
+        'The URL Parser and Query Editor on BetterBugs.io helps you decompose complex URLs into components and edit query parameters easily.',
+    },
+    development_tools_list: [
+      { tool: 'URL Encode', url: PATHS.URL_ENCODE },
+      { tool: 'URL Decode', url: PATHS.URL_DECODE },
+      { tool: 'Code Compare', url: PATHS.CODE_COMPARE_TOOL },
+      { tool: 'JSON Validator', url: PATHS.JSON_VALIDATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the URL Parser & Query Editor?',
+      about_description: [
+        {
+          description:
+            'Debugging long URLs with multiple query parameters can be tedious and prone to errors. This tool simplifies the process by breaking down the URL into readable parts: Scheme, Host, Path, Port, and Hash.',
+        },
+        {
+          description:
+            'It features a dynamic table for editing query parameters, where you can add, modify, delete, and toggle encoding for individual parameters, seeing the URL update in real-time.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'Step-by-Step Guide',
+      guide_description: 'Using the URL Parser is simple:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste Your URL:',
+          step_description:
+            'Enter the full URL you want to analyze or edit into the main input field.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'View Breakdown:',
+          step_description:
+            'Review the decomposed parts of the URL (Protocol, Host, Path, etc.) in the components section.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Edit Parameters:',
+          step_description:
+            'Use the Query Parameters table to add new keys, modify values, or remove parameters. The main URL updates automatically.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Use Cases',
+      how_use_description:
+        'The URL Parser is essential for web development and debugging:',
+      point: [
+        {
+          title: 'API Debugging',
+          description:
+            'Easily modify API endpoint parameters to test different queries without manually editing the encoded string.',
+        },
+        {
+          title: 'Campaign Tracking',
+          description:
+            'Build and verify UTM parameters for marketing campaigns to ensure tracking links are correct.',
+        },
+        {
+          title: 'Deep Linking',
+          description:
+            'Construct complex deep links for mobile apps by editing scheme and path segments visually.',
+        },
+        {
+          title: 'Security Testing',
+          description:
+            'Inspect URL components for unexpected parameters or redirects.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'URL Parser & Query String Editor | BetterBugs.io',
+      meta_description:
+        'Decompose and edit complex URLs easily. Parse schemes, hosts, paths, and modify query parameters with a visual editor on BetterBugs.io.',
+      og_title: 'URL Parser & Query String Editor — BetterBugs.io',
+      og_description:
+        'The ultimate tool for parsing URLs and editing query strings visually.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 };
-
-
