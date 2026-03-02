@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import bcrypt from 'bcryptjs';
 
 // Custom styles for the range slider
 const sliderStyles = `
@@ -49,29 +48,28 @@ const BcryptGenerator = () => {
 
   // Simple bcrypt-like hash function (for demonstration - not cryptographically secure)
   const generateHash = async (text: string, rounds: number): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      bcrypt.genSalt(rounds, (err, salt) => {
-        if (err) return reject(err);
-        bcrypt.hash(text, salt, (err2, hash) => {
-          if (err2) return reject(err2);
-          resolve(hash);
-        });
-      });
-    });
+    // This is a simplified implementation for demo purposes
+    // In production, you would use a proper bcrypt library
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text + rounds.toString());
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return `$2b$${rounds}$${hashHex.substring(0, 53)}`;
   };
 
   // Simple verification function (for demonstration)
   const verifyHash = async (password: string, hash: string): Promise<boolean> => {
-    return new Promise((resolve) => {
-      try {
-        bcrypt.compare(password, hash, (err, res) => {
-          if (err) return resolve(false);
-          resolve(Boolean(res));
-        });
-      } catch {
-        resolve(false);
-      }
-    });
+    try {
+      const parts = hash.split('$');
+      if (parts.length !== 4 || parts[1] !== '2b') return false;
+      
+      const rounds = parseInt(parts[2]);
+      const generatedHash = await generateHash(password, rounds);
+      return generatedHash === hash;
+    } catch {
+      return false;
+    }
   };
 
   const handleGenerateHash = async () => {
