@@ -31,11 +31,17 @@ export const validateJSON = (jsonString: string): JSONValidationResult => {
     // Analyze the structure
     const stats = analyzeJSON(parsed);
 
-    // Check for common issues
-    if (JSON.stringify(parsed) !== JSON.stringify(JSON.parse(JSON.stringify(parsed)))) {
-      warnings.push('JSON contains circular references or special values');
+    // Check for common issues that can occur in valid JSON
+    // Warn on excessively deep or large JSON structures to help catch
+    // inputs that may impact performance or readability.
+    if (stats.maxDepth > 50) {
+      warnings.push('JSON is highly nested (depth > 50), which may impact performance or readability');
     }
 
+    const MAX_KEYS_WARNING_THRESHOLD = 10000;
+    if (stats.totalKeys > MAX_KEYS_WARNING_THRESHOLD) {
+      warnings.push(`JSON contains a large number of keys (${stats.totalKeys}), which may impact performance`);
+    }
     return {
       isValid: true,
       errors: [],
