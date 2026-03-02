@@ -29,8 +29,8 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/generateRegistry.js && next dev",
+    "build": "node scripts/generateRegistry.js && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -43,8 +43,8 @@
     "@types/turndown": "5.0.5",
     "animejs": "3.2.2",
     "antd": "5.16.2",
-    "curlconverter": "^4.12.0",
     "bcryptjs": "^2.4.3",
+    "curlconverter": "^4.12.0",
     "framer-motion": "11.2.6",
     "gleap": "^15.1.8",
     "javascript-obfuscator": "4.1.1",
