@@ -282,9 +282,7 @@ const PasswordStrengthMeter = () => {
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                           <div>
-                            <p className="text-gray-400 mb-1">
-                              log₁₀(Estimated Guesses)
-                            </p>
+                            <p className="text-gray-400 mb-1">Entropy Bits</p>
                             <p className="text-white font-mono text-lg">
                               {analysis.guesses_log10.toFixed(2)}
                             </p>
