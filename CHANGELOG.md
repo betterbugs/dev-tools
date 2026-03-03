@@ -1,3 +1,11 @@
+# [1.4.0-develop.3](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.2...v1.4.0-develop.3) (2026-03-03)
+
+
+### Features
+
+* Add IPv4 Subnet Calculator Tool ([ad1c03f](https://github.com/betterbugs/dev-tools/commit/ad1c03fd0065f0cfce409b72882188dc7de630d0)), closes [#33](https://github.com/betterbugs/dev-tools/issues/33)
+* Add Smart Repair feature to JSON Validator ([#41](https://github.com/betterbugs/dev-tools/issues/41)) ([7a3c7a5](https://github.com/betterbugs/dev-tools/commit/7a3c7a5008d4236d954e1c20482635b0a0da5ef0)), closes [#38](https://github.com/betterbugs/dev-tools/issues/38)
+
 # [1.4.0-develop.2](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.1...v1.4.0-develop.2) (2026-02-28)
 
 
