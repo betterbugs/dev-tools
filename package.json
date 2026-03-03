@@ -29,9 +29,14 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "dev": "node scripts/generateRegistry.js && next dev",
     "build": "node scripts/generateRegistry.js && next build",
     "analyze": "node scripts/generateRegistry.js && cross-env ANALYZE=true next build",
+=======
+    "dev": "next dev",
+    "build": "next build",
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
     "start": "next start",
     "lint": "next lint"
   },
@@ -45,10 +50,15 @@
     "animejs": "3.2.2",
     "antd": "5.16.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
     "curlconverter": "^4.12.0",
 =======
 >>>>>>> parent of 4e03e4e (Merge branch 'develop' into feature/password-strength-meter)
+=======
+    "curlconverter": "^4.12.0",
+    "bcryptjs": "^2.4.3",
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
     "framer-motion": "11.2.6",
     "gleap": "^15.1.8",
     "javascript-obfuscator": "4.1.1",

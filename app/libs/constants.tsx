@@ -1,3 +1,45 @@
+import CharacterCounterComponent from '../components/developmentToolsComponent/characterCounterComponent';
+import CodeCompareTool from '../components/developmentToolsComponent/codeCompareTool';
+import CreditCardGeneratorComponent from '../components/developmentToolsComponent/creditCardGeneratorComponent';
+import CreditCardValidatorComponent from '../components/developmentToolsComponent/creditCardValidatorComponent';
+import CsvToTextConverter from '../components/developmentToolsComponent/csvToTextConverter';
+import HtmlToMarkDownComponent from '../components/developmentToolsComponent/htmlToMarkDownComponent';
+import HTMLValidator from '../components/developmentToolsComponent/htmlValidator';
+import JavascriptMinifierComponent from '../components/developmentToolsComponent/javascriptMinifierComponent';
+import JsObfuscatorComponent from '../components/developmentToolsComponent/jsObfuscatorComponent';
+import JsonMinifierComponent from '../components/developmentToolsComponent/jsonMinifierComponent';
+import JsonPrettifierComponent from '../components/developmentToolsComponent/jsonPrittifierComponent';
+import JsonToTxt from '../components/developmentToolsComponent/jsonToTxt';
+import JsonValidator from '../components/developmentToolsComponent/jsonValidator';
+import LineCounterComponent from '../components/developmentToolsComponent/lineCounterComponent';
+import LoremIpsumGeneratorComponent from '../components/developmentToolsComponent/loremIpsumGeneratorComponent';
+import LowerCaseConverterComponent from '../components/developmentToolsComponent/lowerCaseConverterComponent';
+import MarkDownToHtmlComponent from '../components/developmentToolsComponent/markDownToHTMLComponent';
+import PhoneNumberExtractor from '../components/developmentToolsComponent/phoneNumberExtractor';
+import RandomClockTimeGenerator from '../components/developmentToolsComponent/randomClockTimeGenerator';
+import RandomColorGenerator from '../components/developmentToolsComponent/randomColorGenerator';
+import RandomDateGenerator from '../components/developmentToolsComponent/randomDateGenerator';
+import RandomDecimalNumberGenerator from '../components/developmentToolsComponent/randomDecimalNumberGenerator';
+import RandomJsonDataGenerator from '../components/developmentToolsComponent/randomJsonDataGenerator';
+import RandomNumberGenerator from '../components/developmentToolsComponent/randomNumberGenerator';
+import RandomParagraphGenerator from '../components/developmentToolsComponent/randomParagraphGenerator';
+import RandomPasswardGenerator from '../components/developmentToolsComponent/randomPasswardGenerator';
+import RandomSentanceGenerator from '../components/developmentToolsComponent/randomSentanceGenerator';
+import RandomStringGenerator from '../components/developmentToolsComponent/randomStringGenerator';
+import RandomUsernameGenerator from '../components/developmentToolsComponent/randomUsernameGenerator';
+import RandomWordGenerator from '../components/developmentToolsComponent/randomWordGenerator';
+import RemoveSpaces from '../components/developmentToolsComponent/removeSpaces';
+import ReverseTextGenerator from '../components/developmentToolsComponent/reverseTextGenerator';
+import RoundingCalculator from '../components/developmentToolsComponent/roundingCalculator';
+import SentenceCounterComponent from '../components/developmentToolsComponent/sentenceCounterComponent';
+import SortNumbers from '../components/developmentToolsComponent/sortNumbers';
+import SortWords from '../components/developmentToolsComponent/sortWords';
+import TextToOneLine from '../components/developmentToolsComponent/textToOneLine';
+import TxtToCsvConverter from '../components/developmentToolsComponent/txtToCsvConverter';
+import UpperCaseConverterComponent from '../components/developmentToolsComponent/upperCaseConverterComponent';
+import WhatIsMyUserAgent from '../components/developmentToolsComponent/whatIsMyUserAgent';
+import WordCounterComponent from '../components/developmentToolsComponent/wordCounterComponent';
+import WordsToNumbers from '../components/developmentToolsComponent/wordsToNumbers';
 import AsanaIcon from '../components/theme/Icon/asanaIcon';
 import { AzureBoardIcon } from '../components/theme/Icon/azureBoardIcon';
 import ClickupIcon from '../components/theme/Icon/clickupIcon';
@@ -12,7 +54,10 @@ import { detectBrowser } from './helpers';
 
 // import WordsToNumbers from '../components/developmentToolsComponent/wordsToNumbers';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 import AmIUsingTor from '../components/developmentToolsComponent/amIUsingTor';
 import ApiKeyGenerator from '../components/developmentToolsComponent/apiKeyGenerator';
 import AsciiToDecimalConverter from '../components/developmentToolsComponent/asciiToDecimalConverter';
@@ -76,6 +121,10 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
+<<<<<<< HEAD
+=======
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter'
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
@@ -85,6 +134,10 @@ import MorseCodeTranslator from '../components/developmentToolsComponent/morseCo
 import NumbersToWordsConverter from '../components/developmentToolsComponent/numbersToWordsConverter';
 import OctalToBinaryConverter from '../components/developmentToolsComponent/octalToBinaryConverter';
 import OctalToDecimalConverter from '../components/developmentToolsComponent/octalToDecimalConverter';
+<<<<<<< HEAD
+=======
+import PasswordStrengthMeter from '../components/developmentToolsComponent/passwordStrengthMeter';
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 import PHPFormatter from '../components/developmentToolsComponent/phpFormatter';
 import PlaceholderImageGenerator from '../components/developmentToolsComponent/placeholderImageGenerator';
 import PxToRemConverter from '../components/developmentToolsComponent/pxToRemConverter';
@@ -143,8 +196,13 @@ import XmlMinify from '../components/developmentToolsComponent/xmlMinify';
 import XmlPrettify from '../components/developmentToolsComponent/xmlPrettify';
 import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJsonConverter';
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
+<<<<<<< HEAD
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 >>>>>>> parent of 82081c7 (feat: Add Advanced Password Strength Meter using zxcvbn)
+=======
+import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
+import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -213,11 +271,364 @@ export const integrationTools = [
 ];
 
 // Development tools constants
+export const developmentToolsCategoryContent: any = {
+  Category1: [
+    {
+      url: '/text-uppercase-converter',
+      title: 'Text to Uppercase Converter',
+      description: 'Convert any text to UPPERCASE instantly.',
+    },
+  ],
+  Category2: [
+    {
+      url: '/text-lowercase-converter',
+      title: 'Text to Lowercase Converter',
+      description: 'Convert any text to lowercase instantly.',
+    },
+  ],
+  Category3: [
+    {
+      url: '/word-count-tool',
+      title: 'Word Count Tool',
+      description: 'Count words in your text instantly.',
+    },
+  ],
+  Category4: [
+    {
+      url: '/character-count-tool',
+      title: 'Character Counter',
+      description: 'Count characters in your text instantly.',
+    },
+  ],
+  Category5: [
+    {
+      url: '/line-counter-tool',
+      title: 'Line Counter',
+      description: 'Count lines in your text instantly.',
+    },
+  ],
+  Category6: [
+    {
+      url: '/sentence-counter-tool',
+      title: 'Sentence Counter',
+      description: 'Count sentences in your text instantly.',
+    },
+  ],
+  Category7: [
+    {
+      url: '/javascript-minifier',
+      title: 'JavaScript Minifier',
+      description: 'Minify JavaScript by removing unnecessary characters.',
+    },
+  ],
+  Category8: [
+    {
+      url: '/json-minifier',
+      title: 'JSON Minifier',
+      description: 'Minify JSON to reduce size and speed up parsing.',
+    },
+  ],
+  Category9: [
+    {
+      // icon: <JsonPrettifierToolIcon />,
+      url: '/json-prettifier',
+      title: 'JSON Prettifier',
+      description: 'Format JSON to make it human-readable.',
+    },
+  ],
+  Category10: [
+    {
+      // icon: <LoremIpsumTextGeneratorIcon />,
+      url: '/lorem-ipsum-generator',
+      title: 'Lorem Ipsum Generator',
+      description: 'Generate placeholder Lorem Ipsum text quickly.',
+    },
+  ],
+  Category11: [
+    {
+      // icon: <LoremIpsumTextGeneratorIcon />,
+      url: '/html-to-markdown',
+      title: 'HTML To Markdown',
+      description: 'Convert HTML to Markdown.',
+    },
+  ],
+  Category12: [
+    {
+      // icon: <LoremIpsumTextGeneratorIcon />,
+      url: '/markdown-to-html',
+      title: 'Markdown To HTML',
+      description: 'Convert Markdown to HTML.',
+    },
+  ],
+  Category13: [
+    {
+      // icon: <LoremIpsumTextGeneratorIcon />,
+      url: '/js-obfuscator',
+      title: 'JS Obfuscator',
+      description: 'Obfuscate JavaScript to make code hard to read.',
+    },
+  ],
+  Category14: [
+    {
+      url: '/credit-card-generator',
+      title: 'Credit Card Generator',
+      description: 'Generate dummy credit card details for testing.',
+    },
+  ],
+  Category15: [
+    {
+      url: '/credit-card-validator',
+      title: 'Credit Card Validator',
+      description: 'Validate credit card numbers (Luhn check).',
+    },
+  ],
+  Category16: [
+    {
+      url: '/json-generator',
+      title: 'JSON Generator',
+      description:
+        'The JSON Generator is a free online utility tool on BetterBugs.io.',
+    },
+  ],
+  Category17: [
+    {
+      url: '/random-decimal-number-generator',
+      title: 'Random Decimal Number Generator',
+      description:
+        'The random decimal number generator is a free online tool on BetterBugs.io that generates random floating‑point numbers in standard, scientific, and engineering formats.',
+    },
+  ],
+  Category18: [
+    {
+      url: '/random-date-generator',
+      title: 'Random Date Generator',
+      description:
+        'The random date generator that instantly generates random date(s) within a specified range',
+    },
+  ],
+  Category19: [
+    {
+      url: '/random-time-generator',
+      title: 'Random Time Generator',
+      description:
+        'Generate a list of random clock time(s) instantly with the random time generator tool. It’s a free tool on BetterBugs.io,',
+    },
+  ],
+  Category20: [
+    {
+      url: '/random-color-generator',
+      title: 'Random Color Generator',
+      description:
+        'The random color generator is a free online utility tool on BetterBugs.io that instantly generates random color values in HEX, RGB, and HSL formats.',
+    },
+  ],
+  Category21: [
+    {
+      url: '/random-paragraph-generator',
+      title: 'Random Paragraph Generator',
+      description:
+        'The paragraph generator tool enables you to instantly generate random text paragraphs or meaningful paragraphs, perfect for using as UI/UX placeholders while designing layouts and testing purposes.',
+    },
+  ],
+  Category22: [
+    {
+      url: '/random-string-generator',
+      title: 'Random String Generator',
+      description:
+        'Generate random string values instantly with the random string generator tool. It’s a simple and free tool on BetterBugs.io site, perfect for generating strings to use as unique identifiers, testing input validation, and populating test environments with realistic data.',
+    },
+  ],
+  Category23: [
+    {
+      url: '/random-sentence-generator',
+      title: 'AI Sentence Generator',
+      description:
+        'The AI sentence generator tool is a free online tool on BetterBugs.io that enables you to generate random text sentences or meaningful AI sentences in one click.',
+    },
+  ],
+  Category24: [
+    {
+      url: '/random-password-generator',
+      title: 'Random Password Generator',
+      description:
+        'Generate random, secure, and fully customized random passwords with the password generator tool. It’s a lightweight and free tool on BetterBugs.io, perfect for generating random passwords that use a mix of different letter cases, numbers, and symbols.',
+    },
+  ],
+  Category25: [
+    {
+      url: '/random-number-generator',
+      title: 'Random Number Generator',
+      description:
+        'The random number generator is a free online tool on BetterBugs.io to instantly generate random and unique numbers within a specified range.',
+    },
+  ],
+  Category26: [
+    {
+      url: '/random-word-generator',
+      title: 'Random Word Generator',
+      description:
+        'The random number generator is a free online tool on BetterBugs.io to instantly generate random and unique words within a specified character count.',
+    },
+  ],
+  Category27: [
+    {
+      url: '/random-username-generator',
+      title: 'Random Username Generator',
+      description:
+        'The random username generator is a free-to-use online tool on BetterBugs.io that enables you to generate unique usernames instantly; perfect for creating usernames in bulk for general usage, software testing, and QA purposes.',
+    },
+  ],
+  Category28: [
+    {
+      url: '/sort-number',
+      title: 'Sort Numbers Online',
+      description:
+        'The sort numbers online tool is a free-to-use utility on BetterBugs.io website. You can use it for data organization, sorting large number datasets, and mathematical and statistical purposes.',
+    },
+  ],
+  Category29: [
+    {
+      url: '/sort-word',
+      title: 'Online Alphabetizer: Sort Words Alphabetically',
+      description:
+        'The online alphabetizer is a simple utility tool on BetterBugs.io that enables you to sort words in ascending or descending order and in three other modes. You can also set preferences for the sorting order. ',
+    },
+  ],
+  Category30: [
+    {
+      url: '/phone-number-extractor',
+      title: 'Phone Number Extractor',
+      description:
+        'The phone number extractor tool is a simple utility tool on BetterBugs.io that enables you to instantly grab all the phone numbers from a text string.',
+    },
+  ],
+  Category31: [
+    {
+      url: '/reverse-text-generator',
+      title: 'Reverse Text Generator',
+      description:
+        'The reverse text generator is a simple free-to-use online tool on BetterBugs.io. You can use the tool to flip, reverse, or mirror text in several ways; perfect for fun, puzzles, or creative text formatting activities.',
+    },
+  ],
+  Category32: [
+    {
+      url: '/word-to-number',
+      title: 'Words to Number Online Converter',
+      description:
+        'The words to number online converter is a simple utility tool on BetterBugs.io that enables you to instantly convert numbers described as words to their corresponding numeric values.',
+    },
+  ],
+  Category33: [
+    {
+      url: '/remove-spaces',
+      title: 'Remove Spaces from Text',
+      description:
+        'The space remover tool enables you to easily remove spaces from your text content. It’s a free tool on BetterBugs.io website. You can use it for data cleaning, text formatting or processing purposes. ',
+    },
+  ],
+  Category34: [
+    {
+      url: '/text-to-one-line',
+      title: 'Text to One Line Online Converter',
+      description:
+        'The text to one line converter is a simple and free tool on BetterBugs.io that enables you to instantly convert your text content to a single line. You can use it for text processing, text formatting, and several other purposes in software. ',
+    },
+  ],
+  Category35: [
+    {
+      url: '/csv-to-text-converter',
+      title: 'CSV to TXT Converter',
+      description:
+        'The CSV to TXT converter is a free-to-use online tool on BetterBugs.io that enables you to instantly convert CSV data to various text formats, such as table, simple text, JSON, XML, and YAML formats.',
+    },
+  ],
+  Category36: [
+    {
+      url: '/rounding-calculator',
+      title: 'Rounding Calculator Online',
+      description:
+        'The rounding calculator is a simple utility tool that enables you to quickly round numbers to your preferred rounded formats, such as round up or round down, floor, ceil, and others. You can use it completely free on the BetterBugs.io website.',
+    },
+  ],
+  Category37: [
+    {
+      url: '/txt-to-csv-converter',
+      title: 'TXT to CSV Converter',
+      description:
+        'The txt to csv converter is a simple utility tool on BetterBugs.io that enables you to instantly convert text data into CSV format; perfect for your everyday data-related and software development tasks.',
+    },
+  ],
+  Category38: [
+    {
+      url: '/json-to-text',
+      title: 'JSON to TXT Online Converter',
+      description:
+        'The JSON to TXT converter is a simple utility tool that enables you to instantly convert JSON data to human-readable text formats. Use it absolutely free on the BetterBugs.io website.',
+    },
+  ],
+  Category39: [
+    {
+      url: '/html-validator',
+      title: 'HTML Validator Online',
+      description:
+        'The HTML validator online is a free-to-use utility tool on BetterBugs.io that enables you to instantly detect any syntax errors or issues with your HTML code, validate it, provide warnings (if any) and check that it adheres to the W3C HTML standards/guidelines.',
+    },
+  ],
+  Category40: [
+    {
+      url: '/json-validator',
+      title: 'JSON Validator Online',
+      description:
+        'JSON validator is a free dev utility tool on BetterBugs.io that enables you to instantly validate your JSON data or file in seconds. Use the tool to check correctness in your JSON data, schema validation , and similar other purposes in software.',
+    },
+  ],
+  Category41: [
+    {
+      url: '/code-compare-tool',
+      title: 'Code Compare Online Tool',
+      description:
+        'The code compare tool is a free-to-use dev utility on BetterBugs.io that enables you to instantly compare two code files or snippets of code in JavaScript, TypeScript, Python, and many other languages and code formats; perfect for diff checking, code reviews, spotting changes and potential code errors, or version control tasks.',
+    },
+  ],
+  Category42: [
+    {
+      url: '/what-is-my-user-agent',
+      title: 'What is My User Agent',
+      description:
+        'What is my user agent is a free-to-use dev utility tool on BetterBugs.io that automatically grabs and displays info about your user agent, including browser and OS details in a string format.',
+    },
+  ],
 
-export { PATHS } from './paths';
+  Category43: [
+    {
+      url: '/random-character-generator',
+      title: 'Random Character Generator',
+      description:
+        'Create random characters from selected sets (letters, digits, symbols) with custom length.',
+    },
+  ],
+  Category44: [
+    {
+      url: '/scss-to-css',
+      title: 'SCSS to CSS Converter',
+      description:
+        'Compile SCSS to CSS; supports variables, mixins, imports, and nesting.',
+    },
+  ],
+  Category45: [
+    {
+      url: '/css-to-scss',
+      title: 'CSS to SCSS Converter',
+      description:
+        'Transform CSS into SCSS syntax with nesting and variables where applicable.',
+    },
+  ],
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
   Category46: [
     {
       url: '/rotation-calculator',
@@ -722,6 +1133,17 @@ export { PATHS } from './paths';
         'Convert CSV to JSON; set delimiter, header row, and basic type inference.',
     },
   ],
+<<<<<<< HEAD
+=======
+  Category109_1: [
+    {
+      url: '/json-to-csv',
+      title: 'JSON to CSV Converter',
+      description:
+        'Convert JSON arrays to CSV format with support for nested objects, custom delimiters, and headers.',
+    },
+  ],
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
   Category110: [
     {
       url: '/markdown-formatter',
@@ -1203,6 +1625,7 @@ export { PATHS } from './paths';
     },
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   Category176: [
     {
@@ -1213,6 +1636,16 @@ export { PATHS } from './paths';
     },
   ],
 >>>>>>> parent of 4e03e4e (Merge branch 'develop' into feature/password-strength-meter)
+=======
+  Category176: [
+    {
+      url: '/curl-to-code-converter',
+      title: 'cURL to Code Converter',
+      description:
+        'Convert cURL commands to JavaScript (Fetch/Axios), Python Requests, Go, or Node.js code instantly.',
+    },
+  ],
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 };
 
 export const PATHS = {
@@ -1245,6 +1678,10 @@ export const PATHS = {
   RANDOM_USERNAME_GENERATOR: '/random-username-generator',
   SORT_NUMBER: '/sort-number',
   SORT_WORD: '/sort-word',
+<<<<<<< HEAD
+=======
+  PASSWORD_STRENGTH_METER: '/password-strength-meter',
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
   PHONE_NUMBER_EXTRACTOR: '/phone-number-extractor',
   REVERSE_TEXT_GENERATOR: '/reverse-text-generator',
   WORD_TO_NUMBER: '/word-to-number',
@@ -1254,6 +1691,10 @@ export const PATHS = {
   CSV_TO_TEXT_CONVERTER: '/csv-to-text-converter',
   TXT_TO_CSV_CONVERTER: '/txt-to-csv-converter',
   JSON_TO_TEXT: '/json-to-text',
+<<<<<<< HEAD
+=======
+  JSON_TO_CSV_CONVERTOR: '/json-to-csv',
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
   HTML_VALIDATOR: '/html-validator',
   JSON_VALIDATOR: '/json-validator',
   CODE_COMPARE_TOOL: '/code-compare-tool',
@@ -1391,6 +1832,10 @@ export const PATHS = {
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
+<<<<<<< HEAD
+=======
+  CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 };
 
 export const developmentToolsRoutes = [
@@ -1874,6 +2319,13 @@ export const developmentToolsRoutes = [
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
   },
+<<<<<<< HEAD
+=======
+   {
+    path: PATHS.JSON_TO_CSV_CONVERTOR,
+    component: <JsonToCsvConverter />,
+  },
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
   {
     path: PATHS.UTF8_DECODE,
     component: <Utf8Decode />,
@@ -2091,6 +2543,7 @@ export const developmentToolsRoutes = [
     component: <HtmlToJade />,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   {
     path: PATHS.PASSWORD_STRENGTH_METER,
@@ -2099,9 +2552,14 @@ export const developmentToolsRoutes = [
 >>>>>>> parent of 4e03e4e (Merge branch 'develop' into feature/password-strength-meter)
 ];
 >>>>>>> parent of 82081c7 (feat: Add Advanced Password Strength Meter using zxcvbn)
+=======
+  {
+    path: PATHS.CURL_TO_CODE_CONVERTER,
+    component: <CurlToCodeConverter />,
+  },
+];
+>>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
 
 // lorem ipsum text
 export const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-export { developmentToolsCategoryContent, developmentToolsRoutes } from './developmentToolsRegistry';
