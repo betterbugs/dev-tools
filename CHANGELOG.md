@@ -1,3 +1,10 @@
+# [1.4.0-develop.4](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.3...v1.4.0-develop.4) (2026-03-03)
+
+
+### Features
+
+* Add lockfile guard workflow to prevent unintended lockfile changes ([aa20fb5](https://github.com/betterbugs/dev-tools/commit/aa20fb5422aae56e9d80f7472a6f974624431572))
+
 # [1.4.0-develop.3](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.2...v1.4.0-develop.3) (2026-03-03)
 
 
