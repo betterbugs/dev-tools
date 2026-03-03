@@ -14,7 +14,7 @@ export const meta = {
     development_tools_list: [
       { tool: 'HTML Escape', url: PATHS.HTML_ESCAPE },
       { tool: 'HTML Unescape', url: PATHS.HTML_UNESCAPE },
-      { tool: 'XML Validator', url: PATHS.XML_COMPARE },
+      { tool: 'XML Compare', url: PATHS.XML_COMPARE },
       { tool: 'Text to One Line', url: PATHS.TEXT_TO_ONE_LINE },
     ],
     development_tools_about_details: {
