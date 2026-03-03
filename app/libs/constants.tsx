@@ -109,6 +109,7 @@ import IdnDecode from '../components/developmentToolsComponent/idnDecode';
 import IdnEncode from '../components/developmentToolsComponent/idnEncode';
 import InternetSpeedTest from '../components/developmentToolsComponent/internetSpeedTest';
 import IpToHexConverter from '../components/developmentToolsComponent/ipToHexConverter';
+import Ipv4SubnetCalculator from '../components/developmentToolsComponent/ipv4SubnetCalculator';
 import JavaScriptEscape from '../components/developmentToolsComponent/javascriptEscape';
 import JavascriptRegexTester from '../components/developmentToolsComponent/javascriptRegexTester';
 import JavaScriptTester from '../components/developmentToolsComponent/javascriptTester';
@@ -116,7 +117,7 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
-import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter'
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter';
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
@@ -1601,10 +1602,9 @@ export const developmentToolsCategoryContent: any = {
   ],
   Category176: [
     {
-      url: '/curl-to-code-converter',
-      title: 'cURL to Code Converter',
-      description:
-        'Convert cURL commands to JavaScript (Fetch/Axios), Python Requests, Go, or Node.js code instantly.',
+      url: '/ipv4-subnet-calculator',
+      title: 'IPv4 Subnet Calculator',
+      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
     },
   ],
 };
@@ -1751,6 +1751,7 @@ export const PATHS = {
   KILOMETERS_TO_MILES: '/kilometers-to-miles',
   JWT_DECODER: '/jwt-decoder',
   IP_TO_HEX: '/ip-to-hex',
+  IPV4_SUBNET_CALCULATOR: '/ipv4-subnet-calculator',
   WORDS_TO_NUMBERS: '/words-to-numbers',
   NUMBERS_TO_WORDS: '/numbers-to-words',
   FABONACCI_CALCULATOR: '/fabonacci-calculator',
@@ -2329,6 +2330,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.IP_TO_HEX,
     component: <IpToHexConverter />,
+  },
+  {
+    path: PATHS.IPV4_SUBNET_CALCULATOR,
+    component: <Ipv4SubnetCalculator />,
   },
   {
     path: PATHS.WORDS_TO_NUMBERS,
