@@ -1,0 +1,51 @@
+name: Lockfile Guard
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  lockfile-guard:
+    name: Prevent unintended lockfile churn
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate package and lockfile changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          CHANGED_FILES="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
+
+          PACKAGE_CHANGED="false"
+          LOCK_CHANGED="false"
+
+          if echo "$CHANGED_FILES" | grep -qx "package.json"; then
+            PACKAGE_CHANGED="true"
+          fi
+
+          if echo "$CHANGED_FILES" | grep -qx "package-lock.json"; then
+            LOCK_CHANGED="true"
+          fi
+
+          if [ "$LOCK_CHANGED" = "true" ] && [ "$PACKAGE_CHANGED" = "false" ]; then
+            echo "❌ package-lock.json changed without package.json changes."
+            echo "If your PR does not intentionally change dependencies, discard lockfile changes:"
+            echo "git checkout -- package-lock.json"
+            exit 1
+          fi
+
+          echo "✅ Lockfile check passed."
