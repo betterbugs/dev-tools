@@ -117,7 +117,7 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
-import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter'
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter';
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
