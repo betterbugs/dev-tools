@@ -70,7 +70,7 @@ export const meta = {
       meta_title: 'CSS Prettify & Minify – Clean or Compress CSS',
       meta_description:
         'Beautify or minify CSS online; copy or download the output.',
-      og_title: 'CSS Prettif – BetterBugs Tools',
+      og_title: 'CSS Prettify – BetterBugs Tools',
       og_description: 'Paste CSS, prettify or minify, then export.',
       og_image: '/images/og-images/Cover.png',
     },
