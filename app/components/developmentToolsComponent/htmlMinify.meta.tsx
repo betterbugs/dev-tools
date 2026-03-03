@@ -26,10 +26,6 @@ export const meta = {
           description:
             'Minify removes whitespace and comments for smaller payloads.',
         },
-        {
-          description:
-            'Minify removes whitespace and comments for smaller payloads.',
-        },
       ],
     },
     development_tools_steps_guide: {
