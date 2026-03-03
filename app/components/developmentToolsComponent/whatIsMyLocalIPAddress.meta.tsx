@@ -12,7 +12,7 @@ export const meta = {
         'Find your local IPv4/IPv6 addresses using a privacy-friendly WebRTC technique.',
     },
     development_tools_list: [
-      { tool: 'What is My IP Address', url: PATHS.WHAT_IS_MY_USER_AGENT },
+      { tool: 'What is My IP Address', url: PATHS.WHAT_IS_MY_IP_ADDRESS },
       { tool: 'IP to Hex', url: PATHS.IP_TO_HEX },
       { tool: 'JSON Viewer', url: PATHS.JSON_PRETTIFIER },
     ],
