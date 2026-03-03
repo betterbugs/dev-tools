@@ -1202,6 +1202,17 @@ export { PATHS } from './paths';
       description: 'Convert HTML to Jade.',
     },
   ],
+<<<<<<< HEAD
+=======
+  Category176: [
+    {
+      url: '/password-strength-meter',
+      title: 'Password Strength Meter',
+      description:
+        'Check your password strength using advanced entropy analysis with real crack-time estimates.',
+    },
+  ],
+>>>>>>> parent of 4e03e4e (Merge branch 'develop' into feature/password-strength-meter)
 };
 
 export const PATHS = {
@@ -2079,6 +2090,13 @@ export const developmentToolsRoutes = [
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
   },
+<<<<<<< HEAD
+=======
+  {
+    path: PATHS.PASSWORD_STRENGTH_METER,
+    component: <PasswordStrengthMeter />,
+  },
+>>>>>>> parent of 4e03e4e (Merge branch 'develop' into feature/password-strength-meter)
 ];
 >>>>>>> parent of 82081c7 (feat: Add Advanced Password Strength Meter using zxcvbn)
 
