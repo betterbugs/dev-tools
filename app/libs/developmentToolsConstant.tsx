@@ -3659,6 +3659,123 @@ export const DEVELOPMENTTOOLS: any = {
       og_image: '/images/og-images/Cover.png',
     },
   },
+<<<<<<< HEAD
+=======
+  [`password-strength-meter`]: {
+    hero_section: {
+      title: 'Advanced Password Strength Meter',
+      description:
+        'Check your password strength using advanced entropy analysis. Get realistic crack-time estimates, warnings, and suggestions for creating stronger passwords using the zxcvbn algorithm.',
+    },
+    development_tools_list: [
+      { tool: 'Random Password Generator', url: PATHS.RANDOM_PASSWORD_GENERATOR },
+      { tool: 'Bcrypt Generator', url: PATHS.BCRYPT_GENERATOR },
+      { tool: 'Text to HTML Entities', url: PATHS.TEXT_TO_HTML_ENTITIES_CONVERTOR },
+      { tool: 'Character Count', url: PATHS.CHARACTER_COUNT_TOOL },
+      { tool: 'MD5 Generator', url: PATHS.RANDOM_USERNAME_GENERATOR },
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Password Strength Meter?',
+      about_description: [
+        {
+          description:
+            'The Password Strength Meter is an advanced security tool that analyzes password strength using entropy-based calculations. Unlike simple pattern matching (e.g., "must contain numbers"), this tool uses the industry-standard zxcvbn algorithm to provide realistic password strength assessments.',
+        },
+        {
+          description:
+            'The tool calculates actual crack time estimates for different attack scenarios (online throttled, online unthrottled, offline slow hashing, and offline fast hashing). It also provides actionable warnings and suggestions to improve your password security.',
+        },
+        {
+          description:
+            'Use this tool to verify password security before setting critical account credentials, validate password policies, or educate users about common password weaknesses. All analysis is done locally in your browser with no data stored or transmitted.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use the Password Strength Meter',
+      guide_description: 'Follow these steps to analyze your password strength:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter Your Password',
+          step_description:
+            'Type or paste your password in the input field. Use the visibility toggle button (eye icon) to show or hide your password as you type.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'View Strength Assessment',
+          step_description:
+            'Watch the color-coded strength meter: Red (Very Weak) → Orange (Weak) → Yellow (Fair) → Light Green (Good) → Green (Very Strong). The meter updates in real-time as you type.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Review Crack Time Estimates',
+          step_description:
+            'Check how long it would take attackers to crack your password under different scenarios: throttled online attacks, unthrottled online attacks, slow hashing, and fast hashing.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Address Warnings and Suggestions',
+          step_description:
+            'If present, read the warning messages (like "common password" or "repeated characters") and follow the suggestions to strengthen your password.',
+        },
+        {
+          step_key: 'Step 5:',
+          step_title: 'Copy or Clear',
+          step_description:
+            'Use the "Copy Password" button to copy your password to clipboard, or "Clear" to reset and try a different password.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Use Cases for the Password Strength Meter',
+      how_use_description:
+        'This tool is useful for various security-related purposes:',
+      point: [
+        {
+          title: 'Personal Account Security',
+          description:
+            'Before creating important account passwords (email, banking, social media), use this tool to ensure your passwords are strong and resistant to cracking attempts.',
+        },
+        {
+          title: 'Corporate Password Policy Validation',
+          description:
+            'Organizations can use this tool to help employees understand password complexity requirements and create stronger credentials that comply with security policies.',
+        },
+        {
+          title: 'Security Awareness Training',
+          description:
+            'Security teams can use the tool in training sessions to demonstrate password weaknesses and help employees understand why certain passwords are vulnerable.',
+        },
+        {
+          title: 'System Administration',
+          description:
+            'IT administrators can validate password policies and ensure user-created passwords meet organizational security standards.',
+        },
+        {
+          title: 'Educational Purposes',
+          description:
+            'Computer science and cybersecurity educators can teach students about password entropy, hash algorithms, and realistic security threats.',
+        },
+        {
+          title: 'Software Development Testing',
+          description:
+            'Developers building authentication systems can test their password strength validation logic against industry standards.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Password Strength Meter - Advanced Security Analysis Tool',
+      meta_description:
+        'Free online password strength meter using zxcvbn algorithm. Get realistic crack-time estimates, warnings, and suggestions for stronger passwords. Powered by entropy-based analysis.',
+      og_title: 'Password Strength Meter - Advanced Security Analysis Tool',
+      og_description:
+        'Check password strength with advanced entropy analysis. Real crack-time estimates and actionable security suggestions included.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
+>>>>>>> parent of f9313c3 (Update app/libs/developmentToolsConstant.tsx)
   [`phone-number-extractor`]: {
     hero_section: {
       title: 'Phone Number Extractor Online',
