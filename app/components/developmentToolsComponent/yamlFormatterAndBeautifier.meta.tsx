@@ -1,5 +1,4 @@
 import { PATHS } from '@/app/libs/paths';
-import React from 'react';
 
 export const meta = {
   slug: 'yaml-formatter-and-beautifier',
