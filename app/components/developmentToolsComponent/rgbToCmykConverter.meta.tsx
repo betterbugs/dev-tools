@@ -2,7 +2,7 @@ import { PATHS } from '@/app/libs/paths';
 import React from 'react';
 
 export const meta = {
-  slug: 'rgb-to-cmk-convertor',
+  slug: 'rgb-to-cmyk-converter',
   category: 'Category51',
   route: PATHS.RGB_TO_CMYK_CONVERTER,
   ...{
