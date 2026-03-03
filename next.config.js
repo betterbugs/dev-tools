@@ -5,6 +5,10 @@ const isProduction = process.env.NEXT_ENV === 'PRODUCTION';
 const basePath = isProduction ? '/development-tools' : '';
 const assetPrefix = isProduction ? '/development-tools' : '';
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 let nextConfig = {
   basePath: basePath,
   assetPrefix: assetPrefix,
@@ -27,7 +31,7 @@ if (process.env.NEXT_ENV !== 'local') {
     runtimeCaching,
   });
 
-  module.exports = withPWA(nextConfig);
+  module.exports = withBundleAnalyzer(withPWA(nextConfig));
 } else {
-  module.exports = nextConfig;
+  module.exports = withBundleAnalyzer(nextConfig);
 }

@@ -7,7 +7,7 @@ const registryFile = path.join(__dirname, '..', 'app', 'libs', 'developmentTools
 const files = fs.readdirSync(componentsDir);
 const metaFiles = files.filter(f => f.endsWith('.meta.tsx'));
 
-let importsStr = `/* eslint-disable react/display-name */\nimport dynamic from 'next/dynamic';\n`;
+let importsStr = `/* eslint-disable react/display-name */\nimport dynamic from 'next/dynamic';\nimport React from 'react';\nimport ToolSkeleton from '../components/theme/ToolSkeleton/ToolSkeleton';\n`;
 let devToolsMapStr = `export const DEVELOPMENTTOOLS: Record<string, any> = {};\n`;
 let categoryMapStr = `export const developmentToolsCategoryContent: Record<string, any[]> = {};\n`;
 let routesArrayStr = `export const developmentToolsRoutes: any[] = [\n`;
@@ -23,7 +23,10 @@ metaFiles.forEach((file, index) => {
 
   routesArrayStr += `  {
     path: ${importName}.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/${componentName}')),
+    component: dynamic(() => import('../components/developmentToolsComponent/${componentName}'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },\n`;
 });
 

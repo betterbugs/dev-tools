@@ -1,5 +1,7 @@
 /* eslint-disable react/display-name */
 import dynamic from 'next/dynamic';
+import React from 'react';
+import ToolSkeleton from '../components/theme/ToolSkeleton/ToolSkeleton';
 import { meta as Meta0 } from '../components/developmentToolsComponent/amIUsingTor.meta';
 import { meta as Meta1 } from '../components/developmentToolsComponent/apiKeyGenerator.meta';
 import { meta as Meta2 } from '../components/developmentToolsComponent/asciiToDecimalConverter.meta';
@@ -374,702 +376,1227 @@ allMeta.forEach((m: any) => {
 export const developmentToolsRoutes: any[] = [
   {
     path: Meta0.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/amIUsingTor')),
+    component: dynamic(() => import('../components/developmentToolsComponent/amIUsingTor'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta1.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/apiKeyGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/apiKeyGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta2.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/asciiToDecimalConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/asciiToDecimalConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta3.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/asciiToUnicodeConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/asciiToUnicodeConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta4.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/barcodeGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/barcodeGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta5.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/base64Decoder')),
+    component: dynamic(() => import('../components/developmentToolsComponent/base64Decoder'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta6.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/base64Encoder')),
+    component: dynamic(() => import('../components/developmentToolsComponent/base64Encoder'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta7.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/bcdToDecimalConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/bcdToDecimalConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta8.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/bcryptGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/bcryptGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta9.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/binaryToDecimalConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/binaryToDecimalConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta10.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/bitwiseCalculator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/bitwiseCalculator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta11.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/celsiusFahrenheitConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/celsiusFahrenheitConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta12.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/characterCounterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/characterCounterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta13.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cmykToHexConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cmykToHexConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta14.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cmykToRgbConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cmykToRgbConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta15.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/codeCompareTool')),
+    component: dynamic(() => import('../components/developmentToolsComponent/codeCompareTool'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta16.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/colorInvertor')),
+    component: dynamic(() => import('../components/developmentToolsComponent/colorInvertor'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta17.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/colorPickerTool')),
+    component: dynamic(() => import('../components/developmentToolsComponent/colorPickerTool'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta18.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/creditCardGeneratorComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/creditCardGeneratorComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta19.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/creditCardValidatorComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/creditCardValidatorComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta20.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/crontabGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/crontabGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta21.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssMinify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssMinify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta22.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssPrettify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssPrettify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta23.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssToLess')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssToLess'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta24.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssToSass')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssToSass'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta25.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssToScssConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssToScssConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta26.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssToStylus')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssToStylus'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta27.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/cssValidator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/cssValidator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta28.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/csvToExcelFileConvertor')),
+    component: dynamic(() => import('../components/developmentToolsComponent/csvToExcelFileConvertor'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta29.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/csvToJson')),
+    component: dynamic(() => import('../components/developmentToolsComponent/csvToJson'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta30.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/csvToTextConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/csvToTextConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta31.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/curlToCodeConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/curlToCodeConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta32.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/decimalToAsciiConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/decimalToAsciiConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta33.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/decimalToBinaryConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/decimalToBinaryConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta34.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/decimalToGrayCode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/decimalToGrayCode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta35.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/decimalToHexConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/decimalToHexConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta36.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/decimalToOctalConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/decimalToOctalConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta37.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/excelCompare')),
+    component: dynamic(() => import('../components/developmentToolsComponent/excelCompare'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta38.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/fibonacciCalculator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/fibonacciCalculator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta39.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/findAndReplaceString')),
+    component: dynamic(() => import('../components/developmentToolsComponent/findAndReplaceString'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta40.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/graphqlFormatter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/graphqlFormatter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta41.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/greyCodeToDesimal')),
+    component: dynamic(() => import('../components/developmentToolsComponent/greyCodeToDesimal'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta42.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hexToAscii')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hexToAscii'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta43.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hexToBinaryConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hexToBinaryConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta44.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hexToCmykConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hexToCmykConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta45.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hexToPantone')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hexToPantone'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta46.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hexToRGBConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hexToRGBConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta47.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/hoursToSecounds')),
+    component: dynamic(() => import('../components/developmentToolsComponent/hoursToSecounds'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta48.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlCodeGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlCodeGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta49.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlEntitiesToTextConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlEntitiesToTextConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta50.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlEscape')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlEscape'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta51.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlMinify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlMinify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta52.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlPrettify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlPrettify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta53.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlTester')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlTester'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta54.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlToBBCode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlToBBCode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta55.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlToJade')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlToJade'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta56.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlToMarkDownComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlToMarkDownComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta57.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlUnescape')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlUnescape'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta58.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlValidator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlValidator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta59.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/htmlViewer')),
+    component: dynamic(() => import('../components/developmentToolsComponent/htmlViewer'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta60.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/idnDecode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/idnDecode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta61.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/idnEncode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/idnEncode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta62.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/internetSpeedTest')),
+    component: dynamic(() => import('../components/developmentToolsComponent/internetSpeedTest'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta63.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/ipToHexConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/ipToHexConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta64.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/javascriptEscape')),
+    component: dynamic(() => import('../components/developmentToolsComponent/javascriptEscape'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta65.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/javascriptMinifierComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/javascriptMinifierComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta66.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/javascriptRegexTester')),
+    component: dynamic(() => import('../components/developmentToolsComponent/javascriptRegexTester'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta67.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/javascriptTester')),
+    component: dynamic(() => import('../components/developmentToolsComponent/javascriptTester'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta68.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/javascriptValidatorLinter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/javascriptValidatorLinter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta69.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsObfuscatorComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsObfuscatorComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta70.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonCompare')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonCompare'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta71.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonMinifierComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonMinifierComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta72.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonPrittifierComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonPrittifierComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta73.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonToCsvConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonToCsvConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta74.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonToTxt')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonToTxt'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta75.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonToTypeScript')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonToTypeScript'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta76.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonToXmlConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonToXmlConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta77.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonToYamlConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonToYamlConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta78.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jsonValidator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jsonValidator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta79.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/jwtDecoder')),
+    component: dynamic(() => import('../components/developmentToolsComponent/jwtDecoder'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta80.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/kmToMilesConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/kmToMilesConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta81.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/lineCounterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/lineCounterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta82.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/loremIpsumGeneratorComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/loremIpsumGeneratorComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta83.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/lowerCaseConverterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/lowerCaseConverterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta84.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/markdownFormatter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/markdownFormatter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta85.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/markDownToHTMLComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/markDownToHTMLComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta86.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/milesToKmConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/milesToKmConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta87.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/morseCodeTranslator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/morseCodeTranslator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta88.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/numbersToWordsConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/numbersToWordsConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta89.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/octalToBinaryConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/octalToBinaryConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta90.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/octalToDecimalConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/octalToDecimalConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta91.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/phoneNumberExtractor')),
+    component: dynamic(() => import('../components/developmentToolsComponent/phoneNumberExtractor'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta92.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/phpFormatter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/phpFormatter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta93.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/placeholderImageGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/placeholderImageGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta94.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/pxToRemConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/pxToRemConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta95.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/pythonFormatter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/pythonFormatter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta96.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/qrCodeGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/qrCodeGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta97.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomAddressGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomAddressGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta98.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomCharacterGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomCharacterGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta99.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomClockTimeGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomClockTimeGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta100.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomColorGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomColorGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta101.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomCSVGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomCSVGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta102.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomDateGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomDateGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta103.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomDecimalNumberGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomDecimalNumberGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta104.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomGUIDGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomGUIDGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta105.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomIPGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomIPGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta106.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomJsonDataGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomJsonDataGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta107.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomNumberGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomNumberGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta108.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomParagraphGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomParagraphGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta109.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomPasswardGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomPasswardGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta110.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomSentanceGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomSentanceGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta111.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomStringGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomStringGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta112.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomTextFromRegEX')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomTextFromRegEX'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta113.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomUsernameGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomUsernameGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta114.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomWordGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomWordGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta115.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/randomXMLGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/randomXMLGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta116.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/removeSpaces')),
+    component: dynamic(() => import('../components/developmentToolsComponent/removeSpaces'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta117.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/remToPxConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/remToPxConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta118.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/reverseTextGenerator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/reverseTextGenerator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta119.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/rgbToCmykConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/rgbToCmykConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta120.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/rgbToHexConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/rgbToHexConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta121.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/rot13EncoderDecoderComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/rot13EncoderDecoderComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta122.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/rotateImageTool')),
+    component: dynamic(() => import('../components/developmentToolsComponent/rotateImageTool'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta123.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/rotationCalculatorComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/rotationCalculatorComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta124.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/roundingCalculator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/roundingCalculator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta125.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/scssToCssConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/scssToCssConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta126.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sentenceCounterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sentenceCounterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta127.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/shuffleLetters')),
+    component: dynamic(() => import('../components/developmentToolsComponent/shuffleLetters'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta128.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/shuffleTextLines')),
+    component: dynamic(() => import('../components/developmentToolsComponent/shuffleTextLines'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta129.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sortingList')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sortingList'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta130.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sortNumbers')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sortNumbers'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta131.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sortWords')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sortWords'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta132.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sqlFormatterAndBeautifier')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sqlFormatterAndBeautifier'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta133.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sqlMinify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sqlMinify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta134.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sqlToCsvConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sqlToCsvConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta135.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/sqlToJson')),
+    component: dynamic(() => import('../components/developmentToolsComponent/sqlToJson'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta136.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/stringDiffrenceChecker')),
+    component: dynamic(() => import('../components/developmentToolsComponent/stringDiffrenceChecker'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta137.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/stripHTML')),
+    component: dynamic(() => import('../components/developmentToolsComponent/stripHTML'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta138.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/textCompare')),
+    component: dynamic(() => import('../components/developmentToolsComponent/textCompare'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta139.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/textRepeater')),
+    component: dynamic(() => import('../components/developmentToolsComponent/textRepeater'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta140.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/textToCsv')),
+    component: dynamic(() => import('../components/developmentToolsComponent/textToCsv'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta141.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/textToHtmlEntitiesConvertor')),
+    component: dynamic(() => import('../components/developmentToolsComponent/textToHtmlEntitiesConvertor'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta142.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/textToOneLine')),
+    component: dynamic(() => import('../components/developmentToolsComponent/textToOneLine'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta143.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/txtToCsvConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/txtToCsvConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta144.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/typescriptFormatter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/typescriptFormatter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta145.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/unicodeToAsciiConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/unicodeToAsciiConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta146.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/upperCaseConverterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/upperCaseConverterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta147.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/urlDecode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/urlDecode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta148.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/urlEncode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/urlEncode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta149.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/utf8Decode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/utf8Decode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta150.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/utf8Encode')),
+    component: dynamic(() => import('../components/developmentToolsComponent/utf8Encode'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta151.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyBrowser')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyBrowser'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta152.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyISP')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyISP'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta153.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyLocalIPAddress')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyLocalIPAddress'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta154.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyUserAgent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatIsMyUserAgent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta155.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatOperatingSystemDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatOperatingSystemDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta156.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatsMyBrowserSize')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatsMyBrowserSize'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta157.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfAndroidDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfAndroidDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta158.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfChromeDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfChromeDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta159.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfFirefoxDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfFirefoxDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta160.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfFlashDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfFlashDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta161.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfIOSDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfIOSDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta162.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfJavaDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfJavaDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta163.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfMacOSDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfMacOSDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta164.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfSafariDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfSafariDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta165.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfWindowsDoIHave')),
+    component: dynamic(() => import('../components/developmentToolsComponent/whatVersionOfWindowsDoIHave'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta166.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/wordCounterComponent')),
+    component: dynamic(() => import('../components/developmentToolsComponent/wordCounterComponent'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta167.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/wordsToNumbers')),
+    component: dynamic(() => import('../components/developmentToolsComponent/wordsToNumbers'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta168.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xmlCompare')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xmlCompare'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta169.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xmlEscape')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xmlEscape'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta170.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xmlMinify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xmlMinify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta171.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xmlPrettify')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xmlPrettify'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta172.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xmlToJsonConverter')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xmlToJsonConverter'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta173.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/xorCalculator')),
+    component: dynamic(() => import('../components/developmentToolsComponent/xorCalculator'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
   {
     path: Meta174.route,
-    component: dynamic(() => import('../components/developmentToolsComponent/yamlFormatterAndBeautifier')),
+    component: dynamic(() => import('../components/developmentToolsComponent/yamlFormatterAndBeautifier'), {
+      loading: () => React.createElement(ToolSkeleton),
+      ssr: false,
+    }),
   },
 ];

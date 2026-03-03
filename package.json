@@ -31,6 +31,7 @@
   "scripts": {
     "dev": "node scripts/generateRegistry.js && next dev",
     "build": "node scripts/generateRegistry.js && next build",
+    "analyze": "node scripts/generateRegistry.js && cross-env ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -67,6 +68,7 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.1.6",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/git": "^10.0.1",
@@ -79,6 +81,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/zxcvbn": "^4.4.5",
+    "cross-env": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
