@@ -2,7 +2,7 @@ import { PATHS } from '@/app/libs/paths';
 import React from 'react';
 
 export const meta = {
-  slug: 'typeScript-formatter',
+  slug: 'typescript-formatter',
   category: 'Category111',
   route: PATHS.TYPE_SCRIPT_FORMATTER,
   ...{
