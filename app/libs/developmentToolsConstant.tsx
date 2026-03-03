@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export { DEVELOPMENTTOOLS } from './developmentToolsRegistry';
 =======
 =======
@@ -17503,3 +17504,6 @@ family[1]: "Beth"`,
   },
 };
 >>>>>>> parent of 4d23973 (Refactors development tools registry for maintainability)
+=======
+export { DEVELOPMENTTOOLS } from './developmentToolsRegistry';
+>>>>>>> parent of 7eba04d (Revert "Update app/libs/developmentToolsConstant.tsx")
