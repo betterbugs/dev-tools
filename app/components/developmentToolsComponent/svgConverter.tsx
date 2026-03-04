@@ -31,6 +31,23 @@ const SvgConverter = () => {
     }
   };
 
+  // Normalize SVG attributes to JSX equivalents
+  const normalizeSvgAttributes = (svg: string): string => {
+    let normalized = svg;
+    // Convert SVG attribute names to JSX equivalents
+    normalized = normalized.replace(/fill-rule="/g, 'fillRule="');
+    normalized = normalized.replace(/clip-rule="/g, 'clipRule="');
+    normalized = normalized.replace(/stroke-linecap="/g, 'strokeLinecap="');
+    normalized = normalized.replace(/stroke-linejoin="/g, 'strokeLinejoin="');
+    normalized = normalized.replace(/stroke-miterlimit="/g, 'strokeMiterlimit="');
+    normalized = normalized.replace(/stroke-width="/g, 'strokeWidth="');
+    normalized = normalized.replace(/stroke-dasharray="/g, 'strokeDasharray="');
+    normalized = normalized.replace(/stroke-dashoffset="/g, 'strokeDashoffset="');
+    normalized = normalized.replace(/text-anchor="/g, 'textAnchor="');
+    normalized = normalized.replace(/class="/g, 'className="');
+    return normalized;
+  };
+
   // Convert SVG for React component output
   const generateReactComponent = (svg: string): string => {
     try {
@@ -53,8 +70,8 @@ const SvgConverter = () => {
       reactSvg = reactSvg.replace(/\s*width="[^"]*"\s*/g, " ");
       reactSvg = reactSvg.replace(/\s*height="[^"]*"\s*/g, " ");
       
-      // Remove id attributes to avoid conflicts
-      reactSvg = reactSvg.replace(/\s*id="[^"]*"\s*/g, " ");
+      // Normalize SVG attributes to JSX equivalents
+      reactSvg = normalizeSvgAttributes(reactSvg);
       
       // Clean up multiple spaces
       reactSvg = reactSvg.replace(/\s+/g, " ");
@@ -144,7 +161,8 @@ export default SvgIcon;`;
   width: ${defaultWidth}px;
   height: ${defaultHeight}px;
   background-color: currentColor;
-  ${useCurrentColor ? "-webkit-mask-image: " + dataUri + ";\n  mask-image: " + dataUri + ";" : ""}
+  -webkit-mask-image: ${dataUri};
+  mask-image: ${dataUri};
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
