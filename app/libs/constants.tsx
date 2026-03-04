@@ -11,8 +11,6 @@ import TrelloIcon from '../components/theme/Icon/trelloIcon';
 import { detectBrowser } from './helpers';
 
 // import WordsToNumbers from '../components/developmentToolsComponent/wordsToNumbers';
-<<<<<<< HEAD
-=======
 import AmIUsingTor from '../components/developmentToolsComponent/amIUsingTor';
 import ApiKeyGenerator from '../components/developmentToolsComponent/apiKeyGenerator';
 import AsciiToDecimalConverter from '../components/developmentToolsComponent/asciiToDecimalConverter';
@@ -69,6 +67,7 @@ import IdnDecode from '../components/developmentToolsComponent/idnDecode';
 import IdnEncode from '../components/developmentToolsComponent/idnEncode';
 import InternetSpeedTest from '../components/developmentToolsComponent/internetSpeedTest';
 import IpToHexConverter from '../components/developmentToolsComponent/ipToHexConverter';
+import Ipv4SubnetCalculator from '../components/developmentToolsComponent/ipv4SubnetCalculator';
 import JavaScriptEscape from '../components/developmentToolsComponent/javascriptEscape';
 import JavascriptRegexTester from '../components/developmentToolsComponent/javascriptRegexTester';
 import JavaScriptTester from '../components/developmentToolsComponent/javascriptTester';
@@ -76,6 +75,7 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter';
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
@@ -144,7 +144,6 @@ import XmlPrettify from '../components/developmentToolsComponent/xmlPrettify';
 import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJsonConverter';
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
->>>>>>> parent of 82081c7 (feat: Add Advanced Password Strength Meter using zxcvbn)
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -216,8 +215,6 @@ export const integrationTools = [
 
 export { PATHS } from './paths';
 
-<<<<<<< HEAD
-=======
   Category46: [
     {
       url: '/rotation-calculator',
@@ -1202,6 +1199,13 @@ export { PATHS } from './paths';
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/ipv4-subnet-calculator',
+      title: 'IPv4 Subnet Calculator',
+      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1345,6 +1349,7 @@ export const PATHS = {
   KILOMETERS_TO_MILES: '/kilometers-to-miles',
   JWT_DECODER: '/jwt-decoder',
   IP_TO_HEX: '/ip-to-hex',
+  IPV4_SUBNET_CALCULATOR: '/ipv4-subnet-calculator',
   WORDS_TO_NUMBERS: '/words-to-numbers',
   NUMBERS_TO_WORDS: '/numbers-to-words',
   FABONACCI_CALCULATOR: '/fabonacci-calculator',
@@ -1920,6 +1925,10 @@ export const developmentToolsRoutes = [
     component: <IpToHexConverter />,
   },
   {
+    path: PATHS.IPV4_SUBNET_CALCULATOR,
+    component: <Ipv4SubnetCalculator />,
+  },
+  {
     path: PATHS.WORDS_TO_NUMBERS,
     component: <WordsToNumbers />,
   },
@@ -2080,7 +2089,6 @@ export const developmentToolsRoutes = [
     component: <HtmlToJade />,
   },
 ];
->>>>>>> parent of 82081c7 (feat: Add Advanced Password Strength Meter using zxcvbn)
 
 // lorem ipsum text
 export const lorem =
