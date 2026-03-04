@@ -103,6 +103,7 @@ import HtmlPrettify from '../components/developmentToolsComponent/htmlPrettify';
 import HtmlTester from '../components/developmentToolsComponent/htmlTester';
 import HtmlToBBCode from '../components/developmentToolsComponent/htmlToBBCode';
 import HtmlToJade from '../components/developmentToolsComponent/htmlToJade';
+import HtmlToJsxConverter from '../components/developmentToolsComponent/htmlToJsxConverter';
 import HtmlUnescape from '../components/developmentToolsComponent/htmlUnescape';
 import HtmlViewer from '../components/developmentToolsComponent/htmlViewer';
 import IdnDecode from '../components/developmentToolsComponent/idnDecode';
@@ -1601,12 +1602,13 @@ export const developmentToolsCategoryContent: any = {
     },
   ],
   Category176: [
-    {
-      url: '/ipv4-subnet-calculator',
-      title: 'IPv4 Subnet Calculator',
-      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
-    },
-  ],
+  {
+    url: '/html-to-jsx-converter',
+    title: 'HTML to JSX Converter',
+    description:
+      'Convert standard HTML to valid JSX — renames attributes (class → className, for → htmlFor), self-closes void tags, camelCases event handlers, and optionally converts inline styles to JavaScript objects.',
+  },
+],
 };
 
 export const PATHS = {
@@ -1663,6 +1665,7 @@ export const PATHS = {
   CMYK_TO_RGB_CONVERTER: '/cmyk-to-rgb-converter',
   CSS_TO_STYLUS: '/css-to-stylus',
   HTML_TO_JADE: '/html-to-jade',
+  HTML_TO_JSX_CONVERTER: '/html-to-jsx-converter',
   SQL_TO_JSON: '/sql-to-json',
   HTML_TO_BBCODE: '/html-to-bbcode',
   BCD_TO_DECIMAL_CONVERTER: '/bcd-to-decimal-converter',
@@ -2496,8 +2499,8 @@ export const developmentToolsRoutes = [
     component: <HtmlToJade />,
   },
   {
-    path: PATHS.CURL_TO_CODE_CONVERTER,
-    component: <CurlToCodeConverter />,
+  path: PATHS.HTML_TO_JSX_CONVERTER,
+  component: <HtmlToJsxConverter />,
   },
 ];
 
