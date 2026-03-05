@@ -15543,6 +15543,95 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`svg-converter`]: {
+    hero_section: {
+      title: 'SVG to React/CSS Utility',
+      description:
+        'Convert raw SVG code to optimized React components, CSS Data URIs, or CSS Masks for different development needs.',
+    },
+    development_tools_list: [
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'CSS Minify', url: PATHS.CSS_MINIFY },
+      { tool: 'Color Inveror', url: PATHS.COLOR_INVERTOR },
+      { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the SVG Converter?',
+      about_description: [
+        {
+          description:
+            'The SVG Converter transforms raw SVG code into optimized variants for different use cases: clean React components, CSS Data URIs, or CSS Masks.',
+        },
+        {
+          description:
+            'Automates SVG cleanup (removing metadata), handles viewBox preservation, and supports dynamic sizing and color theming options.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use',
+      guide_description: 'Follow these simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste SVG Code:',
+          step_description: 'Paste your SVG code or upload an SVG file.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Choose Output Format:',
+          step_description:
+            'Select React Component, CSS Data URI, or CSS Mask from the dropdown.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Configure Options:',
+          step_description:
+            'Set default width, height, and choose whether to use currentColor for fills.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy Output:',
+          step_description: 'Copy the optimized code and use it in your project.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Use Cases',
+      how_use_description: 'Popular reasons to use this tool:',
+      point: [
+        {
+          title: 'React Component Generation',
+          description:
+            'Automatically create reusable React icon components from SVG files with dynamic sizing and theming support.',
+        },
+        {
+          title: 'CSS Background Images',
+          description:
+            'Generate inline SVG Data URIs for use as CSS background images without external file requests.',
+        },
+        {
+          title: 'Icon Masking',
+          description:
+            'Convert SVGs to CSS mask properties for flexible icon styling and color customization.',
+        },
+        {
+          title: 'Metadata Cleanup',
+          description:
+            'Automatically remove unnecessary metadata, comments, and attributes from design tool exports.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'SVG to React/CSS Converter – Free Online Tool',
+      meta_description:
+        'Convert SVG to React components, CSS Data URIs, or CSS Masks. Remove metadata and optimize for web development.',
+      og_title: 'SVG Converter – Optimize SVGs for Development',
+      og_description:
+        'Transform SVG files into React components, CSS URIs, or masks with one click. Supports custom dimensions and color theming.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
   [`what-is-my-local-ip-address`]: {
     hero_section: {
       title: 'What Is My Local IP Address',
