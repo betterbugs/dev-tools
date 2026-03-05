@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import useCopyToClipboard from "../theme/hooks/useCopyToClipboard";
+import CopyButton from "../theme/CopyButton/CopyButton";
 
 type NumberType = "integer" | "decimal" | "percentage" | "currency";
 type Separator = "newline" | "comma" | "space" | "tab";
@@ -162,12 +164,10 @@ const RandomNumberGenerator = () => {
     setError("");
   };
 
-  const copyAll = async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
+  const { copied, copyToClipboard } = useCopyToClipboard();
+
+  const copyAll = () => {
+    if (output) copyToClipboard(output);
   };
 
   return (
@@ -176,104 +176,106 @@ const RandomNumberGenerator = () => {
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full bg-[#FFFFFF1A] rounded-2xl shadow-lg p-8">
             <div className="md:w-[850px] mx-auto">
-                             <div className="flex flex-col gap-6 md:my-5 mt-2">
-                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                   <div>
-                     <label className="block text-sm font-medium mb-2 text-white/80">
-                       Minimum Value
-                     </label>
-                     <input
-                       type="number"
-                       value={minValue}
-                       onChange={(e) => setMinValue(Number(e.target.value))}
-                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                       placeholder="1"
-                     />
-                   </div>
+              <div className="flex flex-col gap-6 md:my-5 mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-white/80">
+                      Minimum Value
+                    </label>
+                    <input
+                      type="number"
+                      value={minValue}
+                      onChange={(e) => setMinValue(Number(e.target.value))}
+                      className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      placeholder="1"
+                    />
+                  </div>
 
-                   <div>
-                     <label className="block text-sm font-medium mb-2 text-white/80">
-                       Maximum Value
-                     </label>
-                     <input
-                       type="number"
-                       value={maxValue}
-                       onChange={(e) => setMaxValue(Number(e.target.value))}
-                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                       placeholder="100"
-                     />
-                   </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-white/80">
+                      Maximum Value
+                    </label>
+                    <input
+                      type="number"
+                      value={maxValue}
+                      onChange={(e) => setMaxValue(Number(e.target.value))}
+                      className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      placeholder="100"
+                    />
+                  </div>
 
-                   <div>
-                     <label className="block text-sm font-medium mb-2 text-white/80">
-                       Number Count
-                     </label>
-                     <input
-                       type="number"
-                       value={count}
-                       onChange={(e) => setCount(Number(e.target.value))}
-                       min="1"
-                       max="10000"
-                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                       placeholder="10"
-                     />
-                   </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-white/80">
+                      Number Count
+                    </label>
+                    <input
+                      type="number"
+                      value={count}
+                      onChange={(e) => setCount(Number(e.target.value))}
+                      min="1"
+                      max="10000"
+                      className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      placeholder="10"
+                    />
+                  </div>
 
-                   <div>
-                     <label className="block text-sm font-medium mb-2 text-white/80">
-                       Number Type
-                     </label>
-                     <select
-                       value={numberType}
-                       onChange={(e) =>
-                         setNumberType(e.target.value as NumberType)
-                       }
-                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                     >
-                       <option value="integer">Integer</option>
-                       <option value="decimal">Decimal</option>
-                       <option value="percentage">Percentage</option>
-                       <option value="currency">Currency</option>
-                     </select>
-                   </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-white/80">
+                      Number Type
+                    </label>
+                    <select
+                      value={numberType}
+                      onChange={(e) =>
+                        setNumberType(e.target.value as NumberType)
+                      }
+                      className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      title="Number Type"
+                    >
+                      <option value="integer">Integer</option>
+                      <option value="decimal">Decimal</option>
+                      <option value="percentage">Percentage</option>
+                      <option value="currency">Currency</option>
+                    </select>
+                  </div>
 
-                   <div>
-                     <label className="block text-sm font-medium mb-2 text-white/80">
-                       Separator
-                     </label>
-                     <select
-                       value={separator}
-                       onChange={(e) =>
-                         setSeparator(e.target.value as Separator)
-                       }
-                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                     >
-                       <option value="newline">New line</option>
-                       <option value="comma">Comma</option>
-                       <option value="space">Space</option>
-                       <option value="tab">Tab</option>
-                     </select>
-                   </div>
-                 </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2 text-white/80">
+                      Separator
+                    </label>
+                    <select
+                      value={separator}
+                      onChange={(e) =>
+                        setSeparator(e.target.value as Separator)
+                      }
+                      className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      title="Separator"
+                    >
+                      <option value="newline">New line</option>
+                      <option value="comma">Comma</option>
+                      <option value="space">Space</option>
+                      <option value="tab">Tab</option>
+                    </select>
+                  </div>
+                </div>
 
-                 {numberType === "decimal" && (
-                   <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                     <div>
-                       <label className="block text-sm font-medium mb-2 text-white/80">
-                         Decimal Places
-                       </label>
-                       <input
-                         type="number"
-                         value={decimalPlaces}
-                         onChange={(e) => setDecimalPlaces(Number(e.target.value))}
-                         min="0"
-                         max="10"
-                         className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
-                         placeholder="2"
-                       />
-                     </div>
-                   </div>
-                 )}
+                {numberType === "decimal" && (
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-white/80">
+                        Decimal Places
+                      </label>
+                      <input
+                        type="number"
+                        value={decimalPlaces}
+                        onChange={(e) => setDecimalPlaces(Number(e.target.value))}
+                        min="0"
+                        max="10"
+                        className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                        placeholder="2"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <label className="inline-flex items-center text-white/80">
@@ -339,22 +341,11 @@ const RandomNumberGenerator = () => {
                       className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
                     ></textarea>
                     {output && (
-                      <button
-                        type="button"
+                      <CopyButton
+                        copied={copied}
                         onClick={copyAll}
-                        title="Copy"
-                        className="absolute right-3 top-3 h-8 w-8 flex items-center justify-center rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-5 w-5 text-white"
-                        >
-                          <path d="M16 1a3 3 0 013 3v9a3 3 0 01-3 3H8a3 3 0 01-3-3V4a3 3 0 013-3h8zm-8 2a1 1 0 00-1 1v9a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H8z" />
-                          <path d="M6 18a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 112 0v1a4 4 0 01-4 4H8a4 4 0 01-4-4v-1a1 1 0 112 0v1z" />
-                        </svg>
-                      </button>
+                        className="absolute right-3 top-3"
+                      />
                     )}
                   </div>
                 </div>

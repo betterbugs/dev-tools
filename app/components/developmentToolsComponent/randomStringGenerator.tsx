@@ -1,6 +1,8 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import useCopyToClipboard from "../theme/hooks/useCopyToClipboard";
+import CopyButton from "../theme/CopyButton/CopyButton";
 
 type Separator = "newline" | "comma" | "space";
 
@@ -53,14 +55,14 @@ const RandomStringGenerator = () => {
 
   const clearAll = () => setOutput("");
 
+  const { copied, copyToClipboard } = useCopyToClipboard();
+
   const copyAll = async () => {
     if (!output) return;
     const items = output.split(/\r?\n/).filter(Boolean);
     const sep = separator === "comma" ? ", " : separator === "space" ? " " : "\n";
     const text = items.join(sep);
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (_) {}
+    copyToClipboard(text);
   };
 
   return (
@@ -80,6 +82,7 @@ const RandomStringGenerator = () => {
                       value={length}
                       onChange={(e) => setLength(Math.min(256, Math.max(1, Number(e.target.value))))}
                       className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 rounded-xl`}
+                      title="Length"
                     />
                   </div>
                   <div>
@@ -91,6 +94,7 @@ const RandomStringGenerator = () => {
                       value={count}
                       onChange={(e) => setCount(Math.min(1000, Math.max(1, Number(e.target.value))))}
                       className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 rounded-xl`}
+                      title="Count"
                     />
                   </div>
                   <div>
@@ -99,79 +103,76 @@ const RandomStringGenerator = () => {
                       value={separator}
                       onChange={(e) => setSeparator(e.target.value as Separator)}
                       className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 rounded-xl`}
-                    >
+                      title="Copy separator"
                       <option value="newline">New line</option>
-                      <option value="comma">Comma</option>
-                      <option value="space">Space</option>
-                    </select>
-                  </div>
+                    <option value="comma">Comma</option>
+                    <option value="space">Space</option>
+                  </select>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <label className="inline-flex items-center text-white/80">
-                    <input type="checkbox" checked={useLower} onChange={(e) => setUseLower(e.target.checked)} className="peer hidden" />
-                    <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
-                    <span className="ml-2">Lowercase</span>
-                  </label>
-                  <label className="inline-flex items-center text-white/80">
-                    <input type="checkbox" checked={useUpper} onChange={(e) => setUseUpper(e.target.checked)} className="peer hidden" />
-                    <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
-                    <span className="ml-2">Uppercase</span>
-                  </label>
-                  <label className="inline-flex items-center text-white/80">
-                    <input type="checkbox" checked={useNumbers} onChange={(e) => setUseNumbers(e.target.checked)} className="peer hidden" />
-                    <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
-                    <span className="ml-2">Numbers</span>
-                  </label>
-                  <label className="inline-flex items-center text-white/80">
-                    <input type="checkbox" checked={useSymbols} onChange={(e) => setUseSymbols(e.target.checked)} className="peer hidden" />
-                    <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
-                    <span className="ml-2">Symbols</span>
-                  </label>
-                </div>
-
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <label className="inline-flex items-center text-white/80">
-                  <input type="checkbox" checked={avoidAmbiguous} onChange={(e) => setAvoidAmbiguous(e.target.checked)} className="peer hidden" />
+                  <input type="checkbox" checked={useLower} onChange={(e) => setUseLower(e.target.checked)} className="peer hidden" />
                   <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
-                  <span className="ml-2">Avoid ambiguous characters (0/O, 1/l/I)</span>
+                  <span className="ml-2">Lowercase</span>
                 </label>
+                <label className="inline-flex items-center text-white/80">
+                  <input type="checkbox" checked={useUpper} onChange={(e) => setUseUpper(e.target.checked)} className="peer hidden" />
+                  <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
+                  <span className="ml-2">Uppercase</span>
+                </label>
+                <label className="inline-flex items-center text-white/80">
+                  <input type="checkbox" checked={useNumbers} onChange={(e) => setUseNumbers(e.target.checked)} className="peer hidden" />
+                  <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
+                  <span className="ml-2">Numbers</span>
+                </label>
+                <label className="inline-flex items-center text-white/80">
+                  <input type="checkbox" checked={useSymbols} onChange={(e) => setUseSymbols(e.target.checked)} className="peer hidden" />
+                  <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
+                  <span className="ml-2">Symbols</span>
+                </label>
+              </div>
 
-                <div className="flex items-center gap-4">
-                  <button type="button" onClick={generate} className={`${DevelopmentToolsStyles.converterButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}>
-                    Generate
-                  </button>
-                  <button type="button" onClick={clearAll} className={`${DevelopmentToolsStyles.clearButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}>
-                    Clear
-                  </button>
-                </div>
+              <label className="inline-flex items-center text-white/80">
+                <input type="checkbox" checked={avoidAmbiguous} onChange={(e) => setAvoidAmbiguous(e.target.checked)} className="peer hidden" />
+                <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative"><span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">✔</span></div>
+                <span className="ml-2">Avoid ambiguous characters (0/O, 1/l/I)</span>
+              </label>
 
-                <div className="w-full">
-                  <h3 className="text-lg font-medium mb-2">Strings</h3>
-                  <div className="relative">
-                    <textarea
-                      readOnly
-                      value={output}
-                      placeholder="Generated strings will appear here..."
-                      className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
-                    ></textarea>
-                    {output && (
-                      <button
-                        type="button"
-                        onClick={copyAll}
-                        title="Copy"
-                        className="absolute right-3 top-3 h-8 w-8 flex items-center justify-center rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-white"><path d="M16 1a3 3 0 013 3v9a3 3 0 01-3 3H8a3 3 0 01-3-3V4a3 3 0 013-3h8zm-8 2a1 1 0 00-1 1v9a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H8z"/><path d="M6 18a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 112 0v1a4 4 0 01-4 4H8a4 4 0 01-4-4v-1a1 1 0 112 0v1z"/></svg>
-                      </button>
-                    )}
-                  </div>
+              <div className="flex items-center gap-4">
+                <button type="button" onClick={generate} className={`${DevelopmentToolsStyles.converterButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}>
+                  Generate
+                </button>
+                <button type="button" onClick={clearAll} className={`${DevelopmentToolsStyles.clearButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}>
+                  Clear
+                </button>
+              </div>
+
+              <div className="w-full">
+                <h3 className="text-lg font-medium mb-2">Strings</h3>
+                <div className="relative">
+                  <textarea
+                    readOnly
+                    value={output}
+                    placeholder="Generated strings will appear here..."
+                    className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
+                  ></textarea>
+                  {output && (
+                    <CopyButton
+                      copied={copied}
+                      onClick={copyAll}
+                      className="absolute right-3 top-3"
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    </section >
   );
 };
 

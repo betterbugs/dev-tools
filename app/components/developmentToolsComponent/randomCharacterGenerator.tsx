@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import useCopyToClipboard from "../theme/hooks/useCopyToClipboard";
+import CopyButton from "../theme/CopyButton/CopyButton";
 
 type CharacterType = "letters" | "numbers" | "symbols" | "mixed" | "custom";
 type CaseType = "lowercase" | "uppercase" | "mixed" | "title";
@@ -99,12 +101,10 @@ const RandomCharacterGenerator = () => {
     setError("");
   };
 
-  const copyAll = async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
+  const { copied, copyToClipboard } = useCopyToClipboard();
+
+  const copyAll = () => {
+    if (output) copyToClipboard(output);
   };
 
   return (
@@ -140,6 +140,7 @@ const RandomCharacterGenerator = () => {
                           setCharacterType(e.target.value as CharacterType)
                         }
                         className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                        title="Character Type"
                       >
                         <option value="mixed">
                           Letters + Numbers + Symbols
@@ -161,6 +162,7 @@ const RandomCharacterGenerator = () => {
                           setCaseType(e.target.value as CaseType)
                         }
                         className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                        title="Case Style"
                       >
                         <option value="mixed">Mixed Case</option>
                         <option value="lowercase">Lowercase</option>

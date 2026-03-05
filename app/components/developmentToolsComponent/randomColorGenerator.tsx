@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import useCopyToClipboard from "../theme/hooks/useCopyToClipboard";
+import CopyButton from "../theme/CopyButton/CopyButton";
 
 type ColorFormat = "hex" | "rgb" | "hsl" | "all";
 type ColorType = "any" | "bright" | "pastel" | "dark" | "monochrome";
@@ -106,7 +108,7 @@ const RandomColorGenerator = () => {
     if (max !== min) {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      
+
       switch (max) {
         case r: h = (g - b) / d + (g < b ? 6 : 0); break;
         case g: h = (b - r) / d + 2; break;
@@ -155,7 +157,7 @@ const RandomColorGenerator = () => {
 
   const generate = () => {
     setError("");
-    
+
     if (count <= 0 || count > 1000) {
       setError("Count must be between 1 and 1,000");
       return;
@@ -202,12 +204,10 @@ const RandomColorGenerator = () => {
     setError("");
   };
 
-  const copyAll = async () => {
-    try {
-      await navigator.clipboard.writeText(output);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
+  const { copied, copyToClipboard } = useCopyToClipboard();
+
+  const copyAll = () => {
+    if (output) copyToClipboard(output);
   };
 
   return (
@@ -241,6 +241,7 @@ const RandomColorGenerator = () => {
                       value={colorFormat}
                       onChange={(e) => setColorFormat(e.target.value as ColorFormat)}
                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      title="Color Format"
                     >
                       <option value="hex">HEX (#FF0000)</option>
                       <option value="rgb">RGB (255, 0, 0)</option>
@@ -257,6 +258,7 @@ const RandomColorGenerator = () => {
                       value={colorType}
                       onChange={(e) => setColorType(e.target.value as ColorType)}
                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      title="Color Type"
                     >
                       <option value="any">Any Color</option>
                       <option value="bright">Bright Colors</option>
@@ -266,7 +268,7 @@ const RandomColorGenerator = () => {
                     </select>
                   </div>
 
-    <div>
+                  <div>
                     <label className="block text-sm font-medium mb-2 text-white/80">
                       Separator
                     </label>
@@ -274,6 +276,7 @@ const RandomColorGenerator = () => {
                       value={separator}
                       onChange={(e) => setSeparator(e.target.value as Separator)}
                       className="w-full bg-black border border-[#222222] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary"
+                      title="Separator"
                     >
                       <option value="newline">New line</option>
                       <option value="comma">Comma</option>
@@ -345,22 +348,11 @@ const RandomColorGenerator = () => {
                       className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
                     ></textarea>
                     {output && (
-                      <button
-                        type="button"
+                      <CopyButton
+                        copied={copied}
                         onClick={copyAll}
-                        title="Copy"
-                        className="absolute right-3 top-3 h-8 w-8 flex items-center justify-center rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-5 w-5 text-white"
-                        >
-                          <path d="M16 1a3 3 0 013 3v9a3 3 0 01-3 3H8a3 3 0 01-3-3V4a3 3 0 013-3h8zm-8 2a1 1 0 00-1 1v9a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H8z" />
-                          <path d="M6 18a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 112 0v1a4 4 0 01-4 4H8a4 4 0 01-4-4v-1a1 1 0 112 0v1z" />
-                        </svg>
-                      </button>
+                        className="absolute right-3 top-3"
+                      />
                     )}
                   </div>
                 </div>
@@ -368,7 +360,7 @@ const RandomColorGenerator = () => {
             </div>
           </div>
         </div>
-    </div>
+      </div>
     </section>
   );
 };

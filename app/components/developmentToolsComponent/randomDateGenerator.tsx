@@ -1,6 +1,8 @@
 "use client";
 import React, { useMemo, useState, useRef } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import useCopyToClipboard from "../theme/hooks/useCopyToClipboard";
+import CopyButton from "../theme/CopyButton/CopyButton";
 
 type OutputFormat = "iso" | "locale" | "unix";
 
@@ -76,11 +78,11 @@ const RandomDateGenerator = () => {
     setOutput("");
   };
 
+  const { copied, copyToClipboard } = useCopyToClipboard();
+
   const copyAll = async () => {
     if (!output) return;
-    try {
-      await navigator.clipboard.writeText(output);
-    } catch (_) {}
+    copyToClipboard(output);
   };
 
   return (
@@ -100,6 +102,7 @@ const RandomDateGenerator = () => {
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
                         className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 pr-12 rounded-xl`}
+                        title="Start date"
                       />
                       <button
                         type="button"
@@ -123,6 +126,7 @@ const RandomDateGenerator = () => {
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
                         className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 pr-12 rounded-xl`}
+                        title="End date"
                       />
                       <button
                         type="button"
@@ -147,6 +151,7 @@ const RandomDateGenerator = () => {
                         setCount(Math.max(1, Number(e.target.value)))
                       }
                       className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 rounded-xl`}
+                      title="Count"
                     />
                   </div>
 
@@ -158,85 +163,74 @@ const RandomDateGenerator = () => {
                         setFormat(e.target.value as OutputFormat)
                       }
                       className={`${DevelopmentToolsStyles.scrollbar} w-full bg-black !border !border-[#222222] p-4 rounded-xl`}
-                    >
+                      title="Output format"
                       <option value="iso">ISO 8601</option>
-                      <option value="locale">Locale</option>
-                      <option value="unix">Unix (seconds)</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm mb-2">Include time</label>
-                    <div className="flex items-center h-[54px]">
-                      <label className="inline-flex items-center text-white/80">
-                        <input
-                          type="checkbox"
-                          checked={includeTime}
-                          onChange={(e) => setIncludeTime(e.target.checked)}
-                          className="peer hidden"
-                        />
-                        <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative">
-                          <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">
-                            ✔
-                          </span>
-                        </div>
-                        <span className="ml-2">Enable</span>
-                      </label>
-                    </div>
+                    <option value="locale">Locale</option>
+                    <option value="unix">Unix (seconds)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm mb-2">Include time</label>
+                  <div className="flex items-center h-[54px]">
+                    <label className="inline-flex items-center text-white/80">
+                      <input
+                        type="checkbox"
+                        checked={includeTime}
+                        onChange={(e) => setIncludeTime(e.target.checked)}
+                        className="peer hidden"
+                      />
+                      <div className="h-5 w-5 rounded border-2 border-gray-300 peer-checked:bg-primary peer-checked:border-white relative">
+                        <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">
+                          ✔
+                        </span>
+                      </div>
+                      <span className="ml-2">Enable</span>
+                    </label>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-4">
-                  <button
-                    type="button"
-                    onClick={generate}
-                    className={`${DevelopmentToolsStyles.converterButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}
-                  >
-                    Generate
-                  </button>
-                  <button
-                    type="button"
-                    onClick={clearAll}
-                    className={`${DevelopmentToolsStyles.clearButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}
-                  >
-                    Clear
-                  </button>
-                </div>
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={generate}
+                  className={`${DevelopmentToolsStyles.converterButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}
+                >
+                  Generate
+                </button>
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  className={`${DevelopmentToolsStyles.clearButton} text-black font-bold py-2 px-4 rounded-lg text-sm`}
+                >
+                  Clear
+                </button>
+              </div>
 
-                <div className="w-full">
-                  <h3 className="text-lg font-medium mb-2">Output</h3>
-                  <div className="relative">
-                    <textarea
-                      readOnly
-                      value={output}
-                      placeholder="Generated dates will appear here..."
-                      className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
-                    ></textarea>
-                    {output && (
-                      <button
-                        type="button"
-                        onClick={copyAll}
-                        title="Copy"
-                        className="absolute right-3 top-3 h-8 w-8 flex items-center justify-center rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-5 w-5 text-white"
-                        >
-                          <path d="M16 1a3 3 0 013 3v9a3 3 0 01-3 3H8a3 3 0 01-3-3V4a3 3 0 013-3h8zm-8 2a1 1 0 00-1 1v9a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H8z" />
-                          <path d="M6 18a2 2 0 002 2h8a2 2 0 002-2v-1a1 1 0 112 0v1a4 4 0 01-4 4H8a4 4 0 01-4-4v-1a1 1 0 112 0v1z" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
+              <div className="w-full">
+                <h3 className="text-lg font-medium mb-2">Output</h3>
+                <div className="relative">
+                  <textarea
+                    readOnly
+                    value={output}
+                    placeholder="Generated dates will appear here..."
+                    className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[180px] bg-black !border !border-[#222222] p-5 pr-14 rounded-xl`}
+                  ></textarea>
+                  {output && (
+                    <CopyButton
+                      copied={copied}
+                      onClick={copyAll}
+                      className="absolute right-3 top-3"
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    </section >
   );
 };
 
