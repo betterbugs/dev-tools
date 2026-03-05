@@ -132,23 +132,33 @@ const Page = () => {
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favoriteTools");
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
+    try {
+      const storedFavorites = localStorage.getItem("favoriteTools");
+      if (storedFavorites) {
+        setFavorites(JSON.parse(storedFavorites));
+      }
+    } catch (error) {
+      console.error("Failed to parse favorites from localStorage:", error);
+      setFavorites([]);
     }
   }, []);
 
-  const toggleFavorite = (e: React.MouseEvent, title: string) => {
+  const toggleFavorite = (e: React.MouseEvent, url: string) => {
     e.preventDefault();
     e.stopPropagation();
     let updatedFavorites;
-    if (favorites.includes(title)) {
-      updatedFavorites = favorites.filter((fav) => fav !== title);
+    if (favorites.includes(url)) {
+      updatedFavorites = favorites.filter((fav) => fav !== url);
     } else {
-      updatedFavorites = [...favorites, title];
+      updatedFavorites = [...favorites, url];
     }
     setFavorites(updatedFavorites);
-    localStorage.setItem("favoriteTools", JSON.stringify(updatedFavorites));
+    
+    try {
+      localStorage.setItem("favoriteTools", JSON.stringify(updatedFavorites));
+    } catch (error) {
+      console.error("Failed to save favorites to localStorage:", error);
+    }
   };
 
   const handleClearSearch = () => {
@@ -184,11 +194,11 @@ const Page = () => {
     .filter((item) => (selectedBasis === "All" ? true : item.__basis === selectedBasis));
 
   if (showFavoritesOnly) {
-    filteredItems = filteredItems.filter((item) => favorites.includes(item.title));
+    filteredItems = filteredItems.filter((item) => favorites.includes(item.url));
   } else {
     filteredItems.sort((a, b) => {
-      const aFav = favorites.includes(a.title);
-      const bFav = favorites.includes(b.title);
+      const aFav = favorites.includes(a.url);
+      const bFav = favorites.includes(b.url);
       if (aFav && !bFav) return -1;
       if (!aFav && bFav) return 1;
       return 0;
@@ -409,16 +419,17 @@ const Page = () => {
                     <div className="flex justify-between items-start gap-2">
                       <h3 className="text-lg font-semibold pr-6">{item?.title}</h3>
                       <button 
-                        onClick={(e) => toggleFavorite(e, item?.title)}
+                        onClick={(e) => toggleFavorite(e, item?.url)}
                         className="absolute right-4 top-4 text-white/30 hover:text-yellow-400 transition-colors z-10"
-                        title={favorites.includes(item?.title) ? "Remove from favorites" : "Add to favorites"}
+                        title={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
+                        aria-label={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
                       >
                         <svg 
                           width="20" 
                           height="20" 
                           viewBox="0 0 24 24" 
-                          fill={favorites.includes(item?.title) ? "#facc15" : "none"} 
-                          stroke={favorites.includes(item?.title) ? "#facc15" : "currentColor"} 
+                          fill={favorites.includes(item?.url) ? "#facc15" : "none"} 
+                          stroke={favorites.includes(item?.url) ? "#facc15" : "currentColor"} 
                           strokeWidth="2" 
                           strokeLinecap="round" 
                           strokeLinejoin="round"
