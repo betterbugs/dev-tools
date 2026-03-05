@@ -153,6 +153,7 @@ import SqlFormatterAndBeautifier from '../components/developmentToolsComponent/s
 import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
 import SqlToJson from '../components/developmentToolsComponent/sqlToJson';
+import SvgConverter from '../components/developmentToolsComponent/svgConverter';
 import StringDiffrenceChecker from '../components/developmentToolsComponent/stringDiffrenceChecker';
 import StripHTML from '../components/developmentToolsComponent/stripHTML';
 import TextCompare from '../components/developmentToolsComponent/textCompare';
@@ -1607,6 +1608,14 @@ export const developmentToolsCategoryContent: any = {
       description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
     },
   ],
+  Category177: [
+    {
+      url: '/svg-converter',
+      title: 'SVG to React/CSS Utility',
+      description:
+        'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1765,6 +1774,7 @@ export const PATHS = {
   HTML_UNESCAPE: '/html-unescape',
   JAVASCRIPT_REGEX_TESTER: '/javascript-regex-tester',
   STRIP_HTML: '/strip-html',
+  SVG_CONVERTER: '/svg-converter',
   WHAT_IS_MY_LOCAL_IP_ADDRESS: '/what-is-my-local-ip-address',
   JAVASCRIPT_TESTER: '/javascript-tester',
   WHAT_VERSION_OF_JAVA: '/what-version-of-java-do-i-have',
@@ -2490,6 +2500,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.SQL_TO_JSON,
     component: <SqlToJson />,
+  },
+  {
+    path: PATHS.SVG_CONVERTER,
+    component: <SvgConverter />,
   },
   {
     path: PATHS.HTML_TO_JADE,

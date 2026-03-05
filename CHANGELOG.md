@@ -1,3 +1,15 @@
+# [1.4.0-develop.5](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.4...v1.4.0-develop.5) (2026-03-05)
+
+
+### Bug Fixes
+
+* **release:** update GITHUB_TOKEN to use RELEASE_TOKEN for semantic release ([be3a012](https://github.com/betterbugs/dev-tools/commit/be3a012c6d7df84ab5826ce03268ec8aad402c15))
+
+
+### Features
+
+* **tools:** add SVG to React/CSS utility ([218ccad](https://github.com/betterbugs/dev-tools/commit/218ccad3c5eb7121a9bd7319147520eb39713695)), closes [#50](https://github.com/betterbugs/dev-tools/issues/50)
+
 # [1.4.0-develop.4](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.3...v1.4.0-develop.4) (2026-03-03)
 
 
