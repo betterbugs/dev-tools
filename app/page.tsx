@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BBIcon from "./components/theme/Icon/bbIcon";
 import DevelopmentToolsStyles from "./developmentToolsStyles.module.scss";
 import { InputField } from "./components/theme/form/formFeildComponent";
@@ -15,6 +15,39 @@ import CodeForgeIcon from "./components/theme/Icon/codeForgeIcon";
 import ConvertXIcon from "./components/theme/Icon/convertXIcon";
 import GenieIcon from "./components/theme/Icon/genieIcon";
 import DevUtilsIcon from "./components/theme/Icon/devUtilsIcon";
+
+const escapeRegex = (str: string) =>
+  str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const HighlightText = ({
+  text,
+  searchTerm,
+  className,
+}: {
+  text: string;
+  searchTerm: string;
+  className?: string;
+}) => {
+  if (!searchTerm?.trim()) return <span className={className}>{text}</span>;
+  const regex = new RegExp(`(${escapeRegex(searchTerm)})`, "gi");
+  const parts = text.split(regex);
+  return (
+    <span className={className}>
+      {parts.map((part, i) =>
+        part.toLowerCase() === searchTerm.toLowerCase() ? (
+          <mark
+            key={i}
+            className={DevelopmentToolsStyles.searchHighlight}
+          >
+            {part}
+          </mark>
+        ) : (
+          <React.Fragment key={i}>{part}</React.Fragment>
+        )
+      )}
+    </span>
+  );
+};
 
 const CATEGORY_GROUPS = [
   "Text Lab",
@@ -99,7 +132,7 @@ const classifyBasis = (title: string, url: string): BasisType => {
     return "Converters";
 
   if (t.includes("generator") || t.includes("random")) return "Generators";
-  
+
   if (t.includes("color") || t.includes("image")) return "Color/Image";
 
   if (
@@ -130,6 +163,7 @@ const Page = () => {
   const [selectedBasis, setSelectedBasis] = useState<BasisType>("All");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
@@ -150,6 +184,27 @@ const Page = () => {
       console.error("Failed to parse favorites from localStorage:", error);
       setFavorites([]);
     }
+  }, []);
+
+  // Keyboard shortcut: Ctrl/Cmd + K to focus search
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        const input = document.getElementById("txtSearch") as HTMLInputElement;
+        if (input) {
+          input.focus();
+          input.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+      // Escape to blur/clear search
+      if (e.key === "Escape" && document.activeElement?.id === "txtSearch") {
+        e.preventDefault();
+        (document.activeElement as HTMLElement)?.blur();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, []);
 
   const toggleFavorite = (e: React.MouseEvent, url: string) => {
@@ -192,13 +247,15 @@ const Page = () => {
   }));
 
   let filteredItems = itemsWithMeta
-    .filter((item) =>
-      searchTerm
-        ? (item?.title || "")
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase())
-        : true
-    )
+    .filter((item) => {
+      if (!searchTerm) return true;
+      const t = searchTerm.toLowerCase();
+      return (
+        (item?.title || "").toLowerCase().includes(t) ||
+        (item?.description || "").toLowerCase().includes(t) ||
+        (item?.url || "").toLowerCase().includes(t)
+      );
+    })
     .filter((item) => (selectedCategory ? item.__group === selectedCategory : true))
     .filter((item) => (selectedBasis === "All" ? true : item.__basis === selectedBasis));
 
@@ -271,7 +328,8 @@ const Page = () => {
               />
             </div>
           ) : (
-            <div className="absolute lg:right-[210px] lg:top-4 right-11 top-4 2xl:right-[13rem] 2xl:top-4">
+            <div className="absolute lg:right-[210px] lg:top-4 right-11 top-4 2xl:right-[13rem] 2xl:top-4 flex items-center gap-2">
+              <span className={DevelopmentToolsStyles.keyboardHint}>Ctrl K</span>
               <SearchIcon className="text-white" />
             </div>
           )}
@@ -330,11 +388,10 @@ const Page = () => {
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory((prev) => (prev === cat ? null : cat))}
-                    className={`w-full text-left px-3 py-2 rounded-lg border transition ${
-                      selectedCategory === cat
-                        ? "bg-primary text-black font-bold border-primary"
-                        : "bg-black/40 text-white border-[#222] hover:bg-black/50"
-                    }`}
+                    className={`w-full text-left px-3 py-2 rounded-lg border transition ${selectedCategory === cat
+                      ? "bg-primary text-black font-bold border-primary"
+                      : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                      }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm flex items-center gap-2">
@@ -362,12 +419,11 @@ const Page = () => {
                   <button
                     key={b}
                     onClick={() => setSelectedBasis(b)}
-                    className={`px-2.5 py-1.5 rounded-full text-xs border transition ${
-                      selectedBasis === b
-                        ? "bg-primary text-black font-bold border-primary"
-                        : "bg-black/40 text-white border-[#222] hover:bg-black/50"
-                    }`}
-                    aria-pressed={selectedBasis === b}
+                    className={`px-2.5 py-1.5 rounded-full text-xs border transition ${selectedBasis === b
+                      ? "bg-primary text-black font-bold border-primary"
+                      : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                      }`}
+                    aria-pressed={selectedBasis === b ? "true" : "false"}
                   >
                     <span className="flex items-center gap-1.5">
                       <span>{b}</span>
@@ -426,7 +482,9 @@ const Page = () => {
                     className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px] relative`}
                   >
                     <div className="flex justify-between items-start gap-2">
-                      <h3 className="text-lg font-semibold pr-6">{item?.title}</h3>
+                      <h3 className="text-lg font-semibold pr-6">
+                        <HighlightText text={item?.title || ""} searchTerm={searchTerm} />
+                      </h3>
                       <button 
                         onClick={(e) => toggleFavorite(e, item?.url)}
                         className="absolute right-4 top-4 text-white/30 hover:text-yellow-400 transition-colors z-10"
@@ -455,23 +513,9 @@ const Page = () => {
                             ? description.slice(0, 50) + "..."
                             : description;
 
-                        return truncated
-                          .split("BetterBugs.io")
-                          .map((part: any, i: any, arr: any) => (
-                            <React.Fragment key={i}>
-                              {part}
-                              {i !== arr.length - 1 && (
-                                <a
-                                  href="https://BetterBugs.io"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-primary group-hover:underline group-hover:text-secondary group-hover:font-semibold"
-                                >
-                                  BetterBugs.io
-                                </a>
-                              )}
-                            </React.Fragment>
-                          ));
+                        return (
+                          <HighlightText text={truncated} searchTerm={searchTerm} />
+                        );
                       })()}
                     </p>
                     <div className="mt-3 text-xs text-white/50">{item?.__group} • {item?.__basis}</div>

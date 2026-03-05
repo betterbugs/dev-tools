@@ -1,4 +1,5 @@
 @import "./styles/variables.scss";
+
 // serach box css
 .searchInput {
   display: flex;
@@ -20,6 +21,7 @@
 
     &:focus {
       opacity: 1;
+
       &::placeholder {
         opacity: 0%;
       }
@@ -30,6 +32,7 @@
       font-size: 16px;
       transition: all 0.3s linear;
     }
+
     @media (max-width: 600px) {
       width: 370px;
       opacity: 1;
@@ -37,6 +40,7 @@
       padding: 2px 20px;
       padding-right: 95px;
     }
+
     @media (min-width: 768px) {
       height: 50px;
     }
@@ -60,17 +64,20 @@
 // content card hover effect
 .contentCardHoverEffect {
   border-left: 2px solid #11e498;
-  div > p > svg {
+
+  div>p>svg {
     color: #11e498;
   }
+
   &:hover {
-    div > p > svg {
+    div>p>svg {
       color: black;
     }
+
     background: linear-gradient(92.9deg, #00d1ff 23.92%, #16fca9 100.19%);
-    transform: scale(0.4);
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
+    transform: scale(1.1);
     z-index: 0;
     transition: all 0.3s ease-in-out;
     color: black;
@@ -84,9 +91,11 @@
 .converterButton {
   background: $primary;
 }
+
 .clearButton {
   background: rgb(255, 79, 108);
 }
+
 .copyButton {
   background: #00d0ff9a;
 }
@@ -94,8 +103,10 @@
 /* Webkit custom scrollbar styles */
 .scrollbar {
   overflow: auto;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05); /* Firefox */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05);
+  /* Firefox */
 }
 
 /* Scrollbar track (background of the scrollbar) */
@@ -127,8 +138,10 @@
 /* Modern scrollbar for code blocks */
 .modernScrollbar {
   overflow: auto;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rgba(17, 228, 152, 0.4) rgba(255, 255, 255, 0.05); /* Firefox - using primary color */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: rgba(17, 228, 152, 0.4) rgba(255, 255, 255, 0.05);
+  /* Firefox - using primary color */
 }
 
 .modernScrollbar::-webkit-scrollbar {
@@ -151,4 +164,42 @@
 .modernScrollbar::-webkit-scrollbar-track {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
+}
+
+// Search highlight for matching text
+.searchHighlight {
+  background: rgba(0, 218, 146, 0.3);
+  color: #00da92;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+// On card hover, adjust highlight for dark card background
+.contentCardHoverEffect:hover .searchHighlight {
+  background: rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+// Keyboard shortcut hint badge
+.keyboardHint {
+  display: none;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-family: monospace;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
 }
