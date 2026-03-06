@@ -7,6 +7,7 @@ interface QueryParam {
   key: string;
   value: string;
   active: boolean;
+  encoded: boolean;
 }
 
 const UrlParser = () => {
@@ -14,6 +15,7 @@ const UrlParser = () => {
   const [parsedUrl, setParsedUrl] = useState<URL | null>(null);
   const [queryParams, setQueryParams] = useState<QueryParam[]>([]);
   const [error, setError] = useState<string>("");
+  const isInternalUpdate = React.useRef(false);
 
 
   // Function to update the input and state from a URL object
@@ -21,13 +23,13 @@ const UrlParser = () => {
     setParsedUrl(url);
     const params: QueryParam[] = [];
     url.searchParams.forEach((value, key) => {
-        // We use random id for keys to allow duplicate keys in React list if necessary, 
-        // though URLSearchParams handles them.
+        // We use random id but we only run this on external updates
         params.push({
           id: Math.random().toString(36).substr(2, 9),
           key,
           value,
-          active: true
+          active: true,
+          encoded: true
         });
     });
     setQueryParams(params);
@@ -35,6 +37,11 @@ const UrlParser = () => {
 
   // Initial parse on input change
   useEffect(() => {
+    if (isInternalUpdate.current) {
+      isInternalUpdate.current = false;
+      return;
+    }
+
     if (!urlInput.trim()) {
       setParsedUrl(null);
       setQueryParams([]);
@@ -67,28 +74,20 @@ const UrlParser = () => {
 
     try {
         const newUrl = new URL(parsedUrl.toString());
-        
-        // Rebuild search params
-        // We create a new URLSearchParams object
-        const newSearchParams = new URLSearchParams();
+        const queryParts: string[] = [];
         
         newParams.forEach(p => {
         if (p.active && p.key) {
-            newSearchParams.append(p.key, p.value);
+            const key = p.encoded ? encodeURIComponent(p.key) : p.key;
+            const value = p.encoded ? encodeURIComponent(p.value) : p.value;
+            queryParts.push(`${key}=${value}`);
         }
         });
 
-        newUrl.search = newSearchParams.toString();
+        newUrl.search = queryParts.join('&');
         
-        // We update the input to reflect the changes. 
-        // Note: This triggers the useEffect above, which re-parses. 
-        // This circular dependency is usually handled by React batching or check for equality, 
-        // but to be safe and avoid cursor jumping or loops, we might need a flag or careful management.
-        // However, for this simple tool, updating the main input is the "source of truth".
-        
-        // To avoid re-rendering loop issues or cursor jumps if we were typing in the main input,
-        // we only update if the string is different.
         if (newUrl.toString() !== urlInput) {
+            isInternalUpdate.current = true;
             setUrlInput(newUrl.toString());
         }
     } catch (e) {
@@ -106,6 +105,14 @@ const UrlParser = () => {
     updateUrlFromParams(updatedParams);
   };
 
+  const handleToggleParamEncoding = (id: string) => {
+    const updatedParams = queryParams.map(p =>
+      p.id === id ? { ...p, encoded: !p.encoded } : p
+    );
+    setQueryParams(updatedParams);
+    updateUrlFromParams(updatedParams);
+  };
+
   const handleDeleteParam = (id: string) => {
     const updatedParams = queryParams.filter(p => p.id !== id);
     setQueryParams(updatedParams);
@@ -117,7 +124,8 @@ const UrlParser = () => {
       id: Math.random().toString(36).substr(2, 9),
       key: "new_key",
       value: "value",
-      active: true
+      active: true,
+      encoded: true
     };
     const updatedParams = [...queryParams, newParam];
     setQueryParams(updatedParams);
@@ -141,6 +149,7 @@ const UrlParser = () => {
             newUrl.hash = value;
         }
         if (newUrl.toString() !== urlInput) {
+             isInternalUpdate.current = true;
             setUrlInput(newUrl.toString());
         }
       } catch (e) {
@@ -259,6 +268,7 @@ const UrlParser = () => {
                                               <tr>
                                                   <th className="px-4 py-3 font-semibold text-white/70 w-1/3">Key</th>
                                                   <th className="px-4 py-3 font-semibold text-white/70 w-1/3">Value</th>
+                                                  <th className="px-4 py-3 font-semibold text-white/70 w-24 text-center">Encoded</th>
                                                   <th className="px-4 py-3 font-semibold text-white/70 text-right w-24">Actions</th>
                                               </tr>
                                           </thead>
@@ -281,6 +291,15 @@ const UrlParser = () => {
                                                               onChange={(e) => handleParamChange(param.id, 'value', e.target.value)}
                                                               className="bg-transparent w-full p-2 rounded border border-transparent focus:border-blue-500/50 focus:bg-black/20 focus:outline-none transition-colors"
                                                               placeholder="Value"
+                                                          />
+                                                      </td>
+                                                      <td className="px-4 py-2 text-center">
+                                                          <input 
+                                                              type="checkbox" 
+                                                              checked={param.encoded}
+                                                              onChange={() => handleToggleParamEncoding(param.id)}
+                                                              className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 bg-gray-700 border-gray-600 accent-blue-600 cursor-pointer"
+                                                              title="Toggle URL Encoding for this parameter"
                                                           />
                                                       </td>
                                                       <td className="px-4 py-2 text-right">
