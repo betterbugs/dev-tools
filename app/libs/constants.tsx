@@ -149,6 +149,7 @@ import ScssToCssConverter from '../components/developmentToolsComponent/scssToCs
 import ShuffleLetters from '../components/developmentToolsComponent/shuffleLetters';
 import ShuffleTextLines from '../components/developmentToolsComponent/shuffleTextLines';
 import SortingList from '../components/developmentToolsComponent/sortingList';
+import ShellFormatter from '../components/developmentToolsComponent/shellFormatter';
 import SqlFormatterAndBeautifier from '../components/developmentToolsComponent/sqlFormatterAndBeautifier';
 import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
@@ -1634,6 +1635,14 @@ export const developmentToolsCategoryContent: any = {
         'Decompose complex URLs into legible components and edit query parameters in a visual table.',
     },
   ],
+  Category180: [
+    {
+      url: '/shell-script-formatter',
+      title: 'Shell Script (Bash/Sh) Formatter',
+      description:
+        'Format and beautify shell scripts with consistent indentation and basic linting.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1818,6 +1827,7 @@ export const PATHS = {
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
+  SHELL_SCRIPT_FORMATTER: '/shell-script-formatter',
 };
 
 export const developmentToolsRoutes = [
@@ -2540,6 +2550,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.UNIX_TIMESTAMP_CONVERTER,
     component: <EpochConverter />,
+  },
+  {
+    path: PATHS.SHELL_SCRIPT_FORMATTER,
+    component: <ShellFormatter />,
   },
 ];
 

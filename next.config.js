@@ -19,6 +19,13 @@ let nextConfig = {
   images: {
     domains: ['betterbug-storage.s3.amazonaws.com'],
   },
+  webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+    };
+    return config;
+  },
 };
 
 if (process.env.NEXT_ENV !== 'local') {
