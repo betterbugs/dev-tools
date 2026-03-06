@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Pagination from "./components/ui/Pagination";
 import BBIcon from "./components/theme/Icon/bbIcon";
 import DevelopmentToolsStyles from "./developmentToolsStyles.module.scss";
 import { InputField } from "./components/theme/form/formFeildComponent";
@@ -156,12 +158,16 @@ const classifyBasis = (title: string, url: string): BasisType => {
   return "All";
 };
 
+const PAGE_SIZE = 30;
+const SEARCH_PAGINATION_THRESHOLD = 9;
+
 const Page = () => {
   const { register, formState, setValue } = useForm<any>({});
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<CategoryGroup | null>(null);
   const [selectedBasis, setSelectedBasis] = useState<BasisType>("All");
+  const [currentPage, setCurrentPage] = useState(1);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Keyboard shortcut: Ctrl/Cmd + K to focus search
@@ -184,6 +190,11 @@ const Page = () => {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
+
+  // Reset to page 1 when filters or search change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategory, selectedBasis]);
 
   const handleClearSearch = () => {
     setValue("txtSearch", "");
@@ -218,6 +229,22 @@ const Page = () => {
     })
     .filter((item) => (selectedCategory ? item.__group === selectedCategory : true))
     .filter((item) => (selectedBasis === "All" ? true : item.__basis === selectedBasis));
+
+  // Determine whether pagination should show
+  const showPagination = isSearch
+    ? filteredItems.length > SEARCH_PAGINATION_THRESHOLD
+    : filteredItems.length > PAGE_SIZE;
+
+  // Slice for current page
+  const paginatedItems = showPagination
+    ? filteredItems.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+    : filteredItems;
+
+  // Info label
+  const startItem = showPagination ? (currentPage - 1) * PAGE_SIZE + 1 : 1;
+  const endItem = showPagination
+    ? Math.min(currentPage * PAGE_SIZE, filteredItems.length)
+    : filteredItems.length;
 
   const countsByGroup: Record<CategoryGroup, number> = CATEGORY_GROUPS.reduce(
     (acc, g) => ({ ...acc, [g]: itemsWithMeta.filter((i) => i.__group === g).length }),
@@ -361,7 +388,11 @@ const Page = () => {
           {/* Main grid */}
           <main className="flex-1 order-2 md:order-2">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs text-white/60">Showing {filteredItems.length} tools</span>
+              <span className="text-xs text-white/60">
+                {showPagination
+                  ? `Showing ${startItem}–${endItem} of ${filteredItems.length} tools`
+                  : `Showing ${filteredItems.length} tools`}
+              </span>
               <div className="flex items-center gap-2">
                 {selectedCategory && (
                   <button
@@ -389,35 +420,55 @@ const Page = () => {
                 <span className="mt-2">No tools found</span>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredItems.map((item: any, index: number) => (
-                  <Link
-                    key={index}
-                    href={`${item?.url}`}
-                    className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px]`}
+              <>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentPage}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                   >
-                    <div className="flex justify-start items-start gap-2">
-                      <h3 className="text-lg font-semibold">
-                        <HighlightText text={item?.title || ""} searchTerm={searchTerm} />
-                      </h3>
-                    </div>
-                    <p className="text-white/70 group-hover:text-black/90 text-sm font-medium mt-1">
-                      {(() => {
-                        let description = item?.description || "";
-                        let truncated =
-                          description.length > 50
-                            ? description.slice(0, 50) + "..."
-                            : description;
+                    {paginatedItems.map((item: any, index: number) => (
+                      <Link
+                        key={`${item?.url}-${index}`}
+                        href={`${item?.url}`}
+                        className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px]`}
+                      >
+                        <div className="flex justify-start items-start gap-2">
+                          <h3 className="text-lg font-semibold">
+                            <HighlightText text={item?.title || ""} searchTerm={searchTerm} />
+                          </h3>
+                        </div>
+                        <p className="text-white/70 group-hover:text-black/90 text-sm font-medium mt-1">
+                          {(() => {
+                            let description = item?.description || "";
+                            let truncated =
+                              description.length > 50
+                                ? description.slice(0, 50) + "..."
+                                : description;
 
-                        return (
-                          <HighlightText text={truncated} searchTerm={searchTerm} />
-                        );
-                      })()}
-                    </p>
-                    <div className="mt-3 text-xs text-white/50">{item?.__group} • {item?.__basis}</div>
-                  </Link>
-                ))}
-              </div>
+                            return (
+                              <HighlightText text={truncated} searchTerm={searchTerm} />
+                            );
+                          })()}
+                        </p>
+                        <div className="mt-3 text-xs text-white/50">{item?.__group} • {item?.__basis}</div>
+                      </Link>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+
+                {showPagination && (
+                  <Pagination
+                    page={currentPage}
+                    pageSize={PAGE_SIZE}
+                    total={filteredItems.length}
+                    onPageChange={setCurrentPage}
+                  />
+                )}
+              </>
             )}
           </main>
         </div>
