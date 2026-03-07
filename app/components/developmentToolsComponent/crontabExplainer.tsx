@@ -170,13 +170,19 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
       const month = current.getMonth() + 1;
       const dow = current.getDay();
 
-      if (
-        matchField(minute, minuteField, 0, 59) &&
-        matchField(hour, hourField, 0, 23) &&
-        matchField(dom, domField, 1, 31) &&
-        matchField(month, monthField, 1, 12) &&
-        matchField(dow, dowField, 0, 6)
-      ) {
+      const minuteMatch = matchField(minute, minuteField, 0, 59);
+      const hourMatch = matchField(hour, hourField, 0, 23);
+      const domMatch = matchField(dom, domField, 1, 31);
+      const monthMatch = matchField(month, monthField, 1, 12);
+      const dowMatch = matchField(dow, dowField, 0, 6);
+
+      // In standard 5-field cron, DOM and DOW are OR'd when both are restricted.
+      const hasDomConstraint = domField !== "*";
+      const hasDowConstraint = dowField !== "*";
+      const dayMatch =
+        hasDomConstraint && hasDowConstraint ? domMatch || dowMatch : domMatch && dowMatch;
+
+      if (minuteMatch && hourMatch && monthMatch && dayMatch) {
         executions.push(current.toLocaleString());
       }
     }
