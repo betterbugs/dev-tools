@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BBIcon from "./components/theme/Icon/bbIcon";
 import DevelopmentToolsStyles from "./developmentToolsStyles.module.scss";
 import { InputField } from "./components/theme/form/formFeildComponent";
@@ -119,7 +119,6 @@ const classifyBasis = (title: string, url: string): BasisType => {
 
   if (t.includes("date") || t.includes("time")) return "Date/Time";
 
-
   return "All";
 };
 
@@ -129,6 +128,47 @@ const Page = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<CategoryGroup | null>(null);
   const [selectedBasis, setSelectedBasis] = useState<BasisType>("All");
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+
+  useEffect(() => {
+    try {
+      const storedFavorites = localStorage.getItem("favoriteTools");
+      if (storedFavorites) {
+        const parsed = JSON.parse(storedFavorites);
+        
+        if (Array.isArray(parsed)) {
+          const validFavorites = parsed.filter(
+            (item) => typeof item === "string"
+          );
+          setFavorites(validFavorites);
+        } else {
+          setFavorites([]);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to parse favorites from localStorage:", error);
+      setFavorites([]);
+    }
+  }, []);
+
+  const toggleFavorite = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let updatedFavorites;
+    if (favorites.includes(url)) {
+      updatedFavorites = favorites.filter((fav) => fav !== url);
+    } else {
+      updatedFavorites = [...favorites, url];
+    }
+    setFavorites(updatedFavorites);
+    
+    try {
+      localStorage.setItem("favoriteTools", JSON.stringify(updatedFavorites));
+    } catch (error) {
+      console.error("Failed to save favorites to localStorage:", error);
+    }
+  };
 
   const handleClearSearch = () => {
     setValue("txtSearch", "");
@@ -151,7 +191,7 @@ const Page = () => {
     __basis: classifyBasis(item?.title || "", item?.url || ""),
   }));
 
-  const filteredItems = itemsWithMeta
+  let filteredItems = itemsWithMeta
     .filter((item) =>
       searchTerm
         ? (item?.title || "")
@@ -161,6 +201,18 @@ const Page = () => {
     )
     .filter((item) => (selectedCategory ? item.__group === selectedCategory : true))
     .filter((item) => (selectedBasis === "All" ? true : item.__basis === selectedBasis));
+
+  if (showFavoritesOnly) {
+    filteredItems = filteredItems.filter((item) => favorites.includes(item.url));
+  } else {
+    filteredItems.sort((a, b) => {
+      const aFav = favorites.includes(a.url);
+      const bFav = favorites.includes(b.url);
+      if (aFav && !bFav) return -1;
+      if (!aFav && bFav) return 1;
+      return 0;
+    });
+  }
 
   const countsByGroup: Record<CategoryGroup, number> = CATEGORY_GROUPS.reduce(
     (acc, g) => ({ ...acc, [g]: itemsWithMeta.filter((i) => i.__group === g).length }),
@@ -232,17 +284,42 @@ const Page = () => {
           <aside className="w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-white/90">Filters</h2>
-              {(selectedCategory || selectedBasis !== "All") && (
+              {(selectedCategory || selectedBasis !== "All" || showFavoritesOnly) && (
                 <button
                   className="text-xs text-primary hover:underline"
                   onClick={() => {
                     setSelectedCategory(null);
                     setSelectedBasis("All");
+                    setShowFavoritesOnly(false);
                   }}
                 >
                   Clear
                 </button>
               )}
+            </div>
+
+            <div className="mb-4">
+              <p className="text-xs text-white/60 mb-2">Your Tools</p>
+              <button
+                onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                className={`w-full text-left px-3 py-2 rounded-lg border transition ${
+                  showFavoritesOnly
+                    ? "bg-primary text-black font-bold border-primary"
+                    : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-sm flex items-center gap-2">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill={showFavoritesOnly ? "black" : "currentColor"} xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Favorites
+                  </span>
+                  <span className={`text-xs ${showFavoritesOnly ? "text-black/80" : "text-white/60"}`}>
+                    {favorites.length}
+                  </span>
+                </div>
+              </button>
             </div>
 
             {/* Category filter */}
@@ -294,7 +371,6 @@ const Page = () => {
                   >
                     <span className="flex items-center gap-1.5">
                       <span>{b}</span>
-                      {/* <span className={`${selectedBasis === b ? "text-black/80" : "text-white/60"}`}>{countsByBasis[b]}</span> */}
                     </span>
                   </button>
                 ))}
@@ -307,6 +383,15 @@ const Page = () => {
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs text-white/60">Showing {filteredItems.length} tools</span>
               <div className="flex items-center gap-2">
+                {showFavoritesOnly && (
+                  <button
+                    className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+                    onClick={() => setShowFavoritesOnly(false)}
+                    title="Clear favorites filter"
+                  >
+                    Favorites ✕
+                  </button>
+                )}
                 {selectedCategory && (
                   <button
                     className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
@@ -338,10 +423,29 @@ const Page = () => {
                   <Link
                     key={index}
                     href={`${item?.url}`}
-                    className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px]`}
+                    className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px] relative`}
                   >
-                    <div className="flex justify-start items-start gap-2">
-                      <h3 className="text-lg font-semibold">{item?.title}</h3>
+                    <div className="flex justify-between items-start gap-2">
+                      <h3 className="text-lg font-semibold pr-6">{item?.title}</h3>
+                      <button 
+                        onClick={(e) => toggleFavorite(e, item?.url)}
+                        className="absolute right-4 top-4 text-white/30 hover:text-yellow-400 transition-colors z-10"
+                        title={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
+                        aria-label={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
+                      >
+                        <svg 
+                          width="20" 
+                          height="20" 
+                          viewBox="0 0 24 24" 
+                          fill={favorites.includes(item?.url) ? "#facc15" : "none"} 
+                          stroke={favorites.includes(item?.url) ? "#facc15" : "currentColor"} 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        >
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
                     </div>
                     <p className="text-white/70 group-hover:text-black/90 text-sm font-medium mt-1">
                       {(() => {
