@@ -18,6 +18,26 @@ const ALIASES: Record<string, string> = {
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+type CronFieldType = "minute" | "hour" | "dom" | "month" | "dow";
+
+const FIELD_SPECS: Record<CronFieldType, { min: number; max: number; names?: Record<string, number> }> = {
+  minute: { min: 0, max: 59 },
+  hour: { min: 0, max: 23 },
+  dom: { min: 1, max: 31 },
+  month: {
+    min: 1,
+    max: 12,
+    names: {
+      jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+      jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+    },
+  },
+  dow: {
+    min: 0,
+    max: 6,
+    names: { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 },
+  },
+};
 
 // Parse a cron field into human-readable text
 const parseField = (field: string, type: "minute" | "hour" | "dom" | "month" | "dow"): string => {
@@ -97,7 +117,7 @@ const explainCron = (cronExpr: string): string => {
   }
 
   const parts = cronExpr.trim().split(/\s+/);
-  if (parts.length !== 5) {
+  if (!isValidCronExpression(parts)) {
     return "Invalid cron expression. Expected 5 fields: minute hour day month weekday";
   }
 
@@ -150,15 +170,15 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
     const expr = ALIASES[trimmed] || cronExpr.trim();
     
     const parts = expr.split(/\s+/);
-    if (parts.length !== 5) return [];
+    if (!isValidCronExpression(parts)) return [];
 
     const [minuteField, hourField, domField, monthField, dowField] = parts;
 
     const now = new Date();
     const executions: string[] = [];
 
-    const minuteValues = getMatchingValues(minuteField, 0, 59);
-    const hourValues = getMatchingValues(hourField, 0, 23);
+    const minuteValues = getMatchingValues(minuteField, "minute");
+    const hourValues = getMatchingValues(hourField, "hour");
     if (minuteValues.length === 0 || hourValues.length === 0) return [];
 
     const hasDomConstraint = domField !== "*";
@@ -178,11 +198,11 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
       const month = dayCursor.getMonth() + 1;
       const dow = dayCursor.getDay();
 
-      const monthMatch = matchField(month, monthField, 1, 12);
+      const monthMatch = matchField(month, monthField, "month");
       if (!monthMatch) continue;
 
-      const domMatch = matchField(dom, domField, 1, 31);
-      const dowMatch = matchField(dow, dowField, 0, 6);
+      const domMatch = matchField(dom, domField, "dom");
+      const dowMatch = matchField(dow, dowField, "dow");
       const dayMatch =
         hasDomConstraint && hasDowConstraint ? domMatch || dowMatch : domMatch && dowMatch;
 
@@ -215,44 +235,104 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
   }
 };
 
-const getMatchingValues = (field: string, min: number, max: number): number[] => {
+const getMatchingValues = (field: string, type: CronFieldType): number[] => {
+  const { min, max } = FIELD_SPECS[type];
   const values: number[] = [];
   for (let value = min; value <= max; value++) {
-    if (matchField(value, field, min, max)) {
+    if (matchField(value, field, type)) {
       values.push(value);
     }
   }
   return values;
 };
 
-const matchField = (value: number, field: string, min: number, max: number): boolean => {
-  if (field === "*") return true;
+const isValidCronExpression = (parts: string[]): boolean => {
+  if (parts.length !== 5) return false;
+  const [minute, hour, dom, month, dow] = parts;
+  return (
+    isValidField(minute, "minute") &&
+    isValidField(hour, "hour") &&
+    isValidField(dom, "dom") &&
+    isValidField(month, "month") &&
+    isValidField(dow, "dow")
+  );
+};
 
-  // Handle step values
-  if (field.includes("/")) {
-    const [base, step] = field.split("/");
-    const stepNum = parseInt(step);
-    if (base === "*") {
-      return value % stepNum === 0;
-    }
-    const baseNum = parseInt(base);
-    return value >= baseNum && (value - baseNum) % stepNum === 0;
+const isValidField = (field: string, type: CronFieldType): boolean => {
+  if (!field || field.trim() === "") return false;
+  const parts = field.split(",");
+  if (parts.some((part) => part.trim() === "")) return false;
+  return parts.every((part) => isValidFieldPart(part.trim(), type));
+};
+
+const isValidFieldPart = (part: string, type: CronFieldType): boolean => {
+  return parseFieldPartSpec(part, type) !== null;
+};
+
+type FieldPartSpec = {
+  start: number;
+  end: number;
+  step: number;
+};
+
+const parseFieldPartSpec = (part: string, type: CronFieldType): FieldPartSpec | null => {
+  const [base, step] = part.split("/");
+  if (!base || part.split("/").length > 2) return null;
+
+  let stepValue = 1;
+  if (step !== undefined) {
+    if (!/^\d+$/.test(step)) return null;
+    stepValue = parseInt(step, 10);
+    if (stepValue <= 0) return null;
   }
 
-  // Handle ranges
-  if (field.includes("-") && !field.includes(",")) {
-    const [start, end] = field.split("-").map((v) => parseInt(v));
-    return value >= start && value <= end;
+  const spec = FIELD_SPECS[type];
+
+  if (base === "*") {
+    return { start: spec.min, end: spec.max, step: stepValue };
   }
 
-  // Handle lists
-  if (field.includes(",")) {
-    const values = field.split(",").map((v) => parseInt(v.trim()));
-    return values.includes(value);
+  if (base.includes("-")) {
+    const [startRaw, endRaw] = base.split("-");
+    if (!startRaw || !endRaw || base.split("-").length > 2) return null;
+    const start = parseFieldValue(startRaw, type);
+    const end = parseFieldValue(endRaw, type);
+    if (start === null || end === null) return null;
+    if (start > end) return null;
+    return { start, end, step: stepValue };
   }
 
-  // Single value
-  return value === parseInt(field);
+  const start = parseFieldValue(base, type);
+  if (start === null) return null;
+
+  // x/n means from x through field max, stepping by n.
+  return { start, end: spec.max, step: stepValue };
+};
+
+const parseFieldValue = (raw: string, type: CronFieldType): number | null => {
+  const token = raw.trim().toLowerCase();
+  const spec = FIELD_SPECS[type];
+
+  if (spec.names && token in spec.names) {
+    return spec.names[token];
+  }
+
+  if (!/^\d+$/.test(token)) return null;
+  const value = parseInt(token, 10);
+  if (value < spec.min || value > spec.max) return null;
+  return value;
+};
+
+const matchField = (value: number, field: string, type: CronFieldType): boolean => {
+  if (!isValidField(field, type)) return false;
+  return field.split(",").some((part) => matchFieldPart(value, part.trim(), type));
+};
+
+const matchFieldPart = (value: number, part: string, type: CronFieldType): boolean => {
+  const spec = parseFieldPartSpec(part, type);
+  if (!spec) return false;
+  if (value < spec.start || value > spec.end) return false;
+  return (value - spec.start) % spec.step === 0;
 };
 
 const CrontabExplainer = () => {
@@ -274,7 +354,7 @@ const CrontabExplainer = () => {
     const trimmed = cronInput.trim().toLowerCase();
     if (ALIASES[trimmed]) return true;
     const parts = cronInput.trim().split(/\s+/);
-    return parts.length === 5;
+    return isValidCronExpression(parts);
   }, [cronInput]);
 
   const examples = [
