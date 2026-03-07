@@ -164,7 +164,7 @@ const explainCron = (cronExpr: string): string => {
 };
 
 // Calculate next N executions
-const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
+const getNextExecutions = (cronExpr: string, count: number = 5): Date[] => {
   try {
     const trimmed = cronExpr.trim().toLowerCase();
     const expr = ALIASES[trimmed] || cronExpr.trim();
@@ -175,7 +175,7 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
     const [minuteField, hourField, domField, monthField, dowField] = parts;
 
     const now = new Date();
-    const executions: string[] = [];
+    const executions: Date[] = [];
 
     const minuteValues = getMatchingValues(minuteField, "minute");
     const hourValues = getMatchingValues(hourField, "hour");
@@ -222,7 +222,7 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
 
           if (candidate <= now) continue;
 
-          executions.push(candidate.toLocaleString());
+          executions.push(candidate);
           if (executions.length >= count) break;
         }
         if (executions.length >= count) break;
@@ -233,6 +233,13 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
   } catch {
     return [];
   }
+};
+
+const formatExecution = (date: Date, timezone: "local" | "utc"): string => {
+  if (timezone === "utc") {
+    return date.toUTCString();
+  }
+  return date.toLocaleString();
 };
 
 const getMatchingValues = (field: string, type: CronFieldType): number[] => {
@@ -338,6 +345,7 @@ const matchFieldPart = (value: number, part: string, type: CronFieldType): boole
 const CrontabExplainer = () => {
   const [cronInput, setCronInput] = useState("");
   const [showExecutions, setShowExecutions] = useState(true);
+  const [previewTimezone, setPreviewTimezone] = useState<"local" | "utc">("local");
 
   const explanation = useMemo(() => {
     if (!cronInput.trim()) return "";
@@ -447,13 +455,24 @@ const CrontabExplainer = () => {
                     Show preview
                   </label>
                 </div>
+                <div className="flex items-center gap-2 text-sm text-white/80">
+                  <span>Time context:</span>
+                  <select
+                    value={previewTimezone}
+                    onChange={(e) => setPreviewTimezone(e.target.value as "local" | "utc")}
+                    className="px-2 py-1 bg-black/40 border border-white/10 rounded"
+                  >
+                    <option value="local">Local</option>
+                    <option value="utc">UTC</option>
+                  </select>
+                </div>
                 <ul className="space-y-2">
                   {nextExecutions.map((exec, idx) => (
                     <li
                       key={idx}
                       className="px-3 py-2 bg-black/40 border border-white/10 rounded text-sm font-mono text-white/80"
                     >
-                      {idx + 1}. {exec}
+                      {idx + 1}. {formatExecution(exec, previewTimezone)}
                     </li>
                   ))}
                 </ul>
