@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import { humanizeCronFields } from "../../libs/cron";
 
 type Field = "minute" | "hour" | "dom" | "month" | "dow";
 
@@ -54,16 +55,6 @@ const fieldToCron = (f: FieldState): string => {
     default:
       return "*";
   }
-};
-
-const humanize = (m: FieldState, h: FieldState, dom: FieldState, mo: FieldState, dow: FieldState): string => {
-  const map = (f: FieldState, name: string) => {
-    if (f.mode === "every") return `every ${name}`;
-    if (f.mode === "specific") return `${name} ${f.values}`;
-    if (f.mode === "range") return `${name} ${f.start}-${f.endOrStep}`;
-    return `${name} every ${f.endOrStep || 1} starting at ${f.start || 0}`;
-  };
-  return `Runs at ${map(m, "minute")}, ${map(h, "hour")}, ${map(dom, "day")}, ${map(mo, "month")}, ${map(dow, "weekday")}`;
 };
 
 const Presets: { label: string; cron: string }[] = [
@@ -214,7 +205,7 @@ const CrontabGenerator = () => {
     return [fieldToCron(minute), fieldToCron(hour), fieldToCron(dom), fieldToCron(month), fieldToCron(dow)].join(" ");
   }, [minute, hour, dom, month, dow]);
 
-  const description = useMemo(() => humanize(minute, hour, dom, month, dow), [minute, hour, dom, month, dow]);
+  const description = useMemo(() => humanizeCronFields(minute, hour, dom, month, dow), [minute, hour, dom, month, dow]);
 
   const applyPreset = (expr: string) => {
     const [m, h, d, mo, dw] = expr.split(" ");
