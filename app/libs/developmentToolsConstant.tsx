@@ -14294,6 +14294,109 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`ipv4-subnet-calculator`]: {
+    hero_section: {
+      title: 'IPv4 Subnet Calculator',
+      description:
+        'Calculate subnet details like network address, broadcast address, usable host range, and CIDR masks instantly – perfect for network engineers and DevOps professionals.',
+    },
+    development_tools_list: [
+      { tool: 'Random IP Generator', url: PATHS.RANDOM_IP_GENERATOR },
+      { tool: 'IP to Hex Converter', url: PATHS.IP_TO_HEX },
+      { tool: 'What Is My Local IP', url: PATHS.WHAT_IS_MY_LOCAL_IP_ADDRESS },
+      { tool: 'Bitwise Calculator', url: PATHS.BITWISE_CALCULATOR },
+      { tool: 'Decimal to Binary', url: PATHS.DECIMAL_TO_BINARY_CONVERTER },
+      { tool: 'Binary to Decimal', url: PATHS.BINARY_TO_DECIMAL_CONVERTER },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the IPv4 Subnet Calculator?',
+      about_description: [
+        {
+          description:
+            'The IPv4 Subnet Calculator is a specialist tool for network engineers and DevOps professionals that instantly calculates subnet details from an IP address and CIDR prefix or subnet mask.',
+        },
+        {
+          description:
+            'It provides network address, broadcast address, usable host ranges, total and usable host counts, subnet masks, and wildcard masks with binary visualization for deep network planning and infrastructure setup.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use the IPv4 Subnet Calculator',
+      guide_description: 'Follow these simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter IP address:',
+          step_description:
+            'Type or paste the IPv4 address (e.g., 192.168.1.100) into the IP address field.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Specify CIDR or subnet mask:',
+          step_description:
+            'Enter the CIDR prefix (0-32) or subnet mask. Use the "Switch" button to toggle between CIDR and subnet mask input modes.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'View subnet calculations:',
+          step_description:
+            'The calculator instantly displays network address, broadcast address, usable host range, total hosts, subnet mask, and wildcard mask with binary representations.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Use for planning:',
+          step_description:
+            'Use the results for network planning, infrastructure setup, VLAN configuration, and routing table management.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Uses',
+      how_use_description: 'Why you might use this tool:',
+      point: [
+        {
+          title: 'Network Planning',
+          description:
+            'Simplify network planning and infrastructure setup tasks for cloud deployments, on-premises networks, and hybrid environments.',
+        },
+        {
+          title: 'Subnet Management',
+          description:
+            'Calculate subnet details like host ranges, broadcast addresses, and CIDR masks for efficient subnet allocation and management.',
+        },
+        {
+          title: 'VLAN Configuration',
+          description:
+            'Determine correct subnet masks and network addresses when configuring VLANs and routing in enterprise networks.',
+        },
+        {
+          title: 'Network Troubleshooting',
+          description:
+            'Verify IP address assignments, subnet ranges, and broadcast domains when diagnosing network connectivity issues.',
+        },
+        {
+          title: 'IP Address Planning',
+          description:
+            'Plan IP address allocation strategies for organizations and ensure proper utilization of address space.',
+        },
+        {
+          title: 'Learning Networking',
+          description:
+            'Understand subnet calculations, binary representations, and networking concepts with visual binary breakdowns.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'IPv4 Subnet Calculator – Free Online Network Tool',
+      meta_description:
+        'Calculate subnet details, network addresses, broadcast addresses, and CIDR masks instantly. Perfect for network engineers and DevOps professionals.',
+      og_title: 'IPv4 Subnet Calculator – Free Online Tool',
+      og_description:
+        'Quickly calculate subnet information including network address, broadcast address, usable hosts, and wildcard masks. Ideal for network planning and infrastructure setup.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
   [`words-to-numbers`]: {
     hero_section: {
       title: 'Words to Numbers Converter',
@@ -15437,6 +15540,95 @@ family[1]: "Beth"`,
       og_title: 'Strip HTML – Free Online Tool',
       og_description:
         'Paste HTML and get plain text with options for line breaks and whitespace.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
+  [`svg-converter`]: {
+    hero_section: {
+      title: 'SVG to React/CSS Utility',
+      description:
+        'Convert raw SVG code to optimized React components, CSS Data URIs, or CSS Masks for different development needs.',
+    },
+    development_tools_list: [
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'CSS Minify', url: PATHS.CSS_MINIFY },
+      { tool: 'Color Inveror', url: PATHS.COLOR_INVERTOR },
+      { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the SVG Converter?',
+      about_description: [
+        {
+          description:
+            'The SVG Converter transforms raw SVG code into optimized variants for different use cases: clean React components, CSS Data URIs, or CSS Masks.',
+        },
+        {
+          description:
+            'Automates SVG cleanup (removing metadata), handles viewBox preservation, and supports dynamic sizing and color theming options.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to Use',
+      guide_description: 'Follow these simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste SVG Code:',
+          step_description: 'Paste your SVG code or upload an SVG file.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Choose Output Format:',
+          step_description:
+            'Select React Component, CSS Data URI, or CSS Mask from the dropdown.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Configure Options:',
+          step_description:
+            'Set default width, height, and choose whether to use currentColor for fills.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy Output:',
+          step_description: 'Copy the optimized code and use it in your project.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common Use Cases',
+      how_use_description: 'Popular reasons to use this tool:',
+      point: [
+        {
+          title: 'React Component Generation',
+          description:
+            'Automatically create reusable React icon components from SVG files with dynamic sizing and theming support.',
+        },
+        {
+          title: 'CSS Background Images',
+          description:
+            'Generate inline SVG Data URIs for use as CSS background images without external file requests.',
+        },
+        {
+          title: 'Icon Masking',
+          description:
+            'Convert SVGs to CSS mask properties for flexible icon styling and color customization.',
+        },
+        {
+          title: 'Metadata Cleanup',
+          description:
+            'Automatically remove unnecessary metadata, comments, and attributes from design tool exports.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'SVG to React/CSS Converter – Free Online Tool',
+      meta_description:
+        'Convert SVG to React components, CSS Data URIs, or CSS Masks. Remove metadata and optimize for web development.',
+      og_title: 'SVG Converter – Optimize SVGs for Development',
+      og_description:
+        'Transform SVG files into React components, CSS URIs, or masks with one click. Supports custom dimensions and color theming.',
       og_image: '/images/og-images/Cover.png',
     },
   },

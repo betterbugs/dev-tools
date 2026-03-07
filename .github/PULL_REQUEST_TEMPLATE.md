@@ -24,6 +24,7 @@ _Add screenshots of relevant screens_
 
 - [ ] My PR follows the style guidelines of this project
 - [ ] I have performed a self-check on my work
+- [ ] If `package.json` is unchanged, `package-lock.json` is also unchanged in this PR
 
 **If changes are made in the code:**
 
