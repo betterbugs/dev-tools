@@ -22,15 +22,19 @@ const UrlParser = () => {
   const updateStateFromUrl = (url: URL) => {
     setParsedUrl(url);
     const params: QueryParam[] = [];
+    let index = 0;
     url.searchParams.forEach((value, key) => {
-        // We use random id but we only run this on external updates
+        // Use a stable ID based on index and key to avoid unnecessary re-renders
+        // when only values change, or random regeneration on every parse.
+        const id = `param-${index}-${key}`;
         params.push({
-          id: Math.random().toString(36).substr(2, 9),
+          id,
           key,
           value,
           active: true,
           encoded: true
         });
+        index++;
     });
     setQueryParams(params);
   }
