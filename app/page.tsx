@@ -135,7 +135,16 @@ const Page = () => {
     try {
       const storedFavorites = localStorage.getItem("favoriteTools");
       if (storedFavorites) {
-        setFavorites(JSON.parse(storedFavorites));
+        const parsed = JSON.parse(storedFavorites);
+        
+        if (Array.isArray(parsed)) {
+          const validFavorites = parsed.filter(
+            (item) => typeof item === "string"
+          );
+          setFavorites(validFavorites);
+        } else {
+          setFavorites([]);
+        }
       }
     } catch (error) {
       console.error("Failed to parse favorites from localStorage:", error);
