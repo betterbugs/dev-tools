@@ -441,7 +441,7 @@ const CrontabExplainer = () => {
             )}
 
             {/* Next Executions */}
-            {nextExecutions.length > 0 && (
+            {cronInput.trim() && isValid && (
               <div className="bg-black/20 border border-white/10 rounded p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="font-semibold">Next 5 Executions</div>
@@ -466,16 +466,28 @@ const CrontabExplainer = () => {
                     <option value="utc">UTC</option>
                   </select>
                 </div>
-                <ul className="space-y-2">
-                  {nextExecutions.map((exec, idx) => (
-                    <li
-                      key={idx}
-                      className="px-3 py-2 bg-black/40 border border-white/10 rounded text-sm font-mono text-white/80"
-                    >
-                      {idx + 1}. {formatExecution(exec, previewTimezone)}
-                    </li>
-                  ))}
-                </ul>
+                {showExecutions ? (
+                  nextExecutions.length > 0 ? (
+                    <ul className="space-y-2">
+                      {nextExecutions.map((exec, idx) => (
+                        <li
+                          key={idx}
+                          className="px-3 py-2 bg-black/40 border border-white/10 rounded text-sm font-mono text-white/80"
+                        >
+                          {idx + 1}. {formatExecution(exec, previewTimezone)}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="px-3 py-2 bg-black/40 border border-white/10 rounded text-sm text-white/70">
+                      No upcoming executions found within the current preview horizon.
+                    </div>
+                  )
+                ) : (
+                  <div className="px-3 py-2 bg-black/40 border border-white/10 rounded text-sm text-white/70">
+                    Preview is disabled.
+                  </div>
+                )}
               </div>
             )}
 
