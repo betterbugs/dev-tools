@@ -156,34 +156,56 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
 
     const now = new Date();
     const executions: string[] = [];
-    let current = new Date(now);
-    current.setSeconds(0);
-    current.setMilliseconds(0);
 
-    // Simple implementation - check next 10000 minutes
-    for (let i = 0; i < 10000 && executions.length < count; i++) {
-      current = new Date(current.getTime() + 60000); // Add 1 minute
+    const minuteValues = getMatchingValues(minuteField, 0, 59);
+    const hourValues = getMatchingValues(hourField, 0, 23);
+    if (minuteValues.length === 0 || hourValues.length === 0) return [];
 
-      const minute = current.getMinutes();
-      const hour = current.getHours();
-      const dom = current.getDate();
-      const month = current.getMonth() + 1;
-      const dow = current.getDay();
+    const hasDomConstraint = domField !== "*";
+    const hasDowConstraint = dowField !== "*";
 
-      const minuteMatch = matchField(minute, minuteField, 0, 59);
-      const hourMatch = matchField(hour, hourField, 0, 23);
-      const domMatch = matchField(dom, domField, 1, 31);
+    // 30 years covers sparse valid schedules (e.g. leap-day based) for at least 5 occurrences.
+    const maxLookaheadDays = 366 * 30;
+    const dayCursor = new Date(now);
+    dayCursor.setHours(0, 0, 0, 0);
+
+    for (let dayOffset = 0; dayOffset <= maxLookaheadDays && executions.length < count; dayOffset++) {
+      if (dayOffset > 0) {
+        dayCursor.setDate(dayCursor.getDate() + 1);
+      }
+
+      const dom = dayCursor.getDate();
+      const month = dayCursor.getMonth() + 1;
+      const dow = dayCursor.getDay();
+
       const monthMatch = matchField(month, monthField, 1, 12);
-      const dowMatch = matchField(dow, dowField, 0, 6);
+      if (!monthMatch) continue;
 
-      // In standard 5-field cron, DOM and DOW are OR'd when both are restricted.
-      const hasDomConstraint = domField !== "*";
-      const hasDowConstraint = dowField !== "*";
+      const domMatch = matchField(dom, domField, 1, 31);
+      const dowMatch = matchField(dow, dowField, 0, 6);
       const dayMatch =
         hasDomConstraint && hasDowConstraint ? domMatch || dowMatch : domMatch && dowMatch;
 
-      if (minuteMatch && hourMatch && monthMatch && dayMatch) {
-        executions.push(current.toLocaleString());
+      if (!dayMatch) continue;
+
+      for (const hour of hourValues) {
+        for (const minute of minuteValues) {
+          const candidate = new Date(
+            dayCursor.getFullYear(),
+            dayCursor.getMonth(),
+            dayCursor.getDate(),
+            hour,
+            minute,
+            0,
+            0
+          );
+
+          if (candidate <= now) continue;
+
+          executions.push(candidate.toLocaleString());
+          if (executions.length >= count) break;
+        }
+        if (executions.length >= count) break;
       }
     }
 
@@ -191,6 +213,16 @@ const getNextExecutions = (cronExpr: string, count: number = 5): string[] => {
   } catch {
     return [];
   }
+};
+
+const getMatchingValues = (field: string, min: number, max: number): number[] => {
+  const values: number[] = [];
+  for (let value = min; value <= max; value++) {
+    if (matchField(value, field, min, max)) {
+      values.push(value);
+    }
+  }
+  return values;
 };
 
 const matchField = (value: number, field: string, min: number, max: number): boolean => {
