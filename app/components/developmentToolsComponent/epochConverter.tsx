@@ -1,18 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Button, Input, DatePicker, message, Tooltip, Card, Typography, Space, Row, Col, ConfigProvider, theme } from "antd";
+import React, { useState } from "react";
+import { Button, Input, DatePicker, message, Typography, Space, Row, Col, ConfigProvider, theme } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
-import { CopyOutlined, ReloadOutlined, DeleteOutlined } from "@ant-design/icons";
+import { ReloadOutlined, DeleteOutlined } from "@ant-design/icons";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const EpochConverter = () => {
   // Timestamp in seconds (string to allow clear/typing)
@@ -32,14 +32,14 @@ const EpochConverter = () => {
       return;
     }
 
-    const num = Number(val);
-    if (!isNaN(num)) {
-      // Auto-detect milliseconds if value is large (simple heuristic: > 10000000000 implies likely ms for recent dates)
-      // Standard unix timestamp for today is ~1.7e9 (10 digits). MS is ~1.7e12 (13 digits).
-      // However, user might toggle the switch manually.
-      // We'll trust the toggle or update the date based on current toggle.
+    // Enforce plain integer input
+    if (/^-?\d+$/.test(val)) {
+      const num = Number(val);
       const timestampInMs = isMilliseconds ? num : num * 1000;
       setDate(dayjs(timestampInMs));
+    } else {
+      // Invalid input, clear date to keep UI consistent
+      setDate(null);
     }
   };
 
@@ -83,13 +83,9 @@ const EpochConverter = () => {
     }
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    message.success("Copied to clipboard!");
-  };
-
   // Derived values for display
-  const currentDayjs = timestamp ? dayjs(isMilliseconds ? Number(timestamp) : Number(timestamp) * 1000) : null;
+  const validTimestamp = /^-?\d+$/.test(timestamp);
+  const currentDayjs = validTimestamp ? dayjs(isMilliseconds ? Number(timestamp) : Number(timestamp) * 1000) : null;
   const isValid = currentDayjs && currentDayjs.isValid();
 
   return (
