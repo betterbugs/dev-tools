@@ -59,7 +59,6 @@ import AsciiToDecimalConverter from '../components/developmentToolsComponent/asc
 import AsciiToUnicodeConverter from '../components/developmentToolsComponent/asciiToUnicodeConverter';
 import BarcodeGenerator from '../components/developmentToolsComponent/barcodeGenerator';
 import Base64Decoder from '../components/developmentToolsComponent/base64Decoder';
-import Base64Encoder from '../components/developmentToolsComponent/base64Encoder';
 import BcdToDecimalConverter from '../components/developmentToolsComponent/bcdToDecimalConverter';
 import BcryptGenerator from '../components/developmentToolsComponent/bcryptGenerator';
 import BinaryToDecimalConverter from '../components/developmentToolsComponent/binaryToDecimalConverter';
@@ -188,7 +187,14 @@ import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJso
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
-
+import type { ComponentType } from "react";
+import dynamic from "next/dynamic";
+const Base64Encoder = dynamic(
+  () => import('../components/developmentToolsComponent/base64Encoder'),
+  { ssr: false,
+    loading: () => <p className="text-white">Loading tool...</p>,
+   }
+);
 export const WEB_URL = 'https://www.betterbugs.io';
 
 // Default to Chrome URL during SSR/build, will be correctly determined on client side
@@ -1800,546 +1806,545 @@ export const PATHS = {
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
 };
 
-export const developmentToolsRoutes = [
+export const developmentToolsRoutes: {
+  path: string;
+  component: ComponentType<any>;
+}[] = [
   {
     path: PATHS.TEXT_UPPERCASE_CONVERTER,
-    component: <UpperCaseConverterComponent />,
+    component: UpperCaseConverterComponent,
   },
   {
     path: PATHS.TEXT_LOWERCASE_CONVERTER,
-    component: <LowerCaseConverterComponent />,
+    component: LowerCaseConverterComponent,
   },
-  { path: PATHS.WORD_COUNT_TOOL, component: <WordCounterComponent /> },
+  { path: PATHS.WORD_COUNT_TOOL, component: WordCounterComponent },
   {
     path: PATHS.CHARACTER_COUNT_TOOL,
-    component: <CharacterCounterComponent />,
+    component: CharacterCounterComponent,
   },
-  { path: PATHS.LINE_COUNTER_TOOL, component: <LineCounterComponent /> },
+  { path: PATHS.LINE_COUNTER_TOOL, component: LineCounterComponent },
   {
     path: PATHS.SENTENCE_COUNTER_TOOL,
-    component: <SentenceCounterComponent />,
+    component: SentenceCounterComponent,
   },
   {
     path: PATHS.JAVASCRIPT_MINIFIER,
-    component: <JavascriptMinifierComponent />,
+    component: JavascriptMinifierComponent,
   },
   {
     path: PATHS.JSON_MINIFIER,
-    component: <JsonMinifierComponent />,
+    component: JsonMinifierComponent,
   },
   {
     path: PATHS.JSON_PRETTIFIER,
-    component: <JsonPrettifierComponent />,
+    component: JsonPrettifierComponent,
   },
   {
     path: PATHS.LOREM_IPSUM_GENERATOR,
-    component: <LoremIpsumGeneratorComponent />,
+    component: LoremIpsumGeneratorComponent,
   },
   {
     path: PATHS.HTML_TO_MARKDOWN,
-    component: <HtmlToMarkDownComponent />,
+    component: HtmlToMarkDownComponent,
   },
   {
     path: PATHS.MARKDOWN_TO_HTML,
-    component: <MarkDownToHtmlComponent />,
+    component: MarkDownToHtmlComponent,
   },
   {
     path: PATHS.JS_OBFUSCATOR,
-    component: <JsObfuscatorComponent />,
+    component: JsObfuscatorComponent,
   },
   {
     path: PATHS.CREDIT_CARD_GENERATOR,
-    component: <CreditCardGeneratorComponent />,
+    component: CreditCardGeneratorComponent,
   },
   {
     path: PATHS.CREDIT_CARD_VALIDATOR,
-    component: <CreditCardValidatorComponent />,
+    component: CreditCardValidatorComponent,
   },
   {
     path: PATHS.RANDOM_JSON_DATA_GENERATOR,
-    component: <RandomJsonDataGenerator />,
+    component: RandomJsonDataGenerator,
   },
   {
     path: PATHS.RANDOM_DECIMAL_NUMBER_GENERATOR,
-    component: <RandomDecimalNumberGenerator />,
+    component: RandomDecimalNumberGenerator,
   },
   {
     path: PATHS.RANDOM_DATE_GENERATOR,
-    component: <RandomDateGenerator />,
+    component: RandomDateGenerator,
   },
   {
     path: PATHS.RANDOM_CLOCK_TIME_GENERATOR,
-    component: <RandomClockTimeGenerator />,
+    component: RandomClockTimeGenerator ,
   },
   {
     path: PATHS.RANDOM_COLOR_GENERATOR,
-    component: <RandomColorGenerator />,
+    component: RandomColorGenerator ,
   },
   {
     path: PATHS.RANDOM_PARAGRAPH_GENERATOR,
-    component: <RandomParagraphGenerator />,
+    component: RandomParagraphGenerator ,
   },
   {
     path: PATHS.RANDOM_STRING_GENERATOR,
-    component: <RandomStringGenerator />,
+    component: RandomStringGenerator ,
   },
   {
     path: PATHS.RANDOM_SENTENCE_GENERATOR,
-    component: <RandomSentanceGenerator />,
+    component: RandomSentanceGenerator ,
   },
   {
     path: PATHS.RANDOM_PASSWORD_GENERATOR,
-    component: <RandomPasswardGenerator />,
+    component: RandomPasswardGenerator ,
   },
   {
     path: PATHS.RANDOM_NUMBER_GENERATOR,
-    component: <RandomNumberGenerator />,
+    component: RandomNumberGenerator ,
   },
   {
     path: PATHS.RANDOM_WORD_GENERATOR,
-    component: <RandomWordGenerator />,
+    component: RandomWordGenerator ,
   },
   {
     path: PATHS.RANDOM_USERNAME_GENERATOR,
-    component: <RandomUsernameGenerator />,
+    component: RandomUsernameGenerator ,
   },
   {
     path: PATHS.SORT_NUMBER,
-    component: <SortNumbers />,
+    component: SortNumbers ,
   },
   {
     path: PATHS.SORT_WORD,
-    component: <SortWords />,
+    component: SortWords ,
   },
   {
     path: PATHS.PHONE_NUMBER_EXTRACTOR,
-    component: <PhoneNumberExtractor />,
+    component: PhoneNumberExtractor ,
   },
   {
     path: PATHS.REVERSE_TEXT_GENERATOR,
-    component: <ReverseTextGenerator />,
+    component: ReverseTextGenerator ,
   },
   {
     path: PATHS.WORD_TO_NUMBER,
-    component: <WordsToNumbers />,
+    component: WordsToNumbers ,
   },
   {
     path: PATHS.REMOVE_SPACES,
-    component: <RemoveSpaces />,
+    component: RemoveSpaces ,
   },
   {
     path: PATHS.TEXT_TO_ONE_LINE,
-    component: <TextToOneLine />,
-  },
-  {
-    path: PATHS.CSV_TO_TEXT_CONVERTER,
-    component: <CsvToTextConverter />,
+    component: TextToOneLine ,
   },
   {
     path: PATHS.ROUNDING_CALCULATOR,
-    component: <RoundingCalculator />,
+    component: RoundingCalculator ,
   },
   {
     path: PATHS.TXT_TO_CSV_CONVERTER,
-    component: <TxtToCsvConverter />,
+    component: TxtToCsvConverter ,
   },
   {
     path: PATHS.JSON_TO_TEXT,
-    component: <JsonToTxt />,
+    component: JsonToTxt ,
   },
   {
     path: PATHS.HTML_VALIDATOR,
-    component: <HTMLValidator />,
+    component: HTMLValidator ,
   },
   {
     path: PATHS.JSON_VALIDATOR,
-    component: <JsonValidator />,
+    component: JsonValidator ,
   },
   {
     path: PATHS.CODE_COMPARE_TOOL,
-    component: <CodeCompareTool />,
+    component: CodeCompareTool ,
   },
   {
     path: PATHS.WHAT_IS_MY_USER_AGENT,
-    component: <WhatIsMyUserAgent />,
+    component: WhatIsMyUserAgent ,
   },
 
   {
     path: PATHS.ROTATION_CALCULATOR,
-    component: <RotationCalculatorComponent />,
+    component: RotationCalculatorComponent ,
   },
   {
     path: PATHS.ROT13_ENCODER_DECODER,
-    component: <Rot13EncoderDecoderComponent />,
+    component: Rot13EncoderDecoderComponent,
   },
   {
     path: PATHS.CMYK_TO_HEX,
-    component: <CmykToHexConverter />,
+    component: CmykToHexConverter,
   },
   {
     path: PATHS.HEX_TO_CMYK,
-    component: <HexToCmykConverter />,
+    component: HexToCmykConverter,
   },
   {
     path: PATHS.HEX_TO_PANTONE,
-    component: <HexToPantone />,
+    component: HexToPantone,
   },
   {
     path: PATHS.RGB_TO_CMYK_CONVERTER,
-    component: <RgbToCmykConverter />,
+    component: RgbToCmykConverter,
   },
   {
     path: PATHS.CMYK_TO_RGB_CONVERTER,
-    component: <CmykToRgbConverter />,
+    component: CmykToRgbConverter,
   },
   {
     path: PATHS.CSS_TO_STYLUS,
-    component: <CssToStylus />,
+    component: CssToStylus,
   },
   {
     path: PATHS.UNICODE_TO_ASCII_CONVERTER,
-    component: <UnicodeToAsciiConverter />,
+    component: UnicodeToAsciiConverter,
   },
   {
     path: PATHS.ASCII_TO_UNICODE_CONVERTER,
-    component: <AsciiToUnicodeConverter />,
+    component: AsciiToUnicodeConverter,
   },
   {
     path: PATHS.DECIMAL_TO_ASCII_CONVERTER,
-    component: <DecimalToAsciiConverter />,
+    component: DecimalToAsciiConverter,
   },
   {
     path: PATHS.ASCII_TO_DECIMAL_CONVERTER,
-    component: <AsciiToDecimalConverter />,
+    component: AsciiToDecimalConverter,
   },
   {
     path: PATHS.BCRYPT_GENERATOR,
-    component: <BcryptGenerator />,
+    component: BcryptGenerator,
   },
   {
     path: PATHS.HEX_TO_ASCII_CONVERTER,
-    component: <HexToAscii />,
+    component: HexToAscii,
   },
   {
     path: PATHS.BASE64_DECODER,
-    component: <Base64Decoder />,
+    component: Base64Decoder,
   },
   {
-    path: PATHS.BASE64_ENCODER,
-    component: <Base64Encoder />,
-  },
+  path: PATHS.BASE64_ENCODER,
+  component: Base64Encoder,
+},
   {
     path: PATHS.HOURS_TO_SECONDS,
-    component: <HoursToSecounds />,
+    component: HoursToSecounds,
   },
   {
     path: PATHS.PX_TO_REM_CONVERTER,
-    component: <PxToRemConverter />,
+    component: PxToRemConverter,
   },
   {
     path: PATHS.REM_TO_PX_CONVERTER,
-    component: <RemToPxConverter />,
+    component: RemToPxConverter,
   },
   {
     path: PATHS.RANDOM_CHARACTER_GENERATOR,
-    component: <RandomCharacterGenerator />,
+    component: RandomCharacterGenerator,
   },
   {
     path: PATHS.PLACEHOLDER_IMAGE_GENERATOR,
-    component: <PlaceholderImageGenerator />,
+    component: PlaceholderImageGenerator,
   },
   {
     path: PATHS.COLOR_PICKER_TOOL,
-    component: <ColorPickerTool />,
+    component: ColorPickerTool ,
   },
   {
     path: PATHS.ROTATE_IMAGE_TOOL,
-    component: <RotateImageTool />,
+    component: RotateImageTool ,
   },
   {
     path: PATHS.CSV_TO_EXCEL_FILE_CONVERTOR,
-    component: <CsvToExcelFileConvertor />,
+    component: CsvToExcelFileConvertor ,
   },
   {
     path: PATHS.RANDOM_XML_GENERATOR,
-    component: <RandomXMLGenerator />,
+    component: RandomXMLGenerator ,
   },
   {
     path: PATHS.SQL_TO_CSV_CONVERTER,
-    component: <SqlToCsvConverter />,
+    component: SqlToCsvConverter ,
   },
   {
     path: PATHS.HTML_PRETTIFY,
-    component: <HtmlPrettify />,
+    component: HtmlPrettify ,
   },
   {
     path: PATHS.CSS_PRETTIFY,
-    component: <CssPrettify />,
+    component: CssPrettify ,
   },
   {
     path: PATHS.HTML_MINIFY,
-    component: <HtmlMinify />,
+    component: HtmlMinify ,
   },
   {
     path: PATHS.CSS_MINIFY,
-    component: <CssMinify />,
+    component: CssMinify ,
   },
   {
     path: PATHS.XML_MINIFY,
-    component: <XmlMinify />,
+    component: XmlMinify ,
   },
   {
     path: PATHS.XML_PRETTIFY,
-    component: <XmlPrettify />,
+    component: XmlPrettify ,
   },
   {
     path: PATHS.SQL_MINIFY,
-    component: <SqlMinify />,
+    component: SqlMinify ,
   },
   {
     path: PATHS.HEX_TO_RGB_CONVERTER,
-    component: <HexToRGBConverter />,
+    component: HexToRGBConverter,
   },
   {
     path: PATHS.RGB_TO_HEX_CONVERTER,
-    component: <RgbToHexConverter />,
+    component: RgbToHexConverter,
   },
   {
     path: PATHS.GREY_CODE_TO_DECIMAL,
-    component: <GreyCodeToDecimal />,
+    component: GreyCodeToDecimal,
   },
   {
     path: PATHS.DECIMAL_TO_GREY_CODE,
-    component: <DecimalToGrayCode />,
+    component: DecimalToGrayCode,
   },
   {
     path: PATHS.YAML_FORMATTER_AND_BEAUTIFIER,
-    component: <YAMLFormatterAndBeautifier />,
+    component: YAMLFormatterAndBeautifier,
   },
   {
     path: PATHS.SQL_FORMATTER_AND_BEAUTIFIER,
-    component: <SqlFormatterAndBeautifier />,
+    component: SqlFormatterAndBeautifier,
   },
   {
     path: PATHS.WHAT_IS_MY_BROWSER,
-    component: <WhatIsMyBrowser />,
+    component: WhatIsMyBrowser,
   },
   {
     path: PATHS.WHAT_VERSION_OF_WINDOWS_DO_I_HAVE,
-    component: <WhatVersionOfWindowsDoIHave />,
+    component: WhatVersionOfWindowsDoIHave,
   },
   {
     path: PATHS.WHAT_OPERATING_SYSTEM_DO_I_HAVE,
-    component: <WhatOperatingSystemDoIHave />,
+    component: WhatOperatingSystemDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_CHROME_DO_I_HAVE,
-    component: <WhatVersionOfChromeDoIHave />,
+    component: WhatVersionOfChromeDoIHave,
   },
 
   {
     path: PATHS.JSON_TO_TYPESCRIPT,
-    component: <JsonToTypeScript />,
+    component: JsonToTypeScript,
   },
   {
     path: PATHS.RANDOM_CSV_GENERATOR,
-    component: <RandomCSVGenerator />,
+    component: RandomCSVGenerator,
   },
   {
     path: PATHS.RANDOM_GUID_GENERATOR,
-    component: <RandomGUIDGenerator />,
+    component: RandomGUIDGenerator,
   },
   {
     path: PATHS.RANDOM_TEXT_FROM_REGEX,
-    component: <RandomTextFromRegEX />,
+    component: RandomTextFromRegEX,
   },
   {
     path: PATHS.QR_CODE_GENERATOR,
-    component: <QRCodeGenerator />,
+    component: QRCodeGenerator,
   },
   {
     path: PATHS.RANDOM_ADDRESS_GENERATOR,
-    component: <RandomAddressGenerator />,
+    component: RandomAddressGenerator,
   },
   {
     path: PATHS.HTML_CODE_GENERATOR,
-    component: <HtmlCodeGenerator />,
+    component: HtmlCodeGenerator,
   },
   {
     path: PATHS.HTML_VIEWER,
-    component: <HtmlViewer />,
+    component: HtmlViewer,
   },
   {
     path: PATHS.COLOR_INVERTOR,
-    component: <ColorInvertor />,
+    component: ColorInvertor,
   },
 
   {
     path: PATHS.STRING_DIFFERENCE_CHECKER,
-    component: <StringDiffrenceChecker />,
+    component: StringDiffrenceChecker,
   },
   {
     path: PATHS.TEXT_REPEATER,
-    component: <TextRepeater />,
+    component: TextRepeater,
   },
   {
     path: PATHS.SORTING_LIST,
-    component: <SortingList />,
+    component: SortingList,
   },
   {
     path: PATHS.SHUFFLE_LETTERS,
-    component: <ShuffleLetters />,
+    component: ShuffleLetters,
   },
   {
     path: PATHS.SHUFFLE_TEXT_LINES,
-    component: <ShuffleTextLines />,
+    component: ShuffleTextLines,
   },
 
   {
     path: PATHS.RANDOM_IP_GENERATOR,
-    component: <RandomIPGenerator />,
+    component: RandomIPGenerator,
   },
   {
     path: PATHS.JSON_COMPARE,
-    component: <JSONCompare />,
+    component: JSONCompare,
   },
   {
     path: PATHS.TEXT_COMPARE,
-    component: <TextCompare />,
+    component: TextCompare,
   },
   {
     path: PATHS.URL_DECODE,
-    component: <URLDecode />,
+    component: URLDecode,
   },
   {
     path: PATHS.URL_ENCODE,
-    component: <URLEncode />,
+    component: URLEncode,
   },
   {
     path: PATHS.TEXT_TO_HTML_ENTITIES_CONVERTOR,
-    component: <TextToHtmlEntitiesConvertor />,
+    component: TextToHtmlEntitiesConvertor,
   },
   {
     path: PATHS.HTML_ENTITIES_TO_TEXT_CONVERTER,
-    component: <HtmlEntitiesToTextConverter />,
+    component: HtmlEntitiesToTextConverter,
   },
   {
     path: PATHS.CSV_TO_JSON,
-    component: <CSVToJSON />,
+    component: CSVToJSON,
   },
   {
     path: PATHS.CSS_TO_SCSS,
-    component: <CSSToSCSSConverter />,
+    component: CSSToSCSSConverter,
   },
   {
     path: PATHS.SCSS_TO_CSS,
-    component: <ScssToCssConverter />,
+    component: ScssToCssConverter,
   },
 
   {
     path: PATHS.MARKDOWN_FORMATTER,
-    component: <MarkdownFormatter />,
+    component: MarkdownFormatter,
   },
   {
     path: PATHS.TYPE_SCRIPT_FORMATTER,
-    component: <TypescriptFormatter />,
+    component: TypescriptFormatter,
   },
 
   {
     path: PATHS.TEXT_TO_CSV,
-    component: <TextToCsv />,
+    component: TextToCsv,
   },
   {
     path: PATHS.INTERNET_SPEED_TEST,
-    component: <InternetSpeedTest />,
+    component: InternetSpeedTest,
   },
   {
     path: PATHS.PHP_FORMATTER,
-    component: <PHPFormatter />,
+    component: PHPFormatter,
   },
   {
     path: PATHS.PYTHON_FORMATTER,
-    component: <PythonFormatter />,
+    component: PythonFormatter,
   },
   {
     path: PATHS.XML_COMPARE,
-    component: <XmlCompare />,
+    component: XmlCompare,
   },
   {
     path: PATHS.IDN_ENCODE,
-    component: <IdnEncode />,
+    component: IdnEncode,
   },
   {
     path: PATHS.IDN_DECODE,
-    component: <IdnDecode />,
+    component: IdnDecode,
   },
   {
     path: PATHS.JSON_TO_XML_CONVERTER,
-    component: <JsonToXmlConverter />,
+    component: JsonToXmlConverter,
   },
   {
     path: PATHS.JSON_TO_YAML_CONVERTER,
-    component: <JsonToYamlConverter />,
+    component: JsonToYamlConverter,
   },
    {
     path: PATHS.JSON_TO_CSV_CONVERTOR,
-    component: <JsonToCsvConverter />,
+    component: JsonToCsvConverter,
   },
   {
     path: PATHS.UTF8_DECODE,
-    component: <Utf8Decode />,
+    component: Utf8Decode,
   },
   {
     path: PATHS.UTF8_ENCODE,
-    component: <Utf8Encode />,
+    component: Utf8Encode,
   },
   {
     path: PATHS.XOR_CALCULATOR,
-    component: <XorCalculator />,
+    component: XorCalculator,
   },
   {
     path: PATHS.BINARY_TO_DECIMAL_CONVERTER,
-    component: <BinaryToDecimalConverter />,
+    component: BinaryToDecimalConverter,
   },
   {
     path: PATHS.DECIMAL_TO_BINARY_CONVERTER,
-    component: <DecimalToBinaryConverter />,
+    component: DecimalToBinaryConverter,
   },
   {
     path: PATHS.OCTAL_TO_DECIMAL_CONVERTER,
-    component: <OctalToDecimalConverter />,
+    component: OctalToDecimalConverter,
   },
   {
     path: PATHS.DECIMAL_TO_OCTAL_CONVERTER,
-    component: <DecimalToOctalConverter />,
+    component: DecimalToOctalConverter,
   },
   {
     path: PATHS.DECIMAL_TO_HEX,
-    component: <DecimalToHexConverter />,
+    component: DecimalToHexConverter,
   },
   {
     path: PATHS.HEX_TO_BINARY,
-    component: <HexToBinaryConverter />,
+    component: HexToBinaryConverter,
   },
   {
     path: PATHS.OCTAL_TO_BINARY,
-    component: <OctalToBinaryConverter />,
+    component: OctalToBinaryConverter,
   },
   {
     path: PATHS.MILES_TO_KILOMETERS,
-    component: <MilesToKmConverter />,
+    component: MilesToKmConverter,
   },
   {
     path: PATHS.KILOMETERS_TO_MILES,
-    component: <KmToMilesConverter />,
+    component: KmToMilesConverter,
   },
   {
     path: PATHS.JWT_DECODER,
-    component: <JwtDecoder />,
+    component: JwtDecoder,
   },
   {
     path: PATHS.IP_TO_HEX,
-    component: <IpToHexConverter />,
+    component: IpToHexConverter,
   },
   {
     path: PATHS.IPV4_SUBNET_CALCULATOR,
@@ -2347,159 +2352,159 @@ export const developmentToolsRoutes = [
   },
   {
     path: PATHS.WORDS_TO_NUMBERS,
-    component: <WordsToNumbers />,
+    component: WordsToNumbers,
   },
   {
     path: PATHS.NUMBERS_TO_WORDS,
-    component: <NumbersToWordsConverter />,
+    component: NumbersToWordsConverter,
   },
   {
     path: PATHS.FABONACCI_CALCULATOR,
-    component: <FibonacciCalculator />,
+    component: FibonacciCalculator,
   },
   {
     path: PATHS.BITWISE_CALCULATOR,
-    component: <BitwiseCalculator />,
+    component: BitwiseCalculator,
   },
   {
     path: PATHS.GRAPHQL_FORMATTER,
-    component: <GraphQLFormatter />,
+    component: GraphQLFormatter,
   },
   {
     path: PATHS.CELCIUS_TO_FAHRENHEIT,
-    component: <CelsiusFahrenheitConverter />,
+    component: CelsiusFahrenheitConverter,
   },
   {
     path: PATHS.BARCODE_GENERATOR,
-    component: <BarcodeGenerator />,
+    component: BarcodeGenerator,
   },
   {
     path: PATHS.FIND_AND_REPLACE_STRING,
-    component: <FindAndReplaceString />,
+    component: FindAndReplaceString,
   },
   {
     path: PATHS.API_KEY_GENERATOR,
-    component: <ApiKeyGenerator />,
+    component: ApiKeyGenerator,
   },
   {
     path: PATHS.HTML_ESCAPE,
-    component: <HtmlEscape />,
+    component: HtmlEscape,
   },
   {
     path: PATHS.HTML_UNESCAPE,
-    component: <HtmlUnescape />,
+    component: HtmlUnescape,
   },
   {
     path: PATHS.JAVASCRIPT_REGEX_TESTER,
-    component: <JavascriptRegexTester />,
+    component: JavascriptRegexTester,
   },
   {
     path: PATHS.STRIP_HTML,
-    component: <StripHTML />,
+    component: StripHTML,
   },
   {
     path: PATHS.WHAT_IS_MY_LOCAL_IP_ADDRESS,
-    component: <WhatIsMyLocalIPAddress />,
+    component: WhatIsMyLocalIPAddress,
   },
   {
     path: PATHS.JAVASCRIPT_TESTER,
-    component: <JavaScriptTester />,
+    component: JavaScriptTester,
   },
   {
     path: PATHS.WHAT_VERSION_OF_JAVA,
-    component: <WhatVersionOfJavaDoIHave />,
+    component: WhatVersionOfJavaDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_MACOS,
-    component: <WhatVersionOfMacOSDoIHave />,
+    component: WhatVersionOfMacOSDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_FIREFOX,
-    component: <WhatVersionOfFirefoxDoIHave />,
+    component: WhatVersionOfFirefoxDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_IOS,
-    component: <WhatVersionOfIOSDoIHave />,
+    component: WhatVersionOfIOSDoIHave,
   },
   {
     path: PATHS.WHATS_MY_BROWSER_SIZE,
-    component: <WhatsMyBrowserSize />,
+    component: WhatsMyBrowserSize,
   },
   {
     path: PATHS.WHAT_VERSION_OF_SAFARI,
-    component: <WhatVersionOfSafariDoIHave />,
+    component: WhatVersionOfSafariDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_ANDROID,
-    component: <WhatVersionOfAndroidDoIHave />,
+    component: WhatVersionOfAndroidDoIHave,
   },
   {
     path: PATHS.WHAT_VERSION_OF_FLASH,
-    component: <WhatVersionOfFlashDoIHave />,
+    component: WhatVersionOfFlashDoIHave,
   },
   {
     path: PATHS.WHAT_IS_MY_ISP,
-    component: <WhatIsMyISP />,
+    component: WhatIsMyISP,
   },
   {
     path: PATHS.AM_I_USING_TOR,
-    component: <AmIUsingTor />,
+    component: AmIUsingTor,
   },
   {
     path: PATHS.HTML_TESTER,
-    component: <HtmlTester />,
+    component: HtmlTester,
   },
   {
     path: PATHS.EXCEL_COMPARE,
-    component: <ExcelCompare />,
+    component: ExcelCompare,
   },
   {
     path: PATHS.JAVASCRIPT_ESCAPE,
-    component: <JavaScriptEscape />,
+    component: JavaScriptEscape,
   },
   {
     path: PATHS.JAVASCRIPT_VALIDATOR_LINTER,
-    component: <JavaScriptValidatorLinter />,
+    component: JavaScriptValidatorLinter,
   },
   {
     path: PATHS.XML_ESCAPE,
-    component: <XMLEscape />,
+    component: XMLEscape,
   },
   {
     path: PATHS.CSS_VALIDATOR,
-    component: <CssValidator />,
+    component: CssValidator,
   },
   {
     path: PATHS.CSS_TO_SASS,
-    component: <CssToSass />,
+    component: CssToSass,
   },
   {
     path: PATHS.CSS_TO_LESS,
-    component: <CssToLess />,
+    component: CssToLess,
   },
   {
     path: PATHS.CRONTAB_GENERATOR,
-    component: <CrontabGenerator />,
+    component: CrontabGenerator,
   },
   {
     path: PATHS.MORSE_CODE_TRANSLATOR,
-    component: <MorseCodeTranslator />,
+    component: MorseCodeTranslator,
   },
   {
     path: PATHS.XML_TO_JSON_CONVERTER,
-    component: <XmlToJsonConverter />,
+    component: XmlToJsonConverter,
   },
   {
     path: PATHS.BCD_TO_DECIMAL_CONVERTER,
-    component: <BcdToDecimalConverter />,
+    component: BcdToDecimalConverter,
   },
   {
     path: PATHS.HTML_TO_BBCODE,
-    component: <HtmlToBBCode />,
+    component: HtmlToBBCode,
   },
   {
     path: PATHS.SQL_TO_JSON,
-    component: <SqlToJson />,
+    component: SqlToJson,
   },
   {
     path: PATHS.SVG_CONVERTER,
@@ -2507,11 +2512,11 @@ export const developmentToolsRoutes = [
   },
   {
     path: PATHS.HTML_TO_JADE,
-    component: <HtmlToJade />,
+    component: HtmlToJade,
   },
   {
     path: PATHS.CURL_TO_CODE_CONVERTER,
-    component: <CurlToCodeConverter />,
+    component: CurlToCodeConverter,
   },
 ];
 
