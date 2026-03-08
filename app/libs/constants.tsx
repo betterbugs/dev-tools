@@ -189,6 +189,7 @@ import XorCalculator from '../components/developmentToolsComponent/xorCalculator
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
+import { Cat } from '@phosphor-icons/react';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -1615,6 +1616,13 @@ export const developmentToolsCategoryContent: any = {
       title: 'SVG to React/CSS Utility',
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
+    },
+  ],
+  Category178: [
+    {
+      url: '/unix-timestamp-converter',
+      title: 'Unix Timestamp Converter',
+      description: 'Convert Unix timestamps to readable dates and vice versa.',
     },
   ],
 };
