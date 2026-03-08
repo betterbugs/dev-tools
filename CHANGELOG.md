@@ -1,3 +1,10 @@
+# [1.4.0-develop.8](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.7...v1.4.0-develop.8) (2026-03-08)
+
+
+### Features
+
+* Added URL parser & Query Editor Tool ([c9933ba](https://github.com/betterbugs/dev-tools/commit/c9933bae3cfbeb65c210f6877abf367c3cb0f46e)), closes [#51](https://github.com/betterbugs/dev-tools/issues/51)
+
 # [1.4.0-develop.7](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.6...v1.4.0-develop.7) (2026-03-08)
 
 
