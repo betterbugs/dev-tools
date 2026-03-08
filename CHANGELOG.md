@@ -1,3 +1,10 @@
+# [1.4.0-develop.7](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.6...v1.4.0-develop.7) (2026-03-08)
+
+
+### Features
+
+* **tools:** add Unix Timestamp Converter to development tools list ([3fedf57](https://github.com/betterbugs/dev-tools/commit/3fedf57f4036f7081b37c8ca1b3c585ea1e62045))
+
 # [1.4.0-develop.6](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.5...v1.4.0-develop.6) (2026-03-08)
 
 
