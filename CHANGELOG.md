@@ -1,3 +1,10 @@
+# [1.4.0-develop.6](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.5...v1.4.0-develop.6) (2026-03-08)
+
+
+### Features
+
+* Add Unix Timestamp (Epoch) Converter Utility ([f277272](https://github.com/betterbugs/dev-tools/commit/f27727267639f54e4ffaa80919b1d0836621ac7d)), closes [#16](https://github.com/betterbugs/dev-tools/issues/16)
+
 # [1.4.0-develop.5](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.4...v1.4.0-develop.5) (2026-03-05)
 
 
