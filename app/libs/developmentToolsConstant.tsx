@@ -17723,4 +17723,104 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`shell-script-formatter`]: {
+    hero_section: {
+      title: 'Shell Script (Bash/Sh) Formatter',
+      description:
+        'Format and beautify your shell scripts with consistent indentation, style enforcement, and basic linting for common pitfalls. A free tool on BetterBugs.io.',
+    },
+    development_tools_list: [
+      { tool: 'Python Formatter', url: PATHS.PYTHON_FORMATTER },
+      { tool: 'PHP Formatter', url: PATHS.PHP_FORMATTER },
+      { tool: 'TypeScript Formatter', url: '/typeScript-formatter' },
+      { tool: 'SQL Formatter', url: PATHS.SQL_FORMATTER_AND_BEAUTIFIER },
+      { tool: 'YAML Formatter', url: PATHS.YAML_FORMATTER_AND_BEAUTIFIER },
+      { tool: 'Markdown Formatter', url: '/markdown-formatter' },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Shell Script Formatter?',
+      about_description: [
+        {
+          description:
+            'The Shell Script Formatter is a free online tool on BetterBugs.io that formats and beautifies your Bash/Sh scripts with consistent indentation and style. It uses the shfmt engine (via WebAssembly) to produce professional, standardized shell code.',
+        },
+        {
+          description:
+            'Beyond formatting, the tool includes basic linting that highlights common pitfalls — such as unquoted variables, legacy backtick syntax, and unsafe cd commands — inspired by ShellCheck rules.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'Step-by-Step Guide',
+      guide_description: 'Using the shell script formatter is simple:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste Your Shell Script:',
+          step_description:
+            'Copy and paste your Bash or Sh script into the input editor.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Configure Options:',
+          step_description:
+            'Choose your preferred indent size (2, 4, or 8 spaces), toggle tabs, and set binary-ops-next-line preference.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Click Format:',
+          step_description:
+            'Hit the "Format" button. The formatted code appears in the output editor, and any lint warnings are shown below.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy or Download:',
+          step_description:
+            'Use the "Copy" button to copy to clipboard, or "Download .sh" to save the formatted script.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Why Use It?',
+      how_use_description:
+        'Shell scripts are often "quick and dirty". Having a quick way to pretty-print and check them prevents production bugs in deployment scripts. You can use it for:',
+      point: [
+        {
+          title: 'CI/CD Pipeline Scripts',
+          description:
+            'Format deployment, build, and test scripts for readability and maintainability across your team.',
+        },
+        {
+          title: 'DevOps Automation',
+          description:
+            'Clean up provisioning scripts, Dockerfiles entrypoints, and infrastructure-as-code shell hooks.',
+        },
+        {
+          title: 'Code Reviews',
+          description:
+            'Standardize shell script style before committing to version control, reducing diff noise.',
+        },
+        {
+          title: 'Bug Prevention',
+          description:
+            'Catch common pitfalls like unquoted variables (SC2086), legacy backticks (SC2006), and unsafe cd commands (SC2164).',
+        },
+        {
+          title: 'Learning Best Practices',
+          description:
+            'The lint warnings teach you ShellCheck-style best practices as you write shell scripts.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title:
+        'Shell Script (Bash/Sh) Formatter — Free Online Tool | BetterBugs.io',
+      meta_description:
+        'Format and beautify Bash/Sh shell scripts with consistent indentation, style enforcement, and basic linting. Free online tool on BetterBugs.io.',
+      og_title: 'Shell Script Formatter — BetterBugs.io',
+      og_description:
+        'Paste your shell script and get beautifully formatted code with lint warnings for common pitfalls.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 };
