@@ -105,6 +105,15 @@ function lintShellScript(code: string): LintWarning[] {
     }
   });
 
+  // Check for shebang
+  if (lines.length > 0 && !lines[0].startsWith("#!")) {
+    warnings.unshift({
+      line: 1,
+      code: "SC1008",
+      message: "Missing shebang (e.g. #!/bin/bash). This may cause scripts to run in the wrong shell.",
+    });
+  }
+
   return warnings;
 }
 
@@ -133,32 +142,19 @@ function formatShellHeuristic(code: string, options: FormatOptions): string {
       indentLevel = Math.max(0, indentLevel - 1);
     }
 
-    // Handle else/elif: dedent then indent
-    if (INDENT_AND_DEDENT.test(line) && !DEDENT_BEFORE.test(line)) {
-      // Already handled by DEDENT_BEFORE above
-    }
-
     result.push(indent.repeat(indentLevel) + line);
 
     // Indent after this line
     if (INDENT_AFTER.test(line) && !line.endsWith(";;")) {
-      // Check for one-liner: if ...; fi or while ...; done (all on one line)
       if (!(line.includes("; fi") || line.includes("; done") || line.includes("; esac"))) {
         indentLevel++;
       }
     }
 
-    // Handle 'do' on same line as for/while
-    if (/;\s*do\s*$/.test(line)) {
-      // already incremented from 'for' or 'while'
-    }
-
-    // Case patterns: ·) increment for body
     if (/^\S+\)/.test(line) && !line.startsWith("esac")) {
       indentLevel++;
     }
 
-    // ;; ends a case block
     if (line.endsWith(";;")) {
       indentLevel = Math.max(0, indentLevel - 1);
     }
@@ -166,6 +162,8 @@ function formatShellHeuristic(code: string, options: FormatOptions): string {
 
   return result.join("\n");
 }
+
+let wasmInitialized = false;
 
 const ShellFormatter: React.FC = () => {
   const [input, setInput] = useState<string>("");
@@ -194,10 +192,22 @@ const ShellFormatter: React.FC = () => {
       let formatted: string;
       try {
         // Try WASM formatter first
-        const shfmt = await import("@wasm-fmt/shfmt");
-        formatted = shfmt.format(input);
-      } catch {
-        // Fallback to heuristic formatter
+        const mod = await import("@wasm-fmt/shfmt");
+        if (!wasmInitialized && mod.default) {
+          await mod.default();
+          wasmInitialized = true;
+        }
+        
+        formatted = mod.format(input, undefined, {
+          indent: options.useTabs ? 0 : options.indentSize,
+          binaryNextLine: options.binaryNextLine,
+          switchCaseIndent: options.switchCaseIndent,
+          spaceRedirects: options.spaceRedirects,
+          funcNextLine: options.functionNextLine,
+          keepPadding: options.keepPadding,
+        });
+      } catch (err) {
+        console.warn("WASM formatter failed, falling back to heuristic:", err);
         formatted = formatShellHeuristic(input, options);
       }
       setOutput(formatted);
@@ -213,6 +223,7 @@ const ShellFormatter: React.FC = () => {
       setIsFormatting(false);
     }
   }, [input, options]);
+
 
   const handleClear = useCallback(() => {
     setInput("");
