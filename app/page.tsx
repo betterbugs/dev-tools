@@ -281,7 +281,7 @@ const Page = () => {
       <div className="max-w-[1170px] mx-auto md:my-[70px] my-[50px] px-4">
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
-          <aside className="w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1">
+          <aside className="w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-1 order-1 md:order-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-white/90">Filters</h2>
               {(selectedCategory || selectedBasis !== "All" || showFavoritesOnly) && (
@@ -302,7 +302,7 @@ const Page = () => {
               <p className="text-xs text-white/60 mb-2">Your Tools</p>
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
-                className={`w-full text-left px-3 py-2 rounded-lg border transition ${
+                className={`w-full text-left px-3 py-2 rounded-lg border transition mt-2 ${
                   showFavoritesOnly
                     ? "bg-primary text-black font-bold border-primary"
                     : "bg-black/40 text-white border-[#222] hover:bg-black/50"

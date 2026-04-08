@@ -190,7 +190,6 @@ import XorCalculator from '../components/developmentToolsComponent/xorCalculator
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
-import { Cat } from '@phosphor-icons/react';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -320,8 +319,8 @@ export const developmentToolsCategoryContent: any = {
     {
       // icon: <JsonPrettifierToolIcon />,
       url: '/json-prettifier',
-      title: 'JSON Prettifier',
-      description: 'Format JSON to make it human-readable.',
+      title: 'JSON Formatter/Prettifier Tool',
+      description: 'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
   ],
   Category10: [
@@ -717,7 +716,7 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-decoder',
       title: 'Base64 Decoder',
-      description: 'Decode Base64 text or files to UTF-8.',
+      description: 'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
   ],
   Category60: [

@@ -1,4 +1,3 @@
-import { steps } from 'framer-motion';
 import { PATHS } from './constants';
 
 export const DEVELOPMENTTOOLS: any = {
@@ -802,17 +801,12 @@ export const DEVELOPMENTTOOLS: any = {
     },
     development_tools_how_use: {
       how_use_title: 'Why It’s Used',
-      how_use_description: (
-        <>
-          <p>
-            During development, it&#39;s best to work with JSON code that isn’t
-            minified as it&#39;s much easier that way to read and work with. So,
+      how_use_description: `During development, it's best to work with JSON code that isn't
+            minified as it's much easier that way to read and work with. So,
             the JSON minifier is particularly useful for downsizing JSON files
             and using just before deploying the app to production.
-          </p>
-          <p className="mt-4"> You can use it for various purposes, such as:</p>
-        </>
-      ),
+           You can use it for various purposes, such as:
+      `,
       point: [
         {
           description:
@@ -856,9 +850,9 @@ export const DEVELOPMENTTOOLS: any = {
   },
   [`json-prettifier`]: {
     hero_section: {
-      title: 'JSON Prettifier Tool',
+      title: 'Online JSON Formatter/Prettifier',
       description:
-        'The JSON prettifier is a free online utility tool on BetterBugs.io that formats your JSON data, making it human-readable and easier to work with.',
+        'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
     development_tools_list: [
       { tool: 'Text Upper Case', url: PATHS.TEXT_UPPERCASE_CONVERTER },
@@ -869,25 +863,90 @@ export const DEVELOPMENTTOOLS: any = {
       { tool: 'Sentence Count Tool', url: PATHS.SENTENCE_COUNTER_TOOL },
     ],
     development_tools_about_details: {
-      about_title: 'What is the JSON Prettifier Tool?',
+      about_title: 'What is the JSON Formatter/Prettifier Tool?',
       about_description: [
         {
           description:
-            'The JSON prettifier tool allows you to nicely format your JSON code by adding proper indentation, line breaks, and spaces. This makes the JSON data more readable, usable, and easier to work with while writing and testing apps.',
+            'The JSON formatter tool enables you to nicely format your JSON code in one click by adding proper indentation, line breaks, and spaces to your code. This makes the JSON data more readable, usable, and easier to work with while writing and testing apps.',
         },
         {
           description:
-            "Developers and QA testers working with JSON data files can clearly benefit from this tool, as it changes unformatted data into a human-readable format, making it easier to spot errors and make modifications. It doesn't affect your JSON data or syntax at all; you simply get a more organized and aesthetically pleasing format.",
+            "You can use it to convert the minified JSON or messy JSON data (from APIs, logs, configs, or files) into properly indented, syntax-highlighted output. It supports validation for errors and tree expansion/collapse. You can also tweak the number of indentations you’d like in the formatted JSON output.",
         },
         {
           description:
-            'You can use the JSON prettifier here on BetterBugs.io completely free. Just copy-paste code or upload your JSON file and instantly get the prettier version of it.',
+            'Plus, this tool makes it extremely easy to spot errors and make modifications in JSON data. It doesn’t affect your JSON data or syntax at all; you simply get a more organized and aesthetically pleasing format.',
+        },
+        {
+          description:
+            'You can use the JSON formatter here on BetterBugs.io completely free. Just copy-paste code or upload your JSON file and instantly get the formatted version of it.',
+        },
+      ],
+    },
+    development_tool_example: {
+      example_title: 'Example',
+      example_input: {
+        title: 'Unformatted JSON String',
+        json_data: '{"book":{"title":"1Q84","author":"Haruki Murakami","year":2009,"character":{"name":"Tengo","role":"writer","age":30,"skills":["mathematics","novel_editing"]},"world":{"little_people":true,"two_moons":true}}}',
+      },
+      example_outputs: {
+        outputs: [
+          {
+            mode: 'Formatted String with JSON Formatter Tool on BetterBugs.io',
+            content: `{
+  "book": {
+    "title": "1Q84",
+    "author": "Haruki Murakami",
+    "year": 2009,
+    "character": {
+      "name": "Tengo",
+      "role": "writer",
+      "age": 30,
+      "skills": [
+        "mathematics",
+        "novel_editing"
+      ]
+    },
+    "world": {
+      "little_people": true,
+      "two_moons": true
+    }
+  }
+}`,
+          },
+        ],
+      },
+    },
+    example_outputs: {
+      outputs: [
+        {
+          mode: 'Formatted String with JSON Formatter Tool on BetterBugs.io',
+          content: `{
+  "book": {
+    "title": "1Q84",
+    "author": "Haruki Murakami",
+    "year": 2009,
+    "character": {
+      "name": "Tengo",
+      "role": "writer",
+      "age": 30,
+      "skills": [
+        "mathematics",
+        "novel_editing"
+      ]
+    },
+    "world": {
+      "little_people": true,
+      "two_moons": true
+    }
+  }
+}`,
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Step-By-Step Guide',
-      guide_description: 'To use the prettifier tool,',
+      guide_title: 'How to Use the JSON Formatter Tool on BetterBugs.io?',
+      guide_description: 'Using the tool is super simple:',
       steps: [
         {
           step_key: 'Step 1:',
@@ -902,70 +961,104 @@ export const DEVELOPMENTTOOLS: any = {
             },
             {
               steps_points_description:
-                'You can also upload a minified or unformatted JSON file and get the formatted version of it. For this, you have the “Choose File” button.',
+                'You can also upload a minified or unformatted JSON file from your local system. For this, use the “Choose File” button.',
             },
           ],
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Prettify the Code:',
+          step_title: 'Format the Code:',
           step_description:
-            'Hit the “Prettify” button to instantly format your JSON code. You can also specify the number of indentations for your JSON data with the Indentation dropdown. You have four options for it: 1, 2, 3, and 4 spaces.',
+            'Hit the “Prettify” button to instantly format your JSON code. You can also specify the number of indentations for your JSON data. You have four options for it: 1, 2, 3, and 4 spaces.',
         },
         {
           step_title: 'NOTE: ',
           step_description:
-            'If there’s any syntax error with the JSON, make sure to fix it before adding it to the prettifier or you will end up getting the “Invalid JSON input” error.',
+            'If there’s any syntax error with the JSON, make sure to fix it before adding it to the formatter or you will end up getting the “Invalid JSON input” error as a toast notification.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Use Prettified Code:',
+          step_title: 'Use Formatted Code:',
           step_description: 'To use the formatted code:',
         },
         {
           steps_points: [
             {
               steps_points_description:
-                'Hit the “Copy to Clipboard” button and paste wherever you want to.',
+                'Hit the “Copy” button and paste wherever you want to.',
             },
             {
               steps_points_description:
-                'You can also download it as a JSON file using the “Download Prettified JSON” button.',
+                'You can also download it as a JSON file using the “Download” button.',
             },
           ],
         },
         {
-          step_description: 'To clear all code, you have the “Clean” button.',
+          step_description: 'To clear all code, you’ve  the “Clear” button.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: "Why It's Used",
+      how_use_title: "What are the Use Cases of the JSON Formatter Tool?",
       how_use_description: 'You can use the JSON prettier tool to:',
       point: [
         {
-          description: 'Keep JSON code well-organized and properly formatted.',
+          title: 'Debugging API responses',
+          description: 'Format RAW, minified JSON from Postman collections, curl commands, or browser Network tab to quickly spot nesting errors, missing commas, or malformed arrays during REST/GraphQL troubleshooting.',
         },
         {
-          description: 'Make JSON data easier to understand and work with.',
+          title: 'Log analysis',
+          description: 'Format complex JSON logs from Sentry dashboards, server traces, ELK stacks, or Chrome DevTools console outputs to triage issues like failed auth flows or payload mismatches in production environments.',
         },
         {
+          title: 'Config validation',
           description:
-            'Easily spot errors or issues in the code while debugging.',
+            'Check and format package.json, .env configs, or YAML-to-JSON conversions during CI/CD pipelines in GitHub Actions, Jira workflows, or Azure DevOps deploys to catch syntax issues pre-merge.',
         },
         {
+          title: 'API integration testing',
           description:
-            'Make it easier for team members to review and edit JSON data.',
+            'Validate incoming/outgoing payloads in automated tests using tools like Postman or Supertest; format responses to confirm data shapes match schemas before scripting assertions.',
+        },
+        {
+          title: 'Work Collaboratively on PM Tools',
+          description:
+            ' Convert unreadable minified JSON snippets into readable trees, then copy-paste into GitHub PR comments or your preferred version control tool; perfect for faster code reviews and triage by distributed teams.',
+        },
+        {
+          title: 'Data migration',
+          description:
+            'Clean and validate legacy JSON files or database exports before importing into other project tools.',
+        },
+        {
+          title: 'Unit/Integration Testing',
+          description:
+            'Format test fixtures, mock responses, or expected payloads in Jest/Cypress suites to visually verify structure matches real API data',
+        },
+        {
+          title: 'End-to-End Testing',
+          description:
+            'Decode and format JSON from Playwright/Puppeteer traces or Selenium logs to analyze automation failures, like assertion mismatches in e2e workflows for web apps.',
+        },
+        {
+          title: 'Performance Profiling',
+          description:
+            'Format large JSON payloads from browser performance APIs (e.g., Navigation Timing) or stack traces to identify bloat in frontend bundles during dev sprints.',
+        },
+        {
+          title: 'Learning JSON',
+          description:
+            'Beginners can paste real-world examples from public APIs (like JSONPlaceholder) to visualize object nesting, arrays, and null handling, building intuition for schema design.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'JSON Prettifier - Developer Utility Tools',
+      meta_title: 'JSON Formatter/Prettifier Online - Developer Utility Tools',
       meta_description:
-        'Format your JSON data for better readability with the BetterBugs online JSON Prettifier. It’s perfect for keeping your JSON data well organized and makes it easier to work with while debugging.',
-      og_title: 'JSON Prettifier - Developer Utility Tools',
+        'Use the JSON formatter free online tool on BetterBugs.io to instantly format, validate, and beautify JSON data. Perfect for debugging APIs, logs, configs, and testing workflows.',
+      og_title: 'JSON Formatter/Prettifier Online - Developer Utility Tools',
       og_description:
-        'This article covers the JSON prettifier dev utility tool on BetterBugs.io with steps for using it.',
+        'This post describes usage steps and use cases of the JSON formatter free online tool on BetterBugs.io for developers, testers, and software folks.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -7259,7 +7352,6 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
-
   [`unicode-to-ascii-converter`]: {
     hero_section: {
       title: 'Unicode to ASCII Converter',
@@ -7339,7 +7431,6 @@ family[1]: "Beth"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
-
   [`ascii-to-unicode-converter`]: {
     hero_section: {
       title: 'ASCII to Unicode Converter',
@@ -7598,9 +7689,9 @@ family[1]: "Beth"`,
   },
   [`base64-decoder`]: {
     hero_section: {
-      title: 'Base64 Decoder',
+      title: 'Base64 Decoder Online',
       description:
-        'Paste Base64 text or choose a file and decode to readable text (UTF‑8).',
+        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
     development_tools_list: [
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
@@ -7611,69 +7702,163 @@ family[1]: "Beth"`,
       { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Base64 Decoder?',
+      about_title: 'What is the Base64 Decoder Online Tool?',
       about_description: [
         {
           description:
-            'The Base64 Decoder converts Base64‑encoded strings or files back into their original text content using UTF‑8 decoding.',
+            'The base64 decoder online tool instantly decodes Base64 strings (from APIs, logs, emails, or configs) into UTF-8/readable formats: plain text, JSON, HEX, or binary. ',
         },
         {
           description:
-            'Useful for reversing data encoded for transport or embedding (e.g., in JSON, URLs, or HTML).',
+            'You can load data to it by adding a Base64 string in the input box, uploading a file from your system, or simply entering a URL. It\'s a 100% free-to-use tool on BetterBugs.io; perfect for debugging encoded data in dev, testing, or data tasks. No installations or downloads or code is required for using it. You can paste the string and get results right away. ',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Base64 Decoder',
-      guide_description: 'To decode Base64:',
+      guide_title: 'How to Use the Base64 Tool?',
+      guide_description: 'For using the tool, simply:',
       steps: [
         {
-          step_key: 'Step 1:',
-          step_title: 'Paste or Upload:',
-          step_description:
-            'Paste your Base64 text or choose a file containing Base64.',
-        },
-        {
-          step_key: 'Step 2:',
-          step_title: 'Decode:',
-          step_description:
-            'Click the Decode button to convert Base64 to UTF‑8 text.',
-        },
-        {
-          step_key: 'Step 3:',
-          step_title: 'Copy or Clear:',
-          step_description: 'Copy the decoded result or clear to start over.',
+          steps_points: [
+            {
+              steps_points_title: 'Add the encoded Base64 string',
+              steps_points_description:
+                'to the input box OR',
+            },
+            {
+              steps_points_title: 'Upload the RAW text file',
+              steps_points_description:
+                'using the upload button (located at the top right of the input box)',
+            },
+          ],
         },
       ],
     },
+    development_tool_example: {
+      example_title: 'Example',
+      example_description: 'For instance, try adding the following Base64 string in the input box and see if it matches the output:',
+      example_input: {
+        title: 'Base64 String:',
+        json_data: 'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0=',
+      },
+      example_outputs: {
+        outputs: [
+          { mode: 'JSON/UTF-8 Output', content: '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"} ' },
+        ],
+      },
+      javascript_example: {
+        title: 'JavaScript Example: How to Decode Base64 using JavaScript Built-in Methods',
+        description:
+          'In JavaScript, you can decode Base64 strings using the in-built “atob” method and encode them back using the “btoa” method. Here’s how they work:',
+        methods: [
+          {
+            name: 'atob(base64String)',
+            description:
+              'This JS method decodes a Base64‑encoded string into a plain ASCII string (e.g., text, JSON, or simple data). It assumes the input is valid Base64; malformed strings will throw an error.',
+          },
+          {
+            name: 'btoa(string)',
+            description:
+              'The btoa method encodes a plain ASCII string into a Base64‑encoded string. It only works reliably with ASCII‑safe text; for UTF‑8 text, you should first encode to bytes (e.g., using TextEncoder) and then encode to Base64.',
+          },
+        ],
+        examples: [
+          {
+            title: 'Example: decode Base64 → string → JSON',
+            code: `const base64Json = "eyJuYW1lIjogIkpvaG4iLCAiYWdlIjogMjUsICJjb3VudHJ5IjogIkluZGlhIn0=";
+const jsonString = atob(base64Json);
+const obj = JSON.parse(jsonString);
+console.log(obj.name);  // "John"`,
+          },
+          {
+            title: 'Example: encode plain text → Base64',
+            code: `const plainText = "Hello World!";
+const encoded = btoa(plainText);
+console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
+          },
+        ],
+        note:
+          'For UTF‑8 text or binary data, you can combine TextEncoder / Uint8Array with btoa‑like logic, but for quick debugging and API‑style payloads, “atob” and “btoa” methods works pretty well.',
+      },
+    },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
-      how_use_description: 'Common use cases:',
+      how_use_title: 'What are the use cases for the tool',
+      how_use_description: 'You can use the Base64 decoder tools for various purposes while debugging, writing code, running API testing activities, or learning purposes, such as:',
       point: [
         {
-          title: 'Reverse encoded payloads',
+          title: 'Debugging encoded API payloads',
           description:
-            'Decode Base64 strings sent via APIs, environment variables, or emails.',
+            'Decode Base64 in request/response bodies from tools like Postman or browser dev tools to inspect hidden data without writing scripts.',
         },
         {
-          title: 'Recover embedded text',
+          title: 'Unpacking log files and traces',
           description:
-            'Extract readable content embedded in HTML, JSON, or data URIs.',
+            'Extract readable text from Base64-encoded errors, stack traces, or payloads in server logs, Sentry events, or Chrome console outputs.',
         },
         {
-          title: 'Debugging',
+          title: 'Handling auth tokens and Basic Auth',
           description:
-            'Quickly inspect encoded logs or tokens during troubleshooting.',
+            'Decode strings such as "dXNlcjpwYXNz" to verify credentials in Jira tickets, GitHub PRs, or Slack threads during auth debugging.',
+        },
+        {
+          title: 'Reverse-engineering emails and configs',
+          description:
+            'Turn Base64 blobs from email attachments, .env files, or YAML configs into plain text for quick reviews in docs or runbooks.',
+        },
+        {
+          title: 'API integration testing',
+          description:
+            'Decode JWT payloads (base64url variant supported) or GraphQL responses to validate data shapes before writing tests.',
+        },
+        {
+          title: 'Security audits',
+          description:
+            'Inspect encoded strings in bug reports or vulnerability scans without local decoders.',
+        },
+        {
+          title: 'Sharing snippets in tickets',
+          description:
+            'Decode once, paste readable output into GitHub issues, Linear tickets, or Azure DevOps for faster team triage.',
+        },
+        {
+          title: 'Prototyping parsers',
+          description:
+            'Quickly validate Base64 inputs for custom Node.js scripts or browser extensions during dev spikes.',
+        },
+        {
+          title: 'Learning Base64 encoding/decoding',
+          description:
+            'Students and CS learners can paste example Base64 strings, decode them, and visually see how text, numbers, or JSON map to encoded bytes, helping them understand how Base64 works in URLs, APIs, and configs.',
+        },
+        {
+          title: 'Educational Demos',
+          description:
+            'Instructors can encode a small snippet (e.g., a JSON object or config) into Base64, share the encoded string with students, and then decode it live in the tool to show the round‑trip between raw data and encoded form.',
+        },
+        {
+          title: 'Understanding email encodings and headers',
+          description:
+            'Anyone curious about how emails encode attachments or subject lines can paste Base64‑encoded header snippets or MIME sections into the decoder to see the underlying text.',
+        },
+        {
+          title: 'Exploring API and JWT examples',
+          description:
+            'Beginners can decode example Access Tokens or JWT payloads (base64url) into JSON to inspect claims, roles, and expiry values without installing extra libraries.',
+        },
+        {
+          title: 'Personal data format experiments',
+          description:
+            'Writers, students, or hobbyists can encode notes, passwords (for demo only), or small configs into Base64, then decode them back to see how encoding affects length and readability.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Base64 Decoder – Decode Base64 to Text | Developer Tools',
+      meta_title: 'Base64 Decoder Online - Developer Utility Tools',
       meta_description:
-        'Decode Base64 online. Paste text or upload a file and convert Base64 to UTF‑8 instantly.',
-      og_title: 'Base64 Decoder – Free Online Tool',
+        'Use the base64 decoder free online tool on BetterBugs.io to instantly decode Base64 strings into plain text, JSON, HEX, or binary data. Perfect for debugging APIs, logs, and encoded payloads.',
+      og_title: 'Base64 Decoder Online - Developer Utility Tools',
       og_description:
-        'Decode Base64 strings or files to readable text. Fast, simple, and secure.',
+        'This post describes usage steps and the use cases of the Base64 decoder free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },

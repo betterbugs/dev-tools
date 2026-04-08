@@ -350,7 +350,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
 
                         return (
                           <p
-                            className="text-base mt-3 text-white/70"
+                            className="text-base mt-3"
                             key={`about_description_${index}`}
                           >
                             {splitDescriptions.map(
@@ -383,7 +383,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 return (
                                   <span
                                     key={`about_description_part_${index}_${subIndex}`}
-                                    className={isQuoted ? "text-white" : ""}
+                                    className={isQuoted ? "text-white" : "text-white/70"}
                                   >
                                     {text}
                                   </span>
@@ -457,122 +457,6 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                     </div>
                   )}
 
-                  {/* example section */}
-                  {development_tool_example && (
-                    <div className="mt-8">
-                      {development_tool_example?.example_title && (
-                        <h4 className="text-2xl font-semibold text-white mb-2">
-                          {development_tool_example?.example_title}
-                        </h4>
-                      )}
-                      {development_tool_example?.example_description && (
-                        <p className="text-white/70 text-base mt-2">
-                          {development_tool_example?.example_description}
-                        </p>
-                      )}
-
-                      {development_tool_example?.example_input && (
-                        <div className="mt-4">
-                          {development_tool_example?.example_input?.title && (
-                            <p className="text-white text-base font-medium mb-2">
-                              {development_tool_example?.example_input?.title}
-                            </p>
-                          )}
-                          {development_tool_example?.example_input?.json_data && (
-                            <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
-                              <code className="text-white/90 text-sm whitespace-pre">
-                                {development_tool_example?.example_input?.json_data}
-                              </code>
-                            </pre>
-                          )}
-                        </div>
-                      )}
-
-                      {development_tool_example?.example_outputs && (
-                        <div className="mt-6">
-                          {development_tool_example?.example_outputs?.intro && (
-                            <p className="text-white/70 text-base mb-4">
-                              {development_tool_example?.example_outputs?.intro}
-                            </p>
-                          )}
-                          {development_tool_example?.example_outputs?.outputs?.map(
-                            (output: any, index: number) => (
-                              <div key={`example_output_${index}`} className="mt-4">
-                                {output?.mode && (
-                                  <p className="text-white text-base font-medium mb-2">
-                                    {output?.mode}
-                                  </p>
-                                )}
-                                {output?.title && (
-                                  <p className="text-white/70 text-base mb-2">
-                                    {output?.title}
-                                  </p>
-                                )}
-                                {output?.content && (
-                                  <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
-                                    <code className="text-white/90 text-sm whitespace-pre">
-                                      {output?.content}
-                                    </code>
-                                  </pre>
-                                )}
-                                {output?.note && (
-                                  <p className="text-white/60 text-sm mt-2 italic">
-                                    {output?.note}
-                                  </p>
-                                )}
-                              </div>
-                            )
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* what section */}
-                  {development_tools_what && (
-                    <div className="mt-8">
-                      {development_tools_what?.about_title && (
-                        <h4 className="text-2xl font-semibold text-white mb-2">
-                          {development_tools_what?.about_title}
-                        </h4>
-                      )}
-                      {development_tools_what?.what_description?.map(
-                        (desc: any, index: number) => {
-                          const descriptions = desc?.descriptions;
-                          const splitDescriptions =
-                            descriptions.split(/(".*?")/); // Split quoted and unquoted text
-
-                          return (
-                            <p
-                              className="text-white/70 text-base mt-2"
-                              key={`what_description_${index}`}
-                            >
-                              {splitDescriptions.map(
-                                (text: any, subIndex: any) => {
-                                  const isQuoted =
-                                    text.startsWith("") && text.endsWith("");
-
-                                  return (
-                                    <span
-                                      key={`what_description_part_${index}_${subIndex}`}
-                                      className={
-                                        isQuoted
-                                          ? "text-white"
-                                          : "text-white/70"
-                                      }
-                                    >
-                                      {text}
-                                    </span>
-                                  );
-                                }
-                              )}
-                            </p>
-                          );
-                        }
-                      )}
-                    </div>
-                  )}
-
                   {/* step-by-step guide */}
                   <div className="my-10">
                     {development_tools_steps_guide?.guide_title && (
@@ -641,7 +525,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                         part.endsWith("") ? (
                                                         <span
                                                           key={i}
-                                                          className="font-semibold text-white/90"
+                                                          className="font-semibold text-white/70"
                                                         >
                                                           {part}
                                                         </span>
@@ -664,7 +548,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                                   ) ? (
                                                                   <span
                                                                     key={`${i}-${j}`}
-                                                                    className="font-semibold text-white/90"
+                                                                    className="font-semibold text-white/70"
                                                                   >
                                                                     {sub.slice(
                                                                       2,
@@ -805,6 +689,198 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       </div>
                     )}
                   </div>
+
+                  {/* example section */}
+                  {development_tool_example && (
+                    <div className="mt-8">
+                      {development_tool_example?.example_title && (
+                        <h4 className="text-2xl font-semibold text-white mb-2">
+                          {development_tool_example?.example_title}
+                        </h4>
+                      )}
+                      {development_tool_example?.example_description && (
+                        <p className="text-white/70 text-base mt-2">
+                          {development_tool_example?.example_description}
+                        </p>
+                      )}
+
+                      {development_tool_example?.example_input && (
+                        <div className="mt-4">
+                          {development_tool_example?.example_input?.title && (
+                            <p className="text-white text-base font-medium mb-2">
+                              {development_tool_example?.example_input?.title}
+                            </p>
+                          )}
+                          {development_tool_example?.example_input?.json_data && (
+                            <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                              <code className="text-white/90 text-sm whitespace-pre">
+                                {development_tool_example?.example_input?.json_data}
+                              </code>
+                            </pre>
+                          )}
+                        </div>
+                      )}
+
+                      {development_tool_example?.example_outputs && (
+                        <div className="mt-6">
+                          {development_tool_example?.example_outputs?.intro && (
+                            <p className="text-white/70 text-base mb-4">
+                              {development_tool_example?.example_outputs?.intro}
+                            </p>
+                          )}
+                          {development_tool_example?.example_outputs?.outputs?.map(
+                            (output: any, index: number) => (
+                              <div key={`example_output_${index}`} className="mt-4">
+                                {output?.mode && (
+                                  <p className="text-white text-base font-medium mb-2">
+                                    {output?.mode}
+                                  </p>
+                                )}
+                                {output?.title && (
+                                  <p className="text-white/70 text-base mb-2">
+                                    {output?.title}
+                                  </p>
+                                )}
+                                {output?.content && (
+                                  <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                                    <code className="text-white/90 text-sm whitespace-pre">
+                                      {output?.content}
+                                    </code>
+                                  </pre>
+                                )}
+                                {output?.note && (
+                                  <p className="text-white/60 text-sm mt-2 italic">
+                                    {output?.note}
+                                  </p>
+                                )}
+                              </div>
+                            )
+                          )}
+                        </div>
+                      )}
+
+                      {/* JavaScript example section (optional) */}
+                      {development_tool_example?.javascript_example && (
+                        <div className="mt-8">
+                          {development_tool_example?.javascript_example?.title && (
+                            <h5 className="text-xl font-semibold text-white mb-2">
+                              {development_tool_example?.javascript_example?.title}
+                            </h5>
+                          )}
+                          {development_tool_example?.javascript_example?.description && (
+                            <p className="text-white/70 text-base mt-2">
+                              {development_tool_example?.javascript_example?.description}
+                            </p>
+                          )}
+
+                          {development_tool_example?.javascript_example?.methods?.length >
+                            0 && (
+                              <div className="mt-4">
+                                <ul className="list-disc space-y-3 pl-6">
+                                  {development_tool_example?.javascript_example?.methods?.map(
+                                    (method: any, index: number) => (
+                                      <li
+                                        key={`js_method_${index}`}
+                                        className="text-base"
+                                      >
+                                        {method?.name && (
+                                          <span className="text-white font-semibold">
+                                            {method?.name}{" "}
+                                          </span>
+                                        )}
+                                        {method?.description && (
+                                          <span className="text-white/70">
+                                            {method?.description}
+                                          </span>
+                                        )}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+
+                          {development_tool_example?.javascript_example?.examples?.length >
+                            0 && (
+                              <div className="mt-6">
+                                {development_tool_example?.javascript_example?.examples?.map(
+                                  (example: any, index: number) => (
+                                    <div
+                                      key={`js_example_${index}`}
+                                      className="mt-4"
+                                    >
+                                      {example?.title && (
+                                        <p className="text-white text-base font-medium mb-2">
+                                          {example?.title}
+                                        </p>
+                                      )}
+                                      {example?.code && (
+                                        <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                                          <code className="text-white/90 text-sm whitespace-pre">
+                                            {example?.code}
+                                          </code>
+                                        </pre>
+                                      )}
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            )}
+
+                          {development_tool_example?.javascript_example?.note && (
+                            <p className="text-white/60 text-sm mt-4">
+                              {development_tool_example?.javascript_example?.note}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* what section */}
+                  {development_tools_what && (
+                    <div className="mt-8">
+                      {development_tools_what?.about_title && (
+                        <h4 className="text-2xl font-semibold text-white mb-2">
+                          {development_tools_what?.about_title}
+                        </h4>
+                      )}
+                      {development_tools_what?.what_description?.map(
+                        (desc: any, index: number) => {
+                          const descriptions = desc?.descriptions;
+                          const splitDescriptions =
+                            descriptions.split(/(".*?")/); // Split quoted and unquoted text
+
+                          return (
+                            <p
+                              className="text-white/70 text-base mt-2"
+                              key={`what_description_${index}`}
+                            >
+                              {splitDescriptions.map(
+                                (text: any, subIndex: any) => {
+                                  const isQuoted =
+                                    text.startsWith("") && text.endsWith("");
+
+                                  return (
+                                    <span
+                                      key={`what_description_part_${index}_${subIndex}`}
+                                      className={
+                                        isQuoted
+                                          ? "text-white"
+                                          : "text-white/70"
+                                      }
+                                    >
+                                      {text}
+                                    </span>
+                                  );
+                                }
+                              )}
+                            </p>
+                          );
+                        }
+                      )}
+                    </div>
+                  )}
 
                   {/* how to use */}
                   <div className="my-10">
