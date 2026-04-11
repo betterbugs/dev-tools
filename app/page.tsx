@@ -15,6 +15,7 @@ import CodeForgeIcon from "./components/theme/Icon/codeForgeIcon";
 import ConvertXIcon from "./components/theme/Icon/convertXIcon";
 import GenieIcon from "./components/theme/Icon/genieIcon";
 import DevUtilsIcon from "./components/theme/Icon/devUtilsIcon";
+import { useTheme } from "./contexts/themeContext";
 
 const CATEGORY_GROUPS = [
   "Text Lab",
@@ -123,6 +124,7 @@ const classifyBasis = (title: string, url: string): BasisType => {
 };
 
 const Page = () => {
+  const { isLightTheme } = useTheme();
   const { register, formState, setValue } = useForm<any>({});
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -236,7 +238,7 @@ const Page = () => {
         ogDescription={SEO_META?.developmentTools?.description}
         ogImage={SEO_META?.developmentTools?.ogImage}
       />
-      <div className="max-w-[770px] mx-auto">
+      <div className={`max-w-[770px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}>
         <div className="px-3 md:px-auto mx-auto">
           <div className="flex flex-col justify-center items-center md:pb-[10px] md:pt-[70px] py-[50px]">
             <BBIcon />
@@ -272,18 +274,20 @@ const Page = () => {
             </div>
           ) : (
             <div className="absolute lg:right-[210px] lg:top-4 right-11 top-4 2xl:right-[13rem] 2xl:top-4">
-              <SearchIcon className="text-white" />
+              <SearchIcon className={isLightTheme ? "text-black" : "text-white"} />
             </div>
           )}
         </div>
       </div>
 
-      <div className="max-w-[1170px] mx-auto md:my-[70px] my-[50px] px-4">
+      <div className={`max-w-[1170px] mx-auto md:my-[70px] my-[50px] px-4 ${DevelopmentToolsStyles.contentWrapper}`}>
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
-          <aside className="w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1">
+          <aside
+            className={`w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1 ${DevelopmentToolsStyles.filterSidebar}`}
+          >
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold text-white/90">Filters</h2>
+              <h2 className={`text-sm font-semibold text-white/90 ${DevelopmentToolsStyles.filterHeading}`}>Filters</h2>
               {(selectedCategory || selectedBasis !== "All" || showFavoritesOnly) && (
                 <button
                   className="text-xs text-primary hover:underline"
@@ -302,11 +306,12 @@ const Page = () => {
               <p className="text-xs text-white/60 mb-2">Your Tools</p>
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                data-active={showFavoritesOnly}
                 className={`w-full text-left px-3 py-2 rounded-lg border transition ${
                   showFavoritesOnly
                     ? "bg-primary text-black font-bold border-primary"
                     : "bg-black/40 text-white border-[#222] hover:bg-black/50"
-                }`}
+                } ${DevelopmentToolsStyles.favoriteButton}`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-sm flex items-center gap-2">
@@ -315,7 +320,7 @@ const Page = () => {
                     </svg>
                     Favorites
                   </span>
-                  <span className={`text-xs ${showFavoritesOnly ? "text-black/80" : "text-white/60"}`}>
+                  <span className={`text-xs ${showFavoritesOnly ? "text-black/80" : "text-white/60"} ${DevelopmentToolsStyles.favoriteCount}`}>
                     {favorites.length}
                   </span>
                 </div>
@@ -324,17 +329,18 @@ const Page = () => {
 
             {/* Category filter */}
             <div className="mb-4">
-              <p className="text-xs text-white/60 mb-2">Categories</p>
+              <p className={`text-xs text-white/60 mb-2 ${DevelopmentToolsStyles.filterSubLabel}`}>Categories</p>
               <div className="space-y-2 md:mt-2">
                 {CATEGORY_GROUPS.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory((prev) => (prev === cat ? null : cat))}
+                    data-active={selectedCategory === cat}
                     className={`w-full text-left px-3 py-2 rounded-lg border transition ${
                       selectedCategory === cat
                         ? "bg-primary text-black font-bold border-primary"
                         : "bg-black/40 text-white border-[#222] hover:bg-black/50"
-                    }`}
+                    } ${DevelopmentToolsStyles.filterCategoryButton}`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm flex items-center gap-2">
@@ -356,17 +362,18 @@ const Page = () => {
 
             {/* Basis filter */}
             <div className="my-8">
-              <p className="text-xs text-white/60 mb-2 md:mt-4">Filter by Type</p>
+              <p className={`text-xs text-white/60 mb-2 md:mt-4 ${DevelopmentToolsStyles.filterSubLabel}`}>Filter by Type</p>
               <div className="flex flex-wrap gap-2 md:mt-2">
                 {BASIS?.map((b) => (
                   <button
                     key={b}
                     onClick={() => setSelectedBasis(b)}
+                    data-active={selectedBasis === b}
                     className={`px-2.5 py-1.5 rounded-full text-xs border transition ${
                       selectedBasis === b
                         ? "bg-primary text-black font-bold border-primary"
                         : "bg-black/40 text-white border-[#222] hover:bg-black/50"
-                    }`}
+                    } ${DevelopmentToolsStyles.filterBasisButton}`}
                     aria-pressed={selectedBasis === b}
                   >
                     <span className="flex items-center gap-1.5">
@@ -381,11 +388,11 @@ const Page = () => {
           {/* Main grid */}
           <main className="flex-1 order-2 md:order-2">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs text-white/60">Showing {filteredItems.length} tools</span>
+              <span className={`text-xs text-white/60 ${DevelopmentToolsStyles.showingCount}`}>Showing {filteredItems.length} tools</span>
               <div className="flex items-center gap-2">
                 {showFavoritesOnly && (
                   <button
-                    className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+                    className={`text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20 ${DevelopmentToolsStyles.activeFilterPill}`}
                     onClick={() => setShowFavoritesOnly(false)}
                     title="Clear favorites filter"
                   >
@@ -394,7 +401,7 @@ const Page = () => {
                 )}
                 {selectedCategory && (
                   <button
-                    className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+                    className={`text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20 ${DevelopmentToolsStyles.activeFilterPill}`}
                     onClick={() => setSelectedCategory(null)}
                     title="Clear category filter"
                   >
@@ -403,7 +410,7 @@ const Page = () => {
                 )}
                 {selectedBasis !== "All" && (
                   <button
-                    className="text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+                    className={`text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20 ${DevelopmentToolsStyles.activeFilterPill}`}
                     onClick={() => setSelectedBasis("All")}
                     title="Clear type filter"
                   >
@@ -423,7 +430,7 @@ const Page = () => {
                   <Link
                     key={index}
                     href={`${item?.url}`}
-                    className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} group md:min-h-[160px] relative`}
+                    className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} ${DevelopmentToolsStyles.toolCard} group md:min-h-[160px] relative`}
                   >
                     <div className="flex justify-between items-start gap-2">
                       <h3 className="text-lg font-semibold pr-6">{item?.title}</h3>
@@ -447,7 +454,7 @@ const Page = () => {
                         </svg>
                       </button>
                     </div>
-                    <p className="text-white/70 group-hover:text-black/90 text-sm font-medium mt-1">
+                    <p className={`text-white/70 group-hover:text-black/90 text-sm font-medium mt-1 ${DevelopmentToolsStyles.toolCardDescription}`}>
                       {(() => {
                         let description = item?.description || "";
                         let truncated =
@@ -474,7 +481,7 @@ const Page = () => {
                           ));
                       })()}
                     </p>
-                    <div className="mt-3 text-xs text-white/50">{item?.__group} • {item?.__basis}</div>
+                    <div className={`mt-3 text-xs text-white/50 ${DevelopmentToolsStyles.toolCardMeta}`}>{item?.__group} • {item?.__basis}</div>
                   </Link>
                 ))}
               </div>
