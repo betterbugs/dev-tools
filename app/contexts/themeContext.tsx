@@ -13,34 +13,55 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const THEME_STORAGE_KEY = "nestify-theme";
+type Theme = "dark" | "light";
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isLightTheme, setIsLightTheme] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState<Theme>("dark");
+  const [hasHydrated, setHasHydrated] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Load persisted theme after hydration.
   useEffect(() => {
-    const savedTheme = localStorage.getItem("nestify-theme");
-    if (savedTheme !== null) {
-      setIsLightTheme(savedTheme === "light");
+    try {
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      }
+    } catch (error) {
+      console.warn("Theme persistence unavailable", error);
     }
-    setIsLoaded(true);
+    setHasHydrated(true);
   }, []);
 
-  // Save theme to localStorage when it changes
-  const handleSetIsLightTheme = (isLight: boolean) => {
-    setIsLightTheme(isLight);
-    localStorage.setItem("nestify-theme", isLight ? "light" : "dark");
-  };
+  // Apply theme class and persist updates safely.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+    root.setAttribute("data-theme", theme);
+    root.style.colorScheme = theme;
 
-  // Don't render until theme is loaded to prevent hydration mismatch
-  if (!isLoaded) {
-    return null;
-  }
+    if (!hasHydrated) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+      console.warn("Theme persistence unavailable", error);
+    }
+  }, [theme, hasHydrated]);
+
+  const handleSetIsLightTheme = (isLight: boolean) => {
+    setTheme(isLight ? "light" : "dark");
+  };
 
   return (
     <ThemeContext.Provider
-      value={{ isLightTheme, setIsLightTheme: handleSetIsLightTheme }}
+      value={{
+        isLightTheme: theme === "light",
+        setIsLightTheme: handleSetIsLightTheme,
+      }}
     >
       {children}
     </ThemeContext.Provider>

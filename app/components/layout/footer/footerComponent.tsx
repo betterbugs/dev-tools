@@ -10,8 +10,11 @@ import { Col, Row } from 'antd';
 import YouTubeIcon from '../../theme/Icon/youTubeIcon';
 import DiscordIcon from '../../theme/Icon/discordIcon';
 import { WEB_URL } from '@/app/libs/constants';
+import { useTheme } from '@/app/contexts/themeContext';
 
 const FooterComponent = () => {
+  const { isLightTheme } = useTheme();
+  const logoSrc = isLightTheme ? '/images/bb-logo-light.svg' : '/images/bb-logo.svg';
   const pathname = usePathname();
   const router = useRouter();
   const [sectionId, setSectionId] = useState<string | null>(null);
@@ -115,6 +118,18 @@ const FooterComponent = () => {
     },
   ];
 
+  const socialIconWrapperClass = isLightTheme
+    ? 'w-9 h-9 p-2 rounded-xl flex items-center justify-center cursor-pointer bg-transparent border-none'
+    : 'w-9 h-9 p-2 rounded-xl flex items-center justify-center cursor-pointer bbFooterSocialIcon';
+
+  const socialIconWrapperWideClass = isLightTheme
+    ? 'w-10 h-10 p-2 rounded-xl flex items-center justify-center cursor-pointer bg-transparent border-none'
+    : 'w-10 h-10 p-2 rounded-xl flex items-center justify-center cursor-pointer bbFooterSocialIcon';
+
+  const socialIconClass = isLightTheme
+    ? 'text-[#6b7280] hover:text-[#10b981]'
+    : 'text-white/60 hover:text-white';
+
   // const PartnershipMenu = [
   //   { label: "For agencies", url: "/" },
   //   { label: "For enterprise", url: "/" },
@@ -124,7 +139,7 @@ const FooterComponent = () => {
 
   return (
     <div className="max-w-[1170px] mx-auto">
-      <footer className="md:container md:px-auto mx-auto  border-t border-light-primary">
+      <footer className="md:container md:px-auto mx-auto border-t border-light-primary bbFooter">
         <div className="py-20 lg:py-[100px] px-4 md:px-0">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-none lg:flex items-start justify-between lg:gap-5 md:gap-4 gap-7">
             <div className="grid">
@@ -257,23 +272,23 @@ const FooterComponent = () => {
             <div className="flex flex-wrap items-center gap-3 lg:gap-1">
               <Link href={`${WEB_URL}`} className="flex-shrink-0">
                 <Image
-                  src="/images/bb-logo.svg"
+                  src={logoSrc}
                   width={580}
                   height={100}
                   alt="Logo"
                   title="betterbugs-logo"
-                  className="mx-2 w-[211px] lg:w-[470px]"
+                  className="mx-2 w-[211px] lg:w-[470px] bb-logo"
                   priority
                 />
               </Link>
-              <div className="flex mt-1 lg:mt-5">
+              <div className="flex mt-1 lg:mt-5 gap-3">
                 <Link
                   href="https://www.linkedin.com/company/betterbugs/"
                   target="_blank"
                   aria-label="LinkedIn"
                 >
-                  <div className="w-9 h-9 p-2 rounded-xl flex items-center justify-center cursor-pointer">
-                    <LinkedinIcon className="text-white/60 hover:text-white" />
+                  <div className={socialIconWrapperClass}>
+                    <LinkedinIcon className={socialIconClass} />
                   </div>
                 </Link>
                 <Link
@@ -281,8 +296,8 @@ const FooterComponent = () => {
                   target="_blank"
                   aria-label="Twitter"
                 >
-                  <div className="w-9 h-9 p-2 rounded-xl flex items-center justify-center cursor-pointer">
-                    <TwitterIcon className="text-white/60 hover:text-white" />
+                  <div className={socialIconWrapperClass}>
+                    <TwitterIcon className={socialIconClass} />
                   </div>
                 </Link>
                 <Link
@@ -290,8 +305,8 @@ const FooterComponent = () => {
                   target="_blank"
                   aria-label="Instagram"
                 >
-                  <div className="w-9 h-9 p-2 rounded-xl flex items-center justify-center cursor-pointer">
-                    <InstagramIcon className="text-white/60 hover:text-white" />
+                  <div className={socialIconWrapperClass}>
+                    <InstagramIcon className={socialIconClass} />
                   </div>
                 </Link>
                 <Link
@@ -299,8 +314,8 @@ const FooterComponent = () => {
                   target="_blank"
                   aria-label="LinkedIn"
                 >
-                  <div className="w-10 h-10 p-2 rounded-xl flex items-center justify-center cursor-pointer">
-                    <YouTubeIcon className="text-white/60 hover:text-white !w-12 !h-12" />
+                  <div className={socialIconWrapperWideClass}>
+                    <YouTubeIcon className={`${socialIconClass} !w-12 !h-12`} />
                   </div>
                 </Link>
                 <Link
@@ -308,8 +323,8 @@ const FooterComponent = () => {
                   target="_blank"
                   aria-label="Discord"
                 >
-                  <div className="w-10 h-10 p-2 rounded-xl flex items-center justify-center cursor-pointer">
-                    <DiscordIcon className="text-white/60 hover:text-white !w-12 !h-12" />
+                  <div className={socialIconWrapperWideClass}>
+                    <DiscordIcon className={`${socialIconClass} !w-12 !h-12`} />
                   </div>
                 </Link>
               </div>
@@ -320,15 +335,22 @@ const FooterComponent = () => {
               <p className="text-sm text-white/70 pl-2 md:text-base font-normal cursor-pointer whitespace-nowrap md:mt-0 mt-1.5">
                 © {new Date().getFullYear()}, All Rights Reserved
               </p>
-              <p className="text-sm text-white/70 md:text-base font-normal cursor-pointer">
-                <iframe
-                  src="https://status.betterbugs.io/badge?theme=dark"
-                  width="200"
-                  height="30"
-                  frameBorder="0"
-                  scrolling="no"
-                ></iframe>
-              </p>
+              <Link
+                href="https://status.betterbugs.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-sm md:text-base font-normal cursor-pointer bbFooterStatus ${
+                  isLightTheme ? 'text-[#065f46]' : 'text-white'
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#10b981] text-black text-xs font-bold"
+                >
+                  ✓
+                </span>
+                <span>All services are online</span>
+              </Link>
             </div>
           </Col>
         </Row>

@@ -19,6 +19,7 @@ import ProductMenuComponent from '../../headerMenuDropdownComponents/productMenu
 import SolutionMenuComponent from '../../headerMenuDropdownComponents/solutionMenuComponent';
 import ResourceMenuComponent from '../../headerMenuDropdownComponents/resourceMenuComponent';
 import ToolsMenuComponent from '../../headerMenuDropdownComponents/toolsMenuComponent';
+import { useTheme } from '@/app/contexts/themeContext';
 
 const responsiveHeader = [
   // {
@@ -186,10 +187,50 @@ const CountdownTimer = () => {
   );
 };
 
+const SunIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+    <path
+      d="M12 2V5M12 19V22M22 12H19M5 12H2M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07M19.07 19.07L16.95 16.95M7.05 7.05L4.93 4.93"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M21 14.5A9 9 0 1 1 12.5 3C11.6 4.3 11.1 5.9 11.1 7.6C11.1 12 14.6 15.5 19 15.5C19.7 15.5 20.4 15.4 21 15.2V14.5Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const HeaderComponent = () => {
   const router = usePathname();
   const searchParams = useSearchParams();
   const utmSource = searchParams.get('utm_source');
+  const { isLightTheme, setIsLightTheme } = useTheme();
+  const logoSrc = isLightTheme ? '/images/bb-logo-light.svg' : '/images/bb-logo.svg';
   const { collapsed, setCollapsed }: LayoutContextModel =
     useContext(LayoutContext);
 
@@ -323,11 +364,12 @@ const HeaderComponent = () => {
           <div className="container mx-auto flex items-center justify-between py-3">
             <Link href={`${WEB_URL}`} className="flex items-center">
               <Image
-                src="/images/bb-logo.svg"
+                src={logoSrc}
                 width={190}
                 height={32}
                 alt="Logo"
                 title="betterbugs-logo"
+                className={hederStyles.bbLogo}
                 priority
               />
             </Link>
@@ -390,7 +432,16 @@ const HeaderComponent = () => {
                   </li>
                 ))}
               </ul>
-              <div className="ml-auto">
+              <div className="ml-auto flex items-center">
+                <button
+                  type="button"
+                  className={`${hederStyles.themeToggle} mr-2`}
+                  onClick={() => setIsLightTheme(!isLightTheme)}
+                  aria-label={`Switch to ${isLightTheme ? 'dark' : 'light'} mode`}
+                  aria-pressed={isLightTheme}
+                >
+                  {isLightTheme ? <MoonIcon /> : <SunIcon />}
+                </button>
                 <Link
                   href={`https://app.betterbugs.io/login${
                     utmSource ? `?utm_source=${utmSource}` : ''
@@ -402,7 +453,7 @@ const HeaderComponent = () => {
                   </div>
                 </Link>
               </div>
-              <div>
+              <div className="flex items-center">
                 <Link
                   href={`https://app.betterbugs.io/login${
                     utmSource ? `?utm_source=${utmSource}` : ''
@@ -410,7 +461,7 @@ const HeaderComponent = () => {
                   target="_blank"
                 >
                   <Button
-                    className={`font-medium flex items-center rounded-full border !border-light-primary btn-gradient ${
+                    className={`${hederStyles.getStartedButton} font-medium flex items-center rounded-full border !border-light-primary btn-gradient ${
                       isScrolled
                         ? 'scroll-gradient !text-base py-5 px-6'
                         : 'bg-[#FFFFFF0D] !text-white/80 !text-base py-5 px-6'
@@ -438,16 +489,26 @@ const HeaderComponent = () => {
               </div>
               <Link href={`${WEB_URL}`}>
                 <Image
-                  src="/images/bb-logo.svg"
+                  src={logoSrc}
                   width={150}
                   height={32}
                   alt="Logo"
                   title="betterbugs-logo"
+                  className={hederStyles.bbLogo}
                   priority
                 />
               </Link>
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center">
+              <button
+                type="button"
+                className={`${hederStyles.themeToggle} mr-3`}
+                onClick={() => setIsLightTheme(!isLightTheme)}
+                aria-label={`Switch to ${isLightTheme ? 'dark' : 'light'} mode`}
+                aria-pressed={isLightTheme}
+              >
+                {isLightTheme ? <MoonIcon /> : <SunIcon />}
+              </button>
               <Link
                 href={`https://app.betterbugs.io/login${
                   utmSource ? `?utm_source=${utmSource}` : ''
@@ -455,7 +516,7 @@ const HeaderComponent = () => {
                 target="_blank"
               >
                 <Button
-                  className={`btn-primary font-medium flex items-center rounded-full border !border-light-primary text-[#FFFFFF0D] hover:bg-primary scroll-gradient !text-base px-4 !h-10`}
+                  className={`${hederStyles.getStartedButton} btn-primary font-medium flex items-center rounded-full border !border-light-primary text-[#FFFFFF0D] hover:bg-primary scroll-gradient !text-base px-4 !h-10`}
                 >
                   Get started
                 </Button>

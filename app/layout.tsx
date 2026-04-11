@@ -11,11 +11,15 @@ import {
 } from './contexts/layoutContexts';
 import { ThemeProvider } from './contexts/themeContext';
 import FooterComponent from './components/layout/footer/footerComponent';
-import AnimatedCursor from 'react-animated-cursor';
 import { useMediaQuery } from 'react-responsive';
 import { Suspense, useContext } from 'react';
 import { CookiesProvider } from 'react-cookie';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
+
+const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
+  ssr: false,
+});
 
 const inter = Poppins({
   subsets: ['latin'],
@@ -30,7 +34,7 @@ const MyApp = ({ children }: { children: JSX.Element }): JSX.Element => {
   });
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark" data-theme="dark">
       <head>
         <meta
           name="google-site-verification"
