@@ -3,11 +3,11 @@ const runtimeCaching = require('next-pwa/cache');
 
 const isProduction = process.env.NEXT_ENV === 'PRODUCTION';
 const basePath = isProduction ? '/development-tools' : '';
-// const assetPrefix = isProduction ? '/development-tools' : '';
+const assetPrefix = isProduction ? '/development-tools' : '';
 
 let nextConfig = {
   basePath: basePath,
-  // assetPrefix: assetPrefix,
+  assetPrefix: assetPrefix,
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
