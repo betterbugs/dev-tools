@@ -1,3 +1,10 @@
+# [1.4.0-develop.9](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.8...v1.4.0-develop.9) (2026-04-14)
+
+
+### Features
+
+* add class-validator dependency and update page styles ([#81](https://github.com/betterbugs/dev-tools/issues/81)) ([67f1aeb](https://github.com/betterbugs/dev-tools/commit/67f1aeb5a82cad25f2c8bb3dcdc67e453b62cee2))
+
 # [1.4.0-develop.8](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.7...v1.4.0-develop.8) (2026-03-08)
 
 
