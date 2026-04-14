@@ -1,3 +1,65 @@
+# [1.4.0-develop.8](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.7...v1.4.0-develop.8) (2026-03-08)
+
+
+### Features
+
+* Added URL parser & Query Editor Tool ([c9933ba](https://github.com/betterbugs/dev-tools/commit/c9933bae3cfbeb65c210f6877abf367c3cb0f46e)), closes [#51](https://github.com/betterbugs/dev-tools/issues/51)
+
+# [1.4.0-develop.7](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.6...v1.4.0-develop.7) (2026-03-08)
+
+
+### Features
+
+* **tools:** add Unix Timestamp Converter to development tools list ([3fedf57](https://github.com/betterbugs/dev-tools/commit/3fedf57f4036f7081b37c8ca1b3c585ea1e62045))
+
+# [1.4.0-develop.6](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.5...v1.4.0-develop.6) (2026-03-08)
+
+
+### Features
+
+* Add Unix Timestamp (Epoch) Converter Utility ([f277272](https://github.com/betterbugs/dev-tools/commit/f27727267639f54e4ffaa80919b1d0836621ac7d)), closes [#16](https://github.com/betterbugs/dev-tools/issues/16)
+
+# [1.4.0-develop.5](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.4...v1.4.0-develop.5) (2026-03-05)
+
+
+### Bug Fixes
+
+* **release:** update GITHUB_TOKEN to use RELEASE_TOKEN for semantic release ([be3a012](https://github.com/betterbugs/dev-tools/commit/be3a012c6d7df84ab5826ce03268ec8aad402c15))
+
+
+### Features
+
+* **tools:** add SVG to React/CSS utility ([218ccad](https://github.com/betterbugs/dev-tools/commit/218ccad3c5eb7121a9bd7319147520eb39713695)), closes [#50](https://github.com/betterbugs/dev-tools/issues/50)
+
+# [1.4.0-develop.4](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.3...v1.4.0-develop.4) (2026-03-03)
+
+
+### Features
+
+* Add lockfile guard workflow to prevent unintended lockfile changes ([aa20fb5](https://github.com/betterbugs/dev-tools/commit/aa20fb5422aae56e9d80f7472a6f974624431572))
+
+# [1.4.0-develop.3](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.2...v1.4.0-develop.3) (2026-03-03)
+
+
+### Features
+
+* Add IPv4 Subnet Calculator Tool ([ad1c03f](https://github.com/betterbugs/dev-tools/commit/ad1c03fd0065f0cfce409b72882188dc7de630d0)), closes [#33](https://github.com/betterbugs/dev-tools/issues/33)
+* Add Smart Repair feature to JSON Validator ([#41](https://github.com/betterbugs/dev-tools/issues/41)) ([7a3c7a5](https://github.com/betterbugs/dev-tools/commit/7a3c7a5008d4236d954e1c20482635b0a0da5ef0)), closes [#38](https://github.com/betterbugs/dev-tools/issues/38)
+
+# [1.4.0-develop.2](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.1...v1.4.0-develop.2) (2026-02-28)
+
+
+### Bug Fixes
+
+* **tools:** implement proper bcrypt generator ([94d19be](https://github.com/betterbugs/dev-tools/commit/94d19be7e4b8d9256557e7668898ec4d6c3ca15c)), closes [#23](https://github.com/betterbugs/dev-tools/issues/23) [#13](https://github.com/betterbugs/dev-tools/issues/13)
+
+# [1.4.0-develop.1](https://github.com/betterbugs/dev-tools/compare/v1.3.2...v1.4.0-develop.1) (2026-02-28)
+
+
+### Features
+
+* **ui:** add reusable CopyButton and refactor wordCounter and jsonToTxt ([d5b9e83](https://github.com/betterbugs/dev-tools/commit/d5b9e8333673c5254cf39529a90869b1b741e385)), closes [#17](https://github.com/betterbugs/dev-tools/issues/17)
+
 ## [1.3.2](https://github.com/betterbugs/dev-tools/compare/v1.3.1...v1.3.2) (2026-02-16)
 
 

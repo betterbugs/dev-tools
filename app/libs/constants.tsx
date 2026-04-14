@@ -109,6 +109,7 @@ import IdnDecode from '../components/developmentToolsComponent/idnDecode';
 import IdnEncode from '../components/developmentToolsComponent/idnEncode';
 import InternetSpeedTest from '../components/developmentToolsComponent/internetSpeedTest';
 import IpToHexConverter from '../components/developmentToolsComponent/ipToHexConverter';
+import Ipv4SubnetCalculator from '../components/developmentToolsComponent/ipv4SubnetCalculator';
 import JavaScriptEscape from '../components/developmentToolsComponent/javascriptEscape';
 import JavascriptRegexTester from '../components/developmentToolsComponent/javascriptRegexTester';
 import JavaScriptTester from '../components/developmentToolsComponent/javascriptTester';
@@ -116,6 +117,7 @@ import JavaScriptValidatorLinter from '../components/developmentToolsComponent/j
 import JSONCompare from '../components/developmentToolsComponent/jsonCompare';
 import JsonToTypeScript from '../components/developmentToolsComponent/jsonToTypeScript';
 import JsonToXmlConverter from '../components/developmentToolsComponent/jsonToXmlConverter';
+import JsonToCsvConverter from '../components/developmentToolsComponent/jsonToCsvConverter';
 import JsonToYamlConverter from '../components/developmentToolsComponent/jsonToYamlConverter';
 import JwtDecoder from '../components/developmentToolsComponent/jwtDecoder';
 import KmToMilesConverter from '../components/developmentToolsComponent/kmToMilesConverter';
@@ -151,6 +153,7 @@ import SqlFormatterAndBeautifier from '../components/developmentToolsComponent/s
 import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
 import SqlToJson from '../components/developmentToolsComponent/sqlToJson';
+import SvgConverter from '../components/developmentToolsComponent/svgConverter';
 import StringDiffrenceChecker from '../components/developmentToolsComponent/stringDiffrenceChecker';
 import StripHTML from '../components/developmentToolsComponent/stripHTML';
 import TextCompare from '../components/developmentToolsComponent/textCompare';
@@ -160,6 +163,7 @@ import TextToHtmlEntitiesConvertor from '../components/developmentToolsComponent
 import TypescriptFormatter from '../components/developmentToolsComponent/typescriptFormatter';
 import UnicodeToAsciiConverter from '../components/developmentToolsComponent/unicodeToAsciiConverter';
 import URLDecode from '../components/developmentToolsComponent/urlDecode';
+import UrlParser from '../components/developmentToolsComponent/urlParser';
 import URLEncode from '../components/developmentToolsComponent/urlEncode';
 import Utf8Decode from '../components/developmentToolsComponent/utf8Decode';
 import Utf8Encode from '../components/developmentToolsComponent/utf8Encode';
@@ -183,7 +187,9 @@ import XmlMinify from '../components/developmentToolsComponent/xmlMinify';
 import XmlPrettify from '../components/developmentToolsComponent/xmlPrettify';
 import XmlToJsonConverter from '../components/developmentToolsComponent/xmlToJsonConverter';
 import XorCalculator from '../components/developmentToolsComponent/xorCalculator';
+import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
+import EpochConverter from '../components/developmentToolsComponent/epochConverter';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -313,8 +319,8 @@ export const developmentToolsCategoryContent: any = {
     {
       // icon: <JsonPrettifierToolIcon />,
       url: '/json-prettifier',
-      title: 'JSON Prettifier',
-      description: 'Format JSON to make it human-readable.',
+      title: 'JSON Formatter/Prettifier Tool',
+      description: 'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
   ],
   Category10: [
@@ -710,7 +716,7 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-decoder',
       title: 'Base64 Decoder',
-      description: 'Decode Base64 text or files to UTF-8.',
+      description: 'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
   ],
   Category60: [
@@ -1107,6 +1113,14 @@ export const developmentToolsCategoryContent: any = {
       title: 'CSV to JSON Converter',
       description:
         'Convert CSV to JSON; set delimiter, header row, and basic type inference.',
+    },
+  ],
+  Category109_1: [
+    {
+      url: '/json-to-csv',
+      title: 'JSON to CSV Converter',
+      description:
+        'Convert JSON arrays to CSV format with support for nested objects, custom delimiters, and headers.',
     },
   ],
   Category110: [
@@ -1589,6 +1603,36 @@ export const developmentToolsCategoryContent: any = {
       description: 'Convert HTML to Jade.',
     },
   ],
+  Category176: [
+    {
+      url: '/ipv4-subnet-calculator',
+      title: 'IPv4 Subnet Calculator',
+      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+    },
+  ],
+  Category177: [
+    {
+      url: '/svg-converter',
+      title: 'SVG to React/CSS Utility',
+      description:
+        'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
+    },
+  ],
+  Category178: [
+    {
+      url: '/unix-timestamp-converter',
+      title: 'Unix Timestamp Converter',
+      description: 'Convert Unix timestamps to readable dates and vice versa.',
+    },
+  ],
+  Category179: [
+    {
+      url: '/url-parser',
+      title: 'URL Parser & Query String Editor',
+      description:
+        'Decompose complex URLs into legible components and edit query parameters in a visual table.',
+    },
+  ],
 };
 
 export const PATHS = {
@@ -1630,6 +1674,7 @@ export const PATHS = {
   CSV_TO_TEXT_CONVERTER: '/csv-to-text-converter',
   TXT_TO_CSV_CONVERTER: '/txt-to-csv-converter',
   JSON_TO_TEXT: '/json-to-text',
+  JSON_TO_CSV_CONVERTOR: '/json-to-csv',
   HTML_VALIDATOR: '/html-validator',
   JSON_VALIDATOR: '/json-validator',
   CODE_COMPARE_TOOL: '/code-compare-tool',
@@ -1701,6 +1746,7 @@ export const PATHS = {
   JSON_COMPARE: '/json-compare',
   TEXT_COMPARE: '/text-compare',
   URL_DECODE: '/url-decode',
+  URL_PARSER: '/url-parser',
   URL_ENCODE: '/url-encode',
   TEXT_TO_HTML_ENTITIES_CONVERTOR: '/text-to-html-entities-convertor',
   HTML_ENTITIES_TO_TEXT_CONVERTER: '/html-entities-to-text-converter',
@@ -1732,6 +1778,7 @@ export const PATHS = {
   KILOMETERS_TO_MILES: '/kilometers-to-miles',
   JWT_DECODER: '/jwt-decoder',
   IP_TO_HEX: '/ip-to-hex',
+  IPV4_SUBNET_CALCULATOR: '/ipv4-subnet-calculator',
   WORDS_TO_NUMBERS: '/words-to-numbers',
   NUMBERS_TO_WORDS: '/numbers-to-words',
   FABONACCI_CALCULATOR: '/fabonacci-calculator',
@@ -1745,6 +1792,7 @@ export const PATHS = {
   HTML_UNESCAPE: '/html-unescape',
   JAVASCRIPT_REGEX_TESTER: '/javascript-regex-tester',
   STRIP_HTML: '/strip-html',
+  SVG_CONVERTER: '/svg-converter',
   WHAT_IS_MY_LOCAL_IP_ADDRESS: '/what-is-my-local-ip-address',
   JAVASCRIPT_TESTER: '/javascript-tester',
   WHAT_VERSION_OF_JAVA: '/what-version-of-java-do-i-have',
@@ -1767,6 +1815,8 @@ export const PATHS = {
   CSS_TO_LESS: '/css-to-less',
   CRONTAB_GENERATOR: '/crontab-generator',
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
+  CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
+  UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
 };
 
 export const developmentToolsRoutes = [
@@ -2181,6 +2231,10 @@ export const developmentToolsRoutes = [
     component: <URLDecode />,
   },
   {
+    path: PATHS.URL_PARSER,
+    component: <UrlParser />,
+  },
+  {
     path: PATHS.URL_ENCODE,
     component: <URLEncode />,
   },
@@ -2250,6 +2304,10 @@ export const developmentToolsRoutes = [
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
   },
+   {
+    path: PATHS.JSON_TO_CSV_CONVERTOR,
+    component: <JsonToCsvConverter />,
+  },
   {
     path: PATHS.UTF8_DECODE,
     component: <Utf8Decode />,
@@ -2305,6 +2363,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.IP_TO_HEX,
     component: <IpToHexConverter />,
+  },
+  {
+    path: PATHS.IPV4_SUBNET_CALCULATOR,
+    component: <Ipv4SubnetCalculator />,
   },
   {
     path: PATHS.WORDS_TO_NUMBERS,
@@ -2463,8 +2525,20 @@ export const developmentToolsRoutes = [
     component: <SqlToJson />,
   },
   {
+    path: PATHS.SVG_CONVERTER,
+    component: <SvgConverter />,
+  },
+  {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
+  },
+  {
+    path: PATHS.CURL_TO_CODE_CONVERTER,
+    component: <CurlToCodeConverter />,
+  },
+  {
+    path: PATHS.UNIX_TIMESTAMP_CONVERTER,
+    component: <EpochConverter />,
   },
 ];
 

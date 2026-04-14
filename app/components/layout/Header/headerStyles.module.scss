@@ -82,3 +82,37 @@
     border-radius: 15px;
   }
 }
+
+.themeToggle {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 36px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  :global([data-theme="light"]) & {
+    background: rgba(17, 24, 39, 0.06);
+    border-color: rgba(17, 24, 39, 0.2);
+    color: #111827;
+
+    &:hover {
+      background: rgba(17, 24, 39, 0.12);
+    }
+  }
+}
+
+:global([data-theme="light"]) .getStartedButton {
+  background: rgba(17, 24, 39, 0.88);
+  border-color: rgba(17, 24, 39, 0.88);
+  color: rgba(255, 255, 255, 0.9);
+}

@@ -47,6 +47,37 @@ If your work depends on unreleased features or changes, base your work directly 
 
 ## Code Contributions
 
+### 🚨 Dependency & Lockfile Policy (Read Before PR!)
+
+**When to Commit `package-lock.json`**
+
+- **You MUST commit `package-lock.json` if:**
+	- You add, remove, or upgrade a dependency in `package.json` (for example, when your new tool needs a new npm package).
+	- You intentionally update any package version in `package.json`.
+	- After such changes, always run `npm install` and commit both `package.json` and `package-lock.json` together.
+
+- **You MUST NOT commit `package-lock.json` if:**
+	- You are only editing, adding, or refactoring tool components, UI, or logic, and did not touch `package.json`.
+	- You ran `npm install` after pulling latest develop, but did not change dependencies. If the lockfile changes, discard it (`git checkout -- package-lock.json`).
+
+- **Dependency/toolchain upgrades (Next.js, ESLint, etc.) must be in a separate PR, never mixed with feature/tool PRs.**
+
+**For Adding a New Tool:**
+
+- If your tool needs a new npm package:
+	1. Add the dependency to `package.json`.
+	2. Run `npm install` (this updates `package-lock.json`).
+	3. Commit both files in your PR.
+- If your tool does NOT need a new dependency, do NOT touch or commit `package-lock.json`.
+
+**Why?**
+
+- Our CI uses `npm ci`, which requires the lockfile to match `package.json` exactly.
+- Random lockfile churn (from different npm versions or accidental upgrades) causes huge, noisy diffs and can break builds.
+- Only the canonical lockfile in `develop` is valid.
+
+---
+
 Please ensure your pull request adheres to the following guidelines:
 
 - Search [open pull requests](https://github.com/betterbugs/dev-tools/pulls) to ensure your change hasn't already been submitted
