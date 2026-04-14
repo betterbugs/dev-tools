@@ -21,9 +21,12 @@ import RecorderGradientIcon from "@/app/components/theme/Icon/recorderGradientIc
 import SEOComponent from "@/app/components/theme/SEOComponent/SEOComponent";
 import { detectBrowser } from "@/app/libs/helpers";
 import EdgeIcon from "@/app/components/theme/Icon/edgeIcon";
+import { useTheme } from "@/app/contexts/themeContext";
 
 const Page = ({ params: { slug } }: { params: { slug: string } }) => {
   const [browser, setBrowser] = useState("chrome");
+  const { isLightTheme } = useTheme();
+  const logoSrc = isLightTheme ? "/images/bb-logo-light.svg" : "/images/bb-logo.svg";
 
   useEffect(() => {
     setBrowser(detectBrowser());
@@ -56,16 +59,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
         ogDescription={meta_data?.og_description}
         ogImage={meta_data?.og_image}
       />
-      <div className="md:max-w-[1170px] mx-auto">
+      <div className={`md:max-w-[1170px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}>
         <div className="px-3 md:px-auto mx-auto">
           {/*Hero cta section */}
           <section className="md:pt-0 pt-9">
-            <div className="bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 rounded-lg">
+            <div className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 rounded-lg ${DevelopmentToolsStyles.promoPanel}`}>
               <div className="w-full flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start gap-8 md:py-4 py-8 md:px-7">
                 {/* Left Section */}
                 <div className="text-left flex-1">
                   <Image
-                    src="/images/bb-logo.svg"
+                    src={logoSrc}
                     alt="BetterBugs Logo"
                     className="mb-8"
                     width={200}
@@ -86,7 +89,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                   </p>
                   <div className="flex items-center gap-3 mt-6 mb-4">
                     <Link target="_blank" href={Extension_URL}>
-                      <Button className="btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4">
+                      <Button
+                        className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
+                      >
                         {browser === "edge" ? (
                           <EdgeIcon className="w-7 h-7" />
                         ) : (
@@ -169,7 +174,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
             </div>
           </section>
 
-          <div className="md:pb-[70px] md:pt-[30px] py-[50px]">
+          <div className={`md:pb-[70px] md:pt-[30px] py-[50px] ${DevelopmentToolsStyles.contentWrapper}`}>
             {/* Heading section */}
             {hero_section && (
               <section>
@@ -209,7 +214,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                 {/* Tools Panel - 20% width, fixed */}
                 {development_tools_list?.length > 0 && (
                   <div className="md:w-1/4 md:sticky left-0 md:top-8 top-2 h-full overflow-y-auto flex flex-col">
-                    <div className="bg-[#FFFFFF1A] p-4 rounded-xl">
+                    <div className={DevelopmentToolsStyles.sidePanel}>
                       <div className="flex items-center mb-6">
                         <h2 className="text-xl font-bold text-gray-800">
                           Other Tools
@@ -218,7 +223,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       {development_tools_list?.map((tool: any, index: any) => (
                         <Link key={index} href={tool?.url}>
                           <div
-                            className={`p-3 mb-2 cursor-pointer rounded-xl border-[1px] border-transparent hover:border-1 hover:border-primary bg-black text-white hover:text-primary`}
+                            className={`p-3 mb-2 cursor-pointer rounded-xl border-[1px] border-transparent hover:border-1 hover:border-primary bg-black text-white hover:text-primary ${DevelopmentToolsStyles.sidePanelItem}`}
                           >
                             {tool?.tool}
                           </div>
@@ -960,12 +965,12 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
 
             {/* cta section */}
             <section>
-              <div className="bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10">
+              <div className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 ${DevelopmentToolsStyles.promoPanel}`}>
                 <div className="w-full flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start gap-8 md:py-4 py-8 md:px-7">
                   {/* Left Section */}
                   <div className="text-left flex-1">
                     <Image
-                      src="/images/bb-logo.svg"
+                      src={logoSrc}
                       alt="BetterBugs Logo"
                       className="mb-8"
                       width={200}
@@ -986,7 +991,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                     </p>
                     <div className="flex items-center gap-3 mt-6 mb-4">
                       <Link target="_blank" href={Extension_URL}>
-                        <Button className="btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4">
+                        <Button
+                          className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
+                        >
                           {browser === "edge" ? (
                             <EdgeIcon className="w-7 h-7" />
                           ) : (
@@ -1009,7 +1016,10 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                           "https://www.loom.com/share/beb5310bed634e4783d10becd4a291f2?sid=7bcb9a6f-0290-4d5b-9eb0-12ed04e9167e"
                         }
                       >
-                        <PlayIcon className="hover:text-primary" />
+                        <PlayIcon
+                          className={isLightTheme ? "text-[#111827] hover:text-primary" : "hover:text-primary"}
+                          arrowFill={isLightTheme ? "#ffffff" : "#000000"}
+                        />
                       </Link>
                     </div>
                     <p className="text-sm mt-2 text-white">

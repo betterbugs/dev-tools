@@ -8,6 +8,8 @@
 
   input {
     background: #ffffff1a;
+    border: 1px solid #ffffff66;
+    color: #ffffff;
     border-radius: 50px;
     padding: 2px 24px;
     height: 40px;
@@ -40,6 +42,157 @@
     @media (min-width: 768px) {
       height: 50px;
     }
+  }
+}
+
+:global([data-theme="light"]) .pageContainer {
+  color: #111827;
+}
+
+:global([data-theme="light"]) .contentWrapper {
+  color: #111827;
+}
+
+:global([data-theme="light"]) .searchInput {
+  input {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    opacity: 1;
+
+    &::placeholder {
+      color: #6b7280;
+    }
+  }
+}
+
+:global([data-theme="light"]) .promoPanel {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+:global([data-theme="light"]) .filterSidebar {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+:global([data-theme="light"]) .favoriteButton {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+
+  &:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+  }
+
+  &[data-active="true"] {
+    background: #e6f9f2;
+    border-color: #10b981;
+    color: #065f46;
+  }
+}
+
+:global([data-theme="light"]) .favoriteCount {
+  color: #4b5563;
+}
+
+:global([data-theme="light"]) .favoriteButton[data-active="true"] .favoriteCount {
+  color: #065f46;
+}
+
+:global([data-theme="light"]) .filterHeading {
+  color: #111827;
+}
+
+:global([data-theme="light"]) .filterSubLabel {
+  color: #4b5563;
+}
+
+:global([data-theme="light"]) .filterCategoryButton {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+
+  &:hover {
+    background: #f6f7f8;
+    border-color: #d1d5db;
+  }
+
+  &[data-active="true"] {
+    background: #e6f9f2;
+    border-color: #10b981;
+    color: #065f46;
+  }
+}
+
+:global([data-theme="light"]) .filterBasisButton {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+
+  &:hover {
+    background: #f6f7f8;
+    border-color: #d1d5db;
+  }
+
+  &[data-active="true"] {
+    background: #e6f9f2;
+    border-color: #10b981;
+    color: #065f46;
+  }
+}
+
+:global([data-theme="light"]) .showingCount {
+  color: #4b5563;
+}
+
+:global([data-theme="light"]) .activeFilterPill {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #111827;
+
+  &:hover {
+    background: #e5e7eb;
+  }
+}
+
+:global([data-theme="light"]) .sidePanel {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  color: #111827;
+  padding: 1rem;
+}
+
+:global([data-theme="light"]) .sidePanelItem {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+
+  &:hover {
+    background: #f3f4f6;
+    border-color: #10b981;
+  }
+}
+
+:global([data-theme="light"]) .toolCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+:global([data-theme="light"]) .toolCardDescription {
+  color: #4b5563;
+}
+
+:global([data-theme="light"]) .toolCardMeta {
+  color: #6b7280;
+}
+
+:global([data-theme="light"]) .contentCardHoverEffect {
+  &:hover {
+    box-shadow: 2px 2px 4px rgba(16, 185, 129, 0.18);
   }
 }
 
@@ -89,6 +242,11 @@
 }
 .copyButton {
   background: #00d0ff9a;
+}
+
+.addToChromeButton {
+  background: #000000;
+  color: #ffffff;
 }
 
 /* Webkit custom scrollbar styles */

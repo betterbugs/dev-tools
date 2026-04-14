@@ -917,33 +917,6 @@ export const DEVELOPMENTTOOLS: any = {
         ],
       },
     },
-    example_outputs: {
-      outputs: [
-        {
-          mode: 'Formatted String with JSON Formatter Tool on BetterBugs.io',
-          content: `{
-  "book": {
-    "title": "1Q84",
-    "author": "Haruki Murakami",
-    "year": 2009,
-    "character": {
-      "name": "Tengo",
-      "role": "writer",
-      "age": 30,
-      "skills": [
-        "mathematics",
-        "novel_editing"
-      ]
-    },
-    "world": {
-      "little_people": true,
-      "two_moons": true
-    }
-  }
-}`,
-        },
-      ],
-    },
     development_tools_steps_guide: {
       guide_title: 'How to Use the JSON Formatter Tool on BetterBugs.io?',
       guide_description: 'Using the tool is super simple:',
