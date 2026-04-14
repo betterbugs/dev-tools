@@ -1,147 +1,149 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import BBIcon from "./components/theme/Icon/bbIcon";
-import DevelopmentToolsStyles from "./developmentToolsStyles.module.scss";
-import { InputField } from "./components/theme/form/formFeildComponent";
-import { useForm } from "react-hook-form";
-import CrossIcon from "./components/theme/Icon/crossIcon";
-import SearchIcon from "./components/theme/Icon/searchIcon";
-import SEOComponent from "./components/theme/SEOComponent/SEOComponent";
-import { developmentToolsCategoryContent, SEO_META } from "./libs/constants";
-import Link from "next/link";
-import NoDataIcon from "./components/theme/Icon/noDataIcon";
-import TextLabIcon from "./components/theme/Icon/textLabIcon";
-import CodeForgeIcon from "./components/theme/Icon/codeForgeIcon";
-import ConvertXIcon from "./components/theme/Icon/convertXIcon";
-import GenieIcon from "./components/theme/Icon/genieIcon";
-import DevUtilsIcon from "./components/theme/Icon/devUtilsIcon";
-import { useTheme } from "./contexts/themeContext";
+'use client';
+import React, { useState, useEffect } from 'react';
+import BBIcon from './components/theme/Icon/bbIcon';
+import DevelopmentToolsStyles from './developmentToolsStyles.module.scss';
+import { InputField } from './components/theme/form/formFeildComponent';
+import { useForm } from 'react-hook-form';
+import CrossIcon from './components/theme/Icon/crossIcon';
+import SearchIcon from './components/theme/Icon/searchIcon';
+import SEOComponent from './components/theme/SEOComponent/SEOComponent';
+import { developmentToolsCategoryContent, SEO_META } from './libs/constants';
+import Link from 'next/link';
+import NoDataIcon from './components/theme/Icon/noDataIcon';
+import TextLabIcon from './components/theme/Icon/textLabIcon';
+import CodeForgeIcon from './components/theme/Icon/codeForgeIcon';
+import ConvertXIcon from './components/theme/Icon/convertXIcon';
+import GenieIcon from './components/theme/Icon/genieIcon';
+import DevUtilsIcon from './components/theme/Icon/devUtilsIcon';
+import { useTheme } from './contexts/themeContext';
 
 const CATEGORY_GROUPS = [
-  "Text Lab",
-  "Code Forge",
-  "ConvertX",
-  "Genie Hub",
-  "Dev Utils",
+  'Text Lab',
+  'Code Forge',
+  'ConvertX',
+  'Genie Hub',
+  'Dev Utils',
 ] as const;
 
-type CategoryGroup = typeof CATEGORY_GROUPS[number];
+type CategoryGroup = (typeof CATEGORY_GROUPS)[number];
 
 // Basis (type) filters
 const BASIS = [
-  "All",
-  "Formatters/Beautifiers",
-  "Converters",
-  "Encoding/Decoding",
-  "Generators",
-  "Color/Image",
-  "Minifiers/Compressors",
-  "Validators/Checkers",
-  "Date/Time",
+  'All',
+  'Formatters/Beautifiers',
+  'Converters',
+  'Encoding/Decoding',
+  'Generators',
+  'Color/Image',
+  'Minifiers/Compressors',
+  'Validators/Checkers',
+  'Date/Time',
 ] as const;
 
-type BasisType = typeof BASIS[number];
+type BasisType = (typeof BASIS)[number];
 
 const classify = (title: string, url: string): CategoryGroup => {
   const t = `${title} ${url}`.toLowerCase();
   if (
-    t.includes("generator") ||
-    t.includes("random") ||
-    t.includes("lorem") ||
-    t.includes("placeholder")
+    t.includes('generator') ||
+    t.includes('random') ||
+    t.includes('lorem') ||
+    t.includes('placeholder')
   )
-    return "Genie Hub";
+    return 'Genie Hub';
 
   if (
-    t.includes("convert") ||
-    t.includes("converter") ||
-    t.includes("to ") ||
-    t.includes("px-to") ||
-    t.includes("rem-to") ||
-    t.includes("-to-")
+    t.includes('convert') ||
+    t.includes('converter') ||
+    t.includes('to ') ||
+    t.includes('px-to') ||
+    t.includes('rem-to') ||
+    t.includes('-to-')
   )
-    return "ConvertX";
+    return 'ConvertX';
 
   if (
-    t.includes("minify") ||
-    t.includes("prettify") ||
-    t.includes("formatter") ||
-    t.includes("beautifier") ||
-    t.includes("obfuscator") ||
-    t.includes("html") ||
-    t.includes("css") ||
-    t.includes("xml") ||
-    t.includes("json") ||
-    t.includes("sql") ||
-    t.includes("js")
+    t.includes('minify') ||
+    t.includes('prettify') ||
+    t.includes('formatter') ||
+    t.includes('beautifier') ||
+    t.includes('obfuscator') ||
+    t.includes('html') ||
+    t.includes('css') ||
+    t.includes('xml') ||
+    t.includes('json') ||
+    t.includes('sql') ||
+    t.includes('js')
   )
-    return "Code Forge";
+    return 'Code Forge';
 
   if (
-    t.includes("text") ||
-    t.includes("word") ||
-    t.includes("sentence") ||
-    t.includes("character") ||
-    t.includes("case")
+    t.includes('text') ||
+    t.includes('word') ||
+    t.includes('sentence') ||
+    t.includes('character') ||
+    t.includes('case')
   )
-    return "Text Lab";
+    return 'Text Lab';
 
-  return "Dev Utils";
+  return 'Dev Utils';
 };
 
 const classifyBasis = (title: string, url: string): BasisType => {
   const t = `${title} ${url}`.toLowerCase();
   if (
-    t.includes("convert") ||
-    t.includes("converter") ||
-    t.includes("-to-") ||
+    t.includes('convert') ||
+    t.includes('converter') ||
+    t.includes('-to-') ||
     /\w+\s+to\s+\w+/.test(t)
   )
-    return "Converters";
+    return 'Converters';
 
-  if (t.includes("generator") || t.includes("random")) return "Generators";
-  
-  if (t.includes("color") || t.includes("image")) return "Color/Image";
+  if (t.includes('generator') || t.includes('random')) return 'Generators';
+
+  if (t.includes('color') || t.includes('image')) return 'Color/Image';
 
   if (
-    t.includes("format") ||
-    t.includes("prettify") ||
-    t.includes("beautifier")
+    t.includes('format') ||
+    t.includes('prettify') ||
+    t.includes('beautifier')
   )
-    return "Formatters/Beautifiers";
+    return 'Formatters/Beautifiers';
 
-  if (t.includes("minify") || t.includes("compress")) return "Minifiers/Compressors";
+  if (t.includes('minify') || t.includes('compress'))
+    return 'Minifiers/Compressors';
 
-  if (t.includes("validator") || t.includes("validate") || t.includes("check"))
-    return "Validators/Checkers";
+  if (t.includes('validator') || t.includes('validate') || t.includes('check'))
+    return 'Validators/Checkers';
 
-  if (t.includes("base64") || t.includes("encode") || t.includes("decode"))
-    return "Encoding/Decoding";
+  if (t.includes('base64') || t.includes('encode') || t.includes('decode'))
+    return 'Encoding/Decoding';
 
-  if (t.includes("date") || t.includes("time")) return "Date/Time";
+  if (t.includes('date') || t.includes('time')) return 'Date/Time';
 
-  return "All";
+  return 'All';
 };
 
 const Page = () => {
   const { isLightTheme } = useTheme();
   const { register, formState, setValue } = useForm<any>({});
   const [isSearch, setIsSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<CategoryGroup | null>(null);
-  const [selectedBasis, setSelectedBasis] = useState<BasisType>("All");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryGroup | null>(null);
+  const [selectedBasis, setSelectedBasis] = useState<BasisType>('All');
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
   useEffect(() => {
     try {
-      const storedFavorites = localStorage.getItem("favoriteTools");
+      const storedFavorites = localStorage.getItem('favoriteTools');
       if (storedFavorites) {
         const parsed = JSON.parse(storedFavorites);
-        
+
         if (Array.isArray(parsed)) {
           const validFavorites = parsed.filter(
-            (item) => typeof item === "string"
+            item => typeof item === 'string'
           );
           setFavorites(validFavorites);
         } else {
@@ -149,7 +151,7 @@ const Page = () => {
         }
       }
     } catch (error) {
-      console.error("Failed to parse favorites from localStorage:", error);
+      console.error('Failed to parse favorites from localStorage:', error);
       setFavorites([]);
     }
   }, []);
@@ -159,22 +161,22 @@ const Page = () => {
     e.stopPropagation();
     let updatedFavorites;
     if (favorites.includes(url)) {
-      updatedFavorites = favorites.filter((fav) => fav !== url);
+      updatedFavorites = favorites.filter(fav => fav !== url);
     } else {
       updatedFavorites = [...favorites, url];
     }
     setFavorites(updatedFavorites);
-    
+
     try {
-      localStorage.setItem("favoriteTools", JSON.stringify(updatedFavorites));
+      localStorage.setItem('favoriteTools', JSON.stringify(updatedFavorites));
     } catch (error) {
-      console.error("Failed to save favorites to localStorage:", error);
+      console.error('Failed to save favorites to localStorage:', error);
     }
   };
 
   const handleClearSearch = () => {
-    setValue("txtSearch", "");
-    setSearchTerm("");
+    setValue('txtSearch', '');
+    setSearchTerm('');
     setIsSearch(false);
   };
 
@@ -183,29 +185,33 @@ const Page = () => {
     setIsSearch(event.target.value.length > 0);
   };
 
-  const allItems = Object.entries(developmentToolsCategoryContent || {}).flatMap(
-    ([, arr]) => ((arr as any[]) || []).map((item: any) => ({ ...item }))
+  const allItems = Object.entries(
+    developmentToolsCategoryContent || {}
+  ).flatMap(([, arr]) =>
+    ((arr as any[]) || []).map((item: any) => ({ ...item }))
   );
 
   const itemsWithMeta = allItems.map((item: any) => ({
     ...item,
-    __group: classify(item?.title || "", item?.url || ""),
-    __basis: classifyBasis(item?.title || "", item?.url || ""),
+    __group: classify(item?.title || '', item?.url || ''),
+    __basis: classifyBasis(item?.title || '', item?.url || ''),
   }));
 
   let filteredItems = itemsWithMeta
-    .filter((item) =>
+    .filter(item =>
       searchTerm
-        ? (item?.title || "")
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase())
+        ? (item?.title || '').toLowerCase().includes(searchTerm.toLowerCase())
         : true
     )
-    .filter((item) => (selectedCategory ? item.__group === selectedCategory : true))
-    .filter((item) => (selectedBasis === "All" ? true : item.__basis === selectedBasis));
+    .filter(item =>
+      selectedCategory ? item.__group === selectedCategory : true
+    )
+    .filter(item =>
+      selectedBasis === 'All' ? true : item.__basis === selectedBasis
+    );
 
   if (showFavoritesOnly) {
-    filteredItems = filteredItems.filter((item) => favorites.includes(item.url));
+    filteredItems = filteredItems.filter(item => favorites.includes(item.url));
   } else {
     filteredItems.sort((a, b) => {
       const aFav = favorites.includes(a.url);
@@ -217,14 +223,22 @@ const Page = () => {
   }
 
   const countsByGroup: Record<CategoryGroup, number> = CATEGORY_GROUPS.reduce(
-    (acc, g) => ({ ...acc, [g]: itemsWithMeta.filter((i) => i.__group === g).length }),
+    (acc, g) => ({
+      ...acc,
+      [g]: itemsWithMeta.filter(i => i.__group === g).length,
+    }),
     {} as Record<CategoryGroup, number>
   );
 
-  const countsByBasis: Record<BasisType, number> = (BASIS as readonly BasisType[]).reduce(
+  const countsByBasis: Record<BasisType, number> = (
+    BASIS as readonly BasisType[]
+  ).reduce(
     (acc, b) => ({
       ...acc,
-      [b]: b === "All" ? itemsWithMeta.length : itemsWithMeta.filter((i) => i.__basis === b).length,
+      [b]:
+        b === 'All'
+          ? itemsWithMeta.length
+          : itemsWithMeta.filter(i => i.__basis === b).length,
     }),
     {} as Record<BasisType, number>
   );
@@ -238,7 +252,9 @@ const Page = () => {
         ogDescription={SEO_META?.developmentTools?.description}
         ogImage={SEO_META?.developmentTools?.ogImage}
       />
-      <div className={`max-w-[770px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}>
+      <div
+        className={`max-w-[770px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}
+      >
         <div className="px-3 md:px-auto mx-auto">
           <div className="flex flex-col justify-center items-center md:pb-[10px] md:pt-[70px] py-[50px]">
             <BBIcon />
@@ -257,9 +273,9 @@ const Page = () => {
             {...{
               register,
               formState,
-              id: "txtSearch",
-              placeholder: "Search Tool...",
-              autoComplete: "off",
+              id: 'txtSearch',
+              placeholder: 'Search Tool...',
+              autoComplete: 'off',
               onChange: handleSearchChange,
             }}
           />
@@ -274,26 +290,36 @@ const Page = () => {
             </div>
           ) : (
             <div className="absolute lg:right-[210px] lg:top-4 right-11 top-4 2xl:right-[13rem] 2xl:top-4">
-              <SearchIcon className={isLightTheme ? "text-black" : "text-white"} />
+              <SearchIcon
+                className={isLightTheme ? 'text-black' : 'text-white'}
+              />
             </div>
           )}
         </div>
       </div>
 
-      <div className={`max-w-[1170px] mx-auto md:my-[70px] my-[50px] px-4 ${DevelopmentToolsStyles.contentWrapper}`}>
+      <div
+        className={`max-w-[1170px] mx-auto md:my-[70px] my-[50px] px-4 ${DevelopmentToolsStyles.contentWrapper}`}
+      >
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
           <aside
             className={`w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1 ${DevelopmentToolsStyles.filterSidebar}`}
           >
             <div className="flex items-center justify-between mb-3">
-              <h2 className={`text-sm font-semibold text-white/90 ${DevelopmentToolsStyles.filterHeading}`}>Filters</h2>
-              {(selectedCategory || selectedBasis !== "All" || showFavoritesOnly) && (
+              <h2
+                className={`text-sm font-semibold text-white/90 ${DevelopmentToolsStyles.filterHeading}`}
+              >
+                Filters
+              </h2>
+              {(selectedCategory ||
+                selectedBasis !== 'All' ||
+                showFavoritesOnly) && (
                 <button
                   className="text-xs text-primary hover:underline"
                   onClick={() => {
                     setSelectedCategory(null);
-                    setSelectedBasis("All");
+                    setSelectedBasis('All');
                     setShowFavoritesOnly(false);
                   }}
                 >
@@ -309,18 +335,26 @@ const Page = () => {
                 data-active={showFavoritesOnly}
                 className={`w-full text-left px-3 py-2 rounded-lg border transition ${
                   showFavoritesOnly
-                    ? "bg-primary text-black font-bold border-primary"
-                    : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                    ? 'bg-primary text-black font-bold border-primary'
+                    : 'bg-black/40 text-white border-[#222] hover:bg-black/50'
                 } ${DevelopmentToolsStyles.favoriteButton}`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-sm flex items-center gap-2">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill={showFavoritesOnly ? "black" : "currentColor"} xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    <svg
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill={showFavoritesOnly ? 'black' : 'currentColor'}
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     Favorites
                   </span>
-                  <span className={`text-xs ${showFavoritesOnly ? "text-black/80" : "text-white/60"} ${DevelopmentToolsStyles.favoriteCount}`}>
+                  <span
+                    className={`text-xs ${showFavoritesOnly ? 'text-black/80' : 'text-white/60'} ${DevelopmentToolsStyles.favoriteCount}`}
+                  >
                     {favorites.length}
                   </span>
                 </div>
@@ -329,29 +363,47 @@ const Page = () => {
 
             {/* Category filter */}
             <div className="mb-4">
-              <p className={`text-xs text-white/60 mb-2 ${DevelopmentToolsStyles.filterSubLabel}`}>Categories</p>
+              <p
+                className={`text-xs text-white/60 mb-2 ${DevelopmentToolsStyles.filterSubLabel}`}
+              >
+                Categories
+              </p>
               <div className="space-y-2 md:mt-2">
-                {CATEGORY_GROUPS.map((cat) => (
+                {CATEGORY_GROUPS.map(cat => (
                   <button
                     key={cat}
-                    onClick={() => setSelectedCategory((prev) => (prev === cat ? null : cat))}
+                    onClick={() =>
+                      setSelectedCategory(prev => (prev === cat ? null : cat))
+                    }
                     data-active={selectedCategory === cat}
                     className={`w-full text-left px-3 py-2 rounded-lg border transition ${
                       selectedCategory === cat
-                        ? "bg-primary text-black font-bold border-primary"
-                        : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                        ? 'bg-primary text-black font-bold border-primary'
+                        : 'bg-black/40 text-white border-[#222] hover:bg-black/50'
                     } ${DevelopmentToolsStyles.filterCategoryButton}`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm flex items-center gap-2">
-                        {cat === "Text Lab" && <TextLabIcon className="h-5 w-5" />}
-                        {cat === "Code Forge" && <CodeForgeIcon className="h-5 w-5" />}
-                        {cat === "ConvertX" && <ConvertXIcon className="h-5 w-5" />}
-                        {cat === "Genie Hub" && <GenieIcon className="h-5 w-5" />}
-                        {cat === "Dev Utils" && <DevUtilsIcon className="h-5 w-6" />}
+                        {cat === 'Text Lab' && (
+                          <TextLabIcon className="h-5 w-5" />
+                        )}
+                        {cat === 'Code Forge' && (
+                          <CodeForgeIcon className="h-5 w-5" />
+                        )}
+                        {cat === 'ConvertX' && (
+                          <ConvertXIcon className="h-5 w-5" />
+                        )}
+                        {cat === 'Genie Hub' && (
+                          <GenieIcon className="h-5 w-5" />
+                        )}
+                        {cat === 'Dev Utils' && (
+                          <DevUtilsIcon className="h-5 w-6" />
+                        )}
                         {cat}
                       </span>
-                      <span className={`text-xs ${selectedCategory === cat ? "text-black/80" : "text-white/60"}`}>
+                      <span
+                        className={`text-xs ${selectedCategory === cat ? 'text-black/80' : 'text-white/60'}`}
+                      >
                         {countsByGroup[cat as CategoryGroup] || 0}
                       </span>
                     </div>
@@ -362,17 +414,21 @@ const Page = () => {
 
             {/* Basis filter */}
             <div className="my-8">
-              <p className={`text-xs text-white/60 mb-2 md:mt-4 ${DevelopmentToolsStyles.filterSubLabel}`}>Filter by Type</p>
+              <p
+                className={`text-xs text-white/60 mb-2 md:mt-4 ${DevelopmentToolsStyles.filterSubLabel}`}
+              >
+                Filter by Type
+              </p>
               <div className="flex flex-wrap gap-2 md:mt-2">
-                {BASIS?.map((b) => (
+                {BASIS?.map(b => (
                   <button
                     key={b}
                     onClick={() => setSelectedBasis(b)}
                     data-active={selectedBasis === b}
                     className={`px-2.5 py-1.5 rounded-full text-xs border transition ${
                       selectedBasis === b
-                        ? "bg-primary text-black font-bold border-primary"
-                        : "bg-black/40 text-white border-[#222] hover:bg-black/50"
+                        ? 'bg-primary text-black font-bold border-primary'
+                        : 'bg-black/40 text-white border-[#222] hover:bg-black/50'
                     } ${DevelopmentToolsStyles.filterBasisButton}`}
                     aria-pressed={selectedBasis === b}
                   >
@@ -388,7 +444,11 @@ const Page = () => {
           {/* Main grid */}
           <main className="flex-1 order-2 md:order-2">
             <div className="flex items-center justify-between mb-4">
-              <span className={`text-xs text-white/60 ${DevelopmentToolsStyles.showingCount}`}>Showing {filteredItems.length} tools</span>
+              <span
+                className={`text-xs text-white/60 ${DevelopmentToolsStyles.showingCount}`}
+              >
+                Showing {filteredItems.length} tools
+              </span>
               <div className="flex items-center gap-2">
                 {showFavoritesOnly && (
                   <button
@@ -408,10 +468,10 @@ const Page = () => {
                     {selectedCategory} ✕
                   </button>
                 )}
-                {selectedBasis !== "All" && (
+                {selectedBasis !== 'All' && (
                   <button
                     className={`text-xs px-2 py-1 rounded-full bg-white/10 border border-white/10 hover:bg-white/20 ${DevelopmentToolsStyles.activeFilterPill}`}
-                    onClick={() => setSelectedBasis("All")}
+                    onClick={() => setSelectedBasis('All')}
                     title="Clear type filter"
                   >
                     {selectedBasis} ✕
@@ -433,37 +493,55 @@ const Page = () => {
                     className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} ${DevelopmentToolsStyles.toolCard} group md:min-h-[160px] relative`}
                   >
                     <div className="flex justify-between items-start gap-2">
-                      <h3 className="text-lg font-semibold pr-6">{item?.title}</h3>
-                      <button 
-                        onClick={(e) => toggleFavorite(e, item?.url)}
+                      <h3 className="text-lg font-semibold pr-6">
+                        {item?.title}
+                      </h3>
+                      <button
+                        onClick={e => toggleFavorite(e, item?.url)}
                         className="absolute right-4 top-4 text-white/30 hover:text-yellow-400 transition-colors z-10"
-                        title={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
-                        aria-label={favorites.includes(item?.url) ? "Remove from favorites" : "Add to favorites"}
+                        title={
+                          favorites.includes(item?.url)
+                            ? 'Remove from favorites'
+                            : 'Add to favorites'
+                        }
+                        aria-label={
+                          favorites.includes(item?.url)
+                            ? 'Remove from favorites'
+                            : 'Add to favorites'
+                        }
                       >
-                        <svg 
-                          width="20" 
-                          height="20" 
-                          viewBox="0 0 24 24" 
-                          fill={favorites.includes(item?.url) ? "#facc15" : "none"} 
-                          stroke={favorites.includes(item?.url) ? "#facc15" : "currentColor"} 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill={
+                            favorites.includes(item?.url) ? '#facc15' : 'none'
+                          }
+                          stroke={
+                            favorites.includes(item?.url)
+                              ? '#facc15'
+                              : 'currentColor'
+                          }
+                          strokeWidth="2"
+                          strokeLinecap="round"
                           strokeLinejoin="round"
                         >
                           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                         </svg>
                       </button>
                     </div>
-                    <p className={`text-white/70 group-hover:text-black/90 text-sm font-medium mt-1 ${DevelopmentToolsStyles.toolCardDescription}`}>
+                    <p
+                      className={`text-white/70 group-hover:text-black/90 text-sm font-medium mt-1 ${DevelopmentToolsStyles.toolCardDescription}`}
+                    >
                       {(() => {
-                        let description = item?.description || "";
+                        let description = item?.description || '';
                         let truncated =
                           description.length > 50
-                            ? description.slice(0, 50) + "..."
+                            ? description.slice(0, 50) + '...'
                             : description;
 
                         return truncated
-                          .split("BetterBugs.io")
+                          .split('BetterBugs.io')
                           .map((part: any, i: any, arr: any) => (
                             <React.Fragment key={i}>
                               {part}
@@ -481,7 +559,11 @@ const Page = () => {
                           ));
                       })()}
                     </p>
-                    <div className={`mt-3 text-xs text-white/50 ${DevelopmentToolsStyles.toolCardMeta}`}>{item?.__group} • {item?.__basis}</div>
+                    <div
+                      className={`mt-3 text-xs text-white/50 ${DevelopmentToolsStyles.toolCardMeta}`}
+                    >
+                      {item?.__group} • {item?.__basis}
+                    </div>
                   </Link>
                 ))}
               </div>
