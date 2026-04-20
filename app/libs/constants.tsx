@@ -144,6 +144,7 @@ import RgbToCmykConverter from '../components/developmentToolsComponent/rgbToCmy
 import RgbToHexConverter from '../components/developmentToolsComponent/rgbToHexConverter';
 import Rot13EncoderDecoderComponent from '../components/developmentToolsComponent/rot13EncoderDecoderComponent';
 import RotateImageTool from '../components/developmentToolsComponent/rotateImageTool';
+import ImageResizer from '../components/developmentToolsComponent/imageResizer';
 import RotationCalculatorComponent from '../components/developmentToolsComponent/rotationCalculatorComponent';
 import ScssToCssConverter from '../components/developmentToolsComponent/scssToCssConverter';
 import ShuffleLetters from '../components/developmentToolsComponent/shuffleLetters';
@@ -190,6 +191,7 @@ import XorCalculator from '../components/developmentToolsComponent/xorCalculator
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
+import TimeCalculator from '../components/developmentToolsComponent/timeCalculator';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -1624,6 +1626,12 @@ export const developmentToolsCategoryContent: any = {
       title: 'Unix Timestamp Converter',
       description: 'Convert Unix timestamps to readable dates and vice versa.',
     },
+    {
+      url: '/time-calculator',
+      title: 'Time Calculator',
+      description:
+        'Add, subtract, multiply, divide time, or calculate the time between dates.',
+    },
   ],
   Category179: [
     {
@@ -1631,6 +1639,19 @@ export const developmentToolsCategoryContent: any = {
       title: 'URL Parser & Query String Editor',
       description:
         'Decompose complex URLs into legible components and edit query parameters in a visual table.',
+    },
+  ],
+  Category180: [
+    {
+      url: '/url-encode',
+      title: 'URL Encode',
+      description: 'Encode URLs.',
+    },
+    {
+      url: '/image-resizer',
+      title: 'Image Resizer',
+      description:
+        'Resize images locally in your browser. Keep aspect ratio, choose format, and download.',
     },
   ],
 };
@@ -1817,6 +1838,8 @@ export const PATHS = {
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
+  IMAGE_RESIZER: '/image-resizer',
+  TIME_CALCULATOR: '/time-calculator',
 };
 
 export const developmentToolsRoutes = [
@@ -2074,6 +2097,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.ROTATE_IMAGE_TOOL,
     component: <RotateImageTool />,
+  },
+  {
+    path: PATHS.IMAGE_RESIZER,
+    component: <ImageResizer />,
   },
   {
     path: PATHS.CSV_TO_EXCEL_FILE_CONVERTOR,
@@ -2540,6 +2567,7 @@ export const developmentToolsRoutes = [
     path: PATHS.UNIX_TIMESTAMP_CONVERTER,
     component: <EpochConverter />,
   },
+  { path: PATHS.TIME_CALCULATOR, component: <TimeCalculator /> },
 ];
 
 // lorem ipsum text

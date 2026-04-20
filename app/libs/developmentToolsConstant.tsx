@@ -11683,6 +11683,192 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       og_image: '/images/og-images/Cover.png',
     },
   },
+  [`image-resizer`]: {
+    hero_section: {
+      title: 'Image Resizer',
+      description:
+        'Resize images locally in your browser. Keep aspect ratio, choose output format (PNG/JPG/WebP), and download the resized file.',
+    },
+    development_tools_list: [
+      { tool: 'Rotate Image Tool', url: PATHS.ROTATE_IMAGE_TOOL },
+      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      { tool: 'Color Picker Tool', url: PATHS.COLOR_PICKER_TOOL },
+      { tool: 'SVG to React/CSS Utility', url: PATHS.SVG_CONVERTER },
+      { tool: 'CSS Minify', url: PATHS.CSS_MINIFY },
+      { tool: 'URL Encode', url: PATHS.URL_ENCODE },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Image Resizer tool?',
+      about_description: [
+        {
+          description:
+            'The Image Resizer helps you change an image’s pixel dimensions (width and height) without uploading it to a server. Everything runs locally in your browser.',
+        },
+        {
+          description:
+            'Use it to prepare assets for websites, emails, social previews, or product listings, and to quickly generate smaller image variants for performance.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use the Image Resizer',
+      guide_description: 'Resize an image in a few simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Upload an image',
+          step_description:
+            'Drag and drop an image file (or choose a file) to load it into the resizer.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Set the target size',
+          step_description:
+            'Enter the width and height in pixels. Enable “Keep aspect ratio” to automatically calculate the other dimension.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Pick output format and quality',
+          step_description:
+            'Choose PNG, JPG, or WebP. For JPG/WebP, adjust quality to balance file size and clarity.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Download the resized image',
+          step_description:
+            'Preview the result and download the resized image with the selected settings.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'How It’s Used',
+      how_use_description: 'Common use cases for resizing images:',
+      point: [
+        {
+          title: 'Preparing web assets',
+          description:
+            'Resize hero images, thumbnails, and blog illustrations to the exact dimensions your layout needs.',
+        },
+        {
+          title: 'Performance optimization',
+          description:
+            'Create smaller variants to reduce page weight and improve Core Web Vitals (especially LCP).',
+        },
+        {
+          title: 'Consistent content sizing',
+          description:
+            'Standardize image sizes for product grids, cards, and social media previews.',
+        },
+        {
+          title: 'Fast QA & debugging',
+          description:
+            'Quickly generate test images at specific dimensions when validating responsive UI behavior.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Image Resizer – Resize Images Online (PNG/JPG/WebP)',
+      meta_description:
+        'Resize images locally in your browser. Keep aspect ratio, choose PNG/JPG/WebP output, adjust quality, and download the resized image instantly.',
+      og_title: 'Image Resizer – Online Image Resize Tool',
+      og_description:
+        'Resize images to exact pixel dimensions with optional aspect ratio lock. Export as PNG, JPG, or WebP and download immediately.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
+  [`time-calculator`]: {
+    hero_section: {
+      title: 'Time Calculator',
+      description:
+        'Add, subtract, multiply, divide time, or calculate the time between dates. Useful for planning tasks, estimating durations, and working with timestamps.',
+    },
+    development_tools_list: [
+      { tool: 'Unix Timestamp Converter', url: PATHS.UNIX_TIMESTAMP_CONVERTER },
+      { tool: 'Random Date Generator', url: PATHS.RANDOM_DATE_GENERATOR },
+      { tool: 'Random Time Generator', url: PATHS.RANDOM_CLOCK_TIME_GENERATOR },
+      { tool: 'URL Parser & Query String Editor', url: PATHS.URL_PARSER },
+      { tool: 'JSON Prettifier', url: PATHS.JSON_PRETTIFIER },
+      { tool: 'Code Compare Tool', url: PATHS.CODE_COMPARE_TOOL },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Time Calculator?',
+      about_description: [
+        {
+          description:
+            'The Time Calculator helps you perform common operations on time values—adding, subtracting, multiplying, dividing, and finding the duration between dates.',
+        },
+        {
+          description:
+            'Use it for planning tasks, estimating project durations, tracking SLAs, or quickly converting totals into a readable time breakdown.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use the Time Calculator',
+      guide_description: 'Calculate time in a few steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Choose an operation',
+          step_description:
+            'Select whether you want to add, subtract, multiply, divide time, or find the time between dates.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Enter time values or dates',
+          step_description:
+            'Add one or more rows of time values (hours, minutes, etc.), or choose start/end dates for a duration calculation.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Adjust multipliers/units (optional)',
+          step_description:
+            'For multiply/divide, set the multiplier or divisor. Choose a result unit to see totals in seconds, hours, days, and more.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy the output',
+          step_description:
+            'Copy a pretty formatted result, milliseconds, or seconds for use in docs, tickets, spreadsheets, or code.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'How It’s Used',
+      how_use_description: 'Common scenarios:',
+      point: [
+        {
+          title: 'Planning & estimation',
+          description:
+            'Add up multiple task durations to estimate total time required.',
+        },
+        {
+          title: 'SLA / time windows',
+          description:
+            'Compute allowed windows by subtracting or dividing time budgets.',
+        },
+        {
+          title: 'Between two dates',
+          description:
+            'Find the exact duration between a start and end timestamp.',
+        },
+        {
+          title: 'Engineering & QA',
+          description:
+            'Convert totals into readable breakdowns when debugging timers and intervals.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title: 'Time Calculator – Add, Subtract, Multiply & Divide Time',
+      meta_description:
+        'A free time calculator to add, subtract, multiply, divide time, and calculate the time between dates. Get pretty results and copy seconds/milliseconds.',
+      og_title: 'Time Calculator – Online Tool',
+      og_description:
+        'Calculate time instantly: add/subtract durations, multiply/divide time, or find the time between dates. Copy pretty output, seconds, or ms.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
   [`text-to-html-entities-convertor`]: {
     hero_section: {
       title: 'Text to HTML Entities Converter',

@@ -214,9 +214,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                 {/* Tools Panel - 20% width, fixed */}
                 {development_tools_list?.length > 0 && (
                   <div className="md:w-1/4 md:sticky left-0 md:top-8 top-2 h-full overflow-y-auto flex flex-col">
-                    <div className={DevelopmentToolsStyles.sidePanel}>
+                    <div className="bg-white/5 rounded-xl p-4">
                       <div className="flex items-center mb-6">
-                        <h2 className="text-xl font-bold text-gray-800">
+                        <h2 className="text-xl font-semibold text-white">
                           Other Tools
                         </h2>
                       </div>
