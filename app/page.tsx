@@ -304,7 +304,7 @@ const Page = () => {
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
           <aside
-            className={`w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-4 order-1 md:order-1 ${DevelopmentToolsStyles.filterSidebar}`}
+            className={`w-full md:w-[260px] shrink-0 bg-white/5 rounded-xl p-4 h-fit md:sticky md:top-1 order-1 md:order-1 ${DevelopmentToolsStyles.filterSidebar}`}
           >
             <div className="flex items-center justify-between mb-3">
               <h2
@@ -329,11 +329,11 @@ const Page = () => {
             </div>
 
             <div className="mb-4">
-              <p className="text-xs text-white/60 mb-2">Your Tools</p>
+              <p className="text-xs text-white/60 !mb-2">Your Tools</p>
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                 data-active={showFavoritesOnly}
-                className={`w-full text-left px-3 py-2 rounded-lg border transition ${
+                className={`w-full text-left px-3 py-2 rounded-lg border transition mt-2 ${
                   showFavoritesOnly
                     ? 'bg-primary text-black font-bold border-primary'
                     : 'bg-black/40 text-white border-[#222] hover:bg-black/50'
