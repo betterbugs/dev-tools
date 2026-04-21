@@ -530,7 +530,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                         part.endsWith("") ? (
                                                         <span
                                                           key={i}
-                                                          className="font-semibold text-white/70"
+                                                          className="font-normal text-white/70"
                                                         >
                                                           {part}
                                                         </span>

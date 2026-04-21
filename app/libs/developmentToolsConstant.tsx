@@ -11685,9 +11685,9 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
   },
   [`image-resizer`]: {
     hero_section: {
-      title: 'Image Resizer',
+      title: 'Image Resizer Online',
       description:
-        'Resize images locally in your browser. Keep aspect ratio, choose output format (PNG/JPG/WebP), and download the resized file.',
+        'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
     },
     development_tools_list: [
       { tool: 'Rotate Image Tool', url: PATHS.ROTATE_IMAGE_TOOL },
@@ -11698,89 +11698,214 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       { tool: 'URL Encode', url: PATHS.URL_ENCODE },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Image Resizer tool?',
+      about_title: 'What is the Image Resizer Online Tool?',
       about_description: [
         {
           description:
-            'The Image Resizer helps you change an image’s pixel dimensions (width and height) without uploading it to a server. Everything runs locally in your browser.',
+            'The image resizer is a lightweight and free to use online developer tool that enables you to resize or adjust your image dimensions (width and height), image quality, and image format.',
         },
         {
           description:
-            'Use it to prepare assets for websites, emails, social previews, or product listings, and to quickly generate smaller image variants for performance.',
+            'After resizing/adjusting images, you can instantly export/download them to your local system in any of these three formats: PNG, JPG, and WEBP. Plus, you can preview the resized/adjusted image in the “Preview” canvas before download. In the same preview area, you can also check the:',
+        },
+        {
+          list: [
+            {
+              description: 'Output file dimensions ',
+            },
+            {
+              description: 'Estimated file size',
+            },
+          ],
+        },
+        {
+          description:
+            'The image resizing is performed locally in your browser and there are NO SERVER UPLOADS at all.',
+        },
+        {
+          description:
+            "It's a free, open-source, and ad-free tool on BetterBugs.io that you can use for everyday image-related tasks, especially while working with image assets for software, websites, emails, social posts, product listing images, testing, and other general purposes.",
+        },
+        {
+          description:
+            "You can tweak or use it based on your preferences, such as:",
+        },
+        {
+          list: [
+            {
+              description: 'To add files, you can drag and drop OR directly choose files from your local system.',
+            },
+            {
+              description: 'Set custom output dimensions in pixels (px).',
+            },
+            {
+              description: 'Keep aspect ratio.',
+            },
+            {
+              description: 'Select output format: PNG, JPG, or WEBP',
+            },
+            {
+              description: 'Select output image quality (0 - 100) for JPG and WEBP image files; PNG outputs are lossless.',
+            },
+            {
+              description: 'Set target file size for JPG and WEBP image files in KB or MB; PNG outputs are lossless.',
+            },
+            {
+              description: 'Set background fill color (custom) for images with transparent background.',
+            },
+          ],
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to use the Image Resizer',
-      guide_description: 'Resize an image in a few simple steps:',
+      guide_title: 'How to use the Image Resizer Tool?',
+      guide_description: 'Here’s how to use the tool:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Upload an image',
+          step_title: 'Add image file',
           step_description:
-            'Drag and drop an image file (or choose a file) to load it into the resizer.',
+            'To add image, you can:',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_description: 'Drag and drop an image file in the upload area.',
+            },
+            {
+              steps_points_description: 'Use the “Choose File” button to add an image file from your local system.',
+            },
+          ],
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Set the target size',
-          step_description:
-            'Enter the width and height in pixels. Enable “Keep aspect ratio” to automatically calculate the other dimension.',
+          step_title: 'Set your preferences for the output image',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_title: '1) Resize ',
+              steps_points_description: 'Specify output dimensions in pixels (px):',
+              steps_subpoint: [
+                {
+                  description: 'Width',
+                },
+                {
+                  description: 'Height',
+                },
+              ],
+            },
+            {
+              steps_points_description: 'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+            },
+            {
+              steps_points_title: '2) Export ',
+              steps_points_description: 'Choose image output image format, quality, and compression:',
+              steps_subpoint: [
+                {
+                  title: 'PNG:',
+                  description: 'Set Target file size (KB or MB)',
+                },
+                {
+                  title: 'JPG:',
+                  description: 'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
+                },
+                {
+                  title: 'WEBP:',
+                  description: 'Set Quality (0 - 100), Target file size (KB or MB)',
+                },
+              ],
+            },
+          ],
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Pick output format and quality',
+          step_title: 'Preview output and download',
           step_description:
-            'Choose PNG, JPG, or WebP. For JPG/WebP, adjust quality to balance file size and clarity.',
+            'After setting your output preferences, check it out in the “Preview” canvas area and click “Download” to save the final image on your local system.',
         },
         {
-          step_key: 'Step 4:',
-          step_title: 'Download the resized image',
           step_description:
-            'Preview the result and download the resized image with the selected settings.',
+            'To start over, use the “Clear” button.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
-      how_use_description: 'Common use cases for resizing images:',
+      how_use_title: 'What are the use cases for the Image Resizer tool?',
+      how_use_description: 'You can use the image resizer tool for everyday image-related tasks and software development workflows:',
       point: [
         {
-          title: 'Preparing web assets',
+          title: 'Preparing screenshots for bug reports and tickets:',
           description:
-            'Resize hero images, thumbnails, and blog illustrations to the exact dimensions your layout needs.',
+            'Resize debug screenshots, error modals, or UI captures to standard dimensions, optimize for WEBP or JPG, and embed them directly into Jira, GitHub issues, or Linear tickets without bloated file sizes slowing down reviews.',
         },
         {
-          title: 'Performance optimization',
+          title: 'Optimizing images for responsive websites and apps:',
           description:
-            'Create smaller variants to reduce page weight and improve Core Web Vitals (especially LCP).',
+            'Batch-resize hero images, icons, or assets to exact pixel specs while preserving aspect ratios, converting to WEBP for faster load times in production deploys or preview branches.',
         },
         {
-          title: 'Consistent content sizing',
+          title: 'Creating consistent thumbnails for docs and wikis:',
           description:
-            'Standardize image sizes for product grids, cards, and social media previews.',
+            'Shrink high-res diagrams, charts, or code screenshots into compact PNGs or JPGs for inline use in READMEs, Confluence pages, runbooks, or technical specs, keeping everything lightweight and attachment-free.',
         },
         {
-          title: 'Fast QA & debugging',
+          title: 'Generating test fixtures and mockups:',
           description:
-            'Quickly generate test images at specific dimensions when validating responsive UI behavior.',
+            'Adjust image sizes and formats for UI testing suites, API response mocks, or browser dev tools previews, targeting specific file sizes to simulate real-world payloads without server uploads.',
+        },
+        {
+          title: 'Prepping assets for email campaigns and newsletters:',
+          description:
+            'Compress product images, banners, or infographics to email-safe dimensions and quality levels (e.g., under 100KB JPGs), ensuring crisp previews across clients like Gmail or Outlook.',
+        },
+        {
+          title: 'Standardizing social media and sharing previews:',
+          description:
+            'Resize profile pics, post images, or link previews to platform specs (e.g., Twitter cards, LinkedIn banners) in WEBP for quick exports during content creation or marketing pushes.',
+        },
+        {
+          title: 'Fitting images into prototypes and design handoffs:',
+          description:
+            'Tweak mockup screenshots or Figma exports to match component sizes, add background fills for transparency issues, and download in PNG for pixel-perfect sharing with devs and PMs.',
+        },
+        {
+          title: 'Reducing bundle sizes in static sites and PWAs:',
+          description:
+            'Convert and compress large images from CMS exports or asset folders into optimized WEBP/JPG variants for Git pushes, improving Lighthouse scores without build-time processing.',
+        },
+        {
+          title: 'Quickly adapting visuals for presentations and reports: ',
+          description:
+            'Scale down analytics dashboards, performance graphs, or demo captures for slides, PDFs, or chat threads, previewing file sizes to stay under Slack/Teams limits.',
+        },
+        {
+          title: 'Organizing local image libraries for projects: ',
+          description:
+            'Drag-and-drop resize inventories of icons, logos, or textures into uniform formats for sprite sheets, asset pipelines, or personal dev folders, all client-side for privacy.',
+        },
+        {
+          title: 'Debugging and validating image parsing logic: ',
+          description:
+            'Reshape test images to edge-case dimensions or compressions, preview outputs in-browser, and export to verify how your parsers, CDNs, or frontend loaders handle variations.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Image Resizer – Resize Images Online (PNG/JPG/WebP)',
+      meta_title: 'Image Resizer Online - Developer Utility Tools',
       meta_description:
-        'Resize images locally in your browser. Keep aspect ratio, choose PNG/JPG/WebP output, adjust quality, and download the resized image instantly.',
-      og_title: 'Image Resizer – Online Image Resize Tool',
+        'Use the image resizer free online tool on BetterBugs.io to adjust your PNG, JPG, and WEBP image file sizes or image quality; perfect for image-related tasks in websites and software.',
+      og_title: 'Image Resizer Online - Developer Utility Tools',
       og_description:
-        'Resize images to exact pixel dimensions with optional aspect ratio lock. Export as PNG, JPG, or WebP and download immediately.',
+        'This post describes usage steps and the use cases of the image resizer free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
   [`time-calculator`]: {
     hero_section: {
-      title: 'Time Calculator',
+      title: 'Time Calculator Online',
       description:
-        'Add, subtract, multiply, divide time, or calculate the time between dates. Useful for planning tasks, estimating durations, and working with timestamps.',
+        'The Time Calculator is a free tool on BetterBugs.io that enables you to add, subtract, multiply, divide time, or calculate the time between dates; perfect for planning tasks, estimating durations, and working with timestamps.',
     },
     development_tools_list: [
       { tool: 'Unix Timestamp Converter', url: PATHS.UNIX_TIMESTAMP_CONVERTER },
@@ -11791,81 +11916,220 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       { tool: 'Code Compare Tool', url: PATHS.CODE_COMPARE_TOOL },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Time Calculator?',
+      about_title: 'What is the Time Calculator Online Tool?',
       about_description: [
         {
           description:
-            'The Time Calculator helps you perform common operations on time values—adding, subtracting, multiplying, dividing, and finding the duration between dates.',
+            'The Time Calculator is a free-to-use online developer tool that enables you to perform basic arithmetic operations on task durations, calculate project deadlines, or find the difference between two timestamps. Using it you can perform common operations on time values, including:',
+        },
+        {
+          list: [
+            {
+              description: 'Adding time',
+            },
+            {
+              description: 'Subtracting time',
+            },
+            {
+              description: 'Multiplying time',
+            },
+            {
+              description: 'Divide time',
+            },
+            {
+              description: 'Find time (duration) between dates',
+            },
+          ],
         },
         {
           description:
-            'Use it for planning tasks, estimating project durations, tracking SLAs, or quickly converting totals into a readable time breakdown.',
+            'After doing a time calculation operation, you can view the output in a “Result” area and copy it directly, in milliseconds, or seconds format.',
+        },
+        {
+          description:
+            'You can also see the breakdown for these durations in granular units (ms, seconds, minutes, days, weeks, months, years). You can instantly copy these results to your clipboard with a single click. Plus, the calculator supports dynamic input fields. This enables you to add up to 20 time entries (as rows) for bulk additions, subtractions, divisions, or multiplications.',
+        },
+        {
+          description:
+            "It's a free, open-source, and ad-free tool on BetterBugs.io. You can use it for day-to-day time-related tasks in software, such as planning tasks, estimating project durations, tracking SLAs, or quickly converting totals into a readable time breakdown.",
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to use the Time Calculator',
-      guide_description: 'Calculate time in a few steps:',
+      guide_title: 'How to use the Time Calculator Tool?',
+      guide_description: 'Here’s how to use the tool:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Choose an operation',
+          step_title: 'Select operation: ',
           step_description:
-            'Select whether you want to add, subtract, multiply, divide time, or find the time between dates.',
+            'Select the time operation that you want to perform:',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_description: 'Add time',
+            },
+            {
+              steps_points_description: 'Subtract time',
+            },
+            {
+              steps_points_description: 'Multiply time',
+            },
+            {
+              steps_points_description: 'Divide time',
+            },
+            {
+              steps_points_description: 'Find time between dates',
+            },
+          ],
+        },
+        {
+          step_description:
+            'Except for the “Find time between dates” operation, you can add up to 20 rows for entering time values for all other operations. Use the “Remove” button on a row to delete an entry.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Enter time values or dates',
+          step_title: 'Enter time values',
           step_description:
-            'Add one or more rows of time values (hours, minutes, etc.), or choose start/end dates for a duration calculation.',
+            'Here’s what to add as inputs for each option:',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_title: '1) Add time ',
+              steps_points_description: 'Specify one or more time values',
+            },
+            {
+              steps_points_title: '2) Subtract time ',
+              steps_points_description: 'SSpecify one or more time values',
+            },
+            {
+              steps_points_title: '3) Multiply time ',
+              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to multiply with. ',
+            },
+            {
+              steps_points_title: '4) Divide time ',
+              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to be divided by.',
+            },
+            {
+              steps_points_title: '5) Find time between dates ',
+              steps_points_description: 'Specify “Start date and time” and “End date and time”.',
+            },
+          ],
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Adjust multipliers/units (optional)',
+          step_title: 'See result',
           step_description:
-            'For multiply/divide, set the multiplier or divisor. Choose a result unit to see totals in seconds, hours, days, and more.',
+            'The calculator instantly displays the calculated time based on your input values. You can see the output in the “Result” section at the right.',
+        },
+        {
+          step_description:
+            'As you enter inputs, the “Result” card updates automatically:',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_title: 'Pretty: ',
+              steps_points_description: 'Shows the total formatted time (e.g., 12 d 44 min 0 sec).',
+            },
+            {
+              steps_points_title: 'In units: ',
+              steps_points_description: 'Use the dropdown to convert the final total into decimal units (ms, seconds, minutes, days, weeks, months, years).',
+            },
+            {
+              steps_points_title: 'Breakdown: ',
+              steps_points_description: 'Displays the breakdown (e.g., 0d 12h 44m 00s, 0 ms).',
+            },
+          ],
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy the output',
-          step_description:
-            'Copy a pretty formatted result, milliseconds, or seconds for use in docs, tickets, spreadsheets, or code.',
+          step_title: 'Use result and reset',
+        },
+        {
+          steps_points: [
+            {
+              steps_points_title: 'Copy: ',
+              steps_points_description: 'Click the green “Copy pretty”, “Copy ms”, or “Copy seconds” buttons to instantly copy the desired result to your clipboard.',
+            },
+            {
+              steps_points_title: 'Reset: ',
+              steps_points_description: 'To start a new calculation and clear all fields, use the “Reset” button.',
+            },
+          ],
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
-      how_use_description: 'Common scenarios:',
+      how_use_title: 'What are the use cases for the Time Calculator tool?',
+      how_use_description: 'You can use the tool for several purposes in software, such as:',
       point: [
         {
-          title: 'Planning & estimation',
+          title: 'Tracking and Summing Billable Hours:',
           description:
-            'Add up multiple task durations to estimate total time required.',
+            'Accurately add up diverse task logs, timesheets, or sprint durations to generate client invoices or progress reports.',
         },
         {
-          title: 'SLA / time windows',
+          title: 'Estimating Project and Task Durations: ',
           description:
-            'Compute allowed windows by subtracting or dividing time budgets.',
+            'Plan project timelines or agile sprints by summing task-level estimates in hours/minutes to get total cycle time.',
         },
         {
-          title: 'Between two dates',
+          title: 'Calculating Deadline or Milestone Dates:',
           description:
-            'Find the exact duration between a start and end timestamp.',
+            'Find the precise date and time between a project start date and a specific duration (using Add time on dates).',
         },
         {
-          title: 'Engineering & QA',
+          title: 'Analyzing Software or API Logs:',
           description:
-            'Convert totals into readable breakdowns when debugging timers and intervals.',
+            'Quickly calculate time between specific debug timestamps or request logs to identify performance bottlenecks or timeouts.',
+        },
+        {
+          title: 'Debugging Timers and Schedulers: ',
+          description:
+            'Validate the logic of in-app countdown timers, task schedulers, or browser dev tools animation previews by comparing expected and actual durations.',
+        },
+        {
+          title: 'Generating Test Fixtures for Time-Based UI: ',
+          description:
+            'Calculate and convert exact durations (like total milliseconds) for UI testing suites, API response mocks, or animation loops.',
+        },
+        {
+          title: 'Converting Time to/from Milliseconds: ',
+          description:
+            'Instantly convert durations to ms or seconds for backend data entry, database storage, or when writing code that requires total seconds.',
+        },
+        {
+          title: 'Calculating Event-to-Event Latency: ',
+          description:
+            'Compute the time difference between two specific log entries, system events, or user actions to measure application latency.',
+        },
+        {
+          title: 'Planning Sprint and Velocity Spikes: ',
+          description:
+            'Aggregate estimated development time across several user stories to gauge total team capacity or velocity in decimal hours.',
+        },
+        {
+          title: 'Standardizing Time-Series Data: ',
+          description:
+            'Organize diverse time logs (some in minutes, some in hours) into uniform formats and decimal units for asset pipelines or reporting.',
+        },
+        {
+          title: 'Validating Server Uptime and Durations: ',
+          description:
+            'Quickly calculate uptime durations between server start and stop timestamps from diagnostic logs.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Time Calculator – Add, Subtract, Multiply & Divide Time',
+      meta_title: 'Time Calculator Online - Developer Utility Tools',
       meta_description:
-        'A free time calculator to add, subtract, multiply, divide time, and calculate the time between dates. Get pretty results and copy seconds/milliseconds.',
-      og_title: 'Time Calculator – Online Tool',
+        'Use the free online Time Calculator on BetterBugs.io to add, subtract, multiply, and divide time, or find time between dates; perfect for estimating durations while planning and developing projects.',
+      og_title: 'Time Calculator Online - Developer Utility Tools',
       og_description:
-        'Calculate time instantly: add/subtract durations, multiply/divide time, or find the time between dates. Copy pretty output, seconds, or ms.',
+        'This post describes usage steps and the use cases of the time calculator free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
