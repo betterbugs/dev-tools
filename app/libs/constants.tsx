@@ -1630,7 +1630,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/time-calculator',
       title: 'Time Calculator',
       description:
-        'Add, subtract, multiply, divide time, or calculate the time between dates.',
+        'The Time Calculator is a free tool on BetterBugs.io that enables you to add, subtract, multiply, divide time, or calculate the time between dates; perfect for planning tasks, estimating durations, and working with timestamps.',
     },
   ],
   Category179: [
@@ -1651,7 +1651,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/image-resizer',
       title: 'Image Resizer',
       description:
-        'Resize images locally in your browser. Keep aspect ratio, choose format, and download.',
+        'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
     },
   ],
 };
