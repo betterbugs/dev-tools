@@ -497,7 +497,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
 
                             return (
                               <div key={index} className="mt-3">
-                                {/* Primary Flex Layout for Step Key, Title, and Description */}
+                                {/* Step header */}
                                 <div className="flex items-start flex-wrap">
                                   <span
                                     className={`text-white/90 font-semibold text-base${guide?.step_key?.includes("Step")
@@ -510,168 +510,26 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   <span className="text-white/90 font-semibold text-base">
                                     {guide?.step_title}
                                   </span>
-                                  {guide?.steps_points?.length > 0 && (
-                                    <ul className="pl-12 list-disc">
-                                      {guide?.steps_points?.map(
-                                        (p: any, index: number) => (
-                                          <li key={index}>
-                                            {p?.steps_points_title && (
-                                              <span className="text-white/90 font-semibold text-base">
-                                                {p?.steps_points_title}
-                                              </span>
-                                            )}
-                                            {p?.steps_points_description && (
-                                              <p className="text-base text-white/70">
-                                                {p?.steps_points_description
-                                                  ?.split(/(".*?")/)
-                                                  .map(
-                                                    (part: string, i: number) =>
-                                                      part.startsWith("") &&
-                                                        part.endsWith("") ? (
-                                                        <span
-                                                          key={i}
-                                                          className="font-normal text-white/70"
-                                                        >
-                                                          {part}
-                                                        </span>
-                                                      ) : (
-                                                        <React.Fragment key={i}>
-                                                          {part
-                                                            .split(
-                                                              /(\/\/.*?\/\/)/
-                                                            )
-                                                            .map(
-                                                              (
-                                                                sub: string,
-                                                                j: number
-                                                              ) =>
-                                                                sub.startsWith(
-                                                                  "//"
-                                                                ) &&
-                                                                  sub.endsWith(
-                                                                    "//"
-                                                                  ) ? (
-                                                                  <span
-                                                                    key={`${i}-${j}`}
-                                                                    className="font-semibold text-white/70"
-                                                                  >
-                                                                    {sub.slice(
-                                                                      2,
-                                                                      -2
-                                                                    )}
-                                                                  </span>
-                                                                ) : (
-                                                                  sub
-                                                                )
-                                                            )}
-                                                        </React.Fragment>
-                                                      )
-                                                  )}
-                                              </p>
-                                            )}
-                                            {Array.isArray(p?.steps_subpoint) &&
-                                              p?.steps_subpoint?.length > 0 && (
-                                                <ul className="pl-12 list-disc">
-                                                  {p?.steps_subpoint?.map(
-                                                    (
-                                                      sub_p: any,
-                                                      subIndex: number
-                                                    ) => (
-                                                      <li key={subIndex}>
-                                                        {sub_p?.title && (
-                                                          <span className="text-white/90 font-semibold text-base">
-                                                            {sub_p?.title}
-                                                          </span>
-                                                        )}
-                                                        {sub_p?.description && (
-                                                          <span className="text-base text-white/70">
-                                                            {sub_p?.description
-                                                              ?.split(/(".*?")/)
-                                                              .map(
-                                                                (
-                                                                  part: string,
-                                                                  i: number
-                                                                ) =>
-                                                                  part.startsWith(
-                                                                    ""
-                                                                  ) &&
-                                                                    part.endsWith(
-                                                                      ""
-                                                                    ) ? (
-                                                                    <span
-                                                                      key={i}
-                                                                      className="font-semibold text-white/90"
-                                                                    >
-                                                                      {part}
-                                                                    </span>
-                                                                  ) : (
-                                                                    <React.Fragment
-                                                                      key={i}
-                                                                    >
-                                                                      {part
-                                                                        .split(
-                                                                          /(\/\/.*?\/\/)/
-                                                                        )
-                                                                        .map(
-                                                                          (
-                                                                            sub: string,
-                                                                            j: number
-                                                                          ) =>
-                                                                            sub.startsWith(
-                                                                              "//"
-                                                                            ) &&
-                                                                              sub.endsWith(
-                                                                                "//"
-                                                                              ) ? (
-                                                                              <span
-                                                                                key={`${i}-${j}`}
-                                                                                className="font-semibold text-white/90"
-                                                                              >
-                                                                                {sub.slice(
-                                                                                  2,
-                                                                                  -2
-                                                                                )}
-                                                                              </span>
-                                                                            ) : (
-                                                                              sub
-                                                                            )
-                                                                        )}
-                                                                    </React.Fragment>
-                                                                  )
-                                                              )}
-                                                          </span>
-                                                        )}
-                                                      </li>
-                                                    )
-                                                  )}
-                                                </ul>
-                                              )}
-                                          </li>
-                                        )
-                                      )}
-                                    </ul>
-                                  )}
-                                  <span className="text-base text-white/70">
+                                </div>
+
+                                {/* Step descriptions (below title) */}
+                                {description && (
+                                  <div className="mt-2 text-base text-white/70">
                                     {parts?.map((part: any, i: any) =>
-                                      part.startsWith("") &&
-                                        part.endsWith("") ? (
-                                        <>
-                                          <span
-                                            key={`description_${i}`}
-                                            className="text-white"
-                                          >
-                                            {part}
-                                          </span>
-                                        </>
+                                      part.startsWith("") && part.endsWith("") ? (
+                                        <span key={`description_${i}`} className="text-white">
+                                          {part}
+                                        </span>
                                       ) : (
-                                        part
+                                        <React.Fragment key={`description_${i}`}>{part}</React.Fragment>
                                       )
                                     )}
-                                  </span>
-                                </div>
+                                  </div>
+                                )}
+
                                 {/* Step Description2 on a New Line, Only If Present */}
                                 {description2 && desParts?.length > 0 && (
-                                  <div className="mt-2 text-base text-white/70">
+                                  <div className="mt-2 pl-12 text-base text-white/70">
                                     {desParts?.map((part: any, i: any) =>
                                       part.startsWith("") &&
                                         part.endsWith("") ? (
@@ -686,6 +544,93 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       )
                                     )}
                                   </div>
+                                )}
+
+                                {guide?.steps_points?.length > 0 && (
+                                  <ul className="pl-12 list-disc mt-2">
+                                    {guide?.steps_points?.map((p: any, index: number) => (
+                                      <li key={index}>
+                                        {p?.steps_points_title && (
+                                          <span className="text-white/90 font-semibold text-base">
+                                            {p?.steps_points_title}
+                                          </span>
+                                        )}
+                                        {p?.steps_points_description && (
+                                          <p className="text-base text-white/70">
+                                            {p?.steps_points_description
+                                              ?.split(/(".*?")/)
+                                              .map((part: string, i: number) =>
+                                                part.startsWith("") && part.endsWith("") ? (
+                                                  <span key={i} className="font-normal text-white/70">
+                                                    {part}
+                                                  </span>
+                                                ) : (
+                                                  <React.Fragment key={i}>
+                                                    {part
+                                                      .split(/(\/\/.*?\/\/)/)
+                                                      .map((sub: string, j: number) =>
+                                                        sub.startsWith("//") && sub.endsWith("//") ? (
+                                                          <span
+                                                            key={`${i}-${j}`}
+                                                            className="font-semibold text-white/70"
+                                                          >
+                                                            {sub.slice(2, -2)}
+                                                          </span>
+                                                        ) : (
+                                                          sub
+                                                        )
+                                                      )}
+                                                  </React.Fragment>
+                                                )
+                                              )}
+                                          </p>
+                                        )}
+                                        {Array.isArray(p?.steps_subpoint) && p?.steps_subpoint?.length > 0 && (
+                                          <ul className="pl-12 list-disc">
+                                            {p?.steps_subpoint?.map((sub_p: any, subIndex: number) => (
+                                              <li key={subIndex}>
+                                                {sub_p?.title && (
+                                                  <span className="text-white/90 font-semibold text-base">
+                                                    {sub_p?.title}
+                                                  </span>
+                                                )}
+                                                {sub_p?.description && (
+                                                  <span className="text-base text-white/70">
+                                                    {sub_p?.description
+                                                      ?.split(/(".*?")/)
+                                                      .map((part: string, i: number) =>
+                                                        part.startsWith("") && part.endsWith("") ? (
+                                                          <span key={i} className="font-semibold text-white/90">
+                                                            {part}
+                                                          </span>
+                                                        ) : (
+                                                          <React.Fragment key={i}>
+                                                            {part
+                                                              .split(/(\/\/.*?\/\/)/)
+                                                              .map((sub: string, j: number) =>
+                                                                sub.startsWith("//") && sub.endsWith("//") ? (
+                                                                  <span
+                                                                    key={`${i}-${j}`}
+                                                                    className="font-semibold text-white/90"
+                                                                  >
+                                                                    {sub.slice(2, -2)}
+                                                                  </span>
+                                                                ) : (
+                                                                  sub
+                                                                )
+                                                              )}
+                                                          </React.Fragment>
+                                                        )
+                                                      )}
+                                                  </span>
+                                                )}
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        )}
+                                      </li>
+                                    ))}
+                                  </ul>
                                 )}
                               </div>
                             );

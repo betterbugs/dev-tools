@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 
 type Mode = "add" | "subtract" | "multiply" | "divide" | "between";
@@ -60,7 +60,6 @@ type HMSRow = { h: number; m: number; s: number };
 
 const DEFAULT_HMS_ROWS: HMSRow[] = [
   { h: 0, m: 0, s: 0 },
-  { h: 0, m: 0, s: 0 },
 ];
 
 const toMs = (r: HMSRow) => (Number(r.h) * 3600 + Number(r.m) * 60 + Number(r.s)) * 1000;
@@ -110,6 +109,7 @@ const TimeCalculator = () => {
   const [divisor, setDivisor] = useState<number>(2);
   const [betweenStart, setBetweenStart] = useState<string>("");
   const [betweenEnd, setBetweenEnd] = useState<string>("");
+  const rowsContainerRef = useRef<HTMLDivElement | null>(null);
 
   const computed = useMemo(
     () => calc(mode, rows, multiplier, divisor, betweenStart, betweenEnd),
@@ -132,6 +132,53 @@ const TimeCalculator = () => {
   const removeRow = (idx: number) => setRows((prev) => prev.filter((_, i) => i !== idx));
   const updateRow = (idx: number, patch: Partial<HMSRow>) =>
     setRows((prev) => prev.map((r, i) => (i === idx ? { ...r, ...patch } : r)));
+
+  useEffect(() => {
+    if (mode === "between") return;
+    if (rows.length !== 1) return;
+    const first = rows[0];
+    if (!first) return;
+    const hasAny = Boolean(Number(first.h) || Number(first.m) || Number(first.s));
+    if (!hasAny) return;
+    setRows((prev) => (prev.length === 1 ? [...prev, { h: 0, m: 0, s: 0 }] : prev));
+  }, [mode, rows]);
+
+  const focusTimeInput = (rowIdx: number, colIdx: number) => {
+    const root = rowsContainerRef.current;
+    if (!root) return;
+    const el = root.querySelector<HTMLInputElement>(
+      `input[data-bb-time-input="1"][data-row="${rowIdx}"][data-col="${colIdx}"]`
+    );
+    el?.focus();
+    el?.select?.();
+  };
+
+  const handleEnterAdvance = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+
+    const root = rowsContainerRef.current;
+    if (!root) return;
+    const inputs = Array.from(root.querySelectorAll<HTMLInputElement>(`input[data-bb-time-input="1"]`));
+    if (inputs.length === 0) return;
+
+    const current = e.currentTarget;
+    const idx = inputs.indexOf(current);
+    if (idx < 0) return;
+
+    const next = inputs[idx + 1];
+    if (next) {
+      next.focus();
+      next.select?.();
+      return;
+    }
+
+    // If we were on the last input, add a row and focus it.
+    if (rows.length >= 20) return;
+    const nextRowIdx = rows.length;
+    setRows((prev) => [...prev, { h: 0, m: 0, s: 0 }]);
+    requestAnimationFrame(() => focusTimeInput(nextRowIdx, 0));
+  };
 
   const clearAll = () => {
     setRows(DEFAULT_HMS_ROWS);
@@ -226,6 +273,7 @@ const TimeCalculator = () => {
                         <div className="space-y-4">
                           <div className="text-sm text-white/80">Enter values (up to 20 rows)</div>
                           <div
+                            ref={rowsContainerRef}
                             className={`space-y-3 ${rows.length > 3 ? "bb-thin-scroll max-h-[420px] overflow-auto pr-1" : ""
                               }`}
                             style={rows.length > 3 ? { scrollbarWidth: "thin" } : undefined}
@@ -254,6 +302,10 @@ const TimeCalculator = () => {
                                         type="number"
                                         value={Number.isFinite(r.h) ? r.h : 0}
                                         onChange={(e) => updateRow(idx, { h: Number(e.target.value) || 0 })}
+                                        onKeyDown={handleEnterAdvance}
+                                        data-bb-time-input="1"
+                                        data-row={idx}
+                                        data-col={0}
                                         className="w-full bg-transparent outline-none text-white text-sm"
                                       />
                                     </div>
@@ -263,6 +315,10 @@ const TimeCalculator = () => {
                                         type="number"
                                         value={Number.isFinite(r.m) ? r.m : 0}
                                         onChange={(e) => updateRow(idx, { m: Number(e.target.value) || 0 })}
+                                        onKeyDown={handleEnterAdvance}
+                                        data-bb-time-input="1"
+                                        data-row={idx}
+                                        data-col={1}
                                         className="w-full bg-transparent outline-none text-white text-sm"
                                       />
                                     </div>
@@ -272,6 +328,10 @@ const TimeCalculator = () => {
                                         type="number"
                                         value={Number.isFinite(r.s) ? r.s : 0}
                                         onChange={(e) => updateRow(idx, { s: Number(e.target.value) || 0 })}
+                                        onKeyDown={handleEnterAdvance}
+                                        data-bb-time-input="1"
+                                        data-row={idx}
+                                        data-col={2}
                                         className="w-full bg-transparent outline-none text-white text-sm"
                                       />
                                     </div>
