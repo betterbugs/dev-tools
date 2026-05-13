@@ -351,7 +351,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
 
                         // Handle regular description text
                         const descriptions = desc?.description || "";
-                        const splitDescriptions = descriptions.split(/(".*?")/); // Split quoted and unquoted text
+                        const splitDescriptions = descriptions.split(/((['"]).*?\2)/); // Split quoted and unquoted text
 
                         return (
                           <p
@@ -361,7 +361,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             {splitDescriptions.map(
                               (text: any, subIndex: any) => {
                                 const isQuoted =
-                                  text.startsWith("") && text.endsWith("");
+                                  typeof text === "string" && /^(['"]).*\1$/.test(text);
                                 const containsBetterBugs =
                                   text.includes("BetterBugs.io");
 
@@ -372,7 +372,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                     <React.Fragment
                                       key={`about_description_part_${index}_${subIndex}`}
                                     >
-                                      {parts[0]}
+                                      <span className={isQuoted ? "text-white" : "text-white/70"}>
+                                        {parts[0]}
+                                      </span>
                                       <a
                                         href="https://BetterBugs.io"
                                         target="_blank"
@@ -380,7 +382,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       >
                                         BetterBugs.io
                                       </a>
-                                      {parts[1]}
+                                      <span className={isQuoted ? "text-white" : "text-white/70"}>
+                                        {parts[1]}
+                                      </span>
                                     </React.Fragment>
                                   );
                                 }
@@ -429,12 +433,12 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         </p>
                       )}
                       {development_tools_user_agent_info?.example_string && (
-                        <p className="text-white/70 text-sm whitespace-pre">
+                        <p className="text-white/70 text-sm whitespace-pre-wrap break-words">
                           {development_tools_user_agent_info?.example_string}
                         </p>
                       )}
                       {development_tools_user_agent_info?.example_string_description && (
-                        <p className="text-white/90 text-sm whitespace-pre !mb-4">
+                        <p className="text-white/90 text-sm whitespace-pre-wrap break-words !mb-4">
                           {development_tools_user_agent_info?.example_string_description}
                         </p>
                       )}
@@ -471,16 +475,21 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         </h5>
                         <p className="text-white/70 text-base mt-4">
                           {development_tools_steps_guide?.guide_description
-                            ?.split(/(".*?")/g)
-                            ?.map((parts: any, i: any) =>
-                              parts?.startsWith("") && parts?.endsWith("") ? (
+                            ?.split(/((['"]).*?\2)/g)
+                            ?.map((parts: any, i: any) => {
+                              const isQuoted =
+                                typeof parts === "string" &&
+                                /^(['"]).*\1$/.test(parts);
+                              return isQuoted ? (
                                 <span key={i} className="font-bold text-white">
                                   {parts}
                                 </span>
                               ) : (
-                                <span key={i}>{parts}</span>
-                              )
-                            )}
+                                <span key={i} className="text-white/70">
+                                  {parts}
+                                </span>
+                              );
+                            })}
                         </p>
                       </>
                     )}
@@ -492,8 +501,8 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             const description2 = guide?.step_description2;
 
                             // Split quoted and unquoted text
-                            const parts = description?.split(/(".*?")/);
-                            const desParts = description2?.split(/(".*?")/);
+                            const parts = description?.split(/((['"]).*?\2)/);
+                            const desParts = description2?.split(/((['"]).*?\2)/);
 
                             return (
                               <div key={index} className="mt-3">
@@ -515,24 +524,31 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 {/* Step descriptions (below title) */}
                                 {description && (
                                   <div className="mt-2 text-base text-white/70">
-                                    {parts?.map((part: any, i: any) =>
-                                      part.startsWith("") && part.endsWith("") ? (
+                                    {parts?.map((part: any, i: any) => {
+                                      const isQuoted =
+                                        typeof part === "string" &&
+                                        /^(['"]).*\1$/.test(part);
+                                      return isQuoted ? (
                                         <span key={`description_${i}`} className="text-white">
                                           {part}
                                         </span>
                                       ) : (
-                                        <React.Fragment key={`description_${i}`}>{part}</React.Fragment>
-                                      )
-                                    )}
+                                        <span key={`description_${i}`} className="text-white/70">
+                                          {part}
+                                        </span>
+                                      );
+                                    })}
                                   </div>
                                 )}
 
                                 {/* Step Description2 on a New Line, Only If Present */}
                                 {description2 && desParts?.length > 0 && (
                                   <div className="mt-2 pl-12 text-base text-white/70">
-                                    {desParts?.map((part: any, i: any) =>
-                                      part.startsWith("") &&
-                                        part.endsWith("") ? (
+                                    {desParts?.map((part: any, i: any) => {
+                                      const isQuoted =
+                                        typeof part === "string" &&
+                                        /^(['"]).*\1$/.test(part);
+                                      return isQuoted ? (
                                         <span
                                           key={`description2_${i}`}
                                           className="text-white"
@@ -540,9 +556,14 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                           {part}
                                         </span>
                                       ) : (
-                                        part
-                                      )
-                                    )}
+                                        <span
+                                          key={`description2_${i}`}
+                                          className="text-white/70"
+                                        >
+                                          {part}
+                                        </span>
+                                      );
+                                    })}
                                   </div>
                                 )}
 
@@ -558,10 +579,11 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                         {p?.steps_points_description && (
                                           <p className="text-base text-white/70">
                                             {p?.steps_points_description
-                                              ?.split(/(".*?")/)
+                                              ?.split(/((['"]).*?\2)/)
                                               .map((part: string, i: number) =>
-                                                part.startsWith("") && part.endsWith("") ? (
-                                                  <span key={i} className="font-normal text-white/70">
+                                                typeof part === "string" &&
+                                                /^(['"]).*\1$/.test(part) ? (
+                                                  <span key={i} className="font-normal text-white">
                                                     {part}
                                                   </span>
                                                 ) : (
@@ -597,9 +619,10 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                                 {sub_p?.description && (
                                                   <span className="text-base text-white/70">
                                                     {sub_p?.description
-                                                      ?.split(/(".*?")/)
+                                                      ?.split(/((['"]).*?\2)/)
                                                       .map((part: string, i: number) =>
-                                                        part.startsWith("") && part.endsWith("") ? (
+                                                        typeof part === "string" &&
+                                                        /^(['"]).*\1$/.test(part) ? (
                                                           <span key={i} className="font-semibold text-white/90">
                                                             {part}
                                                           </span>
@@ -799,7 +822,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         (desc: any, index: number) => {
                           const descriptions = desc?.descriptions;
                           const splitDescriptions =
-                            descriptions.split(/(".*?")/); // Split quoted and unquoted text
+                            descriptions.split(/((['"]).*?\2)/); // Split quoted and unquoted text
 
                           return (
                             <p
@@ -809,7 +832,8 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               {splitDescriptions.map(
                                 (text: any, subIndex: any) => {
                                   const isQuoted =
-                                    text.startsWith("") && text.endsWith("");
+                                    typeof text === "string" &&
+                                    /^(['"]).*\1$/.test(text);
 
                                   return (
                                     <span

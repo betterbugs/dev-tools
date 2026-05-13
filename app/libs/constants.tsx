@@ -155,6 +155,7 @@ import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
 import SqlToJson from '../components/developmentToolsComponent/sqlToJson';
 import SvgConverter from '../components/developmentToolsComponent/svgConverter';
+import SvgViewer from '../components/developmentToolsComponent/svgViewer';
 import StringDiffrenceChecker from '../components/developmentToolsComponent/stringDiffrenceChecker';
 import StripHTML from '../components/developmentToolsComponent/stripHTML';
 import TextCompare from '../components/developmentToolsComponent/textCompare';
@@ -192,6 +193,7 @@ import CurlToCodeConverter from '../components/developmentToolsComponent/curlToC
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
 import TimeCalculator from '../components/developmentToolsComponent/timeCalculator';
+import HarFileViewer from '../components/developmentToolsComponent/harFileViewer';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -725,7 +727,7 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'Encode text or files to Base64.',
+      description: 'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -1000,9 +1002,9 @@ export const developmentToolsCategoryContent: any = {
   Category95: [
     {
       url: '/html-viewer',
-      title: 'HTML Viewer',
+      title: 'HTML Viewer Online',
       description:
-        'Preview HTML markup in a live viewer to see rendered output instantly.',
+        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
     },
   ],
   Category96: [
@@ -1619,6 +1621,12 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
     },
+    // {
+    //   url: '/svg-viewer',
+    //   title: 'SVG Viewer',
+    //   description:
+    //     'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
+    // },
   ],
   Category178: [
     {
@@ -1654,6 +1662,14 @@ export const developmentToolsCategoryContent: any = {
         'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
     },
   ],
+  // Category181: [
+  //   {
+  //     url: '/har-file-viewer',
+  //     title: 'HAR File Viewer',
+  //     description:
+  //       'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
+  //   },
+  // ],
 };
 
 export const PATHS = {
@@ -1814,6 +1830,7 @@ export const PATHS = {
   JAVASCRIPT_REGEX_TESTER: '/javascript-regex-tester',
   STRIP_HTML: '/strip-html',
   SVG_CONVERTER: '/svg-converter',
+  SVG_VIEWER: '/svg-viewer',
   WHAT_IS_MY_LOCAL_IP_ADDRESS: '/what-is-my-local-ip-address',
   JAVASCRIPT_TESTER: '/javascript-tester',
   WHAT_VERSION_OF_JAVA: '/what-version-of-java-do-i-have',
@@ -1840,6 +1857,7 @@ export const PATHS = {
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
   IMAGE_RESIZER: '/image-resizer',
   TIME_CALCULATOR: '/time-calculator',
+  HAR_FILE_VIEWER: '/har-file-viewer',
 };
 
 export const developmentToolsRoutes = [
@@ -2331,7 +2349,7 @@ export const developmentToolsRoutes = [
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
   },
-   {
+  {
     path: PATHS.JSON_TO_CSV_CONVERTOR,
     component: <JsonToCsvConverter />,
   },
@@ -2556,6 +2574,10 @@ export const developmentToolsRoutes = [
     component: <SvgConverter />,
   },
   {
+    path: PATHS.SVG_VIEWER,
+    component: <SvgViewer />,
+  },
+  {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
   },
@@ -2568,6 +2590,7 @@ export const developmentToolsRoutes = [
     component: <EpochConverter />,
   },
   { path: PATHS.TIME_CALCULATOR, component: <TimeCalculator /> },
+  { path: PATHS.HAR_FILE_VIEWER, component: <HarFileViewer /> },
 ];
 
 // lorem ipsum text
