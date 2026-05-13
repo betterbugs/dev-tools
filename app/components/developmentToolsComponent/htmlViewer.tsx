@@ -1,22 +1,58 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useRef, useState } from "react";
+import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+
+const DEFAULT_HTML =
+  "<h1>Hello, HTML Viewer</h1>\n<p>Edit the HTML to see updates here.</p>";
+const DEFAULT_CSS =
+  "body{font-family:system-ui;padding:16px}\niframe, img{max-width:100%}";
+const DEFAULT_JS = "console.log('Viewer ready');";
 
 const HtmlViewer: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"html" | "css" | "js">("html");
-  const [html, setHtml] = useState<string>("<h1>Hello, Html Viewer</h1>\n<p>Edit the HTML to see updates here.</p>");
-  const [css, setCss] = useState<string>("body{font-family:system-ui;padding:16px}\niframe, img{max-width:100%}");
-  const [js, setJs] = useState<string>("console.log('Viewer ready');");
+  const [html, setHtml] = useState<string>(DEFAULT_HTML);
+  const [css, setCss] = useState<string>(DEFAULT_CSS);
+  const [js, setJs] = useState<string>(DEFAULT_JS);
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const editorValue =
+    activeTab === "html" ? html : activeTab === "css" ? css : js;
+  const setEditorValue =
+    activeTab === "html" ? setHtml : activeTab === "css" ? setCss : setJs;
+
+  const tabLabel =
+    activeTab === "html"
+      ? "HTML"
+      : activeTab === "css"
+        ? "CSS"
+        : "JavaScript";
+
+  const fileAccept =
+    activeTab === "html" ? ".html,.htm,.txt,text/html" : "text/plain,.css,.js";
+
+  const buildDocument = () => {
+    return `<!doctype html>\n<html><head><meta charset='utf-8'><title>Preview</title><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
+  };
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(html);
-    } catch {}
+      await navigator.clipboard.writeText(editorValue);
+    } catch {
+      // ignore
+    }
   };
 
-  const clear = () => {
-    if (activeTab === "html") setHtml("");
-    if (activeTab === "css") setCss("");
-    if (activeTab === "js") setJs("");
+  const clearCurrent = () => {
+    setEditorValue("");
+  };
+
+  const loadSample = () => {
+    setHtml(DEFAULT_HTML);
+    setCss(DEFAULT_CSS);
+    setJs(DEFAULT_JS);
+    setActiveTab("html");
   };
 
   const download = () => {
@@ -26,11 +62,15 @@ const HtmlViewer: React.FC = () => {
     const a = document.createElement("a");
     a.href = url;
     a.download = "html-viewer.html";
+    document.body.appendChild(a);
     a.click();
+    a.remove();
     URL.revokeObjectURL(url);
   };
 
-  const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePickFile = () => fileInputRef.current?.click();
+
+  const onUpload: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
@@ -41,56 +81,169 @@ const HtmlViewer: React.FC = () => {
       if (activeTab === "js") setJs(text);
     };
     reader.readAsText(file);
-    // reset
     e.currentTarget.value = "";
   };
 
-  const buildDocument = () => {
-    return `<!doctype html>\n<html><head><meta charset='utf-8'><title>Preview</title><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
-  };
+  const tabBtn = (tab: "html" | "css" | "js", label: string) => (
+    <button
+      type="button"
+      onClick={() => setActiveTab(tab)}
+      className={`px-1 pb-2 -mb-px text-sm font-semibold bg-transparent transition-colors focus:outline-none focus-visible:outline-none ${
+        activeTab === tab
+          ? "border-b-2 border-primary text-white"
+          : "border-b-2 border-transparent text-white/60 hover:text-white/90"
+      }`}
+    >
+      {label}
+    </button>
+  );
 
   return (
-    <div className="max-w-6xl mx-auto p-6 text-white">
-      <h2 className="text-xl font-semibold mb-4">HTML Viewer</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Editor */}
-        <div className="bg-white/5 rounded-xl p-4 space-y-3">
-          <div className="flex items-center gap-4 mb-2">
-            <div className="flex items-center gap-4 text-white/80">
-              <button onClick={() => setActiveTab("html")} className={`${activeTab==='html' ? 'border-b-2 border-primary text-white' : ''}`}>HTML</button>
-              <button onClick={() => setActiveTab("css")} className={`${activeTab==='css' ? 'border-b-2 border-primary text-white' : ''}`}>CSS</button>
-              <button onClick={() => setActiveTab("js")} className={`${activeTab==='js' ? 'border-b-2 border-primary text-white' : ''}`}>JS</button>
-            </div>
-            <div className="ml-auto flex items-center gap-2">
-              <input type="file" accept={activeTab==='html'?'.html,.htm,.txt':'text/plain,.css,.js'} onChange={onUpload} className="hidden" id="upload-file" />
-              <label htmlFor="upload-file" className="px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 cursor-pointer">Upload</label>
-              <button onClick={copy} className="px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20">Copy</button>
-              <button onClick={clear} className="px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20">Clear</button>
-              <button onClick={download} className="px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20">Download</button>
+    <section className="w-full">
+      <div className="md:mt-8 mt-4">
+        <div className="w-full bg-[#FFFFFF1A] rounded-2xl shadow-lg p-5 md:p-8">
+          <div className="md:w-[1000px] mx-auto">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={loadSample}
+                    className="px-3 py-2 rounded-lg border border-white/10 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary/60"
+                  >
+                    Sample
+                  </button>
+                  <button
+                    type="button"
+                    onClick={clearCurrent}
+                    className="px-3 py-2 rounded-lg border border-white/10 bg-transparent hover:bg-white/10 text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary/60"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Editor */}
+                <div className="rounded-xl border border-[#222222] bg-black/25 p-4">
+                  <div className="flex flex-wrap items-center gap-6 border-b border-white/10 mb-3">
+                    {tabBtn("html", "HTML")}
+                    {tabBtn("css", "CSS")}
+                    {tabBtn("js", "JS")}
+                  </div>
+
+                  <label
+                    htmlFor="bb-html-viewer-editor"
+                    className="block text-white/80 text-sm font-medium mb-2"
+                  >
+                    {tabLabel} editor
+                  </label>
+
+                  <div className="relative">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept={fileAccept}
+                      className="hidden"
+                      onChange={onUpload}
+                    />
+                    <textarea
+                      id="bb-html-viewer-editor"
+                      value={editorValue}
+                      onChange={(e) => setEditorValue(e.target.value)}
+                      spellCheck={false}
+                      rows={16}
+                      className={`${DevelopmentToolsStyles.scrollbar} w-full min-h-[360px] bg-black/40 border border-[#222222] rounded-lg px-3 py-3 pr-12 text-white text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/60`}
+                      placeholder={
+                        activeTab === "html"
+                          ? "Type or paste HTML here"
+                          : activeTab === "css"
+                            ? "Type or paste CSS here"
+                            : "Type or paste JavaScript here"
+                      }
+                      aria-label={`${tabLabel} editor`}
+                    />
+                    {editorValue && (
+                      <button
+                        type="button"
+                        onClick={clearCurrent}
+                        title="Clear"
+                        className="absolute right-3 top-3 h-8 w-8 flex items-center justify-center rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition disabled:opacity-60"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="h-5 w-5 text-white"
+                          aria-hidden
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M6.225 4.811a1 1 0 011.414 0L12 9.172l4.361-4.361a1 1 0 111.414 1.414L13.414 10.586l4.361 4.361a1 1 0 01-1.414 1.414L12 12l-4.361 4.361a1 1 0 01-1.414-1.414l4.361-4.361-4.361-4.361a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-4">
+                    <button
+                      type="button"
+                      onClick={copy}
+                      disabled={!editorValue}
+                      className={`${DevelopmentToolsStyles.converterButton} text-black font-bold !py-2.5 !px-4 rounded-xl w-full text-sm disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-primary/60`}
+                    >
+                      Copy
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handlePickFile}
+                      className="!py-3 !px-4 rounded-xl w-full text-sm font-bold bg-primary hover:opacity-90 text-black focus:outline-none focus:ring-2 focus:ring-primary/60"
+                    >
+                      Upload
+                    </button>
+                    <button
+                      type="button"
+                      onClick={download}
+                      className={`${DevelopmentToolsStyles.converterButton} text-black font-bold !py-3 !px-4 rounded-xl w-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/60`}
+                    >
+                      Download
+                    </button>
+                  </div>
+
+                  <p className="text-xs text-white/50 mt-3">
+                    Preview runs HTML, CSS, and JS together in a sandboxed iframe.
+                    User scripts cannot access the parent page.
+                  </p>
+                </div>
+
+                {/* Live preview */}
+                <div className="rounded-xl border border-[#222222] bg-black/25 p-4">
+                  <div className="mb-3">
+                    <div className="text-white/90 text-sm font-medium">
+                      Live preview
+                    </div>
+                    <div className="text-white/50 text-xs mt-0.5">
+                      Sandboxed iframe (same-origin scripts only)
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg border border-[#222222] overflow-hidden bg-white">
+                    <iframe
+                      title="Live preview"
+                      className="w-full min-h-[420px] h-[min(70vh,520px)] bg-white"
+                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                      srcDoc={buildDocument()}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          {activeTab === 'html' && (
-            <textarea value={html} onChange={(e) => setHtml(e.target.value)} className="w-full h-[440px] px-3 py-2 bg-black/60 border border-white/20 rounded-lg font-mono text-sm text-white" placeholder="Type or paste HTML here" />
-          )}
-          {activeTab === 'css' && (
-            <textarea value={css} onChange={(e) => setCss(e.target.value)} className="w-full h-[440px] px-3 py-2 bg-black/60 border border-white/20 rounded-lg font-mono text-sm text-white" placeholder="Type or paste CSS here" />
-          )}
-          {activeTab === 'js' && (
-            <textarea value={js} onChange={(e) => setJs(e.target.value)} className="w-full h-[440px] px-3 py-2 bg-black/60 border border-white/20 rounded-lg font-mono text-sm text-white" placeholder="Type or paste JS here" />
-          )}
-        </div>
-
-        {/* Live Preview */}
-        <div className="bg-white/5 rounded-xl p-4">
-          <iframe
-            title="Live Preview"
-            className="w-full h-[500px] rounded-lg border border-white/10 bg-white"
-            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-            srcDoc={buildDocument()}
-          />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

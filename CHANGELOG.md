@@ -1,113 +1,103 @@
-# [1.4.0-develop.8](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.7...v1.4.0-develop.8) (2026-03-08)
-
+# [1.4.0-develop.9](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.8...v1.4.0-develop.9) (2026-04-14)
 
 ### Features
 
-* Added URL parser & Query Editor Tool ([c9933ba](https://github.com/betterbugs/dev-tools/commit/c9933bae3cfbeb65c210f6877abf367c3cb0f46e)), closes [#51](https://github.com/betterbugs/dev-tools/issues/51)
+- add class-validator dependency and update page styles ([#81](https://github.com/betterbugs/dev-tools/issues/81)) ([67f1aeb](https://github.com/betterbugs/dev-tools/commit/67f1aeb5a82cad25f2c8bb3dcdc67e453b62cee2))
+
+# [1.4.0-develop.8](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.7...v1.4.0-develop.8) (2026-03-08)
+
+### Features
+
+- Added URL parser & Query Editor Tool ([c9933ba](https://github.com/betterbugs/dev-tools/commit/c9933bae3cfbeb65c210f6877abf367c3cb0f46e)), closes [#51](https://github.com/betterbugs/dev-tools/issues/51)
 
 # [1.4.0-develop.7](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.6...v1.4.0-develop.7) (2026-03-08)
 
-
 ### Features
 
-* **tools:** add Unix Timestamp Converter to development tools list ([3fedf57](https://github.com/betterbugs/dev-tools/commit/3fedf57f4036f7081b37c8ca1b3c585ea1e62045))
+- **tools:** add Unix Timestamp Converter to development tools list ([3fedf57](https://github.com/betterbugs/dev-tools/commit/3fedf57f4036f7081b37c8ca1b3c585ea1e62045))
 
 # [1.4.0-develop.6](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.5...v1.4.0-develop.6) (2026-03-08)
 
-
 ### Features
 
-* Add Unix Timestamp (Epoch) Converter Utility ([f277272](https://github.com/betterbugs/dev-tools/commit/f27727267639f54e4ffaa80919b1d0836621ac7d)), closes [#16](https://github.com/betterbugs/dev-tools/issues/16)
+- Add Unix Timestamp (Epoch) Converter Utility ([f277272](https://github.com/betterbugs/dev-tools/commit/f27727267639f54e4ffaa80919b1d0836621ac7d)), closes [#16](https://github.com/betterbugs/dev-tools/issues/16)
 
 # [1.4.0-develop.5](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.4...v1.4.0-develop.5) (2026-03-05)
 
-
 ### Bug Fixes
 
-* **release:** update GITHUB_TOKEN to use RELEASE_TOKEN for semantic release ([be3a012](https://github.com/betterbugs/dev-tools/commit/be3a012c6d7df84ab5826ce03268ec8aad402c15))
-
+- **release:** update GITHUB_TOKEN to use RELEASE_TOKEN for semantic release ([be3a012](https://github.com/betterbugs/dev-tools/commit/be3a012c6d7df84ab5826ce03268ec8aad402c15))
 
 ### Features
 
-* **tools:** add SVG to React/CSS utility ([218ccad](https://github.com/betterbugs/dev-tools/commit/218ccad3c5eb7121a9bd7319147520eb39713695)), closes [#50](https://github.com/betterbugs/dev-tools/issues/50)
+- **tools:** add SVG to React/CSS utility ([218ccad](https://github.com/betterbugs/dev-tools/commit/218ccad3c5eb7121a9bd7319147520eb39713695)), closes [#50](https://github.com/betterbugs/dev-tools/issues/50)
 
 # [1.4.0-develop.4](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.3...v1.4.0-develop.4) (2026-03-03)
 
-
 ### Features
 
-* Add lockfile guard workflow to prevent unintended lockfile changes ([aa20fb5](https://github.com/betterbugs/dev-tools/commit/aa20fb5422aae56e9d80f7472a6f974624431572))
+- Add lockfile guard workflow to prevent unintended lockfile changes ([aa20fb5](https://github.com/betterbugs/dev-tools/commit/aa20fb5422aae56e9d80f7472a6f974624431572))
 
 # [1.4.0-develop.3](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.2...v1.4.0-develop.3) (2026-03-03)
 
-
 ### Features
 
-* Add IPv4 Subnet Calculator Tool ([ad1c03f](https://github.com/betterbugs/dev-tools/commit/ad1c03fd0065f0cfce409b72882188dc7de630d0)), closes [#33](https://github.com/betterbugs/dev-tools/issues/33)
-* Add Smart Repair feature to JSON Validator ([#41](https://github.com/betterbugs/dev-tools/issues/41)) ([7a3c7a5](https://github.com/betterbugs/dev-tools/commit/7a3c7a5008d4236d954e1c20482635b0a0da5ef0)), closes [#38](https://github.com/betterbugs/dev-tools/issues/38)
+- Add IPv4 Subnet Calculator Tool ([ad1c03f](https://github.com/betterbugs/dev-tools/commit/ad1c03fd0065f0cfce409b72882188dc7de630d0)), closes [#33](https://github.com/betterbugs/dev-tools/issues/33)
+- Add Smart Repair feature to JSON Validator ([#41](https://github.com/betterbugs/dev-tools/issues/41)) ([7a3c7a5](https://github.com/betterbugs/dev-tools/commit/7a3c7a5008d4236d954e1c20482635b0a0da5ef0)), closes [#38](https://github.com/betterbugs/dev-tools/issues/38)
 
 # [1.4.0-develop.2](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.1...v1.4.0-develop.2) (2026-02-28)
 
-
 ### Bug Fixes
 
-* **tools:** implement proper bcrypt generator ([94d19be](https://github.com/betterbugs/dev-tools/commit/94d19be7e4b8d9256557e7668898ec4d6c3ca15c)), closes [#23](https://github.com/betterbugs/dev-tools/issues/23) [#13](https://github.com/betterbugs/dev-tools/issues/13)
+- **tools:** implement proper bcrypt generator ([94d19be](https://github.com/betterbugs/dev-tools/commit/94d19be7e4b8d9256557e7668898ec4d6c3ca15c)), closes [#23](https://github.com/betterbugs/dev-tools/issues/23) [#13](https://github.com/betterbugs/dev-tools/issues/13)
 
 # [1.4.0-develop.1](https://github.com/betterbugs/dev-tools/compare/v1.3.2...v1.4.0-develop.1) (2026-02-28)
 
-
 ### Features
 
-* **ui:** add reusable CopyButton and refactor wordCounter and jsonToTxt ([d5b9e83](https://github.com/betterbugs/dev-tools/commit/d5b9e8333673c5254cf39529a90869b1b741e385)), closes [#17](https://github.com/betterbugs/dev-tools/issues/17)
+- **ui:** add reusable CopyButton and refactor wordCounter and jsonToTxt ([d5b9e83](https://github.com/betterbugs/dev-tools/commit/d5b9e8333673c5254cf39529a90869b1b741e385)), closes [#17](https://github.com/betterbugs/dev-tools/issues/17)
 
 ## [1.3.2](https://github.com/betterbugs/dev-tools/compare/v1.3.1...v1.3.2) (2026-02-16)
 
-
 ### Bug Fixes
 
-* update basePath and assetPrefix to use conditional logic for production ([b487fef](https://github.com/betterbugs/dev-tools/commit/b487fefbc8de696953ef4ba5cb1c3e55eda7fe7a))
+- update basePath and assetPrefix to use conditional logic for production ([b487fef](https://github.com/betterbugs/dev-tools/commit/b487fefbc8de696953ef4ba5cb1c3e55eda7fe7a))
 
 ## [1.3.2-develop.1](https://github.com/betterbugs/dev-tools/compare/v1.3.1...v1.3.2-develop.1) (2026-02-16)
 
-
 ### Bug Fixes
 
-* update basePath and assetPrefix to use conditional logic for production ([b487fef](https://github.com/betterbugs/dev-tools/commit/b487fefbc8de696953ef4ba5cb1c3e55eda7fe7a))
+- update basePath and assetPrefix to use conditional logic for production ([b487fef](https://github.com/betterbugs/dev-tools/commit/b487fefbc8de696953ef4ba5cb1c3e55eda7fe7a))
 
 ## [1.3.1](https://github.com/betterbugs/dev-tools/compare/v1.3.0...v1.3.1) (2026-02-10)
 
-
 ### Bug Fixes
 
-* correct spelling and update descriptions for color conversion tools ([70f373c](https://github.com/betterbugs/dev-tools/commit/70f373ca663401bfb176b13160c88b3326307acf))
+- correct spelling and update descriptions for color conversion tools ([70f373c](https://github.com/betterbugs/dev-tools/commit/70f373ca663401bfb176b13160c88b3326307acf))
 
 # [1.3.0](https://github.com/betterbugs/dev-tools/compare/v1.2.0...v1.3.0) (2026-02-09)
 
-
 ### Features
 
-* add development tools API and enhance header components ([8aaad6a](https://github.com/betterbugs/dev-tools/commit/8aaad6a6e901d578924a8964addf697462a258f7))
+- add development tools API and enhance header components ([8aaad6a](https://github.com/betterbugs/dev-tools/commit/8aaad6a6e901d578924a8964addf697462a258f7))
 
 # [1.2.0](https://github.com/betterbugs/dev-tools/compare/v1.1.0...v1.2.0) (2026-02-07)
 
-
 ### Features
 
-* enhance Discord notifications with author details and profile links ([098aaeb](https://github.com/betterbugs/dev-tools/commit/098aaeb9c576398260432f0c2c3175236248eb95))
+- enhance Discord notifications with author details and profile links ([098aaeb](https://github.com/betterbugs/dev-tools/commit/098aaeb9c576398260432f0c2c3175236248eb95))
 
 # [1.1.0](https://github.com/betterbugs/dev-tools/compare/v1.0.0...v1.1.0) (2026-02-07)
 
-
 ### Features
 
-* add Discord notifications workflow for various GitHub events ([66ad9ba](https://github.com/betterbugs/dev-tools/commit/66ad9ba91f21e59678ecbd2a4cc58c7737d492d9))
+- add Discord notifications workflow for various GitHub events ([66ad9ba](https://github.com/betterbugs/dev-tools/commit/66ad9ba91f21e59678ecbd2a4cc58c7737d492d9))
 
 # 1.0.0 (2026-02-07)
 
-
 ### Bug Fixes
 
-* **ci:** update Node.js to 20 for semantic-release compatibility ([34092b6](https://github.com/betterbugs/dev-tools/commit/34092b673e15c212520ba439889ef11078b62dc7))
+- **ci:** update Node.js to 20 for semantic-release compatibility ([34092b6](https://github.com/betterbugs/dev-tools/commit/34092b673e15c212520ba439889ef11078b62dc7))
 
 # Changelog
 

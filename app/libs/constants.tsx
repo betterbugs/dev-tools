@@ -144,6 +144,7 @@ import RgbToCmykConverter from '../components/developmentToolsComponent/rgbToCmy
 import RgbToHexConverter from '../components/developmentToolsComponent/rgbToHexConverter';
 import Rot13EncoderDecoderComponent from '../components/developmentToolsComponent/rot13EncoderDecoderComponent';
 import RotateImageTool from '../components/developmentToolsComponent/rotateImageTool';
+import ImageResizer from '../components/developmentToolsComponent/imageResizer';
 import RotationCalculatorComponent from '../components/developmentToolsComponent/rotationCalculatorComponent';
 import ScssToCssConverter from '../components/developmentToolsComponent/scssToCssConverter';
 import ShuffleLetters from '../components/developmentToolsComponent/shuffleLetters';
@@ -154,6 +155,7 @@ import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
 import SqlToJson from '../components/developmentToolsComponent/sqlToJson';
 import SvgConverter from '../components/developmentToolsComponent/svgConverter';
+import SvgViewer from '../components/developmentToolsComponent/svgViewer';
 import StringDiffrenceChecker from '../components/developmentToolsComponent/stringDiffrenceChecker';
 import StripHTML from '../components/developmentToolsComponent/stripHTML';
 import TextCompare from '../components/developmentToolsComponent/textCompare';
@@ -190,6 +192,8 @@ import XorCalculator from '../components/developmentToolsComponent/xorCalculator
 import CurlToCodeConverter from '../components/developmentToolsComponent/curlToCodeConverter';
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
+import TimeCalculator from '../components/developmentToolsComponent/timeCalculator';
+import HarFileViewer from '../components/developmentToolsComponent/harFileViewer';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -320,7 +324,8 @@ export const developmentToolsCategoryContent: any = {
       // icon: <JsonPrettifierToolIcon />,
       url: '/json-prettifier',
       title: 'JSON Formatter/Prettifier Tool',
-      description: 'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
+      description:
+        'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
   ],
   Category10: [
@@ -716,14 +721,16 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-decoder',
       title: 'Base64 Decoder',
-      description: 'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
+      description:
+        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
   ],
   Category60: [
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'Encode text or files to Base64.',
+      description:
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -998,9 +1005,9 @@ export const developmentToolsCategoryContent: any = {
   Category95: [
     {
       url: '/html-viewer',
-      title: 'HTML Viewer',
+      title: 'HTML Viewer Online',
       description:
-        'Preview HTML markup in a live viewer to see rendered output instantly.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
   ],
   Category96: [
@@ -1607,7 +1614,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/ipv4-subnet-calculator',
       title: 'IPv4 Subnet Calculator',
-      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+      description:
+        'Calculate subnet details like network address, broadcast address, and usable host range.',
     },
   ],
   Category177: [
@@ -1617,12 +1625,24 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
     },
+    // {
+    //   url: '/svg-viewer',
+    //   title: 'SVG Viewer',
+    //   description:
+    //     'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
+    // },
   ],
   Category178: [
     {
       url: '/unix-timestamp-converter',
       title: 'Unix Timestamp Converter',
       description: 'Convert Unix timestamps to readable dates and vice versa.',
+    },
+    {
+      url: '/time-calculator',
+      title: 'Time Calculator',
+      description:
+        'The Time Calculator is a free tool on BetterBugs.io that enables you to add, subtract, multiply, divide time, or calculate the time between dates; perfect for planning tasks, estimating durations, and working with timestamps.',
     },
   ],
   Category179: [
@@ -1633,6 +1653,27 @@ export const developmentToolsCategoryContent: any = {
         'Decompose complex URLs into legible components and edit query parameters in a visual table.',
     },
   ],
+  Category180: [
+    {
+      url: '/url-encode',
+      title: 'URL Encode',
+      description: 'Encode URLs.',
+    },
+    {
+      url: '/image-resizer',
+      title: 'Image Resizer',
+      description:
+        'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
+    },
+  ],
+  // Category181: [
+  //   {
+  //     url: '/har-file-viewer',
+  //     title: 'HAR File Viewer',
+  //     description:
+  //       'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
+  //   },
+  // ],
 };
 
 export const PATHS = {
@@ -1793,6 +1834,7 @@ export const PATHS = {
   JAVASCRIPT_REGEX_TESTER: '/javascript-regex-tester',
   STRIP_HTML: '/strip-html',
   SVG_CONVERTER: '/svg-converter',
+  SVG_VIEWER: '/svg-viewer',
   WHAT_IS_MY_LOCAL_IP_ADDRESS: '/what-is-my-local-ip-address',
   JAVASCRIPT_TESTER: '/javascript-tester',
   WHAT_VERSION_OF_JAVA: '/what-version-of-java-do-i-have',
@@ -1817,6 +1859,9 @@ export const PATHS = {
   MORSE_CODE_TRANSLATOR: '/morse-code-translator',
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
+  IMAGE_RESIZER: '/image-resizer',
+  TIME_CALCULATOR: '/time-calculator',
+  HAR_FILE_VIEWER: '/har-file-viewer',
 };
 
 export const developmentToolsRoutes = [
@@ -2076,6 +2121,10 @@ export const developmentToolsRoutes = [
     component: <RotateImageTool />,
   },
   {
+    path: PATHS.IMAGE_RESIZER,
+    component: <ImageResizer />,
+  },
+  {
     path: PATHS.CSV_TO_EXCEL_FILE_CONVERTOR,
     component: <CsvToExcelFileConvertor />,
   },
@@ -2304,7 +2353,11 @@ export const developmentToolsRoutes = [
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
   },
-   {
+  {
+    path: PATHS.JSON_TO_CSV_CONVERTOR,
+    component: <JsonToCsvConverter />,
+  },
+  {
     path: PATHS.JSON_TO_CSV_CONVERTOR,
     component: <JsonToCsvConverter />,
   },
@@ -2529,6 +2582,10 @@ export const developmentToolsRoutes = [
     component: <SvgConverter />,
   },
   {
+    path: PATHS.SVG_VIEWER,
+    component: <SvgViewer />,
+  },
+  {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
   },
@@ -2540,6 +2597,8 @@ export const developmentToolsRoutes = [
     path: PATHS.UNIX_TIMESTAMP_CONVERTER,
     component: <EpochConverter />,
   },
+  { path: PATHS.TIME_CALCULATOR, component: <TimeCalculator /> },
+  { path: PATHS.HAR_FILE_VIEWER, component: <HarFileViewer /> },
 ];
 
 // lorem ipsum text
