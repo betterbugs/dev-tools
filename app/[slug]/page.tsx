@@ -1,32 +1,34 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { DEVELOPMENTTOOLS } from "@/app/libs/developmentToolsConstant";
-import Link from "next/link";
-import { Button } from "antd";
-import Image from "next/image";
-import StarGardientIcon from "@/app/components/theme/Icon/starGradientIcon";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { DEVELOPMENTTOOLS } from '@/app/libs/developmentToolsConstant';
+import Link from 'next/link';
+import { Button } from 'antd';
+import Image from 'next/image';
+import StarGardientIcon from '@/app/components/theme/Icon/starGradientIcon';
 import {
   developmentToolsRoutes,
   Extension_URL,
   integrationTools,
-} from "@/app/libs/constants";
-import PlayIcon from "@/app/components/theme/Icon/playIcon";
-import LogsGradientIcon from "@/app/components/theme/Icon/logsGradientIcon";
-import ShareGradientIcon from "@/app/components/theme/Icon/shareGradientIcon";
-import PowerCircleIcon from "@/app/components/theme/Icon/powerCircleIcon";
-import ComparisonsStyles from "../components/comparisonsComponent/comparisonsStyles.module.scss";
-import DevelopmentToolsStyles from "../developmentToolsStyles.module.scss";
-import { usePathname } from "next/navigation";
-import RecorderGradientIcon from "@/app/components/theme/Icon/recorderGradientIcon";
-import SEOComponent from "@/app/components/theme/SEOComponent/SEOComponent";
-import { detectBrowser } from "@/app/libs/helpers";
-import EdgeIcon from "@/app/components/theme/Icon/edgeIcon";
-import { useTheme } from "@/app/contexts/themeContext";
+} from '@/app/libs/constants';
+import PlayIcon from '@/app/components/theme/Icon/playIcon';
+import LogsGradientIcon from '@/app/components/theme/Icon/logsGradientIcon';
+import ShareGradientIcon from '@/app/components/theme/Icon/shareGradientIcon';
+import PowerCircleIcon from '@/app/components/theme/Icon/powerCircleIcon';
+import ComparisonsStyles from '../components/comparisonsComponent/comparisonsStyles.module.scss';
+import DevelopmentToolsStyles from '../developmentToolsStyles.module.scss';
+import { usePathname } from 'next/navigation';
+import RecorderGradientIcon from '@/app/components/theme/Icon/recorderGradientIcon';
+import SEOComponent from '@/app/components/theme/SEOComponent/SEOComponent';
+import { detectBrowser } from '@/app/libs/helpers';
+import EdgeIcon from '@/app/components/theme/Icon/edgeIcon';
+import { useTheme } from '@/app/contexts/themeContext';
 
 const Page = ({ params: { slug } }: { params: { slug: string } }) => {
-  const [browser, setBrowser] = useState("chrome");
+  const [browser, setBrowser] = useState('chrome');
   const { isLightTheme } = useTheme();
-  const logoSrc = isLightTheme ? "/images/bb-logo-light.svg" : "/images/bb-logo.svg";
+  const logoSrc = isLightTheme
+    ? '/images/bb-logo-light.svg'
+    : '/images/bb-logo.svg';
 
   useEffect(() => {
     setBrowser(detectBrowser());
@@ -59,11 +61,15 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
         ogDescription={meta_data?.og_description}
         ogImage={meta_data?.og_image}
       />
-      <div className={`md:max-w-[1170px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}>
+      <div
+        className={`md:max-w-[1170px] mx-auto ${DevelopmentToolsStyles.pageContainer}`}
+      >
         <div className="px-3 md:px-auto mx-auto">
           {/*Hero cta section */}
           <section className="md:pt-0 pt-9">
-            <div className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 rounded-lg ${DevelopmentToolsStyles.promoPanel}`}>
+            <div
+              className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 rounded-lg ${DevelopmentToolsStyles.promoPanel}`}
+            >
               <div className="w-full flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start gap-8 md:py-4 py-8 md:px-7">
                 {/* Left Section */}
                 <div className="text-left flex-1">
@@ -76,7 +82,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                   />
                   <div className="relative">
                     <h4 className="text-2xl font-extrabold mb-4">
-                      The essential <span className="text-primary">AI</span>{" "}
+                      The essential <span className="text-primary">AI</span>{' '}
                       companion every QA needs
                     </h4>
                     <span className="absolute top-[-17px] left-[38%]">
@@ -92,7 +98,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       <Button
                         className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
                       >
-                        {browser === "edge" ? (
+                        {browser === 'edge' ? (
                           <EdgeIcon className="w-7 h-7" />
                         ) : (
                           <Image
@@ -103,7 +109,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             title="chrome"
                           />
                         )}
-                        {browser === "edge" ? "Add to Edge" : "Add to Chrome"}
+                        {browser === 'edge' ? 'Add to Edge' : 'Add to Chrome'}
                         <span className="bg-black font-body text-sm font-normal py-2 px-3.5 text-white rounded-[30px]">
                           FREE
                         </span>
@@ -135,8 +141,8 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       <p className="text-sm">
                         <span className="font-bold text-white">
                           Screen Recording
-                        </span>{" "}
-                        with{" "}
+                        </span>{' '}
+                        with{' '}
                         <span className="font-bold text-white">
                           Rewind (Upto 2-min)
                         </span>
@@ -147,9 +153,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                     >
                       <LogsGradientIcon />
                       <p className="text-sm">
-                        Capture{" "}
+                        Capture{' '}
                         <span className="font-bold text-white">
-                          {" "}
+                          {' '}
                           backend logs
                         </span>
                         with every bug report
@@ -160,7 +166,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                     >
                       <ShareGradientIcon />
                       <p className="text-sm">
-                        Assign bugs and{" "}
+                        Assign bugs and{' '}
                         <span className="font-bold text-white">share</span> at
                         single click
                       </p>
@@ -174,7 +180,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
             </div>
           </section>
 
-          <div className={`md:pb-[70px] md:pt-[30px] py-[50px] ${DevelopmentToolsStyles.contentWrapper}`}>
+          <div
+            className={`md:pb-[70px] md:pt-[30px] py-[50px] ${DevelopmentToolsStyles.contentWrapper}`}
+          >
             {/* Heading section */}
             {hero_section && (
               <section>
@@ -184,7 +192,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                   </h1>
                   <p className="text-lg font-normal text-white/70 md:mt-1 mt-[26px] md:w-[50%] text-center">
                     {hero_section?.description
-                      ?.split("BetterBugs.io")
+                      ?.split('BetterBugs.io')
                       .map((part: any, index: any, arr: any) => (
                         <React.Fragment key={index}>
                           {part}
@@ -214,7 +222,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                 {/* Tools Panel - 20% width, fixed */}
                 {development_tools_list?.length > 0 && (
                   <div className="md:w-1/4 md:sticky left-0 md:top-8 top-2 h-full overflow-y-auto flex flex-col">
-                    <div className="bg-white/5 rounded-xl p-4">
+                    <div className={DevelopmentToolsStyles.sidePanel}>
                       <div className="flex items-center mb-6">
                         <h2 className="text-xl font-semibold text-white">
                           Other Tools
@@ -288,14 +296,14 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 (exampleItem: any, exampleIndex: number) => {
                                   const isExampleHeading =
                                     exampleItem?.example_input?.startsWith(
-                                      "Example"
+                                      'Example'
                                     );
                                   const isInputOrOutput =
-                                    exampleItem?.example_input === "Input" ||
-                                    exampleItem?.example_input === "Output";
+                                    exampleItem?.example_input === 'Input' ||
+                                    exampleItem?.example_input === 'Output';
                                   const isStringOutput =
                                     typeof exampleItem?.example_output ===
-                                    "string";
+                                    'string';
                                   const isArrayOutput = Array.isArray(
                                     exampleItem?.example_output
                                   );
@@ -303,7 +311,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   return (
                                     <div
                                       key={`example_item_${index}_${exampleIndex}`}
-                                      className={exampleIndex > 0 ? "mt-3" : ""}
+                                      className={exampleIndex > 0 ? 'mt-3' : ''}
                                     >
                                       {isExampleHeading && (
                                         <>
@@ -350,8 +358,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         }
 
                         // Handle regular description text
-                        const descriptions = desc?.description || "";
-                        const splitDescriptions = descriptions.split(/((['"]).*?\2)/); // Split quoted and unquoted text
+                        const descriptions = desc?.description || '';
+                        const splitDescriptions =
+                          descriptions.split(/((['"]).*?\2)/); // Split quoted and unquoted text
 
                         return (
                           <p
@@ -361,18 +370,25 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             {splitDescriptions.map(
                               (text: any, subIndex: any) => {
                                 const isQuoted =
-                                  typeof text === "string" && /^(['"]).*\1$/.test(text);
+                                  typeof text === 'string' &&
+                                  /^(['"]).*\1$/.test(text);
                                 const containsBetterBugs =
-                                  text.includes("BetterBugs.io");
+                                  text.includes('BetterBugs.io');
 
                                 if (containsBetterBugs) {
                                   // Split the text around 'BetterBugs.io' to wrap it in a link
-                                  const parts = text.split("BetterBugs.io");
+                                  const parts = text.split('BetterBugs.io');
                                   return (
                                     <React.Fragment
                                       key={`about_description_part_${index}_${subIndex}`}
                                     >
-                                      <span className={isQuoted ? "text-white" : "text-white/70"}>
+                                      <span
+                                        className={
+                                          isQuoted
+                                            ? 'text-white'
+                                            : 'text-white/70'
+                                        }
+                                      >
                                         {parts[0]}
                                       </span>
                                       <a
@@ -382,7 +398,13 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                       >
                                         BetterBugs.io
                                       </a>
-                                      <span className={isQuoted ? "text-white" : "text-white/70"}>
+                                      <span
+                                        className={
+                                          isQuoted
+                                            ? 'text-white'
+                                            : 'text-white/70'
+                                        }
+                                      >
                                         {parts[1]}
                                       </span>
                                     </React.Fragment>
@@ -392,7 +414,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                 return (
                                   <span
                                     key={`about_description_part_${index}_${subIndex}`}
-                                    className={isQuoted ? "text-white" : "text-white/70"}
+                                    className={
+                                      isQuoted ? 'text-white' : 'text-white/70'
+                                    }
                                   >
                                     {text}
                                   </span>
@@ -439,7 +463,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       )}
                       {development_tools_user_agent_info?.example_string_description && (
                         <p className="text-white/90 text-sm whitespace-pre-wrap break-words !mb-4">
-                          {development_tools_user_agent_info?.example_string_description}
+                          {
+                            development_tools_user_agent_info?.example_string_description
+                          }
                         </p>
                       )}
                       {development_tools_user_agent_info?.info_items && (
@@ -452,7 +478,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   className="text-base"
                                 >
                                   <span className="text-white font-semibold">
-                                    {item?.part}{" "}
+                                    {item?.part}{' '}
                                   </span>
                                   <span className="text-white/70">
                                     {item?.description}
@@ -475,21 +501,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         </h5>
                         <p className="text-white/70 text-base mt-4">
                           {development_tools_steps_guide?.guide_description
-                            ?.split(/((['"]).*?\2)/g)
-                            ?.map((parts: any, i: any) => {
-                              const isQuoted =
-                                typeof parts === "string" &&
-                                /^(['"]).*\1$/.test(parts);
-                              return isQuoted ? (
+                            ?.split(/(".*?")/g)
+                            ?.map((parts: any, i: any) =>
+                              parts?.startsWith('') && parts?.endsWith('') ? (
                                 <span key={i} className="font-bold text-white">
                                   {parts}
                                 </span>
                               ) : (
-                                <span key={i} className="text-white/70">
-                                  {parts}
-                                </span>
-                              );
-                            })}
+                                <span key={i}>{parts}</span>
+                              )
+                            )}
                         </p>
                       </>
                     )}
@@ -501,54 +522,193 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                             const description2 = guide?.step_description2;
 
                             // Split quoted and unquoted text
-                            const parts = description?.split(/((['"]).*?\2)/);
-                            const desParts = description2?.split(/((['"]).*?\2)/);
+                            const parts = description?.split(/(".*?")/);
+                            const desParts = description2?.split(/(".*?")/);
 
                             return (
                               <div key={index} className="mt-3">
-                                {/* Step header */}
+                                {/* Primary Flex Layout for Step Key, Title, and Description */}
                                 <div className="flex items-start flex-wrap">
                                   <span
-                                    className={`text-white/90 font-semibold text-base${guide?.step_key?.includes("Step")
-                                      ? " pr-1"
-                                      : ""
-                                      }`}
+                                    className={`text-white/90 font-semibold text-base${
+                                      guide?.step_key?.includes('Step')
+                                        ? ' pr-1'
+                                        : ''
+                                    }`}
                                   >
                                     {guide?.step_key}
                                   </span>
                                   <span className="text-white/90 font-semibold text-base">
                                     {guide?.step_title}
                                   </span>
-                                </div>
-
-                                {/* Step descriptions (below title) */}
-                                {description && (
-                                  <div className="mt-2 text-base text-white/70">
-                                    {parts?.map((part: any, i: any) => {
-                                      const isQuoted =
-                                        typeof part === "string" &&
-                                        /^(['"]).*\1$/.test(part);
-                                      return isQuoted ? (
-                                        <span key={`description_${i}`} className="text-white">
-                                          {part}
-                                        </span>
+                                  {guide?.steps_points?.length > 0 && (
+                                    <ul className="pl-12 list-disc">
+                                      {guide?.steps_points?.map(
+                                        (p: any, index: number) => (
+                                          <li key={index}>
+                                            {p?.steps_points_title && (
+                                              <span className="text-white/90 font-semibold text-base">
+                                                {p?.steps_points_title}
+                                              </span>
+                                            )}
+                                            {p?.steps_points_description && (
+                                              <p className="text-base text-white/70">
+                                                {p?.steps_points_description
+                                                  ?.split(/(".*?")/)
+                                                  .map(
+                                                    (
+                                                      part: string,
+                                                      i: number
+                                                    ) =>
+                                                      part.startsWith('') &&
+                                                      part.endsWith('') ? (
+                                                        <span
+                                                          key={i}
+                                                          className="font-semibold text-white/70"
+                                                        >
+                                                          {part}
+                                                        </span>
+                                                      ) : (
+                                                        <React.Fragment key={i}>
+                                                          {part
+                                                            .split(
+                                                              /(\/\/.*?\/\/)/
+                                                            )
+                                                            .map(
+                                                              (
+                                                                sub: string,
+                                                                j: number
+                                                              ) =>
+                                                                sub.startsWith(
+                                                                  '//'
+                                                                ) &&
+                                                                sub.endsWith(
+                                                                  '//'
+                                                                ) ? (
+                                                                  <span
+                                                                    key={`${i}-${j}`}
+                                                                    className="font-semibold text-white/70"
+                                                                  >
+                                                                    {sub.slice(
+                                                                      2,
+                                                                      -2
+                                                                    )}
+                                                                  </span>
+                                                                ) : (
+                                                                  sub
+                                                                )
+                                                            )}
+                                                        </React.Fragment>
+                                                      )
+                                                  )}
+                                              </p>
+                                            )}
+                                            {Array.isArray(p?.steps_subpoint) &&
+                                              p?.steps_subpoint?.length > 0 && (
+                                                <ul className="pl-12 list-disc">
+                                                  {p?.steps_subpoint?.map(
+                                                    (
+                                                      sub_p: any,
+                                                      subIndex: number
+                                                    ) => (
+                                                      <li key={subIndex}>
+                                                        {sub_p?.title && (
+                                                          <span className="text-white/90 font-semibold text-base">
+                                                            {sub_p?.title}
+                                                          </span>
+                                                        )}
+                                                        {sub_p?.description && (
+                                                          <span className="text-base text-white/70">
+                                                            {sub_p?.description
+                                                              ?.split(/(".*?")/)
+                                                              .map(
+                                                                (
+                                                                  part: string,
+                                                                  i: number
+                                                                ) =>
+                                                                  part.startsWith(
+                                                                    ''
+                                                                  ) &&
+                                                                  part.endsWith(
+                                                                    ''
+                                                                  ) ? (
+                                                                    <span
+                                                                      key={i}
+                                                                      className="font-semibold text-white/90"
+                                                                    >
+                                                                      {part}
+                                                                    </span>
+                                                                  ) : (
+                                                                    <React.Fragment
+                                                                      key={i}
+                                                                    >
+                                                                      {part
+                                                                        .split(
+                                                                          /(\/\/.*?\/\/)/
+                                                                        )
+                                                                        .map(
+                                                                          (
+                                                                            sub: string,
+                                                                            j: number
+                                                                          ) =>
+                                                                            sub.startsWith(
+                                                                              '//'
+                                                                            ) &&
+                                                                            sub.endsWith(
+                                                                              '//'
+                                                                            ) ? (
+                                                                              <span
+                                                                                key={`${i}-${j}`}
+                                                                                className="font-semibold text-white/90"
+                                                                              >
+                                                                                {sub.slice(
+                                                                                  2,
+                                                                                  -2
+                                                                                )}
+                                                                              </span>
+                                                                            ) : (
+                                                                              sub
+                                                                            )
+                                                                        )}
+                                                                    </React.Fragment>
+                                                                  )
+                                                              )}
+                                                          </span>
+                                                        )}
+                                                      </li>
+                                                    )
+                                                  )}
+                                                </ul>
+                                              )}
+                                          </li>
+                                        )
+                                      )}
+                                    </ul>
+                                  )}
+                                  <span className="text-base text-white/70">
+                                    {parts?.map((part: any, i: any) =>
+                                      part.startsWith('') &&
+                                      part.endsWith('') ? (
+                                        <>
+                                          <span
+                                            key={`description_${i}`}
+                                            className="text-white"
+                                          >
+                                            {part}
+                                          </span>
+                                        </>
                                       ) : (
-                                        <span key={`description_${i}`} className="text-white/70">
-                                          {part}
-                                        </span>
-                                      );
-                                    })}
-                                  </div>
-                                )}
-
+                                        part
+                                      )
+                                    )}
+                                  </span>
+                                </div>
                                 {/* Step Description2 on a New Line, Only If Present */}
                                 {description2 && desParts?.length > 0 && (
-                                  <div className="mt-2 pl-12 text-base text-white/70">
-                                    {desParts?.map((part: any, i: any) => {
-                                      const isQuoted =
-                                        typeof part === "string" &&
-                                        /^(['"]).*\1$/.test(part);
-                                      return isQuoted ? (
+                                  <div className="mt-2 text-base text-white/70">
+                                    {desParts?.map((part: any, i: any) =>
+                                      part.startsWith('') &&
+                                      part.endsWith('') ? (
                                         <span
                                           key={`description2_${i}`}
                                           className="text-white"
@@ -556,104 +716,10 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                           {part}
                                         </span>
                                       ) : (
-                                        <span
-                                          key={`description2_${i}`}
-                                          className="text-white/70"
-                                        >
-                                          {part}
-                                        </span>
-                                      );
-                                    })}
+                                        part
+                                      )
+                                    )}
                                   </div>
-                                )}
-
-                                {guide?.steps_points?.length > 0 && (
-                                  <ul className="pl-12 list-disc mt-2">
-                                    {guide?.steps_points?.map((p: any, index: number) => (
-                                      <li key={index}>
-                                        {p?.steps_points_title && (
-                                          <span className="text-white/90 font-semibold text-base">
-                                            {p?.steps_points_title}
-                                          </span>
-                                        )}
-                                        {p?.steps_points_description && (
-                                          <p className="text-base text-white/70">
-                                            {p?.steps_points_description
-                                              ?.split(/((['"]).*?\2)/)
-                                              .map((part: string, i: number) =>
-                                                typeof part === "string" &&
-                                                /^(['"]).*\1$/.test(part) ? (
-                                                  <span key={i} className="font-normal text-white">
-                                                    {part}
-                                                  </span>
-                                                ) : (
-                                                  <React.Fragment key={i}>
-                                                    {part
-                                                      .split(/(\/\/.*?\/\/)/)
-                                                      .map((sub: string, j: number) =>
-                                                        sub.startsWith("//") && sub.endsWith("//") ? (
-                                                          <span
-                                                            key={`${i}-${j}`}
-                                                            className="font-semibold text-white/70"
-                                                          >
-                                                            {sub.slice(2, -2)}
-                                                          </span>
-                                                        ) : (
-                                                          sub
-                                                        )
-                                                      )}
-                                                  </React.Fragment>
-                                                )
-                                              )}
-                                          </p>
-                                        )}
-                                        {Array.isArray(p?.steps_subpoint) && p?.steps_subpoint?.length > 0 && (
-                                          <ul className="pl-12 list-disc">
-                                            {p?.steps_subpoint?.map((sub_p: any, subIndex: number) => (
-                                              <li key={subIndex}>
-                                                {sub_p?.title && (
-                                                  <span className="text-white/90 font-semibold text-base">
-                                                    {sub_p?.title}
-                                                  </span>
-                                                )}
-                                                {sub_p?.description && (
-                                                  <span className="text-base text-white/70">
-                                                    {sub_p?.description
-                                                      ?.split(/((['"]).*?\2)/)
-                                                      .map((part: string, i: number) =>
-                                                        typeof part === "string" &&
-                                                        /^(['"]).*\1$/.test(part) ? (
-                                                          <span key={i} className="font-semibold text-white/90">
-                                                            {part}
-                                                          </span>
-                                                        ) : (
-                                                          <React.Fragment key={i}>
-                                                            {part
-                                                              .split(/(\/\/.*?\/\/)/)
-                                                              .map((sub: string, j: number) =>
-                                                                sub.startsWith("//") && sub.endsWith("//") ? (
-                                                                  <span
-                                                                    key={`${i}-${j}`}
-                                                                    className="font-semibold text-white/90"
-                                                                  >
-                                                                    {sub.slice(2, -2)}
-                                                                  </span>
-                                                                ) : (
-                                                                  sub
-                                                                )
-                                                              )}
-                                                          </React.Fragment>
-                                                        )
-                                                      )}
-                                                  </span>
-                                                )}
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        )}
-                                      </li>
-                                    ))}
-                                  </ul>
                                 )}
                               </div>
                             );
@@ -684,10 +750,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               {development_tool_example?.example_input?.title}
                             </p>
                           )}
-                          {development_tool_example?.example_input?.json_data && (
-                            <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                          {development_tool_example?.example_input
+                            ?.json_data && (
+                            <pre
+                              className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}
+                            >
                               <code className="text-white/90 text-sm whitespace-pre">
-                                {development_tool_example?.example_input?.json_data}
+                                {
+                                  development_tool_example?.example_input
+                                    ?.json_data
+                                }
                               </code>
                             </pre>
                           )}
@@ -703,7 +775,10 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                           )}
                           {development_tool_example?.example_outputs?.outputs?.map(
                             (output: any, index: number) => (
-                              <div key={`example_output_${index}`} className="mt-4">
+                              <div
+                                key={`example_output_${index}`}
+                                className="mt-4"
+                              >
                                 {output?.mode && (
                                   <p className="text-white text-base font-medium mb-2">
                                     {output?.mode}
@@ -715,7 +790,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                                   </p>
                                 )}
                                 {output?.content && (
-                                  <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
+                                  <pre
+                                    className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}
+                                  >
                                     <code className="text-white/90 text-sm whitespace-pre">
                                       {output?.content}
                                     </code>
@@ -735,74 +812,88 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       {/* JavaScript example section (optional) */}
                       {development_tool_example?.javascript_example && (
                         <div className="mt-8">
-                          {development_tool_example?.javascript_example?.title && (
+                          {development_tool_example?.javascript_example
+                            ?.title && (
                             <h5 className="text-xl font-semibold text-white mb-2">
-                              {development_tool_example?.javascript_example?.title}
+                              {
+                                development_tool_example?.javascript_example
+                                  ?.title
+                              }
                             </h5>
                           )}
-                          {development_tool_example?.javascript_example?.description && (
+                          {development_tool_example?.javascript_example
+                            ?.description && (
                             <p className="text-white/70 text-base mt-2">
-                              {development_tool_example?.javascript_example?.description}
+                              {
+                                development_tool_example?.javascript_example
+                                  ?.description
+                              }
                             </p>
                           )}
 
-                          {development_tool_example?.javascript_example?.methods?.length >
-                            0 && (
-                              <div className="mt-4">
-                                <ul className="list-disc space-y-3 pl-6">
-                                  {development_tool_example?.javascript_example?.methods?.map(
-                                    (method: any, index: number) => (
-                                      <li
-                                        key={`js_method_${index}`}
-                                        className="text-base"
-                                      >
-                                        {method?.name && (
-                                          <span className="text-white font-semibold">
-                                            {method?.name}{" "}
-                                          </span>
-                                        )}
-                                        {method?.description && (
-                                          <span className="text-white/70">
-                                            {method?.description}
-                                          </span>
-                                        )}
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-
-                          {development_tool_example?.javascript_example?.examples?.length >
-                            0 && (
-                              <div className="mt-6">
-                                {development_tool_example?.javascript_example?.examples?.map(
-                                  (example: any, index: number) => (
-                                    <div
-                                      key={`js_example_${index}`}
-                                      className="mt-4"
+                          {development_tool_example?.javascript_example?.methods
+                            ?.length > 0 && (
+                            <div className="mt-4">
+                              <ul className="list-disc space-y-3 pl-6">
+                                {development_tool_example?.javascript_example?.methods?.map(
+                                  (method: any, index: number) => (
+                                    <li
+                                      key={`js_method_${index}`}
+                                      className="text-base"
                                     >
-                                      {example?.title && (
-                                        <p className="text-white text-base font-medium mb-2">
-                                          {example?.title}
-                                        </p>
+                                      {method?.name && (
+                                        <span className="text-white font-semibold">
+                                          {method?.name}{' '}
+                                        </span>
                                       )}
-                                      {example?.code && (
-                                        <pre className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}>
-                                          <code className="text-white/90 text-sm whitespace-pre">
-                                            {example?.code}
-                                          </code>
-                                        </pre>
+                                      {method?.description && (
+                                        <span className="text-white/70">
+                                          {method?.description}
+                                        </span>
                                       )}
-                                    </div>
+                                    </li>
                                   )
                                 )}
-                              </div>
-                            )}
+                              </ul>
+                            </div>
+                          )}
 
-                          {development_tool_example?.javascript_example?.note && (
+                          {development_tool_example?.javascript_example
+                            ?.examples?.length > 0 && (
+                            <div className="mt-6">
+                              {development_tool_example?.javascript_example?.examples?.map(
+                                (example: any, index: number) => (
+                                  <div
+                                    key={`js_example_${index}`}
+                                    className="mt-4"
+                                  >
+                                    {example?.title && (
+                                      <p className="text-white text-base font-medium mb-2">
+                                        {example?.title}
+                                      </p>
+                                    )}
+                                    {example?.code && (
+                                      <pre
+                                        className={`${DevelopmentToolsStyles.modernScrollbar} bg-[#1a1a1a] border border-white/10 rounded-lg p-4 mt-2`}
+                                      >
+                                        <code className="text-white/90 text-sm whitespace-pre">
+                                          {example?.code}
+                                        </code>
+                                      </pre>
+                                    )}
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          )}
+
+                          {development_tool_example?.javascript_example
+                            ?.note && (
                             <p className="text-white/60 text-sm mt-4">
-                              {development_tool_example?.javascript_example?.note}
+                              {
+                                development_tool_example?.javascript_example
+                                  ?.note
+                              }
                             </p>
                           )}
                         </div>
@@ -822,7 +913,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         (desc: any, index: number) => {
                           const descriptions = desc?.descriptions;
                           const splitDescriptions =
-                            descriptions.split(/((['"]).*?\2)/); // Split quoted and unquoted text
+                            descriptions.split(/(".*?")/); // Split quoted and unquoted text
 
                           return (
                             <p
@@ -832,16 +923,15 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               {splitDescriptions.map(
                                 (text: any, subIndex: any) => {
                                   const isQuoted =
-                                    typeof text === "string" &&
-                                    /^(['"]).*\1$/.test(text);
+                                    text.startsWith('') && text.endsWith('');
 
                                   return (
                                     <span
                                       key={`what_description_part_${index}_${subIndex}`}
                                       className={
                                         isQuoted
-                                          ? "text-white"
-                                          : "text-white/70"
+                                          ? 'text-white'
+                                          : 'text-white/70'
                                       }
                                     >
                                       {text}
@@ -876,18 +966,20 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               how?.heading ? (
                                 <p
                                   key={index}
-                                  className={`${""} ${how?.heading
-                                    ? "!mb-6 !ml-[-20px]"
-                                    : "block text-white font-semibold text-base"
-                                    }`}
+                                  className={`${''} ${
+                                    how?.heading
+                                      ? '!mb-6 !ml-[-20px]'
+                                      : 'block text-white font-semibold text-base'
+                                  }`}
                                 >
                                   {how?.heading}
                                 </p>
                               ) : (
                                 <li
                                   key={index}
-                                  className={`${""} ${how?.heading ? "my-6 list-none" : "mb-4"
-                                    }`}
+                                  className={`${''} ${
+                                    how?.heading ? 'my-6 list-none' : 'mb-4'
+                                  }`}
                                 >
                                   <>
                                     <span className="block text-white/90 font-semibold text-base">
@@ -934,7 +1026,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
 
             {/* cta section */}
             <section>
-              <div className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 ${DevelopmentToolsStyles.promoPanel}`}>
+              <div
+                className={`bg-[#090B0B] text-white flex flex-col items-center justify-center pl-6 pr-4 mt-10 ${DevelopmentToolsStyles.promoPanel}`}
+              >
                 <div className="w-full flex md:flex-row flex-col md:items-center items-start md:justify-between justify-start gap-8 md:py-4 py-8 md:px-7">
                   {/* Left Section */}
                   <div className="text-left flex-1">
@@ -947,7 +1041,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                     />
                     <div className="relative">
                       <h4 className="text-2xl font-extrabold mb-4">
-                        The essential <span className="text-primary">AI</span>{" "}
+                        The essential <span className="text-primary">AI</span>{' '}
                         companion every QA needs
                       </h4>
                       <span className="absolute top-[-17px] left-[50%]">
@@ -963,7 +1057,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         <Button
                           className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
                         >
-                          {browser === "edge" ? (
+                          {browser === 'edge' ? (
                             <EdgeIcon className="w-7 h-7" />
                           ) : (
                             <Image
@@ -974,7 +1068,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                               title="chrome"
                             />
                           )}
-                          {browser === "edge" ? "Add to Edge" : "Add to Chrome"}
+                          {browser === 'edge' ? 'Add to Edge' : 'Add to Chrome'}
                           <span className="bg-black font-body text-sm font-normal py-2 px-3.5 text-white rounded-[30px]">
                             FREE
                           </span>
@@ -982,12 +1076,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       </Link>
                       <Link
                         href={
-                          "https://www.loom.com/share/beb5310bed634e4783d10becd4a291f2?sid=7bcb9a6f-0290-4d5b-9eb0-12ed04e9167e"
+                          'https://www.loom.com/share/beb5310bed634e4783d10becd4a291f2?sid=7bcb9a6f-0290-4d5b-9eb0-12ed04e9167e'
                         }
                       >
                         <PlayIcon
-                          className={isLightTheme ? "text-[#111827] hover:text-primary" : "hover:text-primary"}
-                          arrowFill={isLightTheme ? "#ffffff" : "#000000"}
+                          className={
+                            isLightTheme
+                              ? 'text-[#111827] hover:text-primary'
+                              : 'hover:text-primary'
+                          }
+                          arrowFill={isLightTheme ? '#ffffff' : '#000000'}
                         />
                       </Link>
                     </div>
@@ -1007,7 +1105,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       >
                         <StarGardientIcon />
                         <p className="text-sm">
-                          Use <span className="font-bold text-white">AI</span>{" "}
+                          Use <span className="font-bold text-white">AI</span>{' '}
                           to reproduce and fix bugs
                         </p>
                       </div>
@@ -1018,8 +1116,8 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         <p className="text-sm">
                           <span className="font-bold text-white">
                             Screen Recording
-                          </span>{" "}
-                          with{" "}
+                          </span>{' '}
+                          with{' '}
                           <span className="font-bold text-white">
                             Rewind (Upto 2-min)
                           </span>
@@ -1030,9 +1128,9 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       >
                         <LogsGradientIcon />
                         <p className="text-sm">
-                          Capture{" "}
+                          Capture{' '}
                           <span className="font-bold text-white">
-                            {" "}
+                            {' '}
                             backend logs
                           </span>
                           with every bug report
@@ -1043,7 +1141,7 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                       >
                         <ShareGradientIcon />
                         <p className="text-sm">
-                          Assign bugs and{" "}
+                          Assign bugs and{' '}
                           <span className="font-bold text-white">share</span> at
                           single click
                         </p>
@@ -1068,14 +1166,16 @@ const Page = ({ params: { slug } }: { params: { slug: string } }) => {
                         <Link key={index} href={tool?.url}>
                           <div className="flex items-center justify-start gap-5">
                             <span
-                              className={`!w-2 !h-2 ml-[-2px] ${tool?.name === "Azure Boards" && "md:ml-[-7px]"
-                                }`}
+                              className={`!w-2 !h-2 ml-[-2px] ${
+                                tool?.name === 'Azure Boards' && 'md:ml-[-7px]'
+                              }`}
                             >
                               {tool?.icon}
                             </span>
                             <p
-                              className={`text-sm mt-2 ${tool?.name === "Azure Boards" && "md:ml-1"
-                                }`}
+                              className={`text-sm mt-2 ${
+                                tool?.name === 'Azure Boards' && 'md:ml-1'
+                              }`}
                             >
                               {tool?.name}
                             </p>

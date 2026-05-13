@@ -871,7 +871,7 @@ export const DEVELOPMENTTOOLS: any = {
         },
         {
           description:
-            "You can use it to convert the minified JSON or messy JSON data (from APIs, logs, configs, or files) into properly indented, syntax-highlighted output. It supports validation for errors and tree expansion/collapse. You can also tweak the number of indentations you’d like in the formatted JSON output.",
+            'You can use it to convert the minified JSON or messy JSON data (from APIs, logs, configs, or files) into properly indented, syntax-highlighted output. It supports validation for errors and tree expansion/collapse. You can also tweak the number of indentations you’d like in the formatted JSON output.',
         },
         {
           description:
@@ -887,7 +887,8 @@ export const DEVELOPMENTTOOLS: any = {
       example_title: 'Example',
       example_input: {
         title: 'Unformatted JSON String',
-        json_data: '{"book":{"title":"1Q84","author":"Haruki Murakami","year":2009,"character":{"name":"Tengo","role":"writer","age":30,"skills":["mathematics","novel_editing"]},"world":{"little_people":true,"two_moons":true}}}',
+        json_data:
+          '{"book":{"title":"1Q84","author":"Haruki Murakami","year":2009,"character":{"name":"Tengo","role":"writer","age":30,"skills":["mathematics","novel_editing"]},"world":{"little_people":true,"two_moons":true}}}',
       },
       example_outputs: {
         outputs: [
@@ -972,16 +973,18 @@ export const DEVELOPMENTTOOLS: any = {
       ],
     },
     development_tools_how_use: {
-      how_use_title: "What are the Use Cases of the JSON Formatter Tool?",
+      how_use_title: 'What are the Use Cases of the JSON Formatter Tool?',
       how_use_description: 'You can use the JSON prettier tool to:',
       point: [
         {
           title: 'Debugging API responses',
-          description: 'Format RAW, minified JSON from Postman collections, curl commands, or browser Network tab to quickly spot nesting errors, missing commas, or malformed arrays during REST/GraphQL troubleshooting.',
+          description:
+            'Format RAW, minified JSON from Postman collections, curl commands, or browser Network tab to quickly spot nesting errors, missing commas, or malformed arrays during REST/GraphQL troubleshooting.',
         },
         {
           title: 'Log analysis',
-          description: 'Format complex JSON logs from Sentry dashboards, server traces, ELK stacks, or Chrome DevTools console outputs to triage issues like failed auth flows or payload mismatches in production environments.',
+          description:
+            'Format complex JSON logs from Sentry dashboards, server traces, ELK stacks, or Chrome DevTools console outputs to triage issues like failed auth flows or payload mismatches in production environments.',
         },
         {
           title: 'Config validation',
@@ -7683,7 +7686,7 @@ family[1]: "Beth"`,
         },
         {
           description:
-            'You can load data to it by adding a Base64 string in the input box, uploading a file from your system, or simply entering a URL. It\'s a 100% free-to-use tool on BetterBugs.io; perfect for debugging encoded data in dev, testing, or data tasks. No installations or downloads or code is required for using it. You can paste the string and get results right away. ',
+            "You can load data to it by adding a Base64 string in the input box, uploading a file from your system, or simply entering a URL. It's a 100% free-to-use tool on BetterBugs.io; perfect for debugging encoded data in dev, testing, or data tasks. No installations or downloads or code is required for using it. You can paste the string and get results right away. ",
         },
       ],
     },
@@ -7695,8 +7698,7 @@ family[1]: "Beth"`,
           steps_points: [
             {
               steps_points_title: 'Add the encoded Base64 string',
-              steps_points_description:
-                'to the input box OR',
+              steps_points_description: 'to the input box OR',
             },
             {
               steps_points_title: 'Upload the RAW text file',
@@ -7709,18 +7711,25 @@ family[1]: "Beth"`,
     },
     development_tool_example: {
       example_title: 'Example',
-      example_description: 'For instance, try adding the following Base64 string in the input box and see if it matches the output:',
+      example_description:
+        'For instance, try adding the following Base64 string in the input box and see if it matches the output:',
       example_input: {
         title: 'Base64 String:',
-        json_data: 'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0=',
+        json_data:
+          'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0=',
       },
       example_outputs: {
         outputs: [
-          { mode: 'JSON/UTF-8 Output', content: '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"} ' },
+          {
+            mode: 'JSON/UTF-8 Output',
+            content:
+              '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"} ',
+          },
         ],
       },
       javascript_example: {
-        title: 'JavaScript Example: How to Decode Base64 using JavaScript Built-in Methods',
+        title:
+          'JavaScript Example: How to Decode Base64 using JavaScript Built-in Methods',
         description:
           'In JavaScript, you can decode Base64 strings using the in-built “atob” method and encode them back using the “btoa” method. Here’s how they work:',
         methods: [
@@ -7750,13 +7759,13 @@ const encoded = btoa(plainText);
 console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
           },
         ],
-        note:
-          'For UTF‑8 text or binary data, you can combine TextEncoder / Uint8Array with btoa‑like logic, but for quick debugging and API‑style payloads, “atob” and “btoa” methods works pretty well.',
+        note: 'For UTF‑8 text or binary data, you can combine TextEncoder / Uint8Array with btoa‑like logic, but for quick debugging and API‑style payloads, “atob” and “btoa” methods works pretty well.',
       },
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the tool',
-      how_use_description: 'You can use the Base64 decoder tools for various purposes while debugging, writing code, running API testing activities, or learning purposes, such as:',
+      how_use_description:
+        'You can use the Base64 decoder tools for various purposes while debugging, writing code, running API testing activities, or learning purposes, such as:',
       point: [
         {
           title: 'Debugging encoded API payloads',
@@ -7858,7 +7867,7 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         },
         {
           description:
-            'You can load data by adding it manually into the input box, or by uploading a file directly from your system. It\'s a lightweight, completely free-to-use, and an open-source tool on BetterBugs.io; perfect for encoding data for API requests or basic data obfuscation. No installations, downloads, or code writing are required. Just input your data and get the encoded string right away.',
+            "You can load data by adding it manually into the input box, or by uploading a file directly from your system. It's a lightweight, completely free-to-use, and an open-source tool on BetterBugs.io; perfect for encoding data for API requests or basic data obfuscation. No installations, downloads, or code writing are required. Just input your data and get the encoded string right away.",
         },
       ],
     },
@@ -7866,18 +7875,22 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       guide_title: 'How to Use the Base64 Encoder Online Tool?',
       steps: [
         {
-          step_description: 'Using the Base64 encoder on BetterBugs.io is straightforward:',
+          step_description:
+            'Using the Base64 encoder on BetterBugs.io is straightforward:',
           steps_points: [
             {
-              steps_points_description: 'Add your text or JSON data to the input box.',
+              steps_points_description:
+                'Add your text or JSON data to the input box.',
             },
             {
-              steps_points_description: 'Upload a file using the upload button (located at the top right of the input box).',
+              steps_points_description:
+                'Upload a file using the upload button (located at the top right of the input box).',
             },
           ],
         },
         {
-          step_description: 'You can get the output instantly in the “Encoded output” box. You can use the “Copy” icon from the output box to use the resulting Base64 string.',
+          step_description:
+            'You can get the output instantly in the “Encoded output” box. You can use the “Copy” icon from the output box to use the resulting Base64 string.',
         },
       ],
     },
@@ -7930,13 +7943,13 @@ const base64Json = btoa(jsonString);
 console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bnRyeSI6IkphcGFuIn0="`,
           },
         ],
-        note:
-          'Pro tip: btoa() will throw in most browsers if you pass a string with characters outside the Latin1 range (for example an emoji like 🚀). For UTF‑8 text, combine TextEncoder with byte‑to‑Base64 logic; for standard API payloads and quick conversions, btoa is often enough.',
+        note: 'Pro tip: btoa() will throw in most browsers if you pass a string with characters outside the Latin1 range (for example an emoji like 🚀). For UTF‑8 text, combine TextEncoder with byte‑to‑Base64 logic; for standard API payloads and quick conversions, btoa is often enough.',
       },
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Base64 Encoder tool?',
-      how_use_description: 'You can use the Base64 encoder tool for various purposes while developing applications, preparing API requests, or structuring web assets, such as:',
+      how_use_description:
+        'You can use the Base64 encoder tool for various purposes while developing applications, preparing API requests, or structuring web assets, such as:',
       point: [
         {
           title: 'Generating Basic Auth Headers:',
@@ -10776,7 +10789,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     hero_section: {
       title: 'HTML Viewer Online',
       description:
-        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
     development_tools_list: [
       { tool: 'HTML Validator', url: PATHS.HTML_VALIDATOR },
@@ -10791,11 +10804,11 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       about_description: [
         {
           description:
-            'The HTML viewer online tool enables you to instantly render code snippets to see how they will look and behave in a real browser environment. It\'s super helpful for developers, UI/UX designers, and students who need to quickly test small blocks of code without setting up a full development environment.',
+            "The HTML viewer online tool enables you to instantly render code snippets to see how they will look and behave in a real browser environment. It's super helpful for developers, UI/UX designers, and students who need to quickly test small blocks of code without setting up a full development environment.",
         },
         {
           description:
-            'You can add your code by typing directly, pasting text into the tabs, or uploading a raw file. It\'s perfect for debugging markups, checking layout and styles, and quickly testing snippets in a sandboxed iframe.',
+            "You can add your code by typing directly, pasting text into the tabs, or uploading a raw file. It's perfect for debugging markups, checking layout and styles, and quickly testing snippets in a sandboxed iframe.",
         },
         {
           description:
@@ -10833,7 +10846,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the HTML Viewer tool',
-      how_use_description: 'You can use the HTML viewer tool for various purposes while developing websites, debugging CSS, prototyping UI components, or teaching web fundamentals, such as:',
+      how_use_description:
+        'You can use the HTML viewer tool for various purposes while developing websites, debugging CSS, prototyping UI components, or teaching web fundamentals, such as:',
       point: [
         {
           title: 'Debugging markup:',
@@ -10880,7 +10894,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     meta_data: {
       meta_title: 'HTML Viewer | Live HTML Preview Online',
       meta_description:
-        'Use the HTML Viewer Online tool to render your HTML, CSS, and JS and preview without leaving the page. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "Use the HTML Viewer Online tool to render your HTML, CSS, and JS and preview without leaving the page. It's a free, open source, & ad-free tool on BetterBugs.io.",
       og_title: 'HTML Viewer | Live HTML Preview Online',
       og_description:
         'This post describes usage steps and the use cases of the HTML Viewer free online tool on BetterBugs.io.',
@@ -11809,7 +11823,10 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_list: [
       { tool: 'Rotate Image Tool', url: PATHS.ROTATE_IMAGE_TOOL },
-      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      {
+        tool: 'Placeholder Image Generator',
+        url: PATHS.PLACEHOLDER_IMAGE_GENERATOR,
+      },
       { tool: 'Color Picker Tool', url: PATHS.COLOR_PICKER_TOOL },
       { tool: 'SVG to React/CSS Utility', url: PATHS.SVG_CONVERTER },
       { tool: 'CSS Minify', url: PATHS.CSS_MINIFY },
@@ -11846,12 +11863,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         },
         {
           description:
-            "You can tweak or use it based on your preferences, such as:",
+            'You can tweak or use it based on your preferences, such as:',
         },
         {
           list: [
             {
-              description: 'To add files, you can drag and drop OR directly choose files from your local system.',
+              description:
+                'To add files, you can drag and drop OR directly choose files from your local system.',
             },
             {
               description: 'Set custom output dimensions in pixels (px).',
@@ -11863,13 +11881,16 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
               description: 'Select output format: PNG, JPG, or WEBP',
             },
             {
-              description: 'Select output image quality (0 - 100) for JPG and WEBP image files; PNG outputs are lossless.',
+              description:
+                'Select output image quality (0 - 100) for JPG and WEBP image files; PNG outputs are lossless.',
             },
             {
-              description: 'Set target file size for JPG and WEBP image files in KB or MB; PNG outputs are lossless.',
+              description:
+                'Set target file size for JPG and WEBP image files in KB or MB; PNG outputs are lossless.',
             },
             {
-              description: 'Set background fill color (custom) for images with transparent background.',
+              description:
+                'Set background fill color (custom) for images with transparent background.',
             },
           ],
         },
@@ -11882,16 +11903,17 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         {
           step_key: 'Step 1:',
           step_title: 'Add image file',
-          step_description:
-            'To add image, you can:',
+          step_description: 'To add image, you can:',
         },
         {
           steps_points: [
             {
-              steps_points_description: 'Drag and drop an image file in the upload area.',
+              steps_points_description:
+                'Drag and drop an image file in the upload area.',
             },
             {
-              steps_points_description: 'Use the “Choose File” button to add an image file from your local system.',
+              steps_points_description:
+                'Use the “Choose File” button to add an image file from your local system.',
             },
           ],
         },
@@ -11903,7 +11925,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: '1) Resize ',
-              steps_points_description: 'Specify output dimensions in pixels (px):',
+              steps_points_description:
+                'Specify output dimensions in pixels (px):',
               steps_subpoint: [
                 {
                   description: 'Width',
@@ -11914,11 +11937,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
               ],
             },
             {
-              steps_points_description: 'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+              steps_points_description:
+                'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
             },
             {
               steps_points_title: '2) Export ',
-              steps_points_description: 'Choose image output image format, quality, and compression:',
+              steps_points_description:
+                'Choose image output image format, quality, and compression:',
               steps_subpoint: [
                 {
                   title: 'PNG:',
@@ -11926,11 +11951,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
                 },
                 {
                   title: 'JPG:',
-                  description: 'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
+                  description:
+                    'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
                 },
                 {
                   title: 'WEBP:',
-                  description: 'Set Quality (0 - 100), Target file size (KB or MB)',
+                  description:
+                    'Set Quality (0 - 100), Target file size (KB or MB)',
                 },
               ],
             },
@@ -11943,14 +11970,14 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
             'After setting your output preferences, check it out in the “Preview” canvas area and click “Download” to save the final image on your local system.',
         },
         {
-          step_description:
-            'To start over, use the “Clear” button.',
+          step_description: 'To start over, use the “Clear” button.',
         },
       ],
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Image Resizer tool?',
-      how_use_description: 'You can use the image resizer tool for everyday image-related tasks and software development workflows:',
+      how_use_description:
+        'You can use the image resizer tool for everyday image-related tasks and software development workflows:',
       point: [
         {
           title: 'Preparing screenshots for bug reports and tickets:',
@@ -12109,8 +12136,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         {
           step_key: 'Step 2:',
           step_title: 'Enter time values',
-          step_description:
-            'Here’s what to add as inputs for each option:',
+          step_description: 'Here’s what to add as inputs for each option:',
         },
         {
           steps_points: [
@@ -12124,15 +12150,18 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
             },
             {
               steps_points_title: '3) Multiply time ',
-              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to multiply with. ',
+              steps_points_description:
+                'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to multiply with. ',
             },
             {
               steps_points_title: '4) Divide time ',
-              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to be divided by.',
+              steps_points_description:
+                'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to be divided by.',
             },
             {
               steps_points_title: '5) Find time between dates ',
-              steps_points_description: 'Specify “Start date and time” and “End date and time”.',
+              steps_points_description:
+                'Specify “Start date and time” and “End date and time”.',
             },
           ],
         },
@@ -12150,15 +12179,18 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: 'Pretty: ',
-              steps_points_description: 'Shows the total formatted time (e.g., 12 d 44 min 0 sec).',
+              steps_points_description:
+                'Shows the total formatted time (e.g., 12 d 44 min 0 sec).',
             },
             {
               steps_points_title: 'In units: ',
-              steps_points_description: 'Use the dropdown to convert the final total into decimal units (ms, seconds, minutes, days, weeks, months, years).',
+              steps_points_description:
+                'Use the dropdown to convert the final total into decimal units (ms, seconds, minutes, days, weeks, months, years).',
             },
             {
               steps_points_title: 'Breakdown: ',
-              steps_points_description: 'Displays the breakdown (e.g., 0d 12h 44m 00s, 0 ms).',
+              steps_points_description:
+                'Displays the breakdown (e.g., 0d 12h 44m 00s, 0 ms).',
             },
           ],
         },
@@ -12170,11 +12202,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: 'Copy: ',
-              steps_points_description: 'Click the green “Copy pretty”, “Copy ms”, or “Copy seconds” buttons to instantly copy the desired result to your clipboard.',
+              steps_points_description:
+                'Click the green “Copy pretty”, “Copy ms”, or “Copy seconds” buttons to instantly copy the desired result to your clipboard.',
             },
             {
               steps_points_title: 'Reset: ',
-              steps_points_description: 'To start a new calculation and clear all fields, use the “Reset” button.',
+              steps_points_description:
+                'To start a new calculation and clear all fields, use the “Reset” button.',
             },
           ],
         },
@@ -12182,7 +12216,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Time Calculator tool?',
-      how_use_description: 'You can use the tool for several purposes in software, such as:',
+      how_use_description:
+        'You can use the tool for several purposes in software, such as:',
       point: [
         {
           title: 'Tracking and Summing Billable Hours:',
@@ -13698,7 +13733,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         },
         {
           description:
-            'It\'s ideal for developers, data analysts, and business professionals who need to convert API responses, database exports, or JSON files into a format that\'s compatible with spreadsheet software and reporting tools.',
+            "It's ideal for developers, data analysts, and business professionals who need to convert API responses, database exports, or JSON files into a format that's compatible with spreadsheet software and reporting tools.",
         },
       ],
     },
@@ -16318,7 +16353,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         {
           step_key: 'Step 4:',
           step_title: 'Copy Output:',
-          step_description: 'Copy the optimized code and use it in your project.',
+          step_description:
+            'Copy the optimized code and use it in your project.',
         },
       ],
     },
@@ -16394,11 +16430,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       info_items: [
         {
           part: 'Scripts:',
-          description: 'Script tags can run code in some contexts and should be removed.',
+          description:
+            'Script tags can run code in some contexts and should be removed.',
         },
         {
           part: 'Event handlers:',
-          description: 'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+          description:
+            'Attributes like onload/onclick can execute JavaScript and should be stripped.',
         },
         {
           part: 'foreignObject:',
@@ -16501,7 +16539,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">\\n  <rect x="10" y="10" width="100" height="100" rx="18" fill="#7c3aed"/>\\n  <path d="M35 70c8 16 42 16 50 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>\\n  <circle cx="45" cy="50" r="6" fill="white"/>\\n  <circle cx="75" cy="50" r="6" fill="white"/>\\n</svg>',
       },
       example_outputs: {
-        intro: 'After pasting, you can copy the detected attributes and the sanitized SVG output.',
+        intro:
+          'After pasting, you can copy the detected attributes and the sanitized SVG output.',
         outputs: [
           {
             mode: 'Detected attributes',
@@ -16677,7 +16716,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           {
             mode: 'Filter',
             title: 'Show errors only',
-            content: 'Click the "Errors" chip and search for your API host or endpoint path.',
+            content:
+              'Click the "Errors" chip and search for your API host or endpoint path.',
           },
           {
             mode: 'Inspect',
@@ -18616,7 +18656,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       ],
     },
     meta_data: {
-      meta_title: 'cURL to Code Converter — JavaScript, Python, Go | BetterBugs.io',
+      meta_title:
+        'cURL to Code Converter — JavaScript, Python, Go | BetterBugs.io',
       meta_description:
         'Convert cURL commands to JavaScript Fetch, Axios, Python Requests, Go, or Node.js code instantly. Free online tool on BetterBugs.io.',
       og_title: 'cURL to Code Converter — BetterBugs.io',
@@ -18674,8 +18715,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_how_use: {
       how_use_title: 'Common Use Cases:',
-      how_use_description:
-        'The Unix Timestamp Converter is useful for:',
+      how_use_description: 'The Unix Timestamp Converter is useful for:',
       point: [
         {
           title: 'Debugging Logs',
@@ -18684,13 +18724,11 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         },
         {
           title: 'Database Management',
-          description:
-            'Verify and interpret timestamp columns in databases.',
+          description: 'Verify and interpret timestamp columns in databases.',
         },
         {
           title: 'API Development',
-          description:
-            'Validate timestamp formats exchanged between services.',
+          description: 'Validate timestamp formats exchanged between services.',
         },
         {
           title: 'Time Calculation',

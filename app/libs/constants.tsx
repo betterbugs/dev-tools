@@ -324,7 +324,8 @@ export const developmentToolsCategoryContent: any = {
       // icon: <JsonPrettifierToolIcon />,
       url: '/json-prettifier',
       title: 'JSON Formatter/Prettifier Tool',
-      description: 'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
+      description:
+        'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
   ],
   Category10: [
@@ -720,14 +721,16 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-decoder',
       title: 'Base64 Decoder',
-      description: 'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
+      description:
+        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
   ],
   Category60: [
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
+      description:
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -1004,7 +1007,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/html-viewer',
       title: 'HTML Viewer Online',
       description:
-        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
   ],
   Category96: [
@@ -1611,7 +1614,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/ipv4-subnet-calculator',
       title: 'IPv4 Subnet Calculator',
-      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+      description:
+        'Calculate subnet details like network address, broadcast address, and usable host range.',
     },
   ],
   Category177: [
@@ -2348,6 +2352,10 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.JSON_TO_YAML_CONVERTER,
     component: <JsonToYamlConverter />,
+  },
+  {
+    path: PATHS.JSON_TO_CSV_CONVERTOR,
+    component: <JsonToCsvConverter />,
   },
   {
     path: PATHS.JSON_TO_CSV_CONVERTOR,
