@@ -7919,6 +7919,11 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
               'The btoa method creates a Base64-encoded ASCII string from a string of binary data (i.e., plain text or JSON). Note: btoa() expects an ASCII string. If you are encoding UTF-8 characters, you should first encode the string to bytes (e.g., using TextEncoder) before converting to Base64.',
           },
           {
+            name: 'Pro Tip: ',
+            description:
+              'Keep in mind that btoa() will throw an error in most browsers if you pass it a string with an emoji (like 🚀) as it contains string characters outside the Latin1 range.',
+          },
+          {
             name: 'atob(base64String)',
             description:
               'This JS method decodes a Base64‑encoded string back into a plain ASCII string.',
@@ -7940,7 +7945,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           },
         ],
         note:
-          'Pro tip: btoa() will throw in most browsers if you pass a string with characters outside the Latin1 range (for example an emoji like 🚀). For UTF‑8 text, combine TextEncoder with byte‑to‑Base64 logic; for standard API payloads and quick conversions, btoa is often enough.',
+          'For encoding of UTF-8 text, a combination of TextEncoder and btoa logic works pretty well. However, for standard API payloads and quick conversions, you can consider using the built-in btoa method.',
       },
     },
     development_tools_how_use: {
@@ -11917,44 +11922,39 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           step_title: 'Set your preferences for the output image',
         },
         {
+          step_title: '1) Resize ',
+          step_description: 'Specify output dimensions in pixels (px):',
           steps_points: [
             {
-              steps_points_title: '1) Resize ',
-              steps_points_description:
-                'Specify output dimensions in pixels (px):',
-              steps_subpoint: [
-                {
-                  description: 'Width',
-                },
-                {
-                  description: 'Height',
-                },
-              ],
+              steps_points_title: 'Width',
             },
             {
-              steps_points_description:
-                'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+              steps_points_title: 'Height',
+            },
+          ],
+        },
+        {
+          step_description:
+            'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+        },
+        {
+          step_title: '2) Export ',
+          step_description:
+            'Choose image output image format, quality, and compression:',
+          steps_points: [
+            {
+              steps_points_title: 'PNG:',
+              steps_points_description: 'Set Target file size (KB or MB)',
             },
             {
-              steps_points_title: '2) Export ',
+              steps_points_title: 'JPG:',
               steps_points_description:
-                'Choose image output image format, quality, and compression:',
-              steps_subpoint: [
-                {
-                  title: 'PNG:',
-                  description: 'Set Target file size (KB or MB)',
-                },
-                {
-                  title: 'JPG:',
-                  description:
-                    'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
-                },
-                {
-                  title: 'WEBP:',
-                  description:
-                    'Set Quality (0 - 100), Target file size (KB or MB)',
-                },
-              ],
+                'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
+            },
+            {
+              steps_points_title: 'WEBP:',
+              steps_points_description:
+                'Set Quality (0 - 100), Target file size (KB or MB)',
             },
           ],
         },
