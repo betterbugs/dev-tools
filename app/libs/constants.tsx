@@ -145,6 +145,8 @@ import RgbToHexConverter from '../components/developmentToolsComponent/rgbToHexC
 import Rot13EncoderDecoderComponent from '../components/developmentToolsComponent/rot13EncoderDecoderComponent';
 import RotateImageTool from '../components/developmentToolsComponent/rotateImageTool';
 import ImageResizer from '../components/developmentToolsComponent/imageResizer';
+import ImageToBase64Converter from '../components/developmentToolsComponent/imageToBase64Converter';
+import Base64ToImageConverter from '../components/developmentToolsComponent/base64ToImageConverter';
 import RotationCalculatorComponent from '../components/developmentToolsComponent/rotationCalculatorComponent';
 import ScssToCssConverter from '../components/developmentToolsComponent/scssToCssConverter';
 import ShuffleLetters from '../components/developmentToolsComponent/shuffleLetters';
@@ -1635,7 +1637,7 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/unix-timestamp-converter',
       title: 'Unix Timestamp Converter',
-      description: 'Convert Unix timestamps to readable dates and vice versa.',
+      description: 'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
     },
     {
       url: '/time-calculator',
@@ -1664,6 +1666,18 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
     },
+    // {
+    //   url: '/image-to-base64-converter',
+    //   title: 'Image to Base64 Converter',
+    //   description:
+    //     'Turn PNG, JPEG, GIF, WebP, or SVG files into a Data URI or raw Base64 string entirely in your browser — ideal for data URLs, emails, and API payloads.',
+    // },
+    // {
+    //   url: '/base64-to-image-converter',
+    //   title: 'Base64 to Image Converter',
+    //   description:
+    //     'Paste a Data URI or raw Base64 string and preview or download the decoded PNG, JPEG, WebP, GIF, or SVG — all processing happens locally in your browser.',
+    // },
   ],
   // Category181: [
   //   {
@@ -1859,6 +1873,8 @@ export const PATHS = {
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
   IMAGE_RESIZER: '/image-resizer',
+  IMAGE_TO_BASE64_CONVERTER: '/image-to-base64-converter',
+  BASE64_TO_IMAGE_CONVERTER: '/base64-to-image-converter',
   TIME_CALCULATOR: '/time-calculator',
   HAR_FILE_VIEWER: '/har-file-viewer',
 };
@@ -2122,6 +2138,14 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.IMAGE_RESIZER,
     component: <ImageResizer />,
+  },
+  {
+    path: PATHS.IMAGE_TO_BASE64_CONVERTER,
+    component: <ImageToBase64Converter />,
+  },
+  {
+    path: PATHS.BASE64_TO_IMAGE_CONVERTER,
+    component: <Base64ToImageConverter />,
   },
   {
     path: PATHS.CSV_TO_EXCEL_FILE_CONVERTOR,
