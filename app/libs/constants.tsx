@@ -324,7 +324,8 @@ export const developmentToolsCategoryContent: any = {
       // icon: <JsonPrettifierToolIcon />,
       url: '/json-prettifier',
       title: 'JSON Formatter/Prettifier Tool',
-      description: 'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
+      description:
+        'The JSON formatter/prettifier is a free-to-use online tool on BetterBugs.io that instantly formats JSON strings into human-readable code structures with tree views and proper indentation.',
     },
   ],
   Category10: [
@@ -720,7 +721,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-decoder',
       title: 'Base64 Decoder',
-      description: 'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
+      description:
+        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
     },
   ],
   Category60: [
@@ -1611,7 +1613,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/ipv4-subnet-calculator',
       title: 'IPv4 Subnet Calculator',
-      description: 'Calculate subnet details like network address, broadcast address, and usable host range.',
+      description:
+        'Calculate subnet details like network address, broadcast address, and usable host range.',
     },
   ],
   Category177: [
