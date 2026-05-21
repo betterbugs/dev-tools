@@ -10910,296 +10910,296 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
   },
 
-  // [`image-to-base64-converter`]: {
-  //   hero_section: {
-  //     title: 'Image to Base64 Converter — Free Online PNG, JPEG & WebP to Data URI',
-  //     description:
-  //       'Use this free Image to Base64 converter on BetterBugs.io to turn PNG, JPEG, GIF, WebP, SVG, or BMP files into a Data URI or a raw Base64 string in seconds. Everything runs locally in your browser: your files are never uploaded to our servers, there are no ads, and you do not need an account.',
-  //   },
-  //   development_tools_list: [
-  //     { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
-  //     { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
-  //     { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
-  //     { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
-  //     { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
-  //     { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
-  //   ],
-  //   development_tools_about_details: {
-  //     about_title: 'What is the Image to Base64 Converter on BetterBugs.io?',
-  //     about_description: [
-  //       {
-  //         description:
-  //           'The Image to Base64 converter is an online developer utility that encodes image files into Base64 text so you can embed or transmit them as plain ASCII. Developers often search for how to convert a PNG or JPEG to Base64, generate a Base64 image string for HTML img src, or build a data:image URL for CSS—this tool does all of that in one place with a live preview.',
-  //       },
-  //       {
-  //         description:
-  //           'Encoding happens entirely on your device using the browser’s FileReader API. That means BetterBugs.io does not store, log, or train models on your uploads; it is suitable for screenshots, UI assets, and client work where privacy matters. You can process files up to about 10 MB per conversion.',
-  //       },
-  //       {
-  //         description:
-  //           'You can switch between two outputs: a full Data URI (for example data:image/png;base64, followed by the payload) for direct use in HTML, Markdown, or CSS, or Base64 only when an API, database column, or mobile app expects just the encoded bytes without the MIME prefix.',
-  //       },
-  //       {
-  //         description:
-  //           'Supported types include common raster formats (PNG, JPEG, GIF, WebP, BMP) and SVG. After conversion, use Copy output to grab the string for Postman, VS Code, email HTML tests, or server-side comparison. Clear resets the session so you can encode another file quickly.',
-  //       },
-  //       {
-  //         description:
-  //           'To verify a round-trip or inspect someone else’s Base64 string, open the Base64 to Image Converter on BetterBugs.io: paste the same Data URI or raw payload, confirm the preview, and download the decoded file without leaving the dev-tools suite.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_what: {
-  //     about_title: 'Why convert images to Base64 or a Data URI?',
-  //     what_description: [
-  //       {
-  //         descriptions:
-  //           'Base64 represents binary image data as text so it can travel through systems that only handle ASCII or UTF-8 text safely. A Data URI wraps that Base64 with a MIME type prefix so browsers know how to decode and render the bytes as an image.',
-  //       },
-  //       {
-  //         descriptions:
-  //           'Typical reasons include embedding a small logo or icon inline in HTML or CSS, sending an image field inside JSON for a REST or GraphQL API, prototyping email-safe markup, or pasting a self-contained snippet into documentation, Stack Overflow answers, or internal wikis without attaching separate files.',
-  //       },
-  //       {
-  //         descriptions:
-  //           'Large images produce very long strings, which can hurt page weight if inlined everywhere. For production sites, prefer CDN-hosted assets or responsive srcset for big photos; reserve Base64 and Data URIs for small assets, critical CSS, or controlled API payloads.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_steps_guide: {
-  //     guide_title: 'How to convert an image to Base64 online (step by step)',
-  //     guide_description: 'Follow these steps on BetterBugs.io:',
-  //     steps: [
-  //       {
-  //         step_key: 'Step 1:',
-  //         step_title: 'Upload or drop your image',
-  //         step_description:
-  //           'Open the tool, then drag a PNG, JPEG, WebP, GIF, SVG, or BMP onto the upload zone or click to pick a file from your computer. The maximum file size is 10 MB.',
-  //       },
-  //       {
-  //         step_key: 'Step 2:',
-  //         step_title: 'Review the preview and pick output type',
-  //         step_description:
-  //           'Confirm the thumbnail looks correct. Choose Data URI if you need a full data:image/...;base64,... string for src or url(), or Base64 only if your backend or schema expects just the encoded characters.',
-  //       },
-  //       {
-  //         step_key: 'Step 3:',
-  //         step_title: 'Copy and use the string',
-  //         step_description:
-  //           'Click Copy output to place the result on your clipboard, then paste into your editor, API client, or template. Use Clear or Clear all when you want to encode a different image.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_Comparison: {
-  //     title: 'Data URI vs. raw Base64: which output should you choose?',
-  //     description: [
-  //       {
-  //         desc: 'A Data URI includes the scheme data:, the correct image MIME type (such as image/png or image/jpeg), the base64 marker, and the payload. Paste it directly into an HTML img src, a CSS background-image, or some Markdown processors that allow raw HTML.',
-  //       },
-  //       {
-  //         desc: 'Raw Base64 is only the encoded bytes as text, without the data:image/...;base64, prefix. Many APIs expect this form in a JSON property (for example "image": "<base64>") or combine it with a separate content-type header on the server.',
-  //       },
-  //       {
-  //         desc: 'If you are unsure, start with Data URI for front-end markup and switch to Base64 only when your API documentation or ORM field explicitly asks for the payload alone.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_how_use: {
-  //     how_use_title: 'Common use cases for an online Image to Base64 converter',
-  //     how_use_description:
-  //       'Teams use BetterBugs.io’s Image to Base64 tool while building products, testing integrations, and writing docs. Typical scenarios include:',
-  //     point: [
-  //       {
-  //         title: 'HTML img and picture elements',
-  //         description:
-  //           'Paste a Data URI into src for quick prototypes, Storybook stories, or single-file demos where hosting a separate asset is inconvenient.',
-  //       },
-  //       {
-  //         title: 'CSS background-image and masks',
-  //         description:
-  //           'Inline tiny patterns or icons as url("data:image/svg+xml;base64,...") or PNG Data URIs inside critical CSS or component-scoped styles.',
-  //       },
-  //       {
-  //         title: 'REST, GraphQL, and mobile backends',
-  //         description:
-  //           'Fill image or file fields with raw Base64 when the contract requires a string body alongside application/json.',
-  //       },
-  //       {
-  //         title: 'Email and newsletter HTML',
-  //         description:
-  //           'Experiment with embedded graphics in test sends. Always validate rendering across clients because support for large Data URIs varies.',
-  //       },
-  //       {
-  //         title: 'README, Confluence, and training material',
-  //         description:
-  //           'Ship copy-pasteable examples that work offline or in restricted environments where binary attachments are blocked.',
-  //       },
-  //       {
-  //         title: 'Cross-checking encoders',
-  //         description:
-  //           'Compare browser-generated Base64 with Node, Python, or Java output to debug MIME mismatches or padding differences before production deploys.',
-  //       },
-  //       {
-  //         title: 'Favicons and micro-assets',
-  //         description:
-  //           'Encode very small ICO or PNG favicons when you need a single-file deployment or a quick favicon data URL for a static site.',
-  //       },
-  //     ],
-  //   },
-  //   meta_data: {
-  //     meta_title:
-  //       'Image to Base64 Converter Online — PNG, JPEG, WebP, SVG | BetterBugs',
-  //     meta_description:
-  //       'Free Image to Base64 converter: turn PNG, JPEG, GIF, WebP, or SVG into a Data URI or raw Base64 in your browser. Private, no upload—copy for HTML, CSS, JSON & APIs on BetterBugs.io.',
-  //     og_title: 'Image to Base64 Converter — Free Online Data URI & Base64',
-  //     og_description:
-  //       'Encode images to Base64 locally. Data URI or Base64-only output, live preview, copy to clipboard—BetterBugs.io developer tools.',
-  //     og_image: '/images/og-images/Cover.png',
-  //   },
-  // },
+  [`image-to-base64-converter`]: {
+    hero_section: {
+      title: 'Image to Base64 Converter — Free Online PNG, JPEG & WebP to Data URI',
+      description:
+        'Use this free Image to Base64 converter on BetterBugs.io to turn PNG, JPEG, GIF, WebP, SVG, or BMP files into a Data URI or a raw Base64 string in seconds. Everything runs locally in your browser: your files are never uploaded to our servers, there are no ads, and you do not need an account.',
+    },
+    development_tools_list: [
+      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
+      { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Image to Base64 Converter on BetterBugs.io?',
+      about_description: [
+        {
+          description:
+            'The Image to Base64 converter is an online developer utility that encodes image files into Base64 text so you can embed or transmit them as plain ASCII. Developers often search for how to convert a PNG or JPEG to Base64, generate a Base64 image string for HTML img src, or build a data:image URL for CSS—this tool does all of that in one place with a live preview.',
+        },
+        {
+          description:
+            'Encoding happens entirely on your device using the browser’s FileReader API. That means BetterBugs.io does not store, log, or train models on your uploads; it is suitable for screenshots, UI assets, and client work where privacy matters. You can process files up to about 10 MB per conversion.',
+        },
+        {
+          description:
+            'You can switch between two outputs: a full Data URI (for example data:image/png;base64, followed by the payload) for direct use in HTML, Markdown, or CSS, or Base64 only when an API, database column, or mobile app expects just the encoded bytes without the MIME prefix.',
+        },
+        {
+          description:
+            'Supported types include common raster formats (PNG, JPEG, GIF, WebP, BMP) and SVG. After conversion, use Copy output to grab the string for Postman, VS Code, email HTML tests, or server-side comparison. Clear resets the session so you can encode another file quickly.',
+        },
+        {
+          description:
+            'To verify a round-trip or inspect someone else’s Base64 string, open the Base64 to Image Converter on BetterBugs.io: paste the same Data URI or raw payload, confirm the preview, and download the decoded file without leaving the dev-tools suite.',
+        },
+      ],
+    },
+    development_tools_what: {
+      about_title: 'Why convert images to Base64 or a Data URI?',
+      what_description: [
+        {
+          descriptions:
+            'Base64 represents binary image data as text so it can travel through systems that only handle ASCII or UTF-8 text safely. A Data URI wraps that Base64 with a MIME type prefix so browsers know how to decode and render the bytes as an image.',
+        },
+        {
+          descriptions:
+            'Typical reasons include embedding a small logo or icon inline in HTML or CSS, sending an image field inside JSON for a REST or GraphQL API, prototyping email-safe markup, or pasting a self-contained snippet into documentation, Stack Overflow answers, or internal wikis without attaching separate files.',
+        },
+        {
+          descriptions:
+            'Large images produce very long strings, which can hurt page weight if inlined everywhere. For production sites, prefer CDN-hosted assets or responsive srcset for big photos; reserve Base64 and Data URIs for small assets, critical CSS, or controlled API payloads.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to convert an image to Base64 online (step by step)',
+      guide_description: 'Follow these steps on BetterBugs.io:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Upload or drop your image',
+          step_description:
+            'Open the tool, then drag a PNG, JPEG, WebP, GIF, SVG, or BMP onto the upload zone or click to pick a file from your computer. The maximum file size is 10 MB.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Review the preview and pick output type',
+          step_description:
+            'Confirm the thumbnail looks correct. Choose Data URI if you need a full data:image/...;base64,... string for src or url(), or Base64 only if your backend or schema expects just the encoded characters.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Copy and use the string',
+          step_description:
+            'Click Copy output to place the result on your clipboard, then paste into your editor, API client, or template. Use Clear or Clear all when you want to encode a different image.',
+        },
+      ],
+    },
+    development_tools_Comparison: {
+      title: 'Data URI vs. raw Base64: which output should you choose?',
+      description: [
+        {
+          desc: 'A Data URI includes the scheme data:, the correct image MIME type (such as image/png or image/jpeg), the base64 marker, and the payload. Paste it directly into an HTML img src, a CSS background-image, or some Markdown processors that allow raw HTML.',
+        },
+        {
+          desc: 'Raw Base64 is only the encoded bytes as text, without the data:image/...;base64, prefix. Many APIs expect this form in a JSON property (for example "image": "<base64>") or combine it with a separate content-type header on the server.',
+        },
+        {
+          desc: 'If you are unsure, start with Data URI for front-end markup and switch to Base64 only when your API documentation or ORM field explicitly asks for the payload alone.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common use cases for an online Image to Base64 converter',
+      how_use_description:
+        'Teams use BetterBugs.io’s Image to Base64 tool while building products, testing integrations, and writing docs. Typical scenarios include:',
+      point: [
+        {
+          title: 'HTML img and picture elements',
+          description:
+            'Paste a Data URI into src for quick prototypes, Storybook stories, or single-file demos where hosting a separate asset is inconvenient.',
+        },
+        {
+          title: 'CSS background-image and masks',
+          description:
+            'Inline tiny patterns or icons as url("data:image/svg+xml;base64,...") or PNG Data URIs inside critical CSS or component-scoped styles.',
+        },
+        {
+          title: 'REST, GraphQL, and mobile backends',
+          description:
+            'Fill image or file fields with raw Base64 when the contract requires a string body alongside application/json.',
+        },
+        {
+          title: 'Email and newsletter HTML',
+          description:
+            'Experiment with embedded graphics in test sends. Always validate rendering across clients because support for large Data URIs varies.',
+        },
+        {
+          title: 'README, Confluence, and training material',
+          description:
+            'Ship copy-pasteable examples that work offline or in restricted environments where binary attachments are blocked.',
+        },
+        {
+          title: 'Cross-checking encoders',
+          description:
+            'Compare browser-generated Base64 with Node, Python, or Java output to debug MIME mismatches or padding differences before production deploys.',
+        },
+        {
+          title: 'Favicons and micro-assets',
+          description:
+            'Encode very small ICO or PNG favicons when you need a single-file deployment or a quick favicon data URL for a static site.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title:
+        'Image to Base64 Converter Online — PNG, JPEG, WebP, SVG | BetterBugs',
+      meta_description:
+        'Free Image to Base64 converter: turn PNG, JPEG, GIF, WebP, or SVG into a Data URI or raw Base64 in your browser. Private, no upload—copy for HTML, CSS, JSON & APIs on BetterBugs.io.',
+      og_title: 'Image to Base64 Converter — Free Online Data URI & Base64',
+      og_description:
+        'Encode images to Base64 locally. Data URI or Base64-only output, live preview, copy to clipboard—BetterBugs.io developer tools.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 
-  // [`base64-to-image-converter`]: {
-  //   hero_section: {
-  //     title: 'Base64 to Image Converter — Decode Data URI & Base64 to PNG, JPEG, WebP Online',
-  //     description:
-  //       'Use this free Base64 to Image converter on BetterBugs.io to turn a Data URI or raw Base64 payload into a real image you can preview and download. It supports common types such as PNG, JPEG, WebP, GIF, SVG, BMP, and ICO: paste from APIs, DevTools, or a .txt export, pick MIME when needed, then save decoded-image with the correct extension. All decoding runs locally in your browser — no account, no upload, and no ads.',
-  //   },
-  //   development_tools_list: [
-  //     { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
-  //     { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
-  //     { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
-  //     { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
-  //     { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
-  //     { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
-  //   ],
-  //   development_tools_about_details: {
-  //     about_title: 'What is the Base64 to Image Converter on BetterBugs.io?',
-  //     about_description: [
-  //       {
-  //         description:
-  //           'The Base64 to Image converter turns text-encoded image data back into pixels you can see. It accepts either a complete Data URI (starting with data:image/ and including ;base64,) or raw Base64 characters. When you paste raw Base64 without a prefix, choose the correct MIME type (PNG, JPEG, WebP, GIF, SVG, BMP, or ICO) so the browser can interpret the bytes correctly.',
-  //       },
-  //       {
-  //         description:
-  //           'This is the natural companion to an Image to Base64 workflow: APIs, logs, and tickets often contain long Base64 blobs or truncated Data URIs. Use the live preview to confirm the asset before saving it, then use Download image to write decoded-image.png (or .jpg, .webp, etc.) based on the detected MIME type.',
-  //       },
-  //       {
-  //         description:
-  //           'Validation runs client-side: the tool first checks that the string decodes with atob, enforces an approximate decoded size limit of 10 MB, then loads the result in an Image element. If the bytes are not a real image (for example wrong MIME or corrupted padding), you will see a clear error instead of a broken icon.',
-  //       },
-  //       {
-  //         description:
-  //           'You can also load a .txt file that contains only Base64 or a Data URI — useful when copying from Postman, Chrome DevTools, or a database export. Use Sample to try a tiny embedded PNG, then replace it with your own payload.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_what: {
-  //     about_title: 'When should you decode Base64 back to an image file?',
-  //     what_description: [
-  //       {
-  //         descriptions:
-  //           'Debugging: you received a Base64 field in a JSON response and need to verify it is really the expected logo, screenshot, or thumbnail before wiring it into your UI.',
-  //       },
-  //       {
-  //         descriptions:
-  //           'Documentation and support: turn a customer-provided Data URI or Base64 snippet into a downloadable PNG so designers or QA can open it in any viewer.',
-  //       },
-  //       {
-  //         descriptions:
-  //           'Data recovery from configs: some YAML, .env, or markdown files inline small icons as Base64; decoding them locally avoids pasting sensitive URLs into random online decoders.',
-  //       },
-  //       {
-  //         descriptions:
-  //           'Charts, thumbnails, and Open Graph previews: product or analytics APIs sometimes return a small Base64 bitmap for a sparkline or preview card — paste it here to confirm pixels before wiring it into dashboards or Slack bots.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_steps_guide: {
-  //     guide_title: 'How to use the Base64 to Image converter (step by step)',
-  //     guide_description: 'Decode and save an image in a few steps:',
-  //     steps: [
-  //       {
-  //         step_key: 'Step 1:',
-  //         step_title: 'Paste or load your string',
-  //         step_description:
-  //           'Put a data:image/...;base64,... value or raw Base64 into the text area, or use Load .txt file for long payloads exported from another tool.',
-  //       },
-  //       {
-  //         step_key: 'Step 2:',
-  //         step_title: 'Pick MIME type if needed',
-  //         step_description:
-  //           'If your input already includes data:image/png (or jpeg, webp, etc.), the tool detects it automatically. For raw Base64 only, select the matching image type from the dropdown.',
-  //       },
-  //       {
-  //         step_key: 'Step 3:',
-  //         step_title: 'Preview and download',
-  //         step_description:
-  //           'Confirm the preview looks correct, then click Download image to save decoded-image with the right extension. Use Clear when you are done.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_Comparison: {
-  //     title: 'Data URI vs. raw Base64 input on this tool',
-  //     description: [
-  //       {
-  //         desc: 'A Data URI already tells the browser the MIME type and that the payload is Base64-encoded. Paste it as one line (or with line breaks inside the Base64 section — whitespace is stripped). The MIME selector is ignored for the prefix itself but still helps if you re-paste only the payload portion later.',
-  //       },
-  //       {
-  //         desc: 'Raw Base64 is just letters, digits, +, /, and = padding (or URL-safe - and _). Pick the image/* type that matches how the file was originally encoded; mismatched types usually fail the image preview even when atob succeeds.',
-  //       },
-  //       {
-  //         desc: 'For non-image Base64 (PDF, ZIP, plain text), use the Base64 Decoder tool instead — this page is optimized specifically for raster and SVG images.',
-  //       },
-  //     ],
-  //   },
-  //   development_tools_how_use: {
-  //     how_use_title: 'Practical use cases for Base64 to Image conversion',
-  //     how_use_description:
-  //       'Developers and testers use BetterBugs.io’s Base64 to Image utility in situations such as:',
-  //     point: [
-  //       {
-  //         title: 'Verifying API image fields',
-  //         description:
-  //           'Decode Base64 from mobile or web API responses to confirm dimensions, transparency, and format before committing schema changes.',
-  //       },
-  //       {
-  //         title: 'Inspecting email or HTML embeds',
-  //         description:
-  //           'Pull a data:image block from HTML source and preview it without sending the message through another service.',
-  //       },
-  //       {
-  //         title: 'Rebuilding files from logs',
-  //         description:
-  //           'When error reports redact URLs but include a Base64 thumbnail, paste the fragment here to recover a viewable bitmap for tickets.',
-  //       },
-  //       {
-  //         title: 'Teaching encoding round-trips',
-  //         description:
-  //           'Pair this tool with the Image to Base64 converter so learners see lossless text ↔ image conversion in both directions in the browser.',
-  //       },
-  //       {
-  //         title: 'Quick favicon or sprite checks',
-  //         description:
-  //           'Decode tiny ICO or PNG Base64 blobs from webpack stats or inlined CSS to confirm the correct asset was bundled.',
-  //       },
-  //       {
-  //         title: 'Mobile and desktop app payloads',
-  //         description:
-  //           'When QA shares a Base64 screenshot field from a crash report or push payload, decode it here instead of piping through shell scripts—especially on locked-down laptops.',
-  //       },
-  //     ],
-  //   },
-  //   meta_data: {
-  //     meta_title:
-  //       'Base64 to Image Converter Online — Data URI to PNG, JPEG & WebP | BetterBugs',
-  //     meta_description:
-  //       'Decode Base64 to image online: paste data:image/...;base64 or raw image Base64, preview, download PNG/JPEG/WebP/GIF. Pairs with Image to Base64 & Base64 Decoder on BetterBugs.io.',
-  //     og_title: 'Base64 to Image — Preview, Download, Local Decoding',
-  //     og_description:
-  //       'Turn Base64 and Data URIs into viewable images in your browser. MIME picker, .txt import, Sample PNG, one-click download — BetterBugs.io developer tools.',
-  //     og_image: '/images/og-images/Cover.png',
-  //   },
-  // },
+  [`base64-to-image-converter`]: {
+    hero_section: {
+      title: 'Base64 to Image Converter — Decode Data URI & Base64 to PNG, JPEG, WebP Online',
+      description:
+        'Use this free Base64 to Image converter on BetterBugs.io to turn a Data URI or raw Base64 payload into a real image you can preview and download. It supports common types such as PNG, JPEG, WebP, GIF, SVG, BMP, and ICO: paste from APIs, DevTools, or a .txt export, pick MIME when needed, then save decoded-image with the correct extension. All decoding runs locally in your browser — no account, no upload, and no ads.',
+    },
+    development_tools_list: [
+      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
+      { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the Base64 to Image Converter on BetterBugs.io?',
+      about_description: [
+        {
+          description:
+            'The Base64 to Image converter turns text-encoded image data back into pixels you can see. It accepts either a complete Data URI (starting with data:image/ and including ;base64,) or raw Base64 characters. When you paste raw Base64 without a prefix, choose the correct MIME type (PNG, JPEG, WebP, GIF, SVG, BMP, or ICO) so the browser can interpret the bytes correctly.',
+        },
+        {
+          description:
+            'This is the natural companion to an Image to Base64 workflow: APIs, logs, and tickets often contain long Base64 blobs or truncated Data URIs. Use the live preview to confirm the asset before saving it, then use Download image to write decoded-image.png (or .jpg, .webp, etc.) based on the detected MIME type.',
+        },
+        {
+          description:
+            'Validation runs client-side: the tool first checks that the string decodes with atob, enforces an approximate decoded size limit of 10 MB, then loads the result in an Image element. If the bytes are not a real image (for example wrong MIME or corrupted padding), you will see a clear error instead of a broken icon.',
+        },
+        {
+          description:
+            'You can also load a .txt file that contains only Base64 or a Data URI — useful when copying from Postman, Chrome DevTools, or a database export. Use Sample to try a tiny embedded PNG, then replace it with your own payload.',
+        },
+      ],
+    },
+    development_tools_what: {
+      about_title: 'When should you decode Base64 back to an image file?',
+      what_description: [
+        {
+          descriptions:
+            'Debugging: you received a Base64 field in a JSON response and need to verify it is really the expected logo, screenshot, or thumbnail before wiring it into your UI.',
+        },
+        {
+          descriptions:
+            'Documentation and support: turn a customer-provided Data URI or Base64 snippet into a downloadable PNG so designers or QA can open it in any viewer.',
+        },
+        {
+          descriptions:
+            'Data recovery from configs: some YAML, .env, or markdown files inline small icons as Base64; decoding them locally avoids pasting sensitive URLs into random online decoders.',
+        },
+        {
+          descriptions:
+            'Charts, thumbnails, and Open Graph previews: product or analytics APIs sometimes return a small Base64 bitmap for a sparkline or preview card — paste it here to confirm pixels before wiring it into dashboards or Slack bots.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use the Base64 to Image converter (step by step)',
+      guide_description: 'Decode and save an image in a few steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste or load your string',
+          step_description:
+            'Put a data:image/...;base64,... value or raw Base64 into the text area, or use Load .txt file for long payloads exported from another tool.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Pick MIME type if needed',
+          step_description:
+            'If your input already includes data:image/png (or jpeg, webp, etc.), the tool detects it automatically. For raw Base64 only, select the matching image type from the dropdown.',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Preview and download',
+          step_description:
+            'Confirm the preview looks correct, then click Download image to save decoded-image with the right extension. Use Clear when you are done.',
+        },
+      ],
+    },
+    development_tools_Comparison: {
+      title: 'Data URI vs. raw Base64 input on this tool',
+      description: [
+        {
+          desc: 'A Data URI already tells the browser the MIME type and that the payload is Base64-encoded. Paste it as one line (or with line breaks inside the Base64 section — whitespace is stripped). The MIME selector is ignored for the prefix itself but still helps if you re-paste only the payload portion later.',
+        },
+        {
+          desc: 'Raw Base64 is just letters, digits, +, /, and = padding (or URL-safe - and _). Pick the image/* type that matches how the file was originally encoded; mismatched types usually fail the image preview even when atob succeeds.',
+        },
+        {
+          desc: 'For non-image Base64 (PDF, ZIP, plain text), use the Base64 Decoder tool instead — this page is optimized specifically for raster and SVG images.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Practical use cases for Base64 to Image conversion',
+      how_use_description:
+        'Developers and testers use BetterBugs.io’s Base64 to Image utility in situations such as:',
+      point: [
+        {
+          title: 'Verifying API image fields',
+          description:
+            'Decode Base64 from mobile or web API responses to confirm dimensions, transparency, and format before committing schema changes.',
+        },
+        {
+          title: 'Inspecting email or HTML embeds',
+          description:
+            'Pull a data:image block from HTML source and preview it without sending the message through another service.',
+        },
+        {
+          title: 'Rebuilding files from logs',
+          description:
+            'When error reports redact URLs but include a Base64 thumbnail, paste the fragment here to recover a viewable bitmap for tickets.',
+        },
+        {
+          title: 'Teaching encoding round-trips',
+          description:
+            'Pair this tool with the Image to Base64 converter so learners see lossless text ↔ image conversion in both directions in the browser.',
+        },
+        {
+          title: 'Quick favicon or sprite checks',
+          description:
+            'Decode tiny ICO or PNG Base64 blobs from webpack stats or inlined CSS to confirm the correct asset was bundled.',
+        },
+        {
+          title: 'Mobile and desktop app payloads',
+          description:
+            'When QA shares a Base64 screenshot field from a crash report or push payload, decode it here instead of piping through shell scripts—especially on locked-down laptops.',
+        },
+      ],
+    },
+    meta_data: {
+      meta_title:
+        'Base64 to Image Converter Online — Data URI to PNG, JPEG & WebP | BetterBugs',
+      meta_description:
+        'Decode Base64 to image online: paste data:image/...;base64 or raw image Base64, preview, download PNG/JPEG/WebP/GIF. Pairs with Image to Base64 & Base64 Decoder on BetterBugs.io.',
+      og_title: 'Base64 to Image — Preview, Download, Local Decoding',
+      og_description:
+        'Turn Base64 and Data URIs into viewable images in your browser. MIME picker, .txt import, Sample PNG, one-click download — BetterBugs.io developer tools.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
 
   [`color-inverter`]: {
     hero_section: {
@@ -16437,7 +16437,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     hero_section: {
       title: 'JavaScript Regex Tester',
       description:
-        'Test and debug JavaScript regular expressions instantly – perfect for developers, testers, and learners.',
+        'The JavaScript Regex Tester is a free dev utility tool on BetterBugs.io that enables you to instantly test and debug your regular expressions (REGEX). It comes with a fully-fledged environment to validate REGEX patterns against test strings, regex flags, and string replacements.',
     },
     development_tools_list: [
       { tool: 'Character Count Tool', url: PATHS.CHARACTER_COUNT_TOOL },
@@ -16449,76 +16449,219 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
     ],
     development_tools_about_details: {
-      about_title: 'What is the JavaScript Regex Tester?',
+      about_title: 'What is the JavaScript Regex Tester Online Tool?',
       about_description: [
         {
           description:
-            'The JavaScript Regex Tester allows you to build, test, and validate regular expressions in real time.',
+            'The JavaScript Regex Tester is a simple dev utility tool that enables you to build, validate, and verify regular expressions in seconds. You can use the tool to check for pattern accuracy, debug capture groups, or test string replacement logic. ',
         },
         {
           description:
-            'It’s useful for developers debugging regex patterns, QA engineers writing test cases, and learners practicing regex syntax.',
+            'No installations or downloads are required to use this tool. It houses a fully-fledged environment that you can start using right off the bat; perfect for developers, testers, and JavaScript learners or programmers.',
+        },
+        {
+          description:
+            'It also comes with presets to instantly load common regex patterns:',
+        },
+        {
+          list: [
+            {
+              title: 'Email: ',
+              description: 'Loads a standard email validation pattern.',
+            },
+            {
+              title: 'URL: ',
+              description: 'Loads a pattern to identify web addresses.',
+            },
+            {
+              title: 'IPv4: ',
+              description: 'Loads a pattern for IP address matching.',
+            },
+            {
+              title: 'Hex color: ',
+              description: 'Loads a pattern for hexadecimal color codes.',
+            },
+          ],
+        },
+        {
+          description:
+            'For advanced testing, you can enable specific Flags that includes:',
+        },
+        {
+          list: [
+            {
+              title: 'g ',
+              description: '(global)',
+            },
+            {
+              title: 'i ',
+              description: '(ignore case)',
+            },
+            {
+              title: 'm ',
+              description: '(multiline)',
+            },
+            {
+              title: 's ',
+              description: '(dotAll)',
+            },
+            {
+              title: 'u ',
+              description: '(unicode)',
+            },
+            {
+              title: 'y ',
+              description: '(sticky)',
+            },
+          ],
+        },
+        {
+          description:
+            'The tool is is absolutely free-to-use on BetterBugs.io website. It’s a snappy and easy-to-use tool;  perfect for your day-to-day work in software (as a developer or tester), such as validation testing, data scraping preparation, writing logic with REGEX, and learning complex pattern matching.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to Use the Regex Tester',
-      guide_description: 'Follow these simple steps:',
+      guide_title: 'How to Use the JavaScript REGEX Tester Online Tool?',
+      guide_description: 'You can use the tool for:',
       steps: [
         {
-          step_key: 'Step 1:',
-          step_title: 'Enter your regex pattern:',
+          steps_points: [
+            {
+              steps_points_title: 'Regex Pattern Testing ',
+              steps_points_description: 'Check if your pattern matches specific strings.g',
+            },
+            {
+              steps_points_title: 'String Replacement',
+              steps_points_description: 'Test and visualize how String.prototype.replace() will behave.',
+            },
+            {
+              steps_points_title: 'Debugging',
+              steps_points_description: 'Identify exactly which parts of your text are being captured by groups.',
+            },
+          ],
+        },
+        {
           step_description:
-            'Type or paste your regular expression (e.g., `/^[a-z0-9]+$/i`).',
+            'Here’re the steps for using it:',
+        },
+        {
+          step_key: 'Step 1:',
+          step_title: 'Enter your Pattern',
+          step_description:
+            'Add your REGEX into the Pattern box. You can also:',
+          steps_points: [
+            {
+              steps_points_description: 'Select Flags (g, i, m, s, u, y)',
+            },
+            {
+              steps_points_description: 'Use the preset buttons (Email, URL, IPv4, Hex Color) to load standard patterns instantly.',
+            },
+          ],
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Add sample text:',
+          step_title: 'Add Test Text',
           step_description:
-            'Enter the text you want to test against your regex pattern.',
+            'Add the strings you want to test against in the Test text area.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Test & match:',
+          step_title: 'Execute Action',
           step_description:
-            'The tool will instantly highlight matches and show captured groups.',
+            'Select your required operation using the buttons:',
+          steps_points: [
+            {
+              steps_points_title: 'Test match',
+              steps_points_description: 'Identifies and highlights all matches in the text.',
+            },
+            {
+              steps_points_title: 'Replace first',
+              steps_points_description: 'Replaces only the first occurrence of the match.',
+            },
+            {
+              steps_points_title: 'Replace all',
+              steps_points_description: 'Replaces every instance found (requires the g flag).',
+            },
+          ],
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy or refine:',
+          step_title: 'Check Results',
+          steps_points: [
+            {
+              steps_points_title: 'Matches Area',
+              steps_points_description: 'Displays the total number of matches, their index positions, and any captured groups.',
+            },
+            {
+              steps_points_title: 'Highlighted text',
+              steps_points_description: ' Provides a visual representation of exactly where the matches occur within your test string.',
+            },
+            {
+              steps_points_title: 'Replacement result',
+              steps_points_description: 'If using the replace function, this box shows the final output string after the regex operation.',
+            },
+          ],
+        },
+        {
           step_description:
-            'Copy the working regex for use in your JavaScript code or adjust it as needed.',
+            'To reset all fields and start a new test, you’ve the “Reset” button.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'Common Uses',
-      how_use_description: 'Why you might use this tool:',
+      how_use_title: 'What are the Use Cases for the Tool?',
+      how_use_description: 'You can use the JavaScript Regex Tester tool for several purposes in software development and testing, such as:',
       point: [
         {
-          title: 'Form Validation',
+          title: 'Form Validation Testing',
           description:
-            'Test regex for validating emails, phone numbers, or custom input fields.',
+            'Verify that your regex patterns correctly validate user inputs like phone numbers, passwords, or zip codes.',
         },
         {
-          title: 'Search & Replace',
+          title: 'Data Extraction and Scraping',
           description:
-            'Build regex to find and replace text patterns efficiently.',
+            'Test patterns to accurately extract specific information from large text blocks or HTML strings.',
         },
         {
-          title: 'Learning Regex',
+          title: 'URL Path Matching',
           description:
-            'Practice and understand regex syntax with instant visual feedback.',
+            'Check your regex logic for dynamic routing or permalinks that match the intended URL structures.',
+        },
+        {
+          title: 'String Manipulation & Cleaning',
+          description:
+            'Preview how "Replace" operations will behave, including the use of captured groups ($1, $2) for reformatting data.',
+        },
+        {
+          title: 'Log Parsing',
+          description:
+            'Create patterns to filter complex server logs for specific error types, timestamps, or user IDs.',
+        },
+        {
+          title: 'Security Regex Auditing',
+          description:
+            'Check for potential performance bottlenecks or "evil regex" patterns that could lead to Denial of Service (ReDoS).',
+        },
+        {
+          title: 'Search and Replace in IDEs',
+          description:
+            'Draft and test complex search patterns before applying them across your codebase in text editors like VS Code or others.',
+        },
+        {
+          title: 'Educational Purposes',
+          description:
+            'Use it as a visual tool for programmers and CS students to learn how different regex flags and tokens impact pattern matching in real-time.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'JavaScript Regex Tester – Test Regex Patterns Online',
+      meta_title: 'JavaScript Regex Tester - Developer Utility Tools',
       meta_description:
-        'Easily test and debug JavaScript regex patterns online. Perfect for developers, testers, and learners practicing regular expressions.',
-      og_title: 'JavaScript Regex Tester – Free Online Tool',
+        'Use the JavaScript Regex Tester online free tool on BetterBugs.io to test, debug, and validate your regular expressions (REGEX) with instant highlighting and replacement results.',
+      og_title: 'JavaScript Regex Tester - Developer Utility Tools',
       og_description:
-        'Build, test, and debug regex instantly with live match highlighting. Great for developers and QA engineers.',
+        'This post describes usage steps and the use cases of the JavaScript Regex Tester free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
