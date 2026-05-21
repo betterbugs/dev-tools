@@ -871,7 +871,7 @@ export const DEVELOPMENTTOOLS: any = {
         },
         {
           description:
-            "You can use it to convert the minified JSON or messy JSON data (from APIs, logs, configs, or files) into properly indented, syntax-highlighted output. It supports validation for errors and tree expansion/collapse. You can also tweak the number of indentations you’d like in the formatted JSON output.",
+            'You can use it to convert the minified JSON or messy JSON data (from APIs, logs, configs, or files) into properly indented, syntax-highlighted output. It supports validation for errors and tree expansion/collapse. You can also tweak the number of indentations you’d like in the formatted JSON output.',
         },
         {
           description:
@@ -887,7 +887,8 @@ export const DEVELOPMENTTOOLS: any = {
       example_title: 'Example',
       example_input: {
         title: 'Unformatted JSON String',
-        json_data: '{"book":{"title":"1Q84","author":"Haruki Murakami","year":2009,"character":{"name":"Tengo","role":"writer","age":30,"skills":["mathematics","novel_editing"]},"world":{"little_people":true,"two_moons":true}}}',
+        json_data:
+          '{"book":{"title":"1Q84","author":"Haruki Murakami","year":2009,"character":{"name":"Tengo","role":"writer","age":30,"skills":["mathematics","novel_editing"]},"world":{"little_people":true,"two_moons":true}}}',
       },
       example_outputs: {
         outputs: [
@@ -972,16 +973,18 @@ export const DEVELOPMENTTOOLS: any = {
       ],
     },
     development_tools_how_use: {
-      how_use_title: "What are the Use Cases of the JSON Formatter Tool?",
+      how_use_title: 'What are the Use Cases of the JSON Formatter Tool?',
       how_use_description: 'You can use the JSON prettier tool to:',
       point: [
         {
           title: 'Debugging API responses',
-          description: 'Format RAW, minified JSON from Postman collections, curl commands, or browser Network tab to quickly spot nesting errors, missing commas, or malformed arrays during REST/GraphQL troubleshooting.',
+          description:
+            'Format RAW, minified JSON from Postman collections, curl commands, or browser Network tab to quickly spot nesting errors, missing commas, or malformed arrays during REST/GraphQL troubleshooting.',
         },
         {
           title: 'Log analysis',
-          description: 'Format complex JSON logs from Sentry dashboards, server traces, ELK stacks, or Chrome DevTools console outputs to triage issues like failed auth flows or payload mismatches in production environments.',
+          description:
+            'Format complex JSON logs from Sentry dashboards, server traces, ELK stacks, or Chrome DevTools console outputs to triage issues like failed auth flows or payload mismatches in production environments.',
         },
         {
           title: 'Config validation',
@@ -7664,15 +7667,15 @@ family[1]: "Beth"`,
     hero_section: {
       title: 'Base64 Decoder Online',
       description:
-        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that lets you instantly decode Base64-encoded strings into readable formats like plain text, JSON, HEX, or binary.',
+        'The Base64 decoder is a free-to-use online tool on BetterBugs.io that decodes Base64 strings into plain text, JSON, UTF-8, HEX, or binary views. When your payload is a data:image/...;base64,... string or raw image Base64 from an API, use the Base64 to Image Converter on the same site to preview and download the actual picture file.',
     },
     development_tools_list: [
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
+      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
+      { tool: 'JSON Prettify', url: PATHS.JSON_PRETTIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
     ],
     development_tools_about_details: {
       about_title: 'What is the Base64 Decoder Online Tool?',
@@ -7683,7 +7686,11 @@ family[1]: "Beth"`,
         },
         {
           description:
-            'You can load data to it by adding a Base64 string in the input box, uploading a file from your system, or simply entering a URL. It\'s a 100% free-to-use tool on BetterBugs.io; perfect for debugging encoded data in dev, testing, or data tasks. No installations or downloads or code is required for using it. You can paste the string and get results right away. ',
+            "You can load data to it by adding a Base64 string in the input box, uploading a file from your system, or simply entering a URL. It's a 100% free-to-use tool on BetterBugs.io; perfect for debugging encoded data in dev, testing, or data tasks. No installations or downloads or code is required for using it. You can paste the string and get results right away. ",
+        },
+        {
+          description:
+            'For image-specific Base64 (for example a long data:image/png;base64,... value or a raw bitmap payload returned in JSON), switch to the Base64 to Image Converter: it validates MIME type, shows a live preview, and offers a one-click download—whereas this decoder is optimized for text and structured data rather than saving binary image files.',
         },
       ],
     },
@@ -7695,8 +7702,7 @@ family[1]: "Beth"`,
           steps_points: [
             {
               steps_points_title: 'Add the encoded Base64 string',
-              steps_points_description:
-                'to the input box OR',
+              steps_points_description: 'to the input box OR',
             },
             {
               steps_points_title: 'Upload the RAW text file',
@@ -7709,18 +7715,25 @@ family[1]: "Beth"`,
     },
     development_tool_example: {
       example_title: 'Example',
-      example_description: 'For instance, try adding the following Base64 string in the input box and see if it matches the output:',
+      example_description:
+        'For instance, try adding the following Base64 string in the input box and see if it matches the output:',
       example_input: {
         title: 'Base64 String:',
-        json_data: 'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0=',
+        json_data:
+          'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0=',
       },
       example_outputs: {
         outputs: [
-          { mode: 'JSON/UTF-8 Output', content: '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"} ' },
+          {
+            mode: 'JSON/UTF-8 Output',
+            content:
+              '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"} ',
+          },
         ],
       },
       javascript_example: {
-        title: 'JavaScript Example: How to Decode Base64 using JavaScript Built-in Methods',
+        title:
+          'JavaScript Example: How to Decode Base64 using JavaScript Built-in Methods',
         description:
           'In JavaScript, you can decode Base64 strings using the in-built “atob” method and encode them back using the “btoa” method. Here’s how they work:',
         methods: [
@@ -7750,13 +7763,13 @@ const encoded = btoa(plainText);
 console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
           },
         ],
-        note:
-          'For UTF‑8 text or binary data, you can combine TextEncoder / Uint8Array with btoa‑like logic, but for quick debugging and API‑style payloads, “atob” and “btoa” methods works pretty well.',
+        note: 'For UTF‑8 text or binary data, you can combine TextEncoder / Uint8Array with btoa‑like logic, but for quick debugging and API‑style payloads, “atob” and “btoa” methods works pretty well.',
       },
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the tool',
-      how_use_description: 'You can use the Base64 decoder tools for various purposes while debugging, writing code, running API testing activities, or learning purposes, such as:',
+      how_use_description:
+        'You can use the Base64 decoder tools for various purposes while debugging, writing code, running API testing activities, or learning purposes, such as:',
       point: [
         {
           title: 'Debugging encoded API payloads',
@@ -7828,90 +7841,184 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
     meta_data: {
       meta_title: 'Base64 Decoder Online - Developer Utility Tools',
       meta_description:
-        'Use the base64 decoder free online tool on BetterBugs.io to instantly decode Base64 strings into plain text, JSON, HEX, or binary data. Perfect for debugging APIs, logs, and encoded payloads.',
+        'Decode Base64 to text, JSON, or hex on BetterBugs.io. For data:image Base64 or API image fields, use our Base64 to Image converter to preview and download PNG/JPEG/WebP—free online tools.',
       og_title: 'Base64 Decoder Online - Developer Utility Tools',
       og_description:
-        'This post describes usage steps and the use cases of the Base64 decoder free online tool on BetterBugs.io.',
+        'Decode Base64 to text or JSON on BetterBugs.io; for image Data URIs use Base64 to Image to preview and download files.',
       og_image: '/images/og-images/Cover.png',
     },
   },
   [`base64-encoder`]: {
     hero_section: {
-      title: 'Base64 Encoder',
+      title: 'Base64 Encoder Online',
       description:
-        'Paste text or choose a file and encode to Base64 for transport and embedding.',
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that turns plain text, JSON, HTML, or files into a Base64 string for APIs and configs. To encode actual image bytes (PNG, JPEG, WebP, SVG) with a live preview and Data URI output, use the Image to Base64 Converter; to reverse that flow, use Base64 to Image.',
     },
     development_tools_list: [
+      { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
+      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
+      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
-      { tool: 'Text Lower Case', url: PATHS.TEXT_LOWERCASE_CONVERTER },
-      { tool: 'Credit Card Generator', url: PATHS.CREDIT_CARD_GENERATOR },
-      { tool: 'JavaScript Minifier', url: PATHS.JAVASCRIPT_MINIFIER },
-      { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
-      { tool: 'JS Obfuscator', url: PATHS.JS_OBFUSCATOR },
+      { tool: 'JSON Prettify', url: PATHS.JSON_PRETTIFIER },
+      { tool: 'URL Encode', url: PATHS.URL_ENCODE },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Base64 Encoder?',
+      about_title: 'What is the Base64 Encoder Online Tool?',
       about_description: [
         {
           description:
-            'The Base64 Encoder converts text or file content into Base64 so it can be safely transported in URLs, JSON, and HTML.',
+            'The base64 encoder online tool instantly translates plain text, JSON payloads, HTML, form data, or raw text files into standardized and reliable Base64 string format. This encoding process ensures that data remains intact without modification during transport across text-based protocols (like HTTP or SMTP).',
         },
         {
           description:
-            'Base64 is widely used to embed small assets or serialize binary/text within text‑only protocols.',
+            'You can load data by adding it manually into the input box, or by uploading a file directly from your system. It\'s a lightweight, completely free-to-use, and an open-source tool on BetterBugs.io; perfect for encoding data for API requests or basic data obfuscation. No installations, downloads, or code writing are required. Just input your data and get the encoded string right away.',
+        },
+        {
+          description:
+            'Binary image files are usually easier to handle with the Image to Base64 Converter: it reads the file in the browser, shows a thumbnail, and lets you copy either a full data:image/... URI or Base64-only text. After testing in Postman or a mobile client, you can paste the same string into Base64 to Image to verify the round-trip.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Using the Base64 Encoder',
-      guide_description: 'To encode to Base64:',
+      guide_title: 'How to Use the Base64 Encoder Online Tool?',
       steps: [
         {
-          step_key: 'Step 1:',
-          step_title: 'Paste or Upload:',
-          step_description: 'Provide the text or choose a file to encode.',
+          step_description: 'Using the Base64 encoder on BetterBugs.io is straightforward:',
+          steps_points: [
+            {
+              steps_points_description: 'Add your text or JSON data to the input box.',
+            },
+            {
+              steps_points_description: 'Upload a file using the upload button (located at the top right of the input box).',
+            },
+          ],
         },
         {
-          step_key: 'Step 2:',
-          step_title: 'Encode:',
-          step_description:
-            'Click the Encode button to generate the Base64 string.',
-        },
-        {
-          step_key: 'Step 3:',
-          step_title: 'Copy or Clear:',
-          step_description: 'Copy the encoded result or clear to start over.',
+          step_description: 'You can get the output instantly in the “Encoded output” box. You can use the “Copy” icon from the output box to use the resulting Base64 string.',
         },
       ],
     },
+    development_tool_example: {
+      example_title: 'Example',
+      example_description:
+        'For instance, try adding the following JSON string into the input box and see if it matches the output:',
+      example_input: {
+        title: 'JSON/UTF-8 String:',
+        json_data:
+          '{"user_id": 123, "role": "admin", "status": "active", "plan": "pro"}',
+      },
+      example_outputs: {
+        outputs: [
+          {
+            mode: 'Base64 Output',
+            content:
+              'eyJ1c2VyX2lkIjogMTIzLCAicm9sZSI6ICJhZG1pbiIsICJzdGF0dXMiOiAiYWN0aXZlIiwgInBsYW4iOiAicHJvIn0',
+          },
+        ],
+      },
+      javascript_example: {
+        title: 'How to Encode Base64 using JavaScript Built-in Methods',
+        description:
+          'In JavaScript, you can encode strings into Base64 using the in-built btoa method and decode them back using the atob method. Here’s how they work:',
+        methods: [
+          {
+            name: 'btoa(string)',
+            description:
+              'The btoa method creates a Base64-encoded ASCII string from a string of binary data (i.e., plain text or JSON). Note: btoa() expects an ASCII string. If you are encoding UTF-8 characters, you should first encode the string to bytes (e.g., using TextEncoder) before converting to Base64.',
+          },
+          {
+            name: 'Pro Tip: ',
+            description:
+              'Keep in mind that btoa() will throw an error in most browsers if you pass it a string with an emoji (like 🚀) as it contains string characters outside the Latin1 range.',
+          },
+          {
+            name: 'atob(base64String)',
+            description:
+              'This JS method decodes a Base64‑encoded string back into a plain ASCII string.',
+          },
+        ],
+        examples: [
+          {
+            title: 'Example: encode plain text → Base64',
+            code: `const plainText = "Hello World!";
+const encoded = btoa(plainText);
+console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
+          },
+          {
+            title: 'Example: encode JSON → string → Base64',
+            code: `const userObj = {name: "Tengo Kawana", age: 30, country: "Japan"};
+const jsonString = JSON.stringify(userObj);
+const base64Json = btoa(jsonString);
+console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bnRyeSI6IkphcGFuIn0="`,
+          },
+        ],
+        note:
+          'For encoding of UTF-8 text, a combination of TextEncoder and btoa logic works pretty well. However, for standard API payloads and quick conversions, you can consider using the built-in btoa method.',
+      },
+    },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
-      how_use_description: 'Common use cases:',
+      how_use_title: 'What are the use cases for the Base64 Encoder tool?',
+      how_use_description: 'You can use the Base64 encoder tool for various purposes while developing applications, preparing API requests, or structuring web assets, such as:',
       point: [
         {
-          title: 'Embed assets',
+          title: 'Generating Basic Auth Headers:',
           description:
-            'Convert small images or files to Base64 and embed in CSS, HTML, or JSON.',
+            'Quickly encode username:password strings to generate the authorization headers required for Basic Authentication in tools like Postman or curl.',
         },
         {
-          title: 'Safe transport',
+          title: 'Preparing API Payloads:',
           description:
-            'Serialize binary/text data to move through text‑only systems and APIs.',
+            'Encode JSON objects, files, or binary data into safe strings required by specific REST or SOAP APIs that only accept text-based formats.',
         },
         {
-          title: 'Prototyping',
+          title: 'Embedding Assets (Data URIs):',
           description:
-            'Quickly generate Base64 for demos, mockups, and testing.',
+            'Convert small images or fonts into Base64 strings to embed them directly into HTML or CSS files, reducing the number of HTTP requests your webpage makes.',
+        },
+        {
+          title: 'Reliable Data Transfer:',
+          description:
+            'Ensure data (like HTML or XML fragments) survives transport across protocols (like email/SMTP) without being corrupted by misread special characters.',
+        },
+        {
+          title: 'Creating JWT (JSON Web Tokens):',
+          description:
+            'Manually encode headers and payloads to test and construct custom JSON Web Tokens during authentication development.',
+        },
+        {
+          title: 'Simple Obfuscation:',
+          description:
+            'Hide explicit strings, emails, or IDs in configuration files, URLs, or client-side code. (Note: Base64 is not encryption, but it successfully deters casual shoulder-surfing).',
+        },
+        {
+          title: 'Testing and Mocking:',
+          description:
+            'Generate encoded test data on the fly when writing unit tests for decoding logic or validating database schema constraints.',
+        },
+        {
+          title: 'Sharing Code Snippets:',
+          description:
+            'Encode complex code snippets or error logs that contain disruptive special characters before sending them over restrictive chat platforms or forums.',
+        },
+        {
+          title: 'Learning Base64 Encoding:',
+          description:
+            'CS students and developers can input different variations of text (numbers, symbols, spaces) to visually understand how padding (the = signs) and byte-mapping work under the hood.',
+        },
+        {
+          title: 'Creating Email Attachments manually:',
+          description:
+            'Developers exploring the MIME protocol can encode raw text or small files to manually construct and test email payloads.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Base64 Encoder – Encode Text to Base64 | Developer Tools',
+      meta_title: 'Base64 Encoder Online - Developer Utility Tools',
       meta_description:
-        'Encode text or files to Base64 online. Ideal for embedding resources and safe data transport.',
-      og_title: 'Base64 Encoder – Free Online Tool',
+        'Encode text and JSON to Base64 on BetterBugs.io. For PNG/JPEG/WebP files use the Image to Base64 converter; decode pictures back with Base64 to Image—free browser-based developer tools.',
+      og_title: 'Base64 Encoder Online - Developer Utility Tools',
       og_description:
-        'Generate Base64 strings from text or files. Fast and reliable.',
+        'This post describes usage steps and the use cases of the Base64 encoder free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -10689,9 +10796,9 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
   },
   [`html-viewer`]: {
     hero_section: {
-      title: 'HTML Viewer',
+      title: 'HTML Viewer Online',
       description:
-        'Render HTML in a live preview. Paste or type HTML and see the result instantly in the browser.',
+        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
     },
     development_tools_list: [
       { tool: 'HTML Validator', url: PATHS.HTML_VALIDATOR },
@@ -10702,73 +10809,397 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       { tool: 'Strip HTML', url: PATHS.STRIP_HTML },
     ],
     development_tools_about_details: {
-      about_title: 'What is the HTML Viewer?',
+      about_title: 'What is the HTML Viewer Online Tool?',
       about_description: [
         {
           description:
-            'The HTML viewer renders your HTML markup in a live preview so you can see how it looks without leaving the page. Paste or type HTML and view the result in real time.',
+            'The HTML viewer online tool enables you to instantly render code snippets to see how they will look and behave in a real browser environment. It\'s super helpful for developers, UI/UX designers, and students who need to quickly test small blocks of code without setting up a full development environment.',
         },
         {
           description:
-            'Useful for debugging markup, checking layout and styles, and quickly testing snippets in a sandboxed iframe.',
+            'You can add your code by typing directly, pasting text into the tabs, or uploading a raw file. It\'s perfect for debugging markups, checking layout and styles, and quickly testing snippets in a sandboxed iframe.',
+        },
+        {
+          description:
+            'The HTML Viewer tool includes separate tabs to separate your HTML, CSS, and JavaScript code for complete clarity, and a live preview pane that updates instantly as you make changes. It’s a lightweight, free-to-use, open source, and ad-free tool on BetterBugs.io; no installations, downloads, or configurations are required to use it.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to Use the HTML Viewer',
-      guide_description: 'Preview HTML in a few steps:',
+      guide_title: 'How to use the HTML Viewer Tool',
+      guide_description: 'For using the tool, simply:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Paste or type HTML:',
+          step_title: 'Add Code/Upload File',
           step_description:
-            'Add your HTML code to the input area. The preview updates as you type.',
+            'Use the dedicated tabs (HTML, CSS, JS) to input your relevant code snippets. You can also use the “Upload” button to add files from your local system.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'View result:',
+          step_title: 'Preview Live Result',
           step_description:
-            'Check the live preview panel to see how your HTML renders.',
+            'The right-hand pane automatically renders and displays the combined result in real-time.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Copy or edit:',
+          step_title: 'Download Code as .html File',
           step_description:
-            'Copy the HTML for use elsewhere or edit it and refresh the preview.',
+            'If you wish to save your rendered code, you can use the "Download" button to get the result as an HTML file.',
+        },
+        {
+          step_description:
+            'The input box comes with "Upload" ,"Copy", "Clear" and "Download" buttons for managing your code. Use the "Copy" button from the output preview box to copy the rendered result.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'How It’s Used',
-      how_use_description: 'Common use cases:',
+      how_use_title: 'What are the use cases for the HTML Viewer tool',
+      how_use_description: 'You can use the HTML viewer tool for various purposes while developing websites, debugging CSS, prototyping UI components, or teaching web fundamentals, such as:',
       point: [
         {
-          title: 'Debugging markup',
+          title: 'Debugging markup:',
           description:
-            'See how HTML and inline styles render without deploying.',
+            'Instantly see how raw HTML structures and inline styles render in a browser environment. This allows you to identify broken tags, nested element issues, or style conflicts immediately without the need for a full deployment or server refresh.',
         },
         {
-          title: 'Snippet testing',
+          title: 'Snippet testing:',
           description:
-            'Test small HTML fragments before adding them to a full page.',
+            'Safely test small HTML fragments, such as new navigation bars, footer layouts, or form components, in isolation. This ensures the code works perfectly before you integrate it into a complex, multi-page project.',
         },
         {
-          title: 'Learning',
+          title: 'Testing CSS & HTML Layouts:',
           description:
-            'Experiment with HTML and CSS and see results immediately.',
+            'Quickly visualize and debug layout issues, box-model properties, spacing, alignment, and responsiveness without refreshing a whole webpage.',
+        },
+        {
+          title: 'Prototyping Interactive UI Components:',
+          description:
+            'Build, test, and refine interactive elements like buttons, cards, menus, or modals on-the-fly, iterating until the logic and appearance are correct.',
+        },
+        {
+          title: 'Debugging Small Scripting Logic:',
+          description:
+            'Paste JS snippets to test functionality like event listeners, DOM manipulation, and data binding (like the dynamic click counter shown above).',
+        },
+        {
+          title: 'Learning and Teaching Web Fundamentals:',
+          description:
+            'Works best for students or instructors to demonstrate the round-trip relationship between structured HTML, stylized CSS, and functional JS.',
+        },
+        {
+          title: 'Exploring Email and Config Header Formatting:',
+          description:
+            'Writers or students can test how specific HTML elements or meta tags (like the viewport) behave in a sandboxed browser environment.',
+        },
+        {
+          title: 'Generating Dynamic Content Snippets:',
+          description:
+            'Create and preview small, self-contained interactive examples before embedding them into educational blogs, documentation, or technical discussions.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'HTML Viewer – Live HTML Preview Online',
+      meta_title: 'HTML Viewer | Live HTML Preview Online',
       meta_description:
-        'Render HTML in a live preview. Paste or type HTML and see the result instantly. Free tool on BetterBugs.io.',
-      og_title: 'HTML Viewer – Developer Utility',
+        'Use the HTML Viewer Online tool to render your HTML, CSS, and JS and preview without leaving the page. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+      og_title: 'HTML Viewer | Live HTML Preview Online',
       og_description:
-        'Preview HTML in real time. No uploads, runs in your browser.',
+        'This post describes usage steps and the use cases of the HTML Viewer free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
+
+  // [`image-to-base64-converter`]: {
+  //   hero_section: {
+  //     title: 'Image to Base64 Converter — Free Online PNG, JPEG & WebP to Data URI',
+  //     description:
+  //       'Use this free Image to Base64 converter on BetterBugs.io to turn PNG, JPEG, GIF, WebP, SVG, or BMP files into a Data URI or a raw Base64 string in seconds. Everything runs locally in your browser: your files are never uploaded to our servers, there are no ads, and you do not need an account.',
+  //   },
+  //   development_tools_list: [
+  //     { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
+  //     { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+  //     { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
+  //     { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+  //     { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+  //     { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+  //   ],
+  //   development_tools_about_details: {
+  //     about_title: 'What is the Image to Base64 Converter on BetterBugs.io?',
+  //     about_description: [
+  //       {
+  //         description:
+  //           'The Image to Base64 converter is an online developer utility that encodes image files into Base64 text so you can embed or transmit them as plain ASCII. Developers often search for how to convert a PNG or JPEG to Base64, generate a Base64 image string for HTML img src, or build a data:image URL for CSS—this tool does all of that in one place with a live preview.',
+  //       },
+  //       {
+  //         description:
+  //           'Encoding happens entirely on your device using the browser’s FileReader API. That means BetterBugs.io does not store, log, or train models on your uploads; it is suitable for screenshots, UI assets, and client work where privacy matters. You can process files up to about 10 MB per conversion.',
+  //       },
+  //       {
+  //         description:
+  //           'You can switch between two outputs: a full Data URI (for example data:image/png;base64, followed by the payload) for direct use in HTML, Markdown, or CSS, or Base64 only when an API, database column, or mobile app expects just the encoded bytes without the MIME prefix.',
+  //       },
+  //       {
+  //         description:
+  //           'Supported types include common raster formats (PNG, JPEG, GIF, WebP, BMP) and SVG. After conversion, use Copy output to grab the string for Postman, VS Code, email HTML tests, or server-side comparison. Clear resets the session so you can encode another file quickly.',
+  //       },
+  //       {
+  //         description:
+  //           'To verify a round-trip or inspect someone else’s Base64 string, open the Base64 to Image Converter on BetterBugs.io: paste the same Data URI or raw payload, confirm the preview, and download the decoded file without leaving the dev-tools suite.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_what: {
+  //     about_title: 'Why convert images to Base64 or a Data URI?',
+  //     what_description: [
+  //       {
+  //         descriptions:
+  //           'Base64 represents binary image data as text so it can travel through systems that only handle ASCII or UTF-8 text safely. A Data URI wraps that Base64 with a MIME type prefix so browsers know how to decode and render the bytes as an image.',
+  //       },
+  //       {
+  //         descriptions:
+  //           'Typical reasons include embedding a small logo or icon inline in HTML or CSS, sending an image field inside JSON for a REST or GraphQL API, prototyping email-safe markup, or pasting a self-contained snippet into documentation, Stack Overflow answers, or internal wikis without attaching separate files.',
+  //       },
+  //       {
+  //         descriptions:
+  //           'Large images produce very long strings, which can hurt page weight if inlined everywhere. For production sites, prefer CDN-hosted assets or responsive srcset for big photos; reserve Base64 and Data URIs for small assets, critical CSS, or controlled API payloads.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_steps_guide: {
+  //     guide_title: 'How to convert an image to Base64 online (step by step)',
+  //     guide_description: 'Follow these steps on BetterBugs.io:',
+  //     steps: [
+  //       {
+  //         step_key: 'Step 1:',
+  //         step_title: 'Upload or drop your image',
+  //         step_description:
+  //           'Open the tool, then drag a PNG, JPEG, WebP, GIF, SVG, or BMP onto the upload zone or click to pick a file from your computer. The maximum file size is 10 MB.',
+  //       },
+  //       {
+  //         step_key: 'Step 2:',
+  //         step_title: 'Review the preview and pick output type',
+  //         step_description:
+  //           'Confirm the thumbnail looks correct. Choose Data URI if you need a full data:image/...;base64,... string for src or url(), or Base64 only if your backend or schema expects just the encoded characters.',
+  //       },
+  //       {
+  //         step_key: 'Step 3:',
+  //         step_title: 'Copy and use the string',
+  //         step_description:
+  //           'Click Copy output to place the result on your clipboard, then paste into your editor, API client, or template. Use Clear or Clear all when you want to encode a different image.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_Comparison: {
+  //     title: 'Data URI vs. raw Base64: which output should you choose?',
+  //     description: [
+  //       {
+  //         desc: 'A Data URI includes the scheme data:, the correct image MIME type (such as image/png or image/jpeg), the base64 marker, and the payload. Paste it directly into an HTML img src, a CSS background-image, or some Markdown processors that allow raw HTML.',
+  //       },
+  //       {
+  //         desc: 'Raw Base64 is only the encoded bytes as text, without the data:image/...;base64, prefix. Many APIs expect this form in a JSON property (for example "image": "<base64>") or combine it with a separate content-type header on the server.',
+  //       },
+  //       {
+  //         desc: 'If you are unsure, start with Data URI for front-end markup and switch to Base64 only when your API documentation or ORM field explicitly asks for the payload alone.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_how_use: {
+  //     how_use_title: 'Common use cases for an online Image to Base64 converter',
+  //     how_use_description:
+  //       'Teams use BetterBugs.io’s Image to Base64 tool while building products, testing integrations, and writing docs. Typical scenarios include:',
+  //     point: [
+  //       {
+  //         title: 'HTML img and picture elements',
+  //         description:
+  //           'Paste a Data URI into src for quick prototypes, Storybook stories, or single-file demos where hosting a separate asset is inconvenient.',
+  //       },
+  //       {
+  //         title: 'CSS background-image and masks',
+  //         description:
+  //           'Inline tiny patterns or icons as url("data:image/svg+xml;base64,...") or PNG Data URIs inside critical CSS or component-scoped styles.',
+  //       },
+  //       {
+  //         title: 'REST, GraphQL, and mobile backends',
+  //         description:
+  //           'Fill image or file fields with raw Base64 when the contract requires a string body alongside application/json.',
+  //       },
+  //       {
+  //         title: 'Email and newsletter HTML',
+  //         description:
+  //           'Experiment with embedded graphics in test sends. Always validate rendering across clients because support for large Data URIs varies.',
+  //       },
+  //       {
+  //         title: 'README, Confluence, and training material',
+  //         description:
+  //           'Ship copy-pasteable examples that work offline or in restricted environments where binary attachments are blocked.',
+  //       },
+  //       {
+  //         title: 'Cross-checking encoders',
+  //         description:
+  //           'Compare browser-generated Base64 with Node, Python, or Java output to debug MIME mismatches or padding differences before production deploys.',
+  //       },
+  //       {
+  //         title: 'Favicons and micro-assets',
+  //         description:
+  //           'Encode very small ICO or PNG favicons when you need a single-file deployment or a quick favicon data URL for a static site.',
+  //       },
+  //     ],
+  //   },
+  //   meta_data: {
+  //     meta_title:
+  //       'Image to Base64 Converter Online — PNG, JPEG, WebP, SVG | BetterBugs',
+  //     meta_description:
+  //       'Free Image to Base64 converter: turn PNG, JPEG, GIF, WebP, or SVG into a Data URI or raw Base64 in your browser. Private, no upload—copy for HTML, CSS, JSON & APIs on BetterBugs.io.',
+  //     og_title: 'Image to Base64 Converter — Free Online Data URI & Base64',
+  //     og_description:
+  //       'Encode images to Base64 locally. Data URI or Base64-only output, live preview, copy to clipboard—BetterBugs.io developer tools.',
+  //     og_image: '/images/og-images/Cover.png',
+  //   },
+  // },
+
+  // [`base64-to-image-converter`]: {
+  //   hero_section: {
+  //     title: 'Base64 to Image Converter — Decode Data URI & Base64 to PNG, JPEG, WebP Online',
+  //     description:
+  //       'Use this free Base64 to Image converter on BetterBugs.io to turn a Data URI or raw Base64 payload into a real image you can preview and download. It supports common types such as PNG, JPEG, WebP, GIF, SVG, BMP, and ICO: paste from APIs, DevTools, or a .txt export, pick MIME when needed, then save decoded-image with the correct extension. All decoding runs locally in your browser — no account, no upload, and no ads.',
+  //   },
+  //   development_tools_list: [
+  //     { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
+  //     { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
+  //     { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+  //     { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+  //     { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+  //     { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
+  //   ],
+  //   development_tools_about_details: {
+  //     about_title: 'What is the Base64 to Image Converter on BetterBugs.io?',
+  //     about_description: [
+  //       {
+  //         description:
+  //           'The Base64 to Image converter turns text-encoded image data back into pixels you can see. It accepts either a complete Data URI (starting with data:image/ and including ;base64,) or raw Base64 characters. When you paste raw Base64 without a prefix, choose the correct MIME type (PNG, JPEG, WebP, GIF, SVG, BMP, or ICO) so the browser can interpret the bytes correctly.',
+  //       },
+  //       {
+  //         description:
+  //           'This is the natural companion to an Image to Base64 workflow: APIs, logs, and tickets often contain long Base64 blobs or truncated Data URIs. Use the live preview to confirm the asset before saving it, then use Download image to write decoded-image.png (or .jpg, .webp, etc.) based on the detected MIME type.',
+  //       },
+  //       {
+  //         description:
+  //           'Validation runs client-side: the tool first checks that the string decodes with atob, enforces an approximate decoded size limit of 10 MB, then loads the result in an Image element. If the bytes are not a real image (for example wrong MIME or corrupted padding), you will see a clear error instead of a broken icon.',
+  //       },
+  //       {
+  //         description:
+  //           'You can also load a .txt file that contains only Base64 or a Data URI — useful when copying from Postman, Chrome DevTools, or a database export. Use Sample to try a tiny embedded PNG, then replace it with your own payload.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_what: {
+  //     about_title: 'When should you decode Base64 back to an image file?',
+  //     what_description: [
+  //       {
+  //         descriptions:
+  //           'Debugging: you received a Base64 field in a JSON response and need to verify it is really the expected logo, screenshot, or thumbnail before wiring it into your UI.',
+  //       },
+  //       {
+  //         descriptions:
+  //           'Documentation and support: turn a customer-provided Data URI or Base64 snippet into a downloadable PNG so designers or QA can open it in any viewer.',
+  //       },
+  //       {
+  //         descriptions:
+  //           'Data recovery from configs: some YAML, .env, or markdown files inline small icons as Base64; decoding them locally avoids pasting sensitive URLs into random online decoders.',
+  //       },
+  //       {
+  //         descriptions:
+  //           'Charts, thumbnails, and Open Graph previews: product or analytics APIs sometimes return a small Base64 bitmap for a sparkline or preview card — paste it here to confirm pixels before wiring it into dashboards or Slack bots.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_steps_guide: {
+  //     guide_title: 'How to use the Base64 to Image converter (step by step)',
+  //     guide_description: 'Decode and save an image in a few steps:',
+  //     steps: [
+  //       {
+  //         step_key: 'Step 1:',
+  //         step_title: 'Paste or load your string',
+  //         step_description:
+  //           'Put a data:image/...;base64,... value or raw Base64 into the text area, or use Load .txt file for long payloads exported from another tool.',
+  //       },
+  //       {
+  //         step_key: 'Step 2:',
+  //         step_title: 'Pick MIME type if needed',
+  //         step_description:
+  //           'If your input already includes data:image/png (or jpeg, webp, etc.), the tool detects it automatically. For raw Base64 only, select the matching image type from the dropdown.',
+  //       },
+  //       {
+  //         step_key: 'Step 3:',
+  //         step_title: 'Preview and download',
+  //         step_description:
+  //           'Confirm the preview looks correct, then click Download image to save decoded-image with the right extension. Use Clear when you are done.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_Comparison: {
+  //     title: 'Data URI vs. raw Base64 input on this tool',
+  //     description: [
+  //       {
+  //         desc: 'A Data URI already tells the browser the MIME type and that the payload is Base64-encoded. Paste it as one line (or with line breaks inside the Base64 section — whitespace is stripped). The MIME selector is ignored for the prefix itself but still helps if you re-paste only the payload portion later.',
+  //       },
+  //       {
+  //         desc: 'Raw Base64 is just letters, digits, +, /, and = padding (or URL-safe - and _). Pick the image/* type that matches how the file was originally encoded; mismatched types usually fail the image preview even when atob succeeds.',
+  //       },
+  //       {
+  //         desc: 'For non-image Base64 (PDF, ZIP, plain text), use the Base64 Decoder tool instead — this page is optimized specifically for raster and SVG images.',
+  //       },
+  //     ],
+  //   },
+  //   development_tools_how_use: {
+  //     how_use_title: 'Practical use cases for Base64 to Image conversion',
+  //     how_use_description:
+  //       'Developers and testers use BetterBugs.io’s Base64 to Image utility in situations such as:',
+  //     point: [
+  //       {
+  //         title: 'Verifying API image fields',
+  //         description:
+  //           'Decode Base64 from mobile or web API responses to confirm dimensions, transparency, and format before committing schema changes.',
+  //       },
+  //       {
+  //         title: 'Inspecting email or HTML embeds',
+  //         description:
+  //           'Pull a data:image block from HTML source and preview it without sending the message through another service.',
+  //       },
+  //       {
+  //         title: 'Rebuilding files from logs',
+  //         description:
+  //           'When error reports redact URLs but include a Base64 thumbnail, paste the fragment here to recover a viewable bitmap for tickets.',
+  //       },
+  //       {
+  //         title: 'Teaching encoding round-trips',
+  //         description:
+  //           'Pair this tool with the Image to Base64 converter so learners see lossless text ↔ image conversion in both directions in the browser.',
+  //       },
+  //       {
+  //         title: 'Quick favicon or sprite checks',
+  //         description:
+  //           'Decode tiny ICO or PNG Base64 blobs from webpack stats or inlined CSS to confirm the correct asset was bundled.',
+  //       },
+  //       {
+  //         title: 'Mobile and desktop app payloads',
+  //         description:
+  //           'When QA shares a Base64 screenshot field from a crash report or push payload, decode it here instead of piping through shell scripts—especially on locked-down laptops.',
+  //       },
+  //     ],
+  //   },
+  //   meta_data: {
+  //     meta_title:
+  //       'Base64 to Image Converter Online — Data URI to PNG, JPEG & WebP | BetterBugs',
+  //     meta_description:
+  //       'Decode Base64 to image online: paste data:image/...;base64 or raw image Base64, preview, download PNG/JPEG/WebP/GIF. Pairs with Image to Base64 & Base64 Decoder on BetterBugs.io.',
+  //     og_title: 'Base64 to Image — Preview, Download, Local Decoding',
+  //     og_description:
+  //       'Turn Base64 and Data URIs into viewable images in your browser. MIME picker, .txt import, Sample PNG, one-click download — BetterBugs.io developer tools.',
+  //     og_image: '/images/og-images/Cover.png',
+  //   },
+  // },
 
   [`color-inverter`]: {
     hero_section: {
@@ -11691,7 +12122,10 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
     },
     development_tools_list: [
       { tool: 'Rotate Image Tool', url: PATHS.ROTATE_IMAGE_TOOL },
-      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      {
+        tool: 'Placeholder Image Generator',
+        url: PATHS.PLACEHOLDER_IMAGE_GENERATOR,
+      },
       { tool: 'Color Picker Tool', url: PATHS.COLOR_PICKER_TOOL },
       { tool: 'SVG to React/CSS Utility', url: PATHS.SVG_CONVERTER },
       { tool: 'CSS Minify', url: PATHS.CSS_MINIFY },
@@ -11728,12 +12162,13 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         },
         {
           description:
-            "You can tweak or use it based on your preferences, such as:",
+            'You can tweak or use it based on your preferences, such as:',
         },
         {
           list: [
             {
-              description: 'To add files, you can drag and drop OR directly choose files from your local system.',
+              description:
+                'To add files, you can drag and drop OR directly choose files from your local system.',
             },
             {
               description: 'Set custom output dimensions in pixels (px).',
@@ -11745,13 +12180,16 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
               description: 'Select output format: PNG, JPG, or WEBP',
             },
             {
-              description: 'Select output image quality (0 - 100) for JPG and WEBP image files; PNG outputs are lossless.',
+              description:
+                'Select output image quality (0 - 100) for JPG and WEBP image files; PNG outputs are lossless.',
             },
             {
-              description: 'Set target file size for JPG and WEBP image files in KB or MB; PNG outputs are lossless.',
+              description:
+                'Set target file size for JPG and WEBP image files in KB or MB; PNG outputs are lossless.',
             },
             {
-              description: 'Set background fill color (custom) for images with transparent background.',
+              description:
+                'Set background fill color (custom) for images with transparent background.',
             },
           ],
         },
@@ -11764,16 +12202,17 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         {
           step_key: 'Step 1:',
           step_title: 'Add image file',
-          step_description:
-            'To add image, you can:',
+          step_description: 'To add image, you can:',
         },
         {
           steps_points: [
             {
-              steps_points_description: 'Drag and drop an image file in the upload area.',
+              steps_points_description:
+                'Drag and drop an image file in the upload area.',
             },
             {
-              steps_points_description: 'Use the “Choose File” button to add an image file from your local system.',
+              steps_points_description:
+                'Use the “Choose File” button to add an image file from your local system.',
             },
           ],
         },
@@ -11782,39 +12221,39 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
           step_title: 'Set your preferences for the output image',
         },
         {
+          step_title: '1) Resize ',
+          step_description: 'Specify output dimensions in pixels (px):',
           steps_points: [
             {
-              steps_points_title: '1) Resize ',
-              steps_points_description: 'Specify output dimensions in pixels (px):',
-              steps_subpoint: [
-                {
-                  description: 'Width',
-                },
-                {
-                  description: 'Height',
-                },
-              ],
+              steps_points_title: 'Width',
             },
             {
-              steps_points_description: 'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+              steps_points_title: 'Height',
+            },
+          ],
+        },
+        {
+          step_description:
+            'Enable the “Keep aspect ratio” checkbox to keep the width and height of the output in the exact ratio as per the original image.',
+        },
+        {
+          step_title: '2) Export ',
+          step_description:
+            'Choose image output image format, quality, and compression:',
+          steps_points: [
+            {
+              steps_points_title: 'PNG:',
+              steps_points_description: 'Set Target file size (KB or MB)',
             },
             {
-              steps_points_title: '2) Export ',
-              steps_points_description: 'Choose image output image format, quality, and compression:',
-              steps_subpoint: [
-                {
-                  title: 'PNG:',
-                  description: 'Set Target file size (KB or MB)',
-                },
-                {
-                  title: 'JPG:',
-                  description: 'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
-                },
-                {
-                  title: 'WEBP:',
-                  description: 'Set Quality (0 - 100), Target file size (KB or MB)',
-                },
-              ],
+              steps_points_title: 'JPG:',
+              steps_points_description:
+                'Set Quality (0 - 100), Target file size (KB or MB), Background fill color',
+            },
+            {
+              steps_points_title: 'WEBP:',
+              steps_points_description:
+                'Set Quality (0 - 100), Target file size (KB or MB)',
             },
           ],
         },
@@ -11825,14 +12264,14 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
             'After setting your output preferences, check it out in the “Preview” canvas area and click “Download” to save the final image on your local system.',
         },
         {
-          step_description:
-            'To start over, use the “Clear” button.',
+          step_description: 'To start over, use the “Clear” button.',
         },
       ],
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Image Resizer tool?',
-      how_use_description: 'You can use the image resizer tool for everyday image-related tasks and software development workflows:',
+      how_use_description:
+        'You can use the image resizer tool for everyday image-related tasks and software development workflows:',
       point: [
         {
           title: 'Preparing screenshots for bug reports and tickets:',
@@ -11991,8 +12430,7 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         {
           step_key: 'Step 2:',
           step_title: 'Enter time values',
-          step_description:
-            'Here’s what to add as inputs for each option:',
+          step_description: 'Here’s what to add as inputs for each option:',
         },
         {
           steps_points: [
@@ -12006,15 +12444,18 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
             },
             {
               steps_points_title: '3) Multiply time ',
-              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to multiply with. ',
+              steps_points_description:
+                'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to multiply with. ',
             },
             {
               steps_points_title: '4) Divide time ',
-              steps_points_description: 'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to be divided by.',
+              steps_points_description:
+                'Specify one or more time values. Plus, enter the scalar number that you want the total time duration to be divided by.',
             },
             {
               steps_points_title: '5) Find time between dates ',
-              steps_points_description: 'Specify “Start date and time” and “End date and time”.',
+              steps_points_description:
+                'Specify “Start date and time” and “End date and time”.',
             },
           ],
         },
@@ -12032,15 +12473,18 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
           steps_points: [
             {
               steps_points_title: 'Pretty: ',
-              steps_points_description: 'Shows the total formatted time (e.g., 12 d 44 min 0 sec).',
+              steps_points_description:
+                'Shows the total formatted time (e.g., 12 d 44 min 0 sec).',
             },
             {
               steps_points_title: 'In units: ',
-              steps_points_description: 'Use the dropdown to convert the final total into decimal units (ms, seconds, minutes, days, weeks, months, years).',
+              steps_points_description:
+                'Use the dropdown to convert the final total into decimal units (ms, seconds, minutes, days, weeks, months, years).',
             },
             {
               steps_points_title: 'Breakdown: ',
-              steps_points_description: 'Displays the breakdown (e.g., 0d 12h 44m 00s, 0 ms).',
+              steps_points_description:
+                'Displays the breakdown (e.g., 0d 12h 44m 00s, 0 ms).',
             },
           ],
         },
@@ -12052,11 +12496,13 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
           steps_points: [
             {
               steps_points_title: 'Copy: ',
-              steps_points_description: 'Click the green “Copy pretty”, “Copy ms”, or “Copy seconds” buttons to instantly copy the desired result to your clipboard.',
+              steps_points_description:
+                'Click the green “Copy pretty”, “Copy ms”, or “Copy seconds” buttons to instantly copy the desired result to your clipboard.',
             },
             {
               steps_points_title: 'Reset: ',
-              steps_points_description: 'To start a new calculation and clear all fields, use the “Reset” button.',
+              steps_points_description:
+                'To start a new calculation and clear all fields, use the “Reset” button.',
             },
           ],
         },
@@ -12064,7 +12510,8 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Time Calculator tool?',
-      how_use_description: 'You can use the tool for several purposes in software, such as:',
+      how_use_description:
+        'You can use the tool for several purposes in software, such as:',
       point: [
         {
           title: 'Tracking and Summing Billable Hours:',
@@ -13580,7 +14027,7 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         },
         {
           description:
-            'It\'s ideal for developers, data analysts, and business professionals who need to convert API responses, database exports, or JSON files into a format that\'s compatible with spreadsheet software and reporting tools.',
+            "It's ideal for developers, data analysts, and business professionals who need to convert API responses, database exports, or JSON files into a format that's compatible with spreadsheet software and reporting tools.",
         },
       ],
     },
@@ -16200,7 +16647,8 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         {
           step_key: 'Step 4:',
           step_title: 'Copy Output:',
-          step_description: 'Copy the optimized code and use it in your project.',
+          step_description:
+            'Copy the optimized code and use it in your project.',
         },
       ],
     },
@@ -16237,6 +16685,352 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       og_title: 'SVG Converter – Optimize SVGs for Development',
       og_description:
         'Transform SVG files into React components, CSS URIs, or masks with one click. Supports custom dimensions and color theming.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
+  [`svg-viewer`]: {
+    hero_section: {
+      title: 'SVG Viewer',
+      description:
+        'Paste or upload SVG markup and preview it instantly. Inspect basic SVG attributes and copy or download the sanitized output.',
+    },
+    development_tools_list: [
+      { tool: 'SVG to React/CSS Utility', url: PATHS.SVG_CONVERTER },
+      { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
+      { tool: 'HTML Viewer', url: PATHS.HTML_VIEWER },
+      { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is the SVG Viewer tool?',
+      about_description: [
+        {
+          description:
+            'SVG Viewer is a free online tool on BetterBugs.io that lets you preview SVG images from raw markup or an uploaded .svg file—without needing design software.',
+        },
+        {
+          description:
+            'It also helps you quickly inspect common attributes such as "width", "height", and "viewBox", and provides a sanitized SVG output for safer sharing and testing.',
+        },
+      ],
+    },
+    development_tools_user_agent_info: {
+      info_title: 'Is SVG safe to paste into a browser?',
+      intro_text:
+        'SVG is an XML-based image format, but it can also contain active content. When you paste an SVG from an unknown source, it may include scripts, event handlers, or embedded HTML.',
+      example_string:
+        '<svg xmlns="http://www.w3.org/2000/svg"><script>alert("XSS")</script><circle cx="8" cy="8" r="8"/></svg>',
+      example_string_description:
+        'If you preview untrusted SVGs, always treat them like HTML: sanitize before rendering. This SVG Viewer removes common unsafe elements before previewing.',
+      info_items: [
+        {
+          part: 'Scripts:',
+          description: 'Script tags can run code in some contexts and should be removed.',
+        },
+        {
+          part: 'Event handlers:',
+          description: 'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+        },
+        {
+          part: 'foreignObject:',
+          description:
+            'foreignObject can embed HTML inside SVG, which increases XSS risk when rendering untrusted content.',
+        },
+      ],
+    },
+    development_tools_what: {
+      about_title: 'What does the SVG Viewer do?',
+      what_description: [
+        {
+          descriptions:
+            'The SVG Viewer lets you paste SVG markup or upload an SVG file and instantly see a live preview in your browser.',
+        },
+        {
+          descriptions:
+            'It detects and displays common SVG attributes like width, height, and viewBox to help you troubleshoot sizing, alignment, and cropping issues.',
+        },
+        {
+          descriptions:
+            'For safer previews, the tool sanitizes the SVG before rendering by removing scripts and foreignObject content and stripping inline event handlers.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use the SVG Viewer?',
+      guide_description: 'Follow these steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Paste or upload:',
+          step_description:
+            'Paste SVG markup into the editor or upload an .svg file to load its content.',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Preview:',
+          step_description:
+            'See the rendered SVG immediately in the preview panel (scripts and foreignObject are removed).',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Inspect attributes:',
+          step_description:
+            'Copy basic info such as width, height, and viewBox to debug scaling issues.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy or download:',
+          step_description:
+            'Copy the sanitized SVG markup or download it as a .svg file.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common use cases for SVG Viewer',
+      how_use_description: 'Popular reasons to use this tool:',
+      point: [
+        {
+          title: 'Debugging scaling and alignment',
+          description:
+            'Quickly check viewBox/size attributes when an SVG looks stretched, clipped, or misaligned in a UI.',
+        },
+        {
+          title: 'Previewing icons from tickets/PRs',
+          description:
+            'Paste SVG markup shared in chats or issues to confirm it renders correctly before merging.',
+        },
+        {
+          title: 'Sanitizing for sharing',
+          description:
+            'Remove scripts and foreignObject content from untrusted SVGs before sharing them with teammates.',
+        },
+        {
+          title: 'Asset handoff',
+          description:
+            'Download a cleaned SVG file after minor tweaks or after confirming the exported asset looks right.',
+        },
+      ],
+    },
+    development_tools_Comparison: {
+      title: 'SVG Viewer vs SVG Converter: which one should you use?',
+      description: [
+        {
+          desc: 'Use SVG Viewer when you want to preview SVG markup, inspect basic attributes, and verify how an icon renders.',
+        },
+        {
+          desc: 'Use SVG to React/CSS Utility when you want code output such as React components, CSS Data URIs, or CSS masks.',
+        },
+      ],
+    },
+    development_tool_example: {
+      example_title: 'SVG Viewer example',
+      example_description:
+        'Here is a simple SVG you can paste into the tool to preview. It includes a viewBox so it scales correctly.',
+      example_input: {
+        title: 'Example SVG markup',
+        json_data:
+          '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">\\n  <rect x="10" y="10" width="100" height="100" rx="18" fill="#7c3aed"/>\\n  <path d="M35 70c8 16 42 16 50 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>\\n  <circle cx="45" cy="50" r="6" fill="white"/>\\n  <circle cx="75" cy="50" r="6" fill="white"/>\\n</svg>',
+      },
+      example_outputs: {
+        intro: 'After pasting, you can copy the detected attributes and the sanitized SVG output.',
+        outputs: [
+          {
+            mode: 'Detected attributes',
+            title: 'What you should see',
+            content:
+              '{\\n  "width": "120",\\n  "height": "120",\\n  "viewBox": "0 0 120 120"\\n}',
+          },
+          {
+            mode: 'Sanitized SVG (copy)',
+            title: 'What the tool provides',
+            content:
+              'A cleaned SVG string suitable for previewing and sharing (scripts/foreignObject removed, inline on* handlers stripped).',
+          },
+        ],
+      },
+    },
+    meta_data: {
+      meta_title: 'SVG Viewer Online – Preview & Inspect SVG Markup',
+      meta_description:
+        'Preview SVG markup instantly. Upload or paste SVG, inspect width/height/viewBox, copy sanitized SVG, and download .svg files.',
+      og_title: 'SVG Viewer – Free Online Tool',
+      og_description:
+        'Paste or upload SVG markup to preview it safely, inspect attributes, and copy/download the sanitized SVG output.',
+      og_image: '/images/og-images/Cover.png',
+    },
+  },
+  [`har-file-viewer`]: {
+    hero_section: {
+      title: 'HAR File Viewer',
+      description:
+        'Upload a HAR (HTTP Archive) file and inspect network requests, responses, headers, payloads, and timings in a clean viewer with search, type filters, and an inline waterfall timeline.',
+    },
+    development_tools_list: [
+      { tool: 'URL Parser & Query String Editor', url: PATHS.URL_PARSER },
+      { tool: 'JSON Prettifier', url: PATHS.JSON_PRETTIFIER },
+      { tool: 'HTML Viewer', url: PATHS.HTML_VIEWER },
+      { tool: 'Curl to Code Converter', url: PATHS.CURL_TO_CODE_CONVERTER },
+    ],
+    development_tools_about_details: {
+      about_title: 'What is a HAR File Viewer?',
+      about_description: [
+        {
+          description:
+            'A HAR (HTTP Archive) file is a JSON log exported from browser DevTools that contains every network request made during a browsing session.',
+        },
+        {
+          description:
+            'This HAR File Viewer helps you debug slow page loads, failed requests, redirects, and API errors by letting you search and inspect entries (URLs, status codes, headers, request payloads, response bodies, and timing breakdowns).',
+        },
+      ],
+    },
+    development_tools_user_agent_info: {
+      info_title: 'Privacy & security notes for HAR files',
+      intro_text:
+        'HAR files can contain sensitive data (cookies, authorization headers, query params, and request/response bodies). Treat a HAR like a password: share only with trusted people and redact secrets before uploading to any third‑party service.',
+      example_string:
+        'Authorization: Bearer <token>\\nCookie: session=<id>\\nPOST /login { "email": "user@company.com", "password": "••••••" }',
+      example_string_description:
+        'This viewer runs locally in your browser and does not upload your HAR to a server. Still, consider removing tokens and personal data before sharing the file externally.',
+      info_items: [
+        {
+          part: 'May include secrets:',
+          description:
+            'Cookies, API keys, bearer tokens, and personal data can appear in headers, URLs, and bodies.',
+        },
+        {
+          part: 'Redact before sharing:',
+          description:
+            'Replace tokens and credentials with placeholders before attaching HAR files to tickets.',
+        },
+        {
+          part: 'Local processing:',
+          description:
+            'Your file is parsed and displayed in the browser; the tool does not send it to an external API.',
+        },
+      ],
+    },
+    development_tools_what: {
+      about_title: 'What can you do with this HAR viewer?',
+      what_description: [
+        {
+          descriptions:
+            'Upload a .har or .json file and instantly browse the captured requests in a searchable list.',
+        },
+        {
+          descriptions:
+            'Use quick type filters like "XHR", "JS", "CSS", "Img", "Media", and "Errors" to narrow down what you’re investigating.',
+        },
+        {
+          descriptions:
+            'Click any row to expand details directly below it, including headers, response content, and a timing breakdown.',
+        },
+        {
+          descriptions:
+            'Use the waterfall timeline to visually compare which requests are slow and which stage (DNS/connect/wait/download) is taking the time.',
+        },
+      ],
+    },
+    development_tools_steps_guide: {
+      guide_title: 'How to use the HAR File Viewer',
+      guide_description: 'Simple steps:',
+      steps: [
+        {
+          step_key: 'Step 1:',
+          step_title: 'Export a HAR file:',
+          step_description:
+            'Open browser DevTools → Network tab → reproduce the issue → export/save HAR (keep “Preserve log” enabled if needed).',
+        },
+        {
+          step_key: 'Step 2:',
+          step_title: 'Upload or drop the file:',
+          step_description:
+            'Drag and drop your .har/.json file into the viewer (or use Upload).',
+        },
+        {
+          step_key: 'Step 3:',
+          step_title: 'Search & filter:',
+          step_description:
+            'Use the search box and type chips (XHR/JS/CSS/Img/Media/Errors) to narrow down to a specific request.',
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Inspect details:',
+          step_description:
+            'Click a request row to expand its details below and review response headers/content and timing breakdown.',
+        },
+      ],
+    },
+    development_tools_how_use: {
+      how_use_title: 'Common use cases for HAR files',
+      how_use_description: 'Teams use HAR files for:',
+      point: [
+        {
+          title: 'Debugging failed API requests',
+          description:
+            'Find 4xx/5xx responses quickly and inspect headers and response bodies for error messages.',
+        },
+        {
+          title: 'Performance analysis',
+          description:
+            'Compare request durations, spot slow endpoints, and review timing breakdowns to identify bottlenecks.',
+        },
+        {
+          title: 'Redirect and caching issues',
+          description:
+            'Track 3xx chains and review cache-related headers to diagnose unexpected behavior.',
+        },
+        {
+          title: 'Sharing reproducible evidence',
+          description:
+            'Attach a HAR to tickets so engineers can inspect the exact network activity behind a bug.',
+        },
+      ],
+    },
+    development_tools_Comparison: {
+      title: 'HAR File Viewer vs DevTools Network tab',
+      description: [
+        {
+          desc: 'Use DevTools Network when you can reproduce the issue live and want real-time throttling, replay, and debugging.',
+        },
+        {
+          desc: 'Use a HAR viewer when you’re analyzing a captured session from a teammate/customer and need to search, filter, and share findings quickly.',
+        },
+      ],
+    },
+    development_tool_example: {
+      example_title: 'Example: what to look for in a HAR',
+      example_description:
+        'After uploading, use the Errors filter to find failing requests and expand one row to inspect details.',
+      example_outputs: {
+        intro: 'Typical workflow:',
+        outputs: [
+          {
+            mode: 'Filter',
+            title: 'Show errors only',
+            content: 'Click the "Errors" chip and search for your API host or endpoint path.',
+          },
+          {
+            mode: 'Inspect',
+            title: 'Open the failing request',
+            content:
+              'Expand the row and check response headers/content, then review request headers to confirm auth/cookies were sent.',
+          },
+          {
+            mode: 'Timings',
+            title: 'Review performance',
+            content:
+              'Use the waterfall bar and timing breakdown to identify whether the time is spent on DNS/connect/wait/download.',
+          },
+        ],
+      },
+    },
+    meta_data: {
+      meta_title: 'HAR File Viewer Online – Analyze HTTP Archive Files',
+      meta_description:
+        'Upload and analyze HAR files online. Inspect requests, responses, headers, payloads, status codes, redirects, and timings to debug network issues faster.',
+      og_title: 'HAR File Viewer – Free Online Tool',
+      og_description:
+        'View and analyze HAR (HTTP Archive) files. Search entries, inspect headers/payloads/responses, and review timings for performance debugging.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -18152,7 +18946,8 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       ],
     },
     meta_data: {
-      meta_title: 'cURL to Code Converter — JavaScript, Python, Go | BetterBugs.io',
+      meta_title:
+        'cURL to Code Converter — JavaScript, Python, Go | BetterBugs.io',
       meta_description:
         'Convert cURL commands to JavaScript Fetch, Axios, Python Requests, Go, or Node.js code instantly. Free online tool on BetterBugs.io.',
       og_title: 'cURL to Code Converter — BetterBugs.io',
@@ -18165,83 +18960,172 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
     hero_section: {
       title: 'Unix Timestamp Converter',
       description:
-        'The Unix Timestamp Converter on BetterBugs.io is a free tool to convert Unix timestamps to human-readable dates and vice versa.',
+        'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
     },
     development_tools_list: [
       { tool: 'Date Generator', url: PATHS.RANDOM_DATE_GENERATOR },
       { tool: 'Time Generator', url: PATHS.RANDOM_CLOCK_TIME_GENERATOR },
+      { tool: 'Code Compare', url: PATHS.CODE_COMPARE_TOOL },
+      { tool: 'JSON Validator', url: PATHS.JSON_VALIDATOR },
+      { tool: 'URL Parser', url: PATHS.URL_PARSER },
     ],
     development_tools_about_details: {
-      about_title: 'What is the Unix Timestamp Converter?',
+      about_title: 'What is the Unix Timestamp Converter Online Tool?',
       about_description: [
         {
           description:
-            'The Unix Timestamp Converter allows you to instantly convert Unix timestamps (seconds or milliseconds) to human-readable dates, or dates to timestamps.',
+            'The Unix Timestamp Converter is a lightweight and snappy dev utility tool that enables you to validate and convert epoch time or human-readable dates. You can use the tool to ensure date-time accuracy across different formats or to debug time-based logic in your apps.',
         },
         {
           description:
-            'This tool is essential for developers debugging logs, database entries, or working with time-series data.',
+            'The tool also comes with flexible conversion options:',
+        },
+        {
+          list: [
+            {
+              title: 'Switch to Milliseconds/Seconds: ',
+              description: 'Toggles the input format between seconds and milliseconds.',
+            },
+            {
+              title: 'Now: ',
+              description: 'Instantly fetches and converts the current real-time timestamp.',
+            },
+            {
+              title: 'Local & UTC Support: ',
+              description: 'Displays converted time in both your local timezone and Coordinated Universal Time (UTC).',
+            },
+          ],
+        },
+        {
+          description:
+            'For advanced documentation or data storage purposes, you can also get the ISO 8601 format and the Relative Time (e.g., "a few seconds ago") for quick context.',
+        },
+        {
+          description:
+            'The Unix Timestamp Converter is completely free-to-use and ad-free on BetterBugs.io website. You can use it for various purposes in software such as database management, log analysis, API testing, and similar other purposes.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'Step-by-Step Guide',
-      guide_description: 'Using the converter is simple:',
+      guide_title: 'How to use the tool',
+      guide_description: 'You can use the tool for:',
       steps: [
         {
+          steps_points: [
+            {
+              steps_points_title: 'Unix to Human-Readable Conversion',
+            },
+            {
+              steps_points_title: 'Date to Unix Timestamp Conversion: ',
+              steps_points_description:
+                'To get the epoch value for a specific date',
+            },
+          ],
+        },
+        {
+          step_title: 'Steps for Timestamp Conversion',
+        },
+        {
           step_key: 'Step 1:',
-          step_title: 'Enter Timestamp or Select Date:',
+          step_title: 'Enter Time Data',
           step_description:
-            'Input a Unix timestamp in the text field, or pick a date and time from the calendar.',
+            'Add a Unix timestamp into the Unix Timestamp box. Or, you can select a specific date and time using the calendar picker in the Date & Time (Local). box.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Select Unit (Optional):',
+          step_title: 'Select Unit',
           step_description:
-            'Toggle between Seconds and Milliseconds if needed.',
+            'Use the toggle button at the top to choose between Switch to Milliseconds or Switch to Seconds based on your data source.',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'View Results:',
+          step_title: 'Check results in the output boxes',
           step_description:
-            'See the converted Local Time, UTC Time, ISO 8601 string, and relative time instantly.',
+            'Once you enter the data, the tool automatically shows results for the:',
+          steps_points: [
+            {
+              steps_points_title: 'LOCAL TIME',
+              steps_points_description:
+                'Your local date and time.',
+            },
+            {
+              steps_points_title: 'UTC TIME',
+              steps_points_description:
+                'The equivalent time in UTC.',
+            },
+            {
+              steps_points_title: 'ISO 8601',
+              steps_points_description:
+                'The equivalent time in UTC.',
+            },
+            {
+              steps_points_title: 'RELATIVE TIME',
+              steps_points_description:
+                'How long ago (or in the future) the timestamp occurred.',
+            }]
+        },
+        {
+          step_key: 'Step 4:',
+          step_title: 'Copy data',
+          step_description:
+            'Use the blue Copy icon next to any result box to instantly copy the value to your clipboard. To clear all entries and start a new conversion, use the “Clear” button.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'Common Use Cases:',
+      how_use_title: 'What are the use cases for the tool?',
       how_use_description:
-        'The Unix Timestamp Converter is useful for:',
+        'You can use the Unix Timestamp Converter tool for several purposes in software, such as:',
       point: [
-        {
-          title: 'Debugging Logs',
-          description:
-            'Convert timestamps from server logs to readable dates to understand when events occurred.',
-        },
         {
           title: 'Database Management',
           description:
-            'Verify and interpret timestamp columns in databases.',
+            'Convert epoch integers stored in databases like MySQL or PostgreSQL into readable dates to verify record accuracy.',
         },
         {
-          title: 'API Development',
+          title: 'API Debugging',
           description:
-            'Validate timestamp formats exchanged between services.',
+            'Validate the created_at or updated_at timestamps sent in JSON payloads to ensure they match expected event times.',
         },
         {
-          title: 'Time Calculation',
+          title: 'Log Analysis',
           description:
-            'Quickly check relative times (e.g., "how long ago was this timestamp?").',
+            'Quickly interpret timestamps in server or application logs to pinpoint the exact moment an error or event occurred.',
+        },
+        {
+          title: 'Authentication Token Inspection',
+          description:
+            'Check the expiration time (exp) or issued-at time (iat) in decoded JSON Web Tokens (JWT).',
+        },
+        {
+          title: 'Scheduled Task Testing',
+          description:
+            'Verify that cron jobs or scheduled events are set to trigger at the correct Unix epoch value.',
+        },
+        {
+          title: 'Frontend Development',
+          description:
+            'Ensure that date-formatting libraries (like Moment.js or Day.js) are correctly rendering the raw timestamp data received from the backend.',
+        },
+        {
+          title: 'Data Migration',
+          description:
+            'Validate time-based data integrity when moving information between systems with different default time formats.',
+        },
+        {
+          title: 'Cache Expiry Verification',
+          description:
+            'Check "Expires" headers or TTL (Time To Live) values to manage web performance and data freshness.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'Unix Timestamp Converter - Developer Utility',
+      meta_title: 'Unix Timestamp Converter - Developer Utility Tools',
       meta_description:
-        'Free online Unix Timestamp Converter. Convert between Epoch time and human-readable dates easily. Supports seconds and milliseconds.',
-      og_title: 'Unix Timestamp Converter - Developer Utility',
+        'Use the Unix Timestamp Converter online free tool on BetterBugs.io to instantly convert Unix timestamps to human-readable dates and vice versa.',
+      og_title: 'Unix Timestamp Converter - Developer Utility Tools',
       og_description:
-        'Convert between Epoch time and human-readable dates instantly. Supports seconds and milliseconds.',
+        'This post describes usage steps and the use cases of the Unix Timestamp Converter free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
