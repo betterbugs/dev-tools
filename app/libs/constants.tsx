@@ -977,7 +977,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/javascript-regex-tester',
       title: 'JavaScript Regex Tester',
       description:
-        'Test JavaScript regular expressions with flags, matches, and replacements.',
+        'The JavaScript Regex Tester is a free dev utility tool on BetterBugs.io that enables you to instantly test and debug your regular expressions (REGEX). It comes with a fully-fledged environment to validate REGEX patterns against test strings, regex flags, and string replacements.',
     },
   ],
   Category92: [
@@ -1392,14 +1392,6 @@ export const developmentToolsCategoryContent: any = {
       description: 'Unescape HTML.',
     },
   ],
-  Category146: [
-    {
-      url: '/javascript-regex-tester',
-      title: 'JavaScript Regex Tester',
-      description:
-        'Test and validate JavaScript regular expressions with real-time results and match highlighting.',
-    },
-  ],
   Category147: [
     {
       url: '/strip-html',
@@ -1626,12 +1618,12 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
     },
-    // {
-    //   url: '/svg-viewer',
-    //   title: 'SVG Viewer',
-    //   description:
-    //     'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
-    // },
+    {
+      url: '/svg-viewer',
+      title: 'SVG Viewer',
+      description:
+        'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
+    },
   ],
   Category178: [
     {
@@ -1666,27 +1658,25 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
     },
-    // {
-    //   url: '/image-to-base64-converter',
-    //   title: 'Image to Base64 Converter',
-    //   description:
-    //     'Turn PNG, JPEG, GIF, WebP, or SVG files into a Data URI or raw Base64 string entirely in your browser — ideal for data URLs, emails, and API payloads.',
-    // },
-    // {
-    //   url: '/base64-to-image-converter',
-    //   title: 'Base64 to Image Converter',
-    //   description:
-    //     'Paste a Data URI or raw Base64 string and preview or download the decoded PNG, JPEG, WebP, GIF, or SVG — all processing happens locally in your browser.',
-    // },
+    {
+      url: '/image-to-base64-converter',
+      title: 'Image to Base64 Converter',
+      description:
+        'Turn PNG, JPEG, GIF, WebP, or SVG files into a Data URI or raw Base64 string entirely in your browser — ideal for data URLs, emails, and API payloads.',
+    },
+    {
+      url: '/base64-to-image-converter',
+      title: 'Base64 to Image Converter',
+      description:
+        'Paste a Data URI or raw Base64 string and preview or download the decoded PNG, JPEG, WebP, GIF, or SVG — all processing happens locally in your browser.',
+    },
+    {
+      url: '/har-file-viewer',
+      title: 'HAR File Viewer',
+      description:
+        'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
+    },
   ],
-  // Category181: [
-  //   {
-  //     url: '/har-file-viewer',
-  //     title: 'HAR File Viewer',
-  //     description:
-  //       'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
-  //   },
-  // ],
 };
 
 export const PATHS = {
