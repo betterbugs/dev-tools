@@ -145,6 +145,8 @@ import RgbToHexConverter from '../components/developmentToolsComponent/rgbToHexC
 import Rot13EncoderDecoderComponent from '../components/developmentToolsComponent/rot13EncoderDecoderComponent';
 import RotateImageTool from '../components/developmentToolsComponent/rotateImageTool';
 import ImageResizer from '../components/developmentToolsComponent/imageResizer';
+import ImageToBase64Converter from '../components/developmentToolsComponent/imageToBase64Converter';
+import Base64ToImageConverter from '../components/developmentToolsComponent/base64ToImageConverter';
 import RotationCalculatorComponent from '../components/developmentToolsComponent/rotationCalculatorComponent';
 import ScssToCssConverter from '../components/developmentToolsComponent/scssToCssConverter';
 import ShuffleLetters from '../components/developmentToolsComponent/shuffleLetters';
@@ -155,6 +157,7 @@ import SqlMinify from '../components/developmentToolsComponent/sqlMinify';
 import SqlToCsvConverter from '../components/developmentToolsComponent/sqlToCsvConverter';
 import SqlToJson from '../components/developmentToolsComponent/sqlToJson';
 import SvgConverter from '../components/developmentToolsComponent/svgConverter';
+import SvgViewer from '../components/developmentToolsComponent/svgViewer';
 import StringDiffrenceChecker from '../components/developmentToolsComponent/stringDiffrenceChecker';
 import StripHTML from '../components/developmentToolsComponent/stripHTML';
 import TextCompare from '../components/developmentToolsComponent/textCompare';
@@ -192,6 +195,7 @@ import CurlToCodeConverter from '../components/developmentToolsComponent/curlToC
 import YAMLFormatterAndBeautifier from '../components/developmentToolsComponent/yamlFormatterAndBeautifier';
 import EpochConverter from '../components/developmentToolsComponent/epochConverter';
 import TimeCalculator from '../components/developmentToolsComponent/timeCalculator';
+import HarFileViewer from '../components/developmentToolsComponent/harFileViewer';
 
 export const WEB_URL = 'https://www.betterbugs.io';
 
@@ -727,7 +731,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'Encode text or files to Base64.',
+      description:
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -973,7 +978,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/javascript-regex-tester',
       title: 'JavaScript Regex Tester',
       description:
-        'Test JavaScript regular expressions with flags, matches, and replacements.',
+        'The JavaScript Regex Tester is a free dev utility tool on BetterBugs.io that enables you to instantly test and debug your regular expressions (REGEX). It comes with a fully-fledged environment to validate REGEX patterns against test strings, regex flags, and string replacements.',
     },
   ],
   Category92: [
@@ -1002,9 +1007,9 @@ export const developmentToolsCategoryContent: any = {
   Category95: [
     {
       url: '/html-viewer',
-      title: 'HTML Viewer',
+      title: 'HTML Viewer Online',
       description:
-        'Preview HTML markup in a live viewer to see rendered output instantly.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
   ],
   Category96: [
@@ -1388,14 +1393,6 @@ export const developmentToolsCategoryContent: any = {
       description: 'Unescape HTML.',
     },
   ],
-  Category146: [
-    {
-      url: '/javascript-regex-tester',
-      title: 'JavaScript Regex Tester',
-      description:
-        'Test and validate JavaScript regular expressions with real-time results and match highlighting.',
-    },
-  ],
   Category147: [
     {
       url: '/strip-html',
@@ -1622,12 +1619,19 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
     },
+    {
+      url: '/svg-viewer',
+      title: 'SVG Viewer',
+      description:
+        'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
+    },
   ],
   Category178: [
     {
       url: '/unix-timestamp-converter',
       title: 'Unix Timestamp Converter',
-      description: 'Convert Unix timestamps to readable dates and vice versa.',
+      description:
+        'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
     },
     {
       url: '/time-calculator',
@@ -1655,6 +1659,24 @@ export const developmentToolsCategoryContent: any = {
       title: 'Image Resizer',
       description:
         'Image resizer is a free and open-source tool on BetterBugs.io that enables you to instantly adjust image dimensions, image quality, or compress image files locally in your browser.',
+    },
+    {
+      url: '/image-to-base64-converter',
+      title: 'Image to Base64 Converter',
+      description:
+        'Turn PNG, JPEG, GIF, WebP, or SVG files into a Data URI or raw Base64 string entirely in your browser — ideal for data URLs, emails, and API payloads.',
+    },
+    {
+      url: '/base64-to-image-converter',
+      title: 'Base64 to Image Converter',
+      description:
+        'Paste a Data URI or raw Base64 string and preview or download the decoded PNG, JPEG, WebP, GIF, or SVG — all processing happens locally in your browser.',
+    },
+    {
+      url: '/har-file-viewer',
+      title: 'HAR File Viewer',
+      description:
+        'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
     },
   ],
 };
@@ -1817,6 +1839,7 @@ export const PATHS = {
   JAVASCRIPT_REGEX_TESTER: '/javascript-regex-tester',
   STRIP_HTML: '/strip-html',
   SVG_CONVERTER: '/svg-converter',
+  SVG_VIEWER: '/svg-viewer',
   WHAT_IS_MY_LOCAL_IP_ADDRESS: '/what-is-my-local-ip-address',
   JAVASCRIPT_TESTER: '/javascript-tester',
   WHAT_VERSION_OF_JAVA: '/what-version-of-java-do-i-have',
@@ -1842,7 +1865,10 @@ export const PATHS = {
   CURL_TO_CODE_CONVERTER: '/curl-to-code-converter',
   UNIX_TIMESTAMP_CONVERTER: '/unix-timestamp-converter',
   IMAGE_RESIZER: '/image-resizer',
+  IMAGE_TO_BASE64_CONVERTER: '/image-to-base64-converter',
+  BASE64_TO_IMAGE_CONVERTER: '/base64-to-image-converter',
   TIME_CALCULATOR: '/time-calculator',
+  HAR_FILE_VIEWER: '/har-file-viewer',
 };
 
 export const developmentToolsRoutes = [
@@ -2104,6 +2130,14 @@ export const developmentToolsRoutes = [
   {
     path: PATHS.IMAGE_RESIZER,
     component: <ImageResizer />,
+  },
+  {
+    path: PATHS.IMAGE_TO_BASE64_CONVERTER,
+    component: <ImageToBase64Converter />,
+  },
+  {
+    path: PATHS.BASE64_TO_IMAGE_CONVERTER,
+    component: <Base64ToImageConverter />,
   },
   {
     path: PATHS.CSV_TO_EXCEL_FILE_CONVERTOR,
@@ -2559,6 +2593,10 @@ export const developmentToolsRoutes = [
     component: <SvgConverter />,
   },
   {
+    path: PATHS.SVG_VIEWER,
+    component: <SvgViewer />,
+  },
+  {
     path: PATHS.HTML_TO_JADE,
     component: <HtmlToJade />,
   },
@@ -2571,6 +2609,7 @@ export const developmentToolsRoutes = [
     component: <EpochConverter />,
   },
   { path: PATHS.TIME_CALCULATOR, component: <TimeCalculator /> },
+  { path: PATHS.HAR_FILE_VIEWER, component: <HarFileViewer /> },
 ];
 
 // lorem ipsum text

@@ -1,11 +1,11 @@
 const path = require('path');
-const runtimeCaching = require('next-pwa/cache');
 
 const isProduction = process.env.NEXT_ENV === 'PRODUCTION';
 const basePath = isProduction ? '/development-tools' : '';
 const assetPrefix = isProduction ? '/development-tools' : '';
 
 let nextConfig = {
+  output: 'export',
   basePath: basePath,
   assetPrefix: assetPrefix,
   reactStrictMode: true,
@@ -17,17 +17,11 @@ let nextConfig = {
   },
   poweredByHeader: false,
   images: {
+    unoptimized: true,
     domains: ['betterbug-storage.s3.amazonaws.com'],
   },
 };
 
-if (process.env.NEXT_ENV !== 'local') {
-  const withPWA = require('next-pwa')({
-    dest: 'public',
-    runtimeCaching,
-  });
-
-  module.exports = withPWA(nextConfig);
-} else {
-  module.exports = nextConfig;
-}
+// next-pwa is not compatible with static export or Cloudflare Pages
+// Keep it only for local development if needed in future
+module.exports = nextConfig;
