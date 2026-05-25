@@ -36,6 +36,7 @@
 With BetterBugs, debugging stops being guesswork and becomes a shared, reliable source of truth.
 
 **Key Features:**
+
 - Real session context from production environments
 - One-click bug capture with automatic context gathering
 - Reproducible bug timelines with clear event sequences
@@ -92,12 +93,14 @@ BetterBugs Development Tools solves this by providing:
 ## Available Tools
 
 ### Text Tools
+
 - Text case converters (uppercase, lowercase, title case, sentence case)
 - Text counters (word, character, sentence, line)
 - Text formatters and manipulators
 - Lorem Ipsum generator
 
 ### Code Tools
+
 - JavaScript minifier and obfuscator
 - JSON formatter and minifier
 - HTML to Markdown converter
@@ -106,6 +109,7 @@ BetterBugs Development Tools solves this by providing:
 - CSS formatters and converters
 
 ### Data Tools
+
 - JSON validator and formatter
 - CSV converters and tools
 - QR Code generator
@@ -114,6 +118,7 @@ BetterBugs Development Tools solves this by providing:
 - URL encoder/decoder
 
 ### Color Tools
+
 - Color code converters (HEX, RGB, CMYK)
 - Color picker and inverter
 - Random color generator
@@ -132,17 +137,20 @@ Browse all available tools at [BetterBugs Development Tools](https://www.betterb
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/betterbugs/dev-tools.git
    cd dev-tools
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -190,18 +198,19 @@ dev-tools/
 4. The tool automatically appears on the homepage
 
 Example:
+
 ```typescript
 "use client";
 import React, { useState } from "react";
 
 const MyNewTool = () => {
   const [input, setInput] = useState("");
-  
+
   return (
     <div>
-      <input 
-        value={input} 
-        onChange={(e) => setInput(e.target.value)} 
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
       />
       {/* Your tool logic */}
     </div>
@@ -216,6 +225,7 @@ export default MyNewTool;
 We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
 
 Key points:
+
 - Follow [Conventional Commits](https://www.conventionalcommits.org)
 - Target the `develop` branch for feature PRs
 - See our [Pull Request Template](.github/PULL_REQUEST_TEMPLATE.md) for guidance
@@ -232,6 +242,7 @@ Found a security vulnerability? Please email us at dev@betterbugs.io instead of 
 ## Reporting Issues
 
 Found a bug? Open an issue on [GitHub Issues](https://github.com/betterbugs/dev-tools/issues) with:
+
 - Clear description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
@@ -267,4 +278,4 @@ Built with the following amazing technologies:
 
 ---
 
-Made with ❤️ by the [BetterBugs](https://betterbugs.io) team. [Open source](https://github.com/betterbugs/dev-tools) and always free.
+Made with ❤️ by the [BetterBugs](https://betterbugs.io) team. [Open source](https://github.com/betterbugs/dev-tools) and always free
