@@ -97,7 +97,7 @@ const EpochConverter = () => {
     <div className={`${DevelopmentToolsStyles.developmentToolsContainer} w-full bg-[#FFFFFF1A] rounded-2xl shadow-lg p-8 md:mt-8 mt-4`}>
       <ConfigProvider
         theme={{
-          algorithm: theme.darkAlgorithm,
+          algorithm: [theme.darkAlgorithm],
           components: {
             Input: {
               colorBgContainer: '#000',

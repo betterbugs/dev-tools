@@ -22,7 +22,7 @@ const RandomDateGenerator = () => {
 
   const startInputRef = useRef<HTMLInputElement | null>(null);
   const endInputRef = useRef<HTMLInputElement | null>(null);
-  const openPicker = (ref: React.RefObject<HTMLInputElement>) => {
+  const openPicker = (ref: React.RefObject<HTMLInputElement | null>) => {
     const el = ref.current;
     if (!el) return;
     // @ts-ignore - showPicker is supported in modern Chromium

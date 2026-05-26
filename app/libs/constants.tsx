@@ -731,7 +731,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
+      description:
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -977,7 +978,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/javascript-regex-tester',
       title: 'JavaScript Regex Tester',
       description:
-        'Test JavaScript regular expressions with flags, matches, and replacements.',
+        'The JavaScript Regex Tester is a free dev utility tool on BetterBugs.io that enables you to instantly test and debug your regular expressions (REGEX). It comes with a fully-fledged environment to validate REGEX patterns against test strings, regex flags, and string replacements.',
     },
   ],
   Category92: [
@@ -1008,7 +1009,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/html-viewer',
       title: 'HTML Viewer Online',
       description:
-        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
   ],
   Category96: [
@@ -1392,14 +1393,6 @@ export const developmentToolsCategoryContent: any = {
       description: 'Unescape HTML.',
     },
   ],
-  Category146: [
-    {
-      url: '/javascript-regex-tester',
-      title: 'JavaScript Regex Tester',
-      description:
-        'Test and validate JavaScript regular expressions with real-time results and match highlighting.',
-    },
-  ],
   Category147: [
     {
       url: '/strip-html',
@@ -1637,7 +1630,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/unix-timestamp-converter',
       title: 'Unix Timestamp Converter',
-      description: 'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
+      description:
+        'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
     },
     {
       url: '/time-calculator',
@@ -1678,15 +1672,13 @@ export const developmentToolsCategoryContent: any = {
     //   description:
     //     'Paste a Data URI or raw Base64 string and preview or download the decoded PNG, JPEG, WebP, GIF, or SVG — all processing happens locally in your browser.',
     // },
+    // {
+    //   url: '/har-file-viewer',
+    //   title: 'HAR File Viewer',
+    //   description:
+    //     'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
+    // },
   ],
-  // Category181: [
-  //   {
-  //     url: '/har-file-viewer',
-  //     title: 'HAR File Viewer',
-  //     description:
-  //       'Upload and inspect HAR (HTTP Archive) files to analyze network requests, responses, headers, payloads, and timings.',
-  //   },
-  // ],
 };
 
 export const PATHS = {
