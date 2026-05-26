@@ -1,5 +1,5 @@
 'use client';
-import { Button, Collapse, Drawer, Dropdown, Menu } from 'antd';
+import { Button, Collapse, Drawer, Dropdown } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -386,12 +386,7 @@ const HeaderComponent = () => {
                     (menu.label === 'Resources' && menu?.dropdown) ? (
                       <Dropdown
                         placement="bottom"
-                        menu={{
-                          items: (menu?.dropdown ?? []).map((item, index) => ({
-                            key: index,
-                            label: <p>{item?.label}</p>,
-                          })),
-                        }}
+                        popupRender={() => menu?.dropdown?.[0]?.label ?? null}
                         trigger={['hover']}
                       >
                         <p
@@ -548,21 +543,20 @@ const HeaderComponent = () => {
                   </div>
                 </div>
                 <div className={`mt-5 ${hederStyles.collapse}`}>
-                  <Collapse accordion ghost>
-                    {responsiveContentHeader?.map((item: any, index) => (
-                      <Collapse.Panel
-                        className={hederStyles.accordion}
-                        header={
-                          <p className="text-white text-lg font-medium py-3">
-                            {item.header}
-                          </p>
-                        }
-                        key={index}
-                      >
-                        {item.content && <p>{item.content}</p>}
-                      </Collapse.Panel>
-                    ))}
-                  </Collapse>
+                  <Collapse
+                    accordion
+                    ghost
+                    items={responsiveContentHeader?.map((item: any, index: number) => ({
+                      key: index,
+                      className: hederStyles.accordion,
+                      label: (
+                        <p className="text-white text-lg font-medium py-3">
+                          {item.header}
+                        </p>
+                      ),
+                      children: item.content && <p>{item.content}</p>,
+                    }))}
+                  />
                   {responsiveHeader?.map((data: any, index: any) => (
                     <Link href={data.url} key={index}>
                       <p

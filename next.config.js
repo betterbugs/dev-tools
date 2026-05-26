@@ -18,7 +18,12 @@ let nextConfig = {
   poweredByHeader: false,
   images: {
     unoptimized: true,
-    domains: ['betterbug-storage.s3.amazonaws.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'betterbug-storage.s3.amazonaws.com',
+      },
+    ],
   },
 };
 

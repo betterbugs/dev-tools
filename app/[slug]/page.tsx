@@ -5,7 +5,8 @@ export async function generateStaticParams() {
   return Object.keys(DEVELOPMENTTOOLS).map((slug) => ({ slug }));
 }
 
-const Page = ({ params: { slug } }: { params: { slug: string } }) => {
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
   return <PageClient slug={slug} />;
 };
 
