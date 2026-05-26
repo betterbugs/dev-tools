@@ -7671,8 +7671,14 @@ family[1]: "Beth"`,
     },
     development_tools_list: [
       { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
-      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
-      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
+      {
+        tool: 'Base64 to Image Converter',
+        url: PATHS.BASE64_TO_IMAGE_CONVERTER,
+      },
+      {
+        tool: 'Image to Base64 Converter',
+        url: PATHS.IMAGE_TO_BASE64_CONVERTER,
+      },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
       { tool: 'JSON Prettify', url: PATHS.JSON_PRETTIFIER },
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
@@ -7856,8 +7862,14 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
     },
     development_tools_list: [
       { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
-      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
-      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
+      {
+        tool: 'Image to Base64 Converter',
+        url: PATHS.IMAGE_TO_BASE64_CONVERTER,
+      },
+      {
+        tool: 'Base64 to Image Converter',
+        url: PATHS.BASE64_TO_IMAGE_CONVERTER,
+      },
       { tool: 'Markdown To HTML', url: PATHS.MARKDOWN_TO_HTML },
       { tool: 'JSON Prettify', url: PATHS.JSON_PRETTIFIER },
       { tool: 'URL Encode', url: PATHS.URL_ENCODE },
@@ -7871,7 +7883,7 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
         },
         {
           description:
-            'You can load data by adding it manually into the input box, or by uploading a file directly from your system. It\'s a lightweight, completely free-to-use, and an open-source tool on BetterBugs.io; perfect for encoding data for API requests or basic data obfuscation. No installations, downloads, or code writing are required. Just input your data and get the encoded string right away.',
+            "You can load data by adding it manually into the input box, or by uploading a file directly from your system. It's a lightweight, completely free-to-use, and an open-source tool on BetterBugs.io; perfect for encoding data for API requests or basic data obfuscation. No installations, downloads, or code writing are required. Just input your data and get the encoded string right away.",
         },
         {
           description:
@@ -7883,18 +7895,22 @@ console.log(encoded);   // "SGVsbG8gV29ybGQh"`,
       guide_title: 'How to Use the Base64 Encoder Online Tool?',
       steps: [
         {
-          step_description: 'Using the Base64 encoder on BetterBugs.io is straightforward:',
+          step_description:
+            'Using the Base64 encoder on BetterBugs.io is straightforward:',
           steps_points: [
             {
-              steps_points_description: 'Add your text or JSON data to the input box.',
+              steps_points_description:
+                'Add your text or JSON data to the input box.',
             },
             {
-              steps_points_description: 'Upload a file using the upload button (located at the top right of the input box).',
+              steps_points_description:
+                'Upload a file using the upload button (located at the top right of the input box).',
             },
           ],
         },
         {
-          step_description: 'You can get the output instantly in the “Encoded output” box. You can use the “Copy” icon from the output box to use the resulting Base64 string.',
+          step_description:
+            'You can get the output instantly in the “Encoded output” box. You can use the “Copy” icon from the output box to use the resulting Base64 string.',
         },
       ],
     },
@@ -7952,13 +7968,13 @@ const base64Json = btoa(jsonString);
 console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bnRyeSI6IkphcGFuIn0="`,
           },
         ],
-        note:
-          'For encoding of UTF-8 text, a combination of TextEncoder and btoa logic works pretty well. However, for standard API payloads and quick conversions, you can consider using the built-in btoa method.',
+        note: 'For encoding of UTF-8 text, a combination of TextEncoder and btoa logic works pretty well. However, for standard API payloads and quick conversions, you can consider using the built-in btoa method.',
       },
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the Base64 Encoder tool?',
-      how_use_description: 'You can use the Base64 encoder tool for various purposes while developing applications, preparing API requests, or structuring web assets, such as:',
+      how_use_description:
+        'You can use the Base64 encoder tool for various purposes while developing applications, preparing API requests, or structuring web assets, such as:',
       point: [
         {
           title: 'Generating Basic Auth Headers:',
@@ -10798,7 +10814,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     hero_section: {
       title: 'HTML Viewer Online',
       description:
-        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
     development_tools_list: [
       { tool: 'HTML Validator', url: PATHS.HTML_VALIDATOR },
@@ -10813,11 +10829,11 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       about_description: [
         {
           description:
-            'The HTML viewer online tool enables you to instantly render code snippets to see how they will look and behave in a real browser environment. It\'s super helpful for developers, UI/UX designers, and students who need to quickly test small blocks of code without setting up a full development environment.',
+            "The HTML viewer online tool enables you to instantly render code snippets to see how they will look and behave in a real browser environment. It's super helpful for developers, UI/UX designers, and students who need to quickly test small blocks of code without setting up a full development environment.",
         },
         {
           description:
-            'You can add your code by typing directly, pasting text into the tabs, or uploading a raw file. It\'s perfect for debugging markups, checking layout and styles, and quickly testing snippets in a sandboxed iframe.',
+            "You can add your code by typing directly, pasting text into the tabs, or uploading a raw file. It's perfect for debugging markups, checking layout and styles, and quickly testing snippets in a sandboxed iframe.",
         },
         {
           description:
@@ -10855,7 +10871,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the HTML Viewer tool',
-      how_use_description: 'You can use the HTML viewer tool for various purposes while developing websites, debugging CSS, prototyping UI components, or teaching web fundamentals, such as:',
+      how_use_description:
+        'You can use the HTML viewer tool for various purposes while developing websites, debugging CSS, prototyping UI components, or teaching web fundamentals, such as:',
       point: [
         {
           title: 'Debugging markup:',
@@ -10902,7 +10919,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     meta_data: {
       meta_title: 'HTML Viewer | Live HTML Preview Online',
       meta_description:
-        'Use the HTML Viewer Online tool to render your HTML, CSS, and JS and preview without leaving the page. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "Use the HTML Viewer Online tool to render your HTML, CSS, and JS and preview without leaving the page. It's a free, open source, & ad-free tool on BetterBugs.io.",
       og_title: 'HTML Viewer | Live HTML Preview Online',
       og_description:
         'This post describes usage steps and the use cases of the HTML Viewer free online tool on BetterBugs.io.',
@@ -10912,16 +10929,23 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
 
   [`image-to-base64-converter`]: {
     hero_section: {
-      title: 'Image to Base64 Converter — Free Online PNG, JPEG & WebP to Data URI',
+      title:
+        'Image to Base64 Converter — Free Online PNG, JPEG & WebP to Data URI',
       description:
         'Use this free Image to Base64 converter on BetterBugs.io to turn PNG, JPEG, GIF, WebP, SVG, or BMP files into a Data URI or a raw Base64 string in seconds. Everything runs locally in your browser: your files are never uploaded to our servers, there are no ads, and you do not need an account.',
     },
     development_tools_list: [
-      { tool: 'Base64 to Image Converter', url: PATHS.BASE64_TO_IMAGE_CONVERTER },
+      {
+        tool: 'Base64 to Image Converter',
+        url: PATHS.BASE64_TO_IMAGE_CONVERTER,
+      },
       { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
       { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
       { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
-      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      {
+        tool: 'Placeholder Image Generator',
+        url: PATHS.PLACEHOLDER_IMAGE_GENERATOR,
+      },
       { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
     ],
     development_tools_about_details: {
@@ -11060,16 +11084,23 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
 
   [`base64-to-image-converter`]: {
     hero_section: {
-      title: 'Base64 to Image Converter — Decode Data URI & Base64 to PNG, JPEG, WebP Online',
+      title:
+        'Base64 to Image Converter — Decode Data URI & Base64 to PNG, JPEG, WebP Online',
       description:
         'Use this free Base64 to Image converter on BetterBugs.io to turn a Data URI or raw Base64 payload into a real image you can preview and download. It supports common types such as PNG, JPEG, WebP, GIF, SVG, BMP, and ICO: paste from APIs, DevTools, or a .txt export, pick MIME when needed, then save decoded-image with the correct extension. All decoding runs locally in your browser — no account, no upload, and no ads.',
     },
     development_tools_list: [
-      { tool: 'Image to Base64 Converter', url: PATHS.IMAGE_TO_BASE64_CONVERTER },
+      {
+        tool: 'Image to Base64 Converter',
+        url: PATHS.IMAGE_TO_BASE64_CONVERTER,
+      },
       { tool: 'Base64 Decoder', url: PATHS.BASE64_DECODER },
       { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
       { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
-      { tool: 'Placeholder Image Generator', url: PATHS.PLACEHOLDER_IMAGE_GENERATOR },
+      {
+        tool: 'Placeholder Image Generator',
+        url: PATHS.PLACEHOLDER_IMAGE_GENERATOR,
+      },
       { tool: 'QR Code Generator', url: PATHS.QR_CODE_GENERATOR },
     ],
     development_tools_about_details: {
@@ -16529,21 +16560,23 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: 'Regex Pattern Testing ',
-              steps_points_description: 'Check if your pattern matches specific strings.g',
+              steps_points_description:
+                'Check if your pattern matches specific strings.g',
             },
             {
               steps_points_title: 'String Replacement',
-              steps_points_description: 'Test and visualize how String.prototype.replace() will behave.',
+              steps_points_description:
+                'Test and visualize how String.prototype.replace() will behave.',
             },
             {
               steps_points_title: 'Debugging',
-              steps_points_description: 'Identify exactly which parts of your text are being captured by groups.',
+              steps_points_description:
+                'Identify exactly which parts of your text are being captured by groups.',
             },
           ],
         },
         {
-          step_description:
-            'Here’re the steps for using it:',
+          step_description: 'Here’re the steps for using it:',
         },
         {
           step_key: 'Step 1:',
@@ -16555,7 +16588,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
               steps_points_description: 'Select Flags (g, i, m, s, u, y)',
             },
             {
-              steps_points_description: 'Use the preset buttons (Email, URL, IPv4, Hex Color) to load standard patterns instantly.',
+              steps_points_description:
+                'Use the preset buttons (Email, URL, IPv4, Hex Color) to load standard patterns instantly.',
             },
           ],
         },
@@ -16568,20 +16602,22 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         {
           step_key: 'Step 3:',
           step_title: 'Execute Action',
-          step_description:
-            'Select your required operation using the buttons:',
+          step_description: 'Select your required operation using the buttons:',
           steps_points: [
             {
               steps_points_title: 'Test match',
-              steps_points_description: 'Identifies and highlights all matches in the text.',
+              steps_points_description:
+                'Identifies and highlights all matches in the text.',
             },
             {
               steps_points_title: 'Replace first',
-              steps_points_description: 'Replaces only the first occurrence of the match.',
+              steps_points_description:
+                'Replaces only the first occurrence of the match.',
             },
             {
               steps_points_title: 'Replace all',
-              steps_points_description: 'Replaces every instance found (requires the g flag).',
+              steps_points_description:
+                'Replaces every instance found (requires the g flag).',
             },
           ],
         },
@@ -16591,15 +16627,18 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: 'Matches Area',
-              steps_points_description: 'Displays the total number of matches, their index positions, and any captured groups.',
+              steps_points_description:
+                'Displays the total number of matches, their index positions, and any captured groups.',
             },
             {
               steps_points_title: 'Highlighted text',
-              steps_points_description: ' Provides a visual representation of exactly where the matches occur within your test string.',
+              steps_points_description:
+                ' Provides a visual representation of exactly where the matches occur within your test string.',
             },
             {
               steps_points_title: 'Replacement result',
-              steps_points_description: 'If using the replace function, this box shows the final output string after the regex operation.',
+              steps_points_description:
+                'If using the replace function, this box shows the final output string after the regex operation.',
             },
           ],
         },
@@ -16611,7 +16650,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     },
     development_tools_how_use: {
       how_use_title: 'What are the Use Cases for the Tool?',
-      how_use_description: 'You can use the JavaScript Regex Tester tool for several purposes in software development and testing, such as:',
+      how_use_description:
+        'You can use the JavaScript Regex Tester tool for several purposes in software development and testing, such as:',
       point: [
         {
           title: 'Form Validation Testing',
@@ -16867,11 +16907,13 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       info_items: [
         {
           part: 'Scripts:',
-          description: 'Script tags can run code in some contexts and should be removed.',
+          description:
+            'Script tags can run code in some contexts and should be removed.',
         },
         {
           part: 'Event handlers:',
-          description: 'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+          description:
+            'Attributes like onload/onclick can execute JavaScript and should be stripped.',
         },
         {
           part: 'foreignObject:',
@@ -16974,7 +17016,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">\\n  <rect x="10" y="10" width="100" height="100" rx="18" fill="#7c3aed"/>\\n  <path d="M35 70c8 16 42 16 50 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>\\n  <circle cx="45" cy="50" r="6" fill="white"/>\\n  <circle cx="75" cy="50" r="6" fill="white"/>\\n</svg>',
       },
       example_outputs: {
-        intro: 'After pasting, you can copy the detected attributes and the sanitized SVG output.',
+        intro:
+          'After pasting, you can copy the detected attributes and the sanitized SVG output.',
         outputs: [
           {
             mode: 'Detected attributes',
@@ -17150,7 +17193,8 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           {
             mode: 'Filter',
             title: 'Show errors only',
-            content: 'Click the "Errors" chip and search for your API host or endpoint path.',
+            content:
+              'Click the "Errors" chip and search for your API host or endpoint path.',
           },
           {
             mode: 'Inspect',
@@ -19120,22 +19164,24 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
             'The Unix Timestamp Converter is a lightweight and snappy dev utility tool that enables you to validate and convert epoch time or human-readable dates. You can use the tool to ensure date-time accuracy across different formats or to debug time-based logic in your apps.',
         },
         {
-          description:
-            'The tool also comes with flexible conversion options:',
+          description: 'The tool also comes with flexible conversion options:',
         },
         {
           list: [
             {
               title: 'Switch to Milliseconds/Seconds: ',
-              description: 'Toggles the input format between seconds and milliseconds.',
+              description:
+                'Toggles the input format between seconds and milliseconds.',
             },
             {
               title: 'Now: ',
-              description: 'Instantly fetches and converts the current real-time timestamp.',
+              description:
+                'Instantly fetches and converts the current real-time timestamp.',
             },
             {
               title: 'Local & UTC Support: ',
-              description: 'Displays converted time in both your local timezone and Coordinated Universal Time (UTC).',
+              description:
+                'Displays converted time in both your local timezone and Coordinated Universal Time (UTC).',
             },
           ],
         },
@@ -19188,24 +19234,22 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
           steps_points: [
             {
               steps_points_title: 'LOCAL TIME',
-              steps_points_description:
-                'Your local date and time.',
+              steps_points_description: 'Your local date and time.',
             },
             {
               steps_points_title: 'UTC TIME',
-              steps_points_description:
-                'The equivalent time in UTC.',
+              steps_points_description: 'The equivalent time in UTC.',
             },
             {
               steps_points_title: 'ISO 8601',
-              steps_points_description:
-                'The equivalent time in UTC.',
+              steps_points_description: 'The equivalent time in UTC.',
             },
             {
               steps_points_title: 'RELATIVE TIME',
               steps_points_description:
                 'How long ago (or in the future) the timestamp occurred.',
-            }]
+            },
+          ],
         },
         {
           step_key: 'Step 4:',
