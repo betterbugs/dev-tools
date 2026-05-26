@@ -278,4 +278,4 @@ Built with the following amazing technologies:
 
 ---
 
-Made with ❤️ by the [BetterBugs](https://betterbugs.io) team. [Open source](https://github.com/betterbugs/dev-tools) and always free.
+Made with ❤️ by the [BetterBugs](https://betterbugs.io) team. [Open source](https://github.com/betterbugs/dev-tools) and always free
