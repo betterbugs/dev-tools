@@ -30,7 +30,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && mkdir -p dist/development-tools && cp -r out/. dist/development-tools/",
     "start": "next start",
     "lint": "next lint",
     "deploy": "wrangler pages deploy out",
