@@ -1,3 +1,11 @@
+# [1.4.0-develop.10](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.9...v1.4.0-develop.10) (2026-05-22)
+
+
+### Features
+
+* add class-validator dependency and update page styles ([860e1f5](https://github.com/betterbugs/dev-tools/commit/860e1f55497c9ac86a70fadbc6725a5d07f3f26c))
+* add Image Resizer and Time Calculator components ([35c3e79](https://github.com/betterbugs/dev-tools/commit/35c3e7901069e60a62e44a9987298945f18f65cc))
+
 # [1.4.0-develop.9](https://github.com/betterbugs/dev-tools/compare/v1.4.0-develop.8...v1.4.0-develop.9) (2026-04-14)
 
 ### Features

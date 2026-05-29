@@ -1,30 +1,30 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
-import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // Import toast styles
-import JavaScriptObfuscator from "javascript-obfuscator";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Editor } from "@monaco-editor/react";
 
 const JsObfuscatorComponent = () => {
   const [inputCode, setInputCode] = useState("");
   const [outputCode, setOutputCode] = useState("");
 
-  const handleObfuscate = () => {
+  const handleObfuscate = async () => {
     if (!inputCode.trim()) {
       toast.error("Error: Cannot obfuscate an empty file!");
-      return; // Don't proceed with obfuscation if the code is empty
+      return;
     }
 
     try {
+      const { default: JavaScriptObfuscator } = await import("javascript-obfuscator");
       const obfuscatedCode = JavaScriptObfuscator.obfuscate(inputCode, {
         compact: true,
         controlFlowFlattening: true,
       }).getObfuscatedCode();
       setOutputCode(obfuscatedCode);
     } catch (error) {
-      setOutputCode(""); // Clear the output on error
-      toast.error(`Error obfuscating code: ${(error as Error).message}`); // Set the obfuscation error message
+      setOutputCode("");
+      toast.error(`Error obfuscating code: ${(error as Error).message}`);
     }
   };
 

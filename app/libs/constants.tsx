@@ -731,7 +731,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/base64-encoder',
       title: 'Base64 Encoder',
-      description: 'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
+      description:
+        'The Base64 encoder is a free-to-use online tool on BetterBugs.io that lets you instantly encode readable formats like plain text, JSON, HTML, or binary data into standardized Base64-encoded string.',
     },
   ],
   Category61: [
@@ -1008,7 +1009,7 @@ export const developmentToolsCategoryContent: any = {
       url: '/html-viewer',
       title: 'HTML Viewer Online',
       description:
-        'The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It\'s a free, open source, & ad-free tool on BetterBugs.io.',
+        "The HTML Viewer Online tool enables you to render HTML, CSS, and JS for a live preview without you leaving the webpage. It's a free, open source, & ad-free tool on BetterBugs.io.",
     },
   ],
   Category96: [
@@ -1629,7 +1630,8 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/unix-timestamp-converter',
       title: 'Unix Timestamp Converter',
-      description: 'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
+      description:
+        'Unix Timestamp Converter is a free and open-source dev utility tool on BetterBugs.io that enables you to instantly convert Unix timestamps to human-readable dates and vice versa. Use the tool to handle time data; works perfectly, whether you are working with seconds or milliseconds.',
     },
     {
       url: '/time-calculator',

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { developmentToolsCategoryContent } from '@/app/libs/constants';
 
+export const dynamic = 'force-static';
+
 export async function GET() {
   console.log(
     'developmentToolsCategoryContent',
