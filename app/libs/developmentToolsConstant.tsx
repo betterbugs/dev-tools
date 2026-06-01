@@ -15248,7 +15248,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
               steps_points_description:
                 'Upload the token file using the Upload button (located just above the input box)',
             },
-          ]
+          ],
         },
         {
           step_description:
@@ -16942,9 +16942,31 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
         },
         {
           description:
-            'No installations, downloads, or design software are required to use it. You can use it to quickly inspect common attributes such as "width", "height", and "viewBox", and get a sanitized SVG output for safer sharing while designing UI assets, testing software, or doing any related frontend and UI/UX work.',
+            'It also helps you quickly inspect common attributes such as "width", "height", and "viewBox", and provides a sanitized SVG output for safer sharing and testing.',
+        },
+      ],
+    },
+    development_tools_user_agent_info: {
+      info_title: 'Is SVG safe to paste into a browser?',
+      intro_text:
+        'SVG is an XML-based image format, but it can also contain active content. When you paste an SVG from an unknown source, it may include scripts, event handlers, or embedded HTML.',
+      example_string:
+        '<svg xmlns="http://www.w3.org/2000/svg"><script>alert("XSS")</script><circle cx="8" cy="8" r="8"/></svg>',
+      example_string_description:
+        'If you preview untrusted SVGs, always treat them like HTML: sanitize before rendering. This SVG Viewer removes common unsafe elements before previewing.',
+      info_items: [
+        {
+          part: 'Scripts:',
+          description:
+            'Script tags can run code in some contexts and should be removed.',
         },
         {
+          part: 'Event handlers:',
+          description:
+            'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+        },
+        {
+          part: 'foreignObject:',
           description:
             'This tool also safely enables you to preview SVGs via sanitization, as an SVG can contain active content. So, when you paste an SVG from an unknown source that contains any scripts, event handlers, or embedded HTML, the tool sanitizes the SVG before rendering by removing scripts and foreignObject content and stripping inline event handlers. This includes:',
         },
@@ -16952,18 +16974,21 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
           list: [
             {
               title: 'Scripts: ',
-              description: 'Script tags can run code in some contexts and should be removed.',
+              description:
+                'Script tags can run code in some contexts and should be removed.',
             },
             {
               title: 'Event handlers: ',
-              description: 'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+              description:
+                'Attributes like onload/onclick can execute JavaScript and should be stripped.',
             },
             {
               title: 'foreignObject: ',
-              description: 'foreignObject can embed HTML inside SVG, which increases XSS risk when rendering untrusted content.',
+              description:
+                'foreignObject can embed HTML inside SVG, which increases XSS risk when rendering untrusted content.',
             },
-          ]
-        }
+          ],
+        },
       ],
     },
     development_tools_steps_guide: {
@@ -16998,7 +17023,8 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
     },
     development_tools_how_use: {
       how_use_title: 'What are the use cases for the SVG Viewer tool?',
-      how_use_description: 'You can use the SVG Viewer tool for various purposes while developing websites, designing UI assets, or managing vector graphics, such as:',
+      how_use_description:
+        'You can use the SVG Viewer tool for various purposes while developing websites, designing UI assets, or managing vector graphics, such as:',
       point: [
         {
           title: 'Debugging SVG Markup',
@@ -17026,6 +17052,45 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
             'Preview, verify, and seamlessly copy the sanitized, production-ready SVG string for direct inline embedding into your HTML, React components, or CSS stylesheets.',
         },
       ],
+    },
+    development_tools_Comparison: {
+      title: 'SVG Viewer vs SVG Converter: which one should you use?',
+      description: [
+        {
+          desc: 'Use SVG Viewer when you want to preview SVG markup, inspect basic attributes, and verify how an icon renders.',
+        },
+        {
+          desc: 'Use SVG to React/CSS Utility when you want code output such as React components, CSS Data URIs, or CSS masks.',
+        },
+      ],
+    },
+    development_tool_example: {
+      example_title: 'SVG Viewer example',
+      example_description:
+        'Here is a simple SVG you can paste into the tool to preview. It includes a viewBox so it scales correctly.',
+      example_input: {
+        title: 'Example SVG markup',
+        json_data:
+          '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">\\n  <rect x="10" y="10" width="100" height="100" rx="18" fill="#7c3aed"/>\\n  <path d="M35 70c8 16 42 16 50 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>\\n  <circle cx="45" cy="50" r="6" fill="white"/>\\n  <circle cx="75" cy="50" r="6" fill="white"/>\\n</svg>',
+      },
+      example_outputs: {
+        intro:
+          'After pasting, you can copy the detected attributes and the sanitized SVG output.',
+        outputs: [
+          {
+            mode: 'Detected attributes',
+            title: 'What you should see',
+            content:
+              '{\\n  "width": "120",\\n  "height": "120",\\n  "viewBox": "0 0 120 120"\\n}',
+          },
+          {
+            mode: 'Sanitized SVG (copy)',
+            title: 'What the tool provides',
+            content:
+              'A cleaned SVG string suitable for previewing and sharing (scripts/foreignObject removed, inline on* handlers stripped).',
+          },
+        ],
+      },
     },
     meta_data: {
       meta_title: 'SVG Viewer - Developer Utility Tools',
