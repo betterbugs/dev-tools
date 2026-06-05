@@ -15206,7 +15206,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     hero_section: {
       title: 'JWT Decoder',
       description:
-        'Decode JSON Web Tokens (JWT) instantly to view header, payload, and signature. Perfect for developers, security analysts, and learners.',
+        'The JWT decoder is a free-to-use online tool on BetterBugs.io that enables you instantly decode JSON Web Tokens (JWT) to view the underlying header, payload, and signature.',
     },
     development_tools_list: [
       { tool: 'Character Count Tool', url: PATHS.CHARACTER_COUNT_TOOL },
@@ -15218,76 +15218,125 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       { tool: 'Line Count Tool', url: PATHS.LINE_COUNTER_TOOL },
     ],
     development_tools_about_details: {
-      about_title: 'What is the JWT Decoder?',
+      about_title: 'What is the JWT Decoder Online Tool?',
       about_description: [
         {
           description:
-            'A JWT Decoder is a tool that extracts and displays the contents of a JSON Web Token, including its header, payload, and signature.',
+            'The JWT decoder online tool instantly decodes the JSON Web Tokens you add into a readable JSON format. You can use the tool while writing or testing authentication in APIs, web apps, or OAuth flows.',
         },
         {
           description:
-            'It’s useful for developers debugging authentication tokens, security experts analyzing claims, and learners understanding how JWTs work.',
+            'You can load data into it by pasting a JWT string in the input box or uploading a file containing the token from your system. The tool includes handy built-in options: "Format JSON" and "Show expiry info" for you to analyze JWT strings with ease.',
+        },
+        {
+          description:
+            'It’s a completely free-to-use, ad-free, and open-source tool; perfect for inspecting tokens in dev, testing, or security tasks. No installations, downloads, or custom scripts are required to use the tool. Plus, no data gets saved when you use it. The decoding operation happens locally in your browser. You can simply paste the token and view the readable payload right away.',
         },
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to Use the JWT Decoder',
-      guide_description: 'Follow these simple steps:',
+      guide_title: 'How to Use the JWT Decoder Tool?',
+      guide_description: 'For using the tool, simply:',
       steps: [
         {
-          step_key: 'Step 1:',
-          step_title: 'Paste JWT:',
-          step_description:
-            'Enter or paste your JWT string into the input box.',
+          steps_points: [
+            {
+              steps_points_description:
+                'Add your encoded token to the Input (JWT Token) box OR',
+            },
+            {
+              steps_points_description:
+                'Upload the token file using the Upload button (located just above the input box)',
+            },
+          ]
         },
         {
-          step_key: 'Step 2:',
-          step_title: 'Decode:',
           step_description:
-            'Click the decode button to parse the token into its components.',
-        },
-        {
-          step_key: 'Step 3:',
-          step_title: 'View details:',
-          step_description:
-            'See the header, payload (claims), and signature separated clearly.',
-        },
-        {
-          step_key: 'Step 4:',
-          step_title: 'Analyze or copy:',
-          step_description:
-            'Use the decoded data for debugging, verification, or documentation.',
+            'You can check the Auto-update box to instantly get the parsed output, or manually hit the Decode button to get the result. The readable JSON will appear in the Output (Decoded) box. You can use the Copy or Download buttons located at the top right to save your result, or hit Clear to start over.',
         },
       ],
     },
+    development_tool_example: {
+      example_title: 'Example',
+      example_description:
+        'For instance, you can try adding the following JWT string in the input box and see if it matches the output:',
+      example_input: {
+        title: 'JWT String',
+        json_data:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+      },
+      example_outputs: {
+        outputs: [
+          {
+            mode: 'Expected Output',
+            content: `=== HEADER ===
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+=== PAYLOAD ===
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+}
+
+=== SIGNATURE ===
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
+          },
+        ],
+      },
+    },
     development_tools_how_use: {
-      how_use_title: 'Common Uses',
-      how_use_description: 'Why you might use this tool:',
+      how_use_title: 'What are the use cases for the tool?',
+      how_use_description:
+        'You can use the JWT decoder tool for various purposes while debugging authentication, writing code, running API tests, or for learning purposes, such as:',
       point: [
         {
-          title: 'Debugging',
+          title: 'Debugging authentication flows',
           description:
-            'Easily inspect JWT contents during authentication and API testing.',
+            'Inspect decoded JWT payloads from OAuth or SAML integrations to verify claims like user IDs, roles, or organizational scopes without writing custom parser scripts.',
         },
         {
-          title: 'Security',
+          title: 'Validating token expiration',
           description:
-            'Analyze claims, expiration, and signing details for token verification.',
+            'Use the "Show expiry info" toggle to instantly translate the exp (expiration time) and iat (issued at) integer claims into human-readable timestamps.',
         },
         {
-          title: 'Learning',
+          title: 'API integration testing',
           description:
-            'Understand the structure of JWTs and how they are used in modern authentication.',
+            'Decode tokens generated by your backend APIs or third-party providers (like Auth0, Firebase, or AWS Cognito) to validate data shapes before committing your integration code.',
+        },
+        {
+          title: 'Security audits',
+          description:
+            "Examine the headers (like alg to see the signing algorithm) and payloads of tokens to ensure sensitive PII data isn't being accidentally exposed in plaintext to the client.",
+        },
+        {
+          title: 'Sharing snippets in tickets',
+          description:
+            'Decode tokens, format the resulting JSON, and paste readable outputs directly into Jira issues, GitHub PRs, or Linear tickets to speed up backend team triage.',
+        },
+        {
+          title: 'Reverse-engineering browser sessions',
+          description:
+            'Extract JWTs stored in local storage, session storage, or cookies via browser dev tools and decode them to understand how a specific web application handles user state.',
+        },
+        {
+          title: 'Learning JWT structures',
+          description:
+            'Learners and security analysts can paste a JWT, decode it, and visually see how the Header, Payload, and Signature map to the Base64Url string, to see the difference between raw data and encoded forms.',
         },
       ],
     },
     meta_data: {
-      meta_title: 'JWT Decoder – Decode JSON Web Tokens Online',
+      meta_title: 'JWT Decoder - Decode JSON Web Tokens Online',
       meta_description:
-        'Instantly decode JWT tokens to view header, payload, and signature. Useful for developers, security experts, and students.',
-      og_title: 'JWT Decoder – Free Online Tool',
+        'Use the JWT decoder free online tool on BetterBugs.io to instantly decode JSON Web Tokens into readable headers, payloads, and signatures. Perfect for debugging APIs, auth flows, and security testing.',
+      og_title: 'JWT Decoder - Decode JSON Web Tokens Online',
       og_description:
-        'Quickly decode JWTs to understand their structure and claims. Perfect for debugging and learning.',
+        'This post describes usage steps and the use cases of the JWT decoder free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },
@@ -16548,7 +16597,7 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
         },
         {
           description:
-            'The tool is is absolutely free-to-use on BetterBugs.io website. It’s a snappy and easy-to-use tool;  perfect for your day-to-day work in software (as a developer or tester), such as validation testing, data scraping preparation, writing logic with REGEX, and learning complex pattern matching.',
+            'The tool is absolutely free-to-use on BetterBugs.io website. It’s a snappy and easy-to-use tool;  perfect for your day-to-day work in software (as a developer or tester), such as validation testing, data scraping preparation, writing logic with REGEX, and learning complex pattern matching.',
         },
       ],
     },
@@ -16875,172 +16924,116 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
     hero_section: {
       title: 'SVG Viewer',
       description:
-        'Paste or upload SVG markup and preview it instantly. Inspect basic SVG attributes and copy or download the sanitized output.',
+        'The SVG Viewer online tool on BetterBugs.io enables you to add or upload SVG markup and preview it instantly. You can also use it to inspect basic SVG attributes.',
     },
     development_tools_list: [
       { tool: 'SVG to React/CSS Utility', url: PATHS.SVG_CONVERTER },
       { tool: 'Base64 Encoder', url: PATHS.BASE64_ENCODER },
       { tool: 'HTML Viewer', url: PATHS.HTML_VIEWER },
       { tool: 'Image Resizer', url: PATHS.IMAGE_RESIZER },
+      { tool: 'Text Cleaner', url: PATHS.TEXT_COMPARE },
     ],
     development_tools_about_details: {
       about_title: 'What is the SVG Viewer tool?',
       about_description: [
         {
           description:
-            'SVG Viewer is a free online tool on BetterBugs.io that lets you preview SVG images from raw markup or an uploaded .svg file—without needing design software.',
+            'SVG Viewer is a free-to-use, open-source, and ad-free online tool on BetterBugs.io that enables you to preview SVG images from raw markup or an uploaded .svg file. You can also toggle the transparent background using the checkbox option.',
         },
         {
           description:
-            'It also helps you quickly inspect common attributes such as "width", "height", and "viewBox", and provides a sanitized SVG output for safer sharing and testing.',
+            'No installations, downloads, or design software are required to use it. You can use it to quickly inspect common attributes such as "width", "height", and "viewBox", and get a sanitized SVG output for safer sharing while designing UI assets, testing software, or doing any related frontend and UI/UX work.',
         },
-      ],
-    },
-    development_tools_user_agent_info: {
-      info_title: 'Is SVG safe to paste into a browser?',
-      intro_text:
-        'SVG is an XML-based image format, but it can also contain active content. When you paste an SVG from an unknown source, it may include scripts, event handlers, or embedded HTML.',
-      example_string:
-        '<svg xmlns="http://www.w3.org/2000/svg"><script>alert("XSS")</script><circle cx="8" cy="8" r="8"/></svg>',
-      example_string_description:
-        'If you preview untrusted SVGs, always treat them like HTML: sanitize before rendering. This SVG Viewer removes common unsafe elements before previewing.',
-      info_items: [
         {
-          part: 'Scripts:',
           description:
-            'Script tags can run code in some contexts and should be removed.',
+            'This tool also safely enables you to preview SVGs via sanitization, as an SVG can contain active content. So, when you paste an SVG from an unknown source that contains any scripts, event handlers, or embedded HTML, the tool sanitizes the SVG before rendering by removing scripts and foreignObject content and stripping inline event handlers. This includes:',
         },
         {
-          part: 'Event handlers:',
-          description:
-            'Attributes like onload/onclick can execute JavaScript and should be stripped.',
-        },
-        {
-          part: 'foreignObject:',
-          description:
-            'foreignObject can embed HTML inside SVG, which increases XSS risk when rendering untrusted content.',
-        },
-      ],
-    },
-    development_tools_what: {
-      about_title: 'What does the SVG Viewer do?',
-      what_description: [
-        {
-          descriptions:
-            'The SVG Viewer lets you paste SVG markup or upload an SVG file and instantly see a live preview in your browser.',
-        },
-        {
-          descriptions:
-            'It detects and displays common SVG attributes like width, height, and viewBox to help you troubleshoot sizing, alignment, and cropping issues.',
-        },
-        {
-          descriptions:
-            'For safer previews, the tool sanitizes the SVG before rendering by removing scripts and foreignObject content and stripping inline event handlers.',
-        },
+          list: [
+            {
+              title: 'Scripts: ',
+              description: 'Script tags can run code in some contexts and should be removed.',
+            },
+            {
+              title: 'Event handlers: ',
+              description: 'Attributes like onload/onclick can execute JavaScript and should be stripped.',
+            },
+            {
+              title: 'foreignObject: ',
+              description: 'foreignObject can embed HTML inside SVG, which increases XSS risk when rendering untrusted content.',
+            },
+          ]
+        }
       ],
     },
     development_tools_steps_guide: {
-      guide_title: 'How to use the SVG Viewer?',
-      guide_description: 'Follow these steps:',
+      guide_title: 'How to use the SVG Viewer tool on BetterBugs.io?',
+      guide_description: 'Using the SVG Viewer is very straightforward:',
       steps: [
         {
           step_key: 'Step 1:',
-          step_title: 'Paste or upload:',
+          step_title: 'Add markup or upload file',
           step_description:
-            'Paste SVG markup into the editor or upload an .svg file to load its content.',
+            'Paste your SVG markup into the editor or use the “Upload” button to add an .svg file from your system. Next, enable/disable the “Transparent background” using the Options dropdown.',
         },
         {
           step_key: 'Step 2:',
-          step_title: 'Preview:',
+          step_title: 'Preview result',
           step_description:
-            'See the rendered SVG immediately in the preview panel (scripts and foreignObject are removed).',
+            'You can see the rendered SVG instantly in the preview panel (scripts and foreignObject are removed).',
         },
         {
           step_key: 'Step 3:',
-          step_title: 'Inspect attributes:',
+          step_title: 'Check attributes',
           step_description:
-            'Copy basic info such as width, height, and viewBox to debug scaling issues.',
+            'You can check the basic info for the image: width, height, and viewBox.',
         },
         {
           step_key: 'Step 4:',
-          step_title: 'Copy or download:',
+          step_title: 'Use the result',
           step_description:
-            'Copy the sanitized SVG markup or download it as a .svg file.',
+            'To use the result, you can click the Copy SVG button to use the sanitized markup on your clipboard. Or, you can download it as a .svg file to your system.',
         },
       ],
     },
     development_tools_how_use: {
-      how_use_title: 'Common use cases for SVG Viewer',
-      how_use_description: 'Popular reasons to use this tool:',
+      how_use_title: 'What are the use cases for the SVG Viewer tool?',
+      how_use_description: 'You can use the SVG Viewer tool for various purposes while developing websites, designing UI assets, or managing vector graphics, such as:',
       point: [
         {
-          title: 'Debugging scaling and alignment',
+          title: 'Debugging SVG Markup',
           description:
-            'Quickly check viewBox/size attributes when an SVG looks stretched, clipped, or misaligned in a UI.',
+            'Instantly see how raw SVG structures and paths render in a browser environment. This enables you to identify missing elements, incorrect fill colors, or broken shapes without needing a dedicated design application.',
         },
         {
-          title: 'Previewing icons from tickets/PRs',
+          title: 'Troubleshooting Sizing and Scaling',
           description:
-            'Paste SVG markup shared in chats or issues to confirm it renders correctly before merging.',
+            'Quickly inspect and verify width, height, and viewBox attributes. This ensures your vector graphics scale perfectly and remain responsive without getting cropped or distorted across different screen sizes.',
         },
         {
-          title: 'Sanitizing for sharing',
+          title: 'Sanitizing Untrusted Vectors',
           description:
-            'Remove scripts and foreignObject content from untrusted SVGs before sharing them with teammates.',
+            'Safely preview SVGs downloaded from the internet or received from external sources. The tool automatically strips out potentially malicious scripts, inline event handlers, and foreignObject tags, minimizing XSS risks before you use the asset.',
         },
         {
-          title: 'Asset handoff',
+          title: 'Quick Asset Preview',
           description:
-            'Download a cleaned SVG file after minor tweaks or after confirming the exported asset looks right.',
+            'Instantly visualize a raw .svg file or code snippet on the fly, which is perfect for developers who need to check an icon or illustration without opening heavy vector editing software like Adobe Illustrator or Figma.',
+        },
+        {
+          title: 'Preparing SVGs for Web Integration',
+          description:
+            'Preview, verify, and seamlessly copy the sanitized, production-ready SVG string for direct inline embedding into your HTML, React components, or CSS stylesheets.',
         },
       ],
-    },
-    development_tools_Comparison: {
-      title: 'SVG Viewer vs SVG Converter: which one should you use?',
-      description: [
-        {
-          desc: 'Use SVG Viewer when you want to preview SVG markup, inspect basic attributes, and verify how an icon renders.',
-        },
-        {
-          desc: 'Use SVG to React/CSS Utility when you want code output such as React components, CSS Data URIs, or CSS masks.',
-        },
-      ],
-    },
-    development_tool_example: {
-      example_title: 'SVG Viewer example',
-      example_description:
-        'Here is a simple SVG you can paste into the tool to preview. It includes a viewBox so it scales correctly.',
-      example_input: {
-        title: 'Example SVG markup',
-        json_data:
-          '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">\\n  <rect x="10" y="10" width="100" height="100" rx="18" fill="#7c3aed"/>\\n  <path d="M35 70c8 16 42 16 50 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>\\n  <circle cx="45" cy="50" r="6" fill="white"/>\\n  <circle cx="75" cy="50" r="6" fill="white"/>\\n</svg>',
-      },
-      example_outputs: {
-        intro:
-          'After pasting, you can copy the detected attributes and the sanitized SVG output.',
-        outputs: [
-          {
-            mode: 'Detected attributes',
-            title: 'What you should see',
-            content:
-              '{\\n  "width": "120",\\n  "height": "120",\\n  "viewBox": "0 0 120 120"\\n}',
-          },
-          {
-            mode: 'Sanitized SVG (copy)',
-            title: 'What the tool provides',
-            content:
-              'A cleaned SVG string suitable for previewing and sharing (scripts/foreignObject removed, inline on* handlers stripped).',
-          },
-        ],
-      },
     },
     meta_data: {
-      meta_title: 'SVG Viewer Online – Preview & Inspect SVG Markup',
+      meta_title: 'SVG Viewer - Developer Utility Tools',
       meta_description:
-        'Preview SVG markup instantly. Upload or paste SVG, inspect width/height/viewBox, copy sanitized SVG, and download .svg files.',
-      og_title: 'SVG Viewer – Free Online Tool',
+        'Use the SVG Viewer free online tool on BetterBugs.io to add or upload SVG markup and preview it instantly without needing design software.',
+      og_title: 'SVG Viewer - Developer Utility Tools',
       og_description:
-        'Paste or upload SVG markup to preview it safely, inspect attributes, and copy/download the sanitized SVG output.',
+        'This post describes usage steps and the use cases of the SVG Viewer free online tool on BetterBugs.io.',
       og_image: '/images/og-images/Cover.png',
     },
   },

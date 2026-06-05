@@ -1306,7 +1306,7 @@ export const developmentToolsCategoryContent: any = {
     {
       url: '/jwt-decoder',
       title: 'JWT Decoder',
-      description: 'Decode JWT tokens into readable format.',
+      description: 'The JWT decoder is a free-to-use online tool on BetterBugs.io that enables you instantly decode JSON Web Tokens (JWT) to view the underlying header, payload, and signature.',
     },
   ],
   Category134: [
@@ -1619,12 +1619,12 @@ export const developmentToolsCategoryContent: any = {
       description:
         'Convert SVG to optimized React components, CSS Data URIs, or CSS Masks.',
     },
-    // {
-    //   url: '/svg-viewer',
-    //   title: 'SVG Viewer',
-    //   description:
-    //     'Paste or upload SVG markup to preview it safely, inspect basic attributes, and copy/download the result.',
-    // },
+    {
+      url: '/svg-viewer',
+      title: 'SVG Viewer Online',
+      description:
+        'The SVG Viewer online tool on BetterBugs.io enables you to add or upload SVG markup and preview it instantly. You can also use it to inspect basic SVG attributes.',
+    },
   ],
   Category178: [
     {
