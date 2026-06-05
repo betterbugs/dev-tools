@@ -16597,7 +16597,7 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`,
         },
         {
           description:
-            'The tool is is absolutely free-to-use on BetterBugs.io website. It’s a snappy and easy-to-use tool;  perfect for your day-to-day work in software (as a developer or tester), such as validation testing, data scraping preparation, writing logic with REGEX, and learning complex pattern matching.',
+            'The tool is absolutely free-to-use on BetterBugs.io website. It’s a snappy and easy-to-use tool;  perfect for your day-to-day work in software (as a developer or tester), such as validation testing, data scraping preparation, writing logic with REGEX, and learning complex pattern matching.',
         },
       ],
     },
