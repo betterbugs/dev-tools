@@ -16,6 +16,8 @@ import ConvertXIcon from './components/theme/Icon/convertXIcon';
 import GenieIcon from './components/theme/Icon/genieIcon';
 import DevUtilsIcon from './components/theme/Icon/devUtilsIcon';
 import { useTheme } from './contexts/themeContext';
+import Pagination from './components/ui/Pagination';
+import { motion } from 'framer-motion';
 
 const CATEGORY_GROUPS = [
   'Text Lab',
@@ -134,6 +136,11 @@ const Page = () => {
   const [selectedBasis, setSelectedBasis] = useState<BasisType>('All');
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedBasis, showFavoritesOnly]);
 
   useEffect(() => {
     try {
@@ -178,11 +185,13 @@ const Page = () => {
     setValue('txtSearch', '');
     setSearchTerm('');
     setIsSearch(false);
+    setCurrentPage(1);
   };
 
   const handleSearchChange = (event: any) => {
     setSearchTerm(event.target.value);
     setIsSearch(event.target.value.length > 0);
+    setCurrentPage(1);
   };
 
   const allItems = Object.entries(
@@ -241,6 +250,13 @@ const Page = () => {
           : itemsWithMeta.filter(i => i.__basis === b).length,
     }),
     {} as Record<BasisType, number>
+  );
+
+  const pageSize = isSearch ? 9 : 30;
+  const totalPages = Math.ceil(filteredItems.length / pageSize);
+  const paginatedItems = filteredItems.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
 
   return (
@@ -485,9 +501,16 @@ const Page = () => {
                 <span className="mt-2">No tools found</span>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredItems.map((item: any, index: number) => (
-                  <Link
+              <>
+                <motion.div
+                  key={`${currentPage}-${selectedCategory}-${selectedBasis}-${searchTerm}-${showFavoritesOnly}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {paginatedItems.map((item: any, index: number) => (
+                    <Link
                     key={index}
                     href={`${item?.url}`}
                     className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} ${DevelopmentToolsStyles.toolCard} group md:min-h-[160px] relative`}
@@ -565,8 +588,16 @@ const Page = () => {
                       {item?.__group} • {item?.__basis}
                     </div>
                   </Link>
-                ))}
-              </div>
+                  ))}
+                </motion.div>
+                {filteredItems.length > pageSize && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                )}
+              </>
             )}
           </main>
         </div>
