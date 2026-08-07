@@ -1,0 +1,16 @@
+app/components/layout/footer/footerComponent.tsx
+  h_9e725b2fbcac7e 115-118
+app/components/headerMenuDropdownComponents/solutionMenuComponent.tsx
+  h_9e725b2fbcac7e 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "30a364fe0ebb0ec4805980ae17c45aace78d3bce",
+  "prompts": {},
+  "humans": {
+    "h_9e725b2fbcac7e": {
+      "author": "Zeel Mistry <zeel@linearloop.io>"
+    }
+  }
+}
