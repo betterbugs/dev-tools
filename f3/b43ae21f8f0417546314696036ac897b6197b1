@@ -1,0 +1,14 @@
+app/layout.tsx
+  h_9e725b2fbcac7e 114-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "f3b43ae21f8f0417546314696036ac897b6197b1",
+  "prompts": {},
+  "humans": {
+    "h_9e725b2fbcac7e": {
+      "author": "Zeel Mistry <zeel@linearloop.io>"
+    }
+  }
+}
