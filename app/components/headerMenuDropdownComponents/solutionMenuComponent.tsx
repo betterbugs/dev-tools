@@ -46,7 +46,7 @@ const defaultComparesionsMenu = [
   {
     icon: <ComaresionBugHeardIcon />,
     label: 'BetterBugs.io vs. BugHerd',
-    url: `${WEB_URL}/comparisons/betterbugs-io-vs-bugherd`,
+    url: `${WEB_URL}/comparisons/bugherd-alternative`,
   },
 ];
 

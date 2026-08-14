@@ -112,10 +112,10 @@ const FooterComponent = () => {
     { label: 'Managers', url: `${WEB_URL}/solution/managers` },
     { label: 'Support Teams', url: `${WEB_URL}/solution/support-teams` },
     { label: 'Founders', url: `${WEB_URL}/solution/founders` },
-    {
-      label: 'Comparisons',
-      url: `${WEB_URL}/comparisons/betterbugs-io-vs-bugherd`,
-    },
+    // {
+    //   label: 'Comparisons',
+    //   url: `${WEB_URL}/comparisons/betterbugs-io-vs-bugherd`,
+    // },
   ];
 
   const socialIconWrapperClass = isLightTheme
