@@ -111,7 +111,9 @@ window.gtag =
           </>
         )}
         <link rel="alternate" href="https://www.betterbugs.io/" />
-        <link href="/favicon.ico" rel="icon" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/images/bb-icon.svg" />
+        <link rel="apple-touch-icon" href="/images/bb-icon.svg" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
