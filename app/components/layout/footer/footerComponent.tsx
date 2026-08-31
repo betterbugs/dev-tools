@@ -11,6 +11,10 @@ import YouTubeIcon from '../../theme/Icon/youTubeIcon';
 import DiscordIcon from '../../theme/Icon/discordIcon';
 import { WEB_URL } from '@/app/libs/constants';
 import { useTheme } from '@/app/contexts/themeContext';
+import {
+  trackFooterInteraction,
+  trackSocialInteraction,
+} from '@/app/libs/analytics';
 
 const FooterComponent = () => {
   const { isLightTheme } = useTheme();
@@ -18,6 +22,9 @@ const FooterComponent = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [sectionId, setSectionId] = useState<string | null>(null);
+
+  const trackFooter = (sectionName: string, ctaText: string, url: string) =>
+    trackFooterInteraction(sectionName, ctaText, url);
 
   const handleClick = (url: string, id?: string) => (e: any) => {
     e.preventDefault();
@@ -153,6 +160,7 @@ const FooterComponent = () => {
                       className={`${
                         pathname === menu.url && 'text-white'
                       } text-white/70 hover:text-white`}
+                      onClick={() => trackFooter('About', menu.label, menu.url)}
                     >
                       <span className="font-medium text-base text-white/70 hover:text-white">
                         {menu.label}
@@ -173,6 +181,7 @@ const FooterComponent = () => {
                       className={`${
                         pathname === menu.url && 'text-white'
                       } text-white/70 hover:text-white`}
+                      onClick={() => trackFooter('Legal', menu.label, menu.url)}
                     >
                       <span className="font-medium text-base text-white/70 hover:text-white">
                         {menu.label}
@@ -190,9 +199,10 @@ const FooterComponent = () => {
                     <Link
                       target="_blank"
                       href={menu.url}
-                      onClick={
-                        menu.id ? handleClick(menu.url, menu.id) : undefined
-                      }
+                      onClick={(e: any) => {
+                        trackFooter('Features', menu.label, menu.url);
+                        if (menu.id) handleClick(menu.url, menu.id)(e);
+                      }}
                       className={`${
                         pathname === menu.url && 'text-white'
                       } text-white/70 hover:text-white`}
@@ -216,6 +226,9 @@ const FooterComponent = () => {
                       className={`${
                         pathname === menu.url && 'text-secondary'
                       } text-white/70 hover:text-secondary`}
+                      onClick={() =>
+                        trackFooter('Integrations', menu.label, menu.url)
+                      }
                     >
                       <span className="font-medium text-base text-white/70 hover:text-white">
                         {menu.label}
@@ -236,6 +249,9 @@ const FooterComponent = () => {
                       className={`${
                         pathname === menu.url && 'text-secondary'
                       } text-white/70 hover:text-secondary`}
+                      onClick={() =>
+                        trackFooter('Use Cases', menu.label, menu.url)
+                      }
                     >
                       <span className="font-medium text-base text-white/70 hover:text-white">
                         {menu.label}
@@ -286,6 +302,7 @@ const FooterComponent = () => {
                   href="https://www.linkedin.com/company/betterbugs/"
                   target="_blank"
                   aria-label="LinkedIn"
+                  onClick={() => trackSocialInteraction('Linked-IN')}
                 >
                   <div className={socialIconWrapperClass}>
                     <LinkedinIcon className={socialIconClass} />
@@ -295,6 +312,7 @@ const FooterComponent = () => {
                   href="https://twitter.com/BetterBugs"
                   target="_blank"
                   aria-label="Twitter"
+                  onClick={() => trackSocialInteraction('X')}
                 >
                   <div className={socialIconWrapperClass}>
                     <TwitterIcon className={socialIconClass} />
@@ -304,6 +322,7 @@ const FooterComponent = () => {
                   href="https://www.instagram.com/betterbugshq/"
                   target="_blank"
                   aria-label="Instagram"
+                  onClick={() => trackSocialInteraction('Instagram')}
                 >
                   <div className={socialIconWrapperClass}>
                     <InstagramIcon className={socialIconClass} />
@@ -313,6 +332,7 @@ const FooterComponent = () => {
                   href="https://www.youtube.com/@betterbugshq"
                   target="_blank"
                   aria-label="LinkedIn"
+                  onClick={() => trackSocialInteraction('YouTube')}
                 >
                   <div className={socialIconWrapperWideClass}>
                     <YouTubeIcon className={`${socialIconClass} !w-12 !h-12`} />
@@ -322,6 +342,7 @@ const FooterComponent = () => {
                   href="https://discord.com/invite/HF8XjwVtPh"
                   target="_blank"
                   aria-label="Discord"
+                  onClick={() => trackSocialInteraction('Discord')}
                 >
                   <div className={socialIconWrapperWideClass}>
                     <DiscordIcon className={`${socialIconClass} !w-12 !h-12`} />

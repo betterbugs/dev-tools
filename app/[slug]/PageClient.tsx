@@ -22,6 +22,7 @@ import SEOComponent from '@/app/components/theme/SEOComponent/SEOComponent';
 import { detectBrowser } from '@/app/libs/helpers';
 import EdgeIcon from '@/app/components/theme/Icon/edgeIcon';
 import { useTheme } from '@/app/contexts/themeContext';
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from '@/app/libs/analytics';
 
 const PageClient = ({ slug }: { slug: string }) => {
   const [browser, setBrowser] = useState('chrome');
@@ -51,6 +52,7 @@ const PageClient = ({ slug }: { slug: string }) => {
   const currentTool = developmentToolsRoutes.find(
     (tool: any) => tool.path === pathname
   );
+  const toolName = meta_data?.meta_title?.split(' - ')?.[0] || pathname;
 
   return (
     <>
@@ -94,7 +96,18 @@ const PageClient = ({ slug }: { slug: string }) => {
                     Swiftly document and share bugs like never before
                   </p>
                   <div className="flex items-center gap-3 mt-6 mb-4">
-                    <Link target="_blank" href={Extension_URL}>
+                    <Link
+                      target="_blank"
+                      href={Extension_URL}
+                      onClick={() =>
+                        trackEvent('add_to_chrome_click', {
+                          page_type: PAGE_TYPE,
+                          platform: getRuntimePlatform(),
+                          section_name: 'Hero Section',
+                          cta_text: browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
+                        })
+                      }
+                    >
                       <Button
                         className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
                       >
@@ -229,7 +242,17 @@ const PageClient = ({ slug }: { slug: string }) => {
                         </h2>
                       </div>
                       {development_tools_list?.map((tool: any, index: any) => (
-                        <Link key={index} href={tool?.url}>
+                        <Link
+                          key={index}
+                          href={tool?.url}
+                          onClick={() =>
+                            trackEvent('dev_tool_card_click', {
+                              page_type: PAGE_TYPE,
+                              platform: getRuntimePlatform(),
+                              tool_name: tool?.tool,
+                            })
+                          }
+                        >
                           <div
                             className={`p-3 mb-2 cursor-pointer rounded-xl border-[1px] border-transparent hover:border-1 hover:border-primary bg-black text-white hover:text-primary ${DevelopmentToolsStyles.sidePanelItem}`}
                           >
@@ -1076,7 +1099,18 @@ const PageClient = ({ slug }: { slug: string }) => {
                       Swiftly document and share bugs like never before
                     </p>
                     <div className="flex items-center gap-3 mt-6 mb-4">
-                      <Link target="_blank" href={Extension_URL}>
+                      <Link
+                        target="_blank"
+                        href={Extension_URL}
+                        onClick={() =>
+                          trackEvent('add_to_chrome_click', {
+                            page_type: PAGE_TYPE,
+                            platform: getRuntimePlatform(),
+                            section_name: 'Bottom CTA Section',
+                            cta_text: browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
+                          })
+                        }
+                      >
                         <Button
                           className={`btn-primary flex items-center z-20 justify-center gap-3 rounded-full px-4 ${DevelopmentToolsStyles.addToChromeButton}`}
                         >
