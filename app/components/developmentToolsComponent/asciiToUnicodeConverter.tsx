@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function decodeAsciiEscapesToUnicode(input: string): string {
   // Supports sequences like \u0041 and raw ASCII characters
@@ -20,6 +21,12 @@ const AsciiToUnicodeConverter = () => {
       return;
     }
     setOutput(decodeAsciiEscapesToUnicode(input));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "ASCII to Unicode",
+      tool_action: "Convert",
+    });
   };
 
   const clearAll = () => {

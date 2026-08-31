@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type RGB = { r: number; g: number; b: number };
 type HSL = { h: number; s: number; l: number };
@@ -99,7 +100,15 @@ const ColorPickerTool = () => {
     setHex(rgbToHex(rgbNew));
   };
 
-  const copy = async (text: string) => navigator.clipboard.writeText(text);
+  const copy = async (text: string, action: string) => {
+    await navigator.clipboard.writeText(text);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Color Picker Tool",
+      tool_action: action,
+    });
+  };
 
   return (
     <section>
@@ -131,7 +140,7 @@ const ColorPickerTool = () => {
                         />
                         <button
                           type="button"
-                          onClick={() => copy(hex)}
+                          onClick={() => copy(hex, "Copy HEX")}
                           className="absolute right-2 top-2 px-3 py-1 bg-primary text-black text-sm rounded hover:bg-opacity-80"
                         >
                           Copy
@@ -165,7 +174,7 @@ const ColorPickerTool = () => {
                   </div>
                   <button
                     type="button"
-                    onClick={() => copy(rgbaCss)}
+                    onClick={() => copy(rgbaCss, "Copy RGBA")}
                     className={`${DevelopmentToolsStyles.converterButton} text-black font-bold py-3 px-6 rounded-lg`}
                   >
                     Copy RGBA

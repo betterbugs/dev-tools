@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Format = "raw" | "digits" | "+intl";
 type Mode = "phone" | "number";
@@ -41,6 +42,12 @@ const PhoneNumberExtractor: React.FC = () => {
     const found = mode === "phone" ? base.map((p) => normalize(p, format)) : base;
     const list = uniqueOnly ? Array.from(new Set(found)) : found;
     setOutput(list.filter((v) => v.length > 0));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Phone Number Extractor",
+      tool_action: "Extract",
+    });
   };
 
   const onCopy = async () => { try { await navigator.clipboard.writeText(output.join("\n")); } catch {} };

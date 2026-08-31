@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">{children}</code>
@@ -94,6 +95,18 @@ const MorseCodeTranslator = () => {
   }, [input, mode]);
 
   const copy = async (text: string) => { try { await navigator.clipboard.writeText(text); } catch {} };
+  const copyOutput = async () => {
+    if (!output) return;
+    try {
+      await navigator.clipboard.writeText(output);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Morse Code Translator",
+        tool_action: "Copy",
+      });
+    } catch {}
+  };
   const clear = () => setInput("");
   const swap = () => {
     setMode((m) => (m === "text-to-morse" ? "morse-to-text" : "text-to-morse"));
@@ -182,7 +195,7 @@ const MorseCodeTranslator = () => {
                           </button>
                         </>
                       )}
-                      <button onClick={() => copy(output)} className="px-3 py-1 bg-primary text-black rounded text-sm font-bold hover:bg-primary/80">Copy</button>
+                      <button onClick={copyOutput} className="px-3 py-1 bg-primary text-black rounded text-sm font-bold hover:bg-primary/80">Copy</button>
                     </div>
                   </div>
                   <textarea value={output} readOnly className="w-full h-52 p-3 bg-black/40 border border-white/10 rounded font-mono text-sm" placeholder="Output will appear here..." />

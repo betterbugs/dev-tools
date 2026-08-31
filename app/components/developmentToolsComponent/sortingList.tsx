@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "lex" | "numeric" | "length";
 
@@ -57,7 +58,16 @@ const SortingList = () => {
 
   const stats = useMemo(() => ({ total: parsed.length, unique: new Set(parsed).size }), [parsed]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output).then(() => {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Sorting List",
+        tool_action: "Copy",
+      });
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

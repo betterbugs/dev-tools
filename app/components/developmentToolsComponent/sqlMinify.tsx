@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from 'react';
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from '@/app/libs/analytics';
 
 type MinifyOptions = {
   removeLineComments: boolean;
@@ -188,6 +189,12 @@ const SqlMinify: React.FC = () => {
       setError('');
       const result = minifySql(input, options);
       setOutput(result);
+      trackEvent('dev_tool_used', {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: 'SQL Minify',
+        tool_action: 'Minify',
+      });
     } catch (e: unknown) {
       setError('Failed to minify SQL. Please check your input.');
     }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type WindowsInfo = {
   osName: string; // Windows 10 or Windows 11, etc.
@@ -91,6 +92,12 @@ const WhatVersionOfWindowsDoIHave: React.FC = () => {
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(json);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What Version of Windows Do I Have",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   }, [json]);
 

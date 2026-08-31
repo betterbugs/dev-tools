@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Order = "asc" | "desc";
 type Mode = "alphabetic" | "length" | "numeric";
@@ -55,6 +56,12 @@ const SortWords: React.FC = () => {
 
     const result = words.map((w) => w.raw).join(delimiter === "\\n" ? "\n" : delimiter);
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Online Alphabetizer: Sort Words Alphabetically",
+      tool_action: "Sort",
+    });
   };
 
   const onCopy = async () => { try { await navigator.clipboard.writeText(output); } catch {} };

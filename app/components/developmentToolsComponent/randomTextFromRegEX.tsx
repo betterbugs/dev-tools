@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import CopyIcon from "../theme/Icon/copyIcon";
 import ReloadIcon from "../theme/Icon/reload";
 import { CheckIcon } from "../theme/Icon/checkIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const RandomTextFromRegEX = () => {
   const { register, formState, setValue, watch } = useForm<any>({});
@@ -166,6 +167,12 @@ const RandomTextFromRegEX = () => {
         }
       }
       setGeneratedTexts(newTexts);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Random Text From Regex",
+        tool_action: "Generate",
+      });
     } catch (error) {
       setPatternError("Error generating text from pattern");
     }

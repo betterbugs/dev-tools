@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Base = "bin" | "dec" | "hex";
 type Op = "AND" | "OR" | "XOR" | "NOT" | "SHL" | "SHR" | "USHR";
@@ -82,7 +83,7 @@ const BitwiseCalculator: React.FC = () => {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const compute = () => {
+  const compute = (trackOnSuccess = false) => {
     const a = parseInputToUnsigned(inputA, baseIn);
     const b = parseInputToUnsigned(inputB, baseIn);
 
@@ -96,6 +97,14 @@ const BitwiseCalculator: React.FC = () => {
       setOutput(
         formatUnsigned(res, baseOut, width, grouping, thousands, signedView)
       );
+      if (trackOnSuccess) {
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "Bitwise Calculator",
+          tool_action: "Compute",
+        });
+      }
       return;
     }
 
@@ -140,6 +149,14 @@ const BitwiseCalculator: React.FC = () => {
     setOutput(
       formatUnsigned(res, baseOut, width, grouping, thousands, signedView)
     );
+    if (trackOnSuccess) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Bitwise Calculator",
+        tool_action: "Compute",
+      });
+    }
   };
 
   useEffect(() => {
@@ -147,7 +164,7 @@ const BitwiseCalculator: React.FC = () => {
     compute();
   }, [inputA, inputB, baseIn, baseOut, width, signedView, grouping, thousands, operation, autoConvert]);
 
-  const onConvert = () => compute();
+  const onConvert = () => compute(true);
 
   const onCopy = async () => {
     try {

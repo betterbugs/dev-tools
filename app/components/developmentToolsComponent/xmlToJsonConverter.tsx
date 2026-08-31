@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -132,7 +133,18 @@ const XmlToJsonConverter: React.FC = () => {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const convert = useCallback(() => setOutput(convertXmlToJson(input, options)), [input, options]);
+  const convert = useCallback(() => {
+    const result = convertXmlToJson(input, options);
+    setOutput(result);
+    if (result) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "XML to JSON Converter",
+        tool_action: "Convert",
+      });
+    }
+  }, [input, options]);
   useEffect(() => { if (autoUpdate) convert(); }, [input, options, autoUpdate, convert]);
 
   const onCopy = useCallback(async () => { try { await navigator.clipboard.writeText(output); } catch (_) {} }, [output]);

@@ -2,6 +2,7 @@
 
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function rot13Transform(text: string): string {
   return text.replace(/[A-Za-z]/g, (char) => {
@@ -25,7 +26,15 @@ const Rot13EncoderDecoderComponent: React.FC = () => {
   }, [inputText]);
 
   const copyOutput = useCallback(async () => {
-    try { await navigator.clipboard.writeText(outputText); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(outputText);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "ROT13 Encoder/Decoder",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
   }, [outputText]);
 
   return (

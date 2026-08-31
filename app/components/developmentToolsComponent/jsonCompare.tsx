@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ChangeType = "added" | "removed" | "modified";
 interface ChangeItem { path: string; type: ChangeType; left?: any; right?: any }
@@ -124,6 +125,12 @@ const JSONCompare = () => {
   const onCompare = () => {
     try {
       parseJson(left); parseJson(right); setCompared(true); setError(null);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON Compare",
+        tool_action: "Compare",
+      });
     } catch (e: any) { setError(e?.message || "Invalid JSON"); setCompared(false); }
   };
 

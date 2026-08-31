@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const prettify = (html: string, indentSize: number): string => {
   const indent = (level: number) => " ".repeat(level * indentSize);
@@ -35,6 +36,12 @@ const HtmlPrettify = () => {
     const src = input || example;
     const result = prettify(src, indentSize);
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Prettify",
+      tool_action: "Prettify",
+    });
   };
 
   const copy = async () => output && (await navigator.clipboard.writeText(output));

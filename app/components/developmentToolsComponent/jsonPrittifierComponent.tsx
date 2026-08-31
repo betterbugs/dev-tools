@@ -5,6 +5,7 @@ import Editor from "@monaco-editor/react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
 import "react-toastify/dist/ReactToastify.css"; // Import the toast CSS
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const JsonPrettifierComponent = () => {
   const [inputJson, setInputJson] = useState("");
@@ -48,6 +49,12 @@ const JsonPrettifierComponent = () => {
       const parsedJson = JSON.parse(inputJson);
       setPrettifiedJson(JSON.stringify(parsedJson, null, indentation)); // Prettify JSON with selected indentation
       toast.success("JSON successfully prettified!");
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON Formatter/Prettifier Tool",
+        tool_action: "Prettify",
+      });
     } catch (error) {
       toast.error("Invalid JSON input. Please fix it and try again.");
     }

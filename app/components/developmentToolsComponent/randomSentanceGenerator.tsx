@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState, useRef, useCallback } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Separator = "newline" | "paragraph";
 
@@ -63,6 +64,12 @@ const RandomSentanceGenerator = () => {
     const sentences: string[] = [];
     for (let i = 0; i < n; i++) sentences.push(randomSentence(minW, maxW));
     setOutput(sentences.join("\n"));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "AI Sentence Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => {
@@ -139,6 +146,12 @@ const RandomSentanceGenerator = () => {
       }
       
       setAiOutput(aiText);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "AI Sentence Generator",
+        tool_action: "Generate",
+      });
     } catch (err: any) {
       if (err.name === 'AbortError') {
         setErrorMessage("Request cancelled");

@@ -2,6 +2,7 @@
 
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type AngleUnit = "deg" | "rad" | "turn" | "grad";
 
@@ -47,7 +48,15 @@ const RotationCalculatorComponent: React.FC = () => {
   }), [resultDeg]);
 
   const copy = useCallback(async (text: string) => {
-    try { await navigator.clipboard.writeText(text); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Rotation Calculator",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
   }, []);
 
   const clear = useCallback(() => {

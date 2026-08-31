@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">{children}</code>
@@ -29,7 +30,17 @@ const XMLEscape = () => {
   const [mode, setMode] = useState<"escape" | "unescape">("escape");
 
   const output = useMemo(() => (mode === "escape" ? escapeXML(raw) : unescapeXML(raw)), [raw, mode]);
-  const copy = async (text: string) => { try { await navigator.clipboard.writeText(text); } catch {} };
+  const copy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "XML Escape",
+        tool_action: "Copy",
+      });
+    } catch {}
+  };
   const clear = () => setRaw("");
 
   return (

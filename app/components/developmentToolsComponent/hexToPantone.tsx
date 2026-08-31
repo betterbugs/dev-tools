@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState, useCallback } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Pantone = { name: string; r: number; g: number; b: number };
 
@@ -55,6 +56,18 @@ const HexToPantone: React.FC = () => {
   const onCopyHex = useCallback(async () => {
     try { await navigator.clipboard.writeText(hex.toUpperCase()); } catch (_) {}
   }, [hex]);
+
+  const onCopyPantoneName = useCallback(async (name: string) => {
+    try {
+      await navigator.clipboard.writeText(name);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Hex to Pantone",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
+  }, []);
 
   return (
     <div className="md:mt-8 mt-4 text-white">
@@ -121,7 +134,7 @@ const HexToPantone: React.FC = () => {
                     <div className="flex items-center justify-between gap-2 px-3 py-2">
                       <span className="text-xs truncate" title={it.pantone.name}>{it.pantone.name}</span>
                       <button
-                        onClick={async () => { try { await navigator.clipboard.writeText(it.pantone.name); } catch (_) {} }}
+                        onClick={() => onCopyPantoneName(it.pantone.name)}
                         className="border border-white/20 px-2 py-0.5 rounded text-[11px] bg-primary text-black font-bold"
                       >Copy</button>
                     </div>

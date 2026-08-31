@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const HexToAscii = () => {
   const [hexInput, setHexInput] = useState("");
@@ -49,6 +50,16 @@ const HexToAscii = () => {
     setAsciiOutput(result);
   };
 
+  const handleConvertClick = () => {
+    handleHexToAscii();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Hex to ASCII Converter",
+      tool_action: "Convert",
+    });
+  };
+
   useEffect(() => {
     if (autoUpdateHex) {
       handleHexToAscii();
@@ -91,7 +102,7 @@ const HexToAscii = () => {
                           <input type="checkbox" className="accent-primary" checked={autoUpdateHex} onChange={(e) => setAutoUpdateHex(e.target.checked)} />
                           Auto-update
                         </label>
-                        <button onClick={handleHexToAscii} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold" disabled={!hexInput.trim()}>Convert</button>
+                        <button onClick={handleConvertClick} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold" disabled={!hexInput.trim()}>Convert</button>
                         <button onClick={() => handleCopy(asciiOutput)} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold" disabled={!asciiOutput}>Copy</button>
                       </div>
                     </div>

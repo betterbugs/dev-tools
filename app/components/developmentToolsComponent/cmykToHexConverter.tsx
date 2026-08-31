@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const cmykToRgb = (c: number, m: number, y: number, k: number): { r: number; g: number; b: number } => {
   const C = c / 100;
@@ -111,6 +112,12 @@ const CmykToHexConverter: React.FC = () => {
   const copyHex = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(hex);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "CMYK to HEX Converter",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   }, [hex]);
 

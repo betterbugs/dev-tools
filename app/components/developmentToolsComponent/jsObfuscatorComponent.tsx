@@ -4,6 +4,7 @@ import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Editor } from "@monaco-editor/react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const JsObfuscatorComponent = () => {
   const [inputCode, setInputCode] = useState("");
@@ -22,6 +23,12 @@ const JsObfuscatorComponent = () => {
         controlFlowFlattening: true,
       }).getObfuscatedCode();
       setOutputCode(obfuscatedCode);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JS Obfuscator",
+        tool_action: "Obfuscate",
+      });
     } catch (error) {
       setOutputCode("");
       toast.error(`Error obfuscating code: ${(error as Error).message}`);

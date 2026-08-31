@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Direction = "CtoF" | "FtoC";
 
@@ -50,6 +51,12 @@ const CelsiusFahrenheitConverter: React.FC = () => {
   const onConvert = () => {
     const converted = convertNumbersInText(input, direction, decimals, thousandsSep);
     setOutput(converted);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Celcius to Fahrenheit Converter",
+      tool_action: "Convert",
+    });
   };
 
   const onCopy = async () => {

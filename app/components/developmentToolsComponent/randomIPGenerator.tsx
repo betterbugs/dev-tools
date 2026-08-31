@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const isPrivateIPv4 = (octets: number[]) => {
   const [a, b] = octets;
@@ -69,7 +70,15 @@ const RandomIPGenerator = () => {
     return { out, text: out.join(delim) };
   }, [version, count, uniqueOnly, includePrivate, includeReserved, delimiter]);
 
-  const copy = () => navigator.clipboard.writeText(list.text);
+  const copy = () => {
+    navigator.clipboard.writeText(list.text);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random IP Generator",
+      tool_action: "Copy",
+    });
+  };
   const download = () => {
     const blob = new Blob([list.text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

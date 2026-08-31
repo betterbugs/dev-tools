@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function parseBinary(input: string): number | null {
   const clean = input.replace(/\s+/g, "");
@@ -37,6 +38,18 @@ const BinaryToDecimalConverter: React.FC = () => {
   useEffect(() => {
     if (autoUpdate) convert();
   }, [input, autoUpdate, convert]);
+
+  const onConvertClick = useCallback(() => {
+    convert();
+    if (parseBinary(input) !== null) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Binary to Decimal Converter",
+        tool_action: "Convert",
+      });
+    }
+  }, [convert, input]);
 
   const onCopy = useCallback(async () => {
     try {
@@ -90,7 +103,7 @@ const BinaryToDecimalConverter: React.FC = () => {
                   Auto-update
                 </label>
                 <button
-                  onClick={convert}
+                  onClick={onConvertClick}
                   className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold"
                 >
                   Convert

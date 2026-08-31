@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">
@@ -74,7 +75,7 @@ const WhatIsMyISP = () => {
     } catch {}
   };
 
-  const copyAllInfo = () => {
+  const copyAllInfo = async () => {
     const info = `IP: ${ispInfo.ip}
 ISP: ${ispInfo.isp}
 Organization: ${ispInfo.organization}
@@ -82,7 +83,15 @@ Country: ${ispInfo.country}
 Region: ${ispInfo.region}
 City: ${ispInfo.city}
 Timezone: ${ispInfo.timezone}`;
-    copy(info);
+    try {
+      await navigator.clipboard.writeText(info);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What is My ISP",
+        tool_action: "Copy",
+      });
+    } catch {}
   };
 
   return (

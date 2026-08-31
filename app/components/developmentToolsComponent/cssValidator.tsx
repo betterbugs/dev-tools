@@ -1,5 +1,6 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IssueType = "error" | "warning";
 interface Issue { line: number; column: number; message: string; type: IssueType }
@@ -55,6 +56,29 @@ const CssValidator = () => {
   const [css, setCss] = useState<string>(`/* Paste CSS here */\nbody {\n  font-family: system-ui\n  color: #222;\n}`);
   const issues = useMemo(() => validateCss(css), [css]);
   const hasErrors = issues.some((i) => i.type === "error");
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isFirstRenderRef = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+    if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+    if (css.trim()) {
+      debounceTimerRef.current = setTimeout(() => {
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "CSS Validator",
+          tool_action: "Validate",
+        });
+      }, 1000);
+    }
+    return () => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+    };
+  }, [css]);
 
   return (
     <div className="md:mt-8 mt-4 text-white">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface Options {
   percentInput: boolean; // input as 0–100%
@@ -85,7 +86,15 @@ const CmykToRgbConverter: React.FC = () => {
     try { await navigator.clipboard.writeText(options.percentInput ? `cmyk(${c}%, ${m}%, ${y}%, ${k}%)` : `cmyk(${c}, ${m}, ${y}, ${k})`); } catch (_) {}
   }, [c, m, y, k, options.percentInput]);
   const copyRgb = useCallback(async () => {
-    try { await navigator.clipboard.writeText(`rgb(${rOut}, ${gOut}, ${bOut})`); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(`rgb(${rOut}, ${gOut}, ${bOut})`);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "CMYK to RGB Converter",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
   }, [rOut, gOut, bOut]);
 
   return (

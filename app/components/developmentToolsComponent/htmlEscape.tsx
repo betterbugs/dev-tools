@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const NAMED_MAP: Record<string, string> = {
   "&": "&amp;",
@@ -43,6 +44,16 @@ const HtmlEscape: React.FC = () => {
     if (!autoUpdate) return;
     run();
   }, [input, autoUpdate, encodeQuotes, encodeNonAscii, useNamed]);
+
+  const handleEscapeClick = () => {
+    run();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Escape",
+      tool_action: "Escape",
+    });
+  };
 
   const onCopy = async () => {
     try {
@@ -136,7 +147,7 @@ const HtmlEscape: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input</label>
                   <button
-                    onClick={run}
+                    onClick={handleEscapeClick}
                     className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
                   >
                     Escape

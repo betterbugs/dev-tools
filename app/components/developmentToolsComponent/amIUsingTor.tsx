@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">
@@ -125,13 +126,21 @@ const AmIUsingTor = () => {
     } catch {}
   };
 
-  const copyResult = () => {
+  const copyResult = async () => {
     const result = `Tor Detection Result: ${torResult.isTor ? 'YES' : 'NO'}
 Confidence: ${torResult.confidence}
 Details: ${torResult.details}
 User Agent: ${navigator.userAgent}
 Timestamp: ${new Date().toISOString()}`;
-    copy(result);
+    try {
+      await navigator.clipboard.writeText(result);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Am I Using Tor",
+        tool_action: "Copy",
+      });
+    } catch {}
   };
 
   const getStatusColor = () => {

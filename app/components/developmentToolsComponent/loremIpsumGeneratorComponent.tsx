@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { lorem } from "@/app/libs/constants";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const LoremIpsumGeneratorComponent = () => {
   const [count, setCount] = useState<any>(1);
@@ -59,6 +60,12 @@ const LoremIpsumGeneratorComponent = () => {
     }
 
     setLoremText(output);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Lorem Ipsum Generator",
+      tool_action: "Generate",
+    });
   };
 
   const copyToClipboard = (text: string) => {

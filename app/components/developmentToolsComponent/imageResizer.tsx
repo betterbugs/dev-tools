@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const clamp = (value: number, min: number, max: number) => {
   return Math.min(max, Math.max(min, value));
@@ -178,6 +179,12 @@ const ImageResizer = () => {
     const base = fileName ? fileName.replace(/\.[^.]+$/, "") : "image";
     a.download = `${base}-${targetWidth}x${targetHeight}.${format === "jpg" ? "jpg" : format}`;
     a.click();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Image Resizer",
+      tool_action: "Download",
+    });
   };
 
   const targetBytes = useMemo(() => {
@@ -220,6 +227,12 @@ const ImageResizer = () => {
         return URL.createObjectURL(finalBlob);
       });
       setOutputBytes(finalBlob.size);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Image Resizer",
+        tool_action: "Compress",
+      });
     } catch {
       setError("Failed to optimize file size");
     } finally {

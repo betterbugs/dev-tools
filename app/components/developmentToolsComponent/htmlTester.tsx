@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">
@@ -137,6 +138,12 @@ const HtmlTester = () => {
     const errors = validateHTML(htmlCode);
     setValidationErrors(errors);
     setIsValidating(false);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Tester",
+      tool_action: "Validate",
+    });
   };
 
   const handleClear = () => {

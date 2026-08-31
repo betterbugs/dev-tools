@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "add" | "subtract" | "multiply" | "divide" | "between";
 type Unit = "ms" | "s" | "min" | "h" | "d" | "w" | "mo" | "y";
@@ -193,6 +194,12 @@ const TimeCalculator = () => {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Time Calculator",
+        tool_action: "Copy",
+      });
     } catch {
       // ignore
     }

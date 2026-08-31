@@ -3,6 +3,7 @@ import React, { useState, useCallback } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import CopyIcon from "../theme/Icon/copyIcon";
 import ReloadIcon from "../theme/Icon/reload";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -591,6 +592,12 @@ const CurlToCodeConverter = () => {
       await navigator.clipboard.writeText(output);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Curl To Code Converter",
+        tool_action: "Copy",
+      });
     } catch {
       setError("Failed to copy to clipboard.");
     }

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const MAX_DECODED_BYTES = 10 * 1024 * 1024;
 
@@ -163,6 +164,12 @@ const Base64ToImageConverter: React.FC = () => {
     document.body.appendChild(a);
     a.click();
     a.remove();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Base64 To Image Converter",
+      tool_action: "Download",
+    });
   };
 
   const copyInput = async () => {

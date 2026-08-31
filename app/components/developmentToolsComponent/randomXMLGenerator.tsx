@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type FieldType = "string" | "number" | "boolean" | "date" | "uuid" | "email";
 
@@ -72,6 +73,12 @@ const RandomXMLGenerator = () => {
     }
     const xml = items.join("\n\n");
     setOutput(pretty ? formatXML(xml) : xml);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random XML Generator",
+      tool_action: "Generate",
+    });
   };
 
   const copyOutput = async () => {

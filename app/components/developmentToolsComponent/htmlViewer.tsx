@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const DEFAULT_HTML =
   "<h1>Hello, HTML Viewer</h1>\n<p>Edit the HTML to see updates here.</p>";
@@ -39,6 +40,12 @@ const HtmlViewer: React.FC = () => {
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(editorValue);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "HTML Viewer Online",
+        tool_action: "Copy",
+      });
     } catch {
       // ignore
     }

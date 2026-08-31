@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const detectDelimiter = (text: string): string => {
   const candidates = [",", ";", "\t", "|", ":"]; // common delimiters
@@ -76,6 +77,12 @@ const CSVToJSON = () => {
     const data = parseCSV(csv, { delimiter, hasHeader, trim, ignoreEmpty });
     try {
       setJsonOut(JSON.stringify(data, null, 2));
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "CSV to JSON Converter",
+        tool_action: "Convert",
+      });
     } catch {
       setJsonOut("[]");
     }

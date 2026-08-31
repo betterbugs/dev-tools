@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const minify = (html: string): string => {
   return html
@@ -34,6 +35,12 @@ const HtmlMinify = () => {
     const src = input || example;
     const result = minify(src);
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Minify",
+      tool_action: "Minify",
+    });
   };
 
   const copy = async () =>

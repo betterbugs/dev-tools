@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ChromeInfo = {
   isChrome: boolean;
@@ -86,7 +87,15 @@ const WhatVersionOfChromeDoIHave: React.FC = () => {
   const json = useMemo(() => (info ? JSON.stringify(info, null, 2) : ""), [info]);
 
   const handleCopy = useCallback(async () => {
-    try { await navigator.clipboard.writeText(json); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(json);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What Version of Chrome Do I Have",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
   }, [json]);
 
   return (

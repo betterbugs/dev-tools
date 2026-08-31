@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type MinifyOptions = {
   removeComments: boolean;
@@ -79,6 +80,12 @@ const XmlMinify = () => {
       setError("");
       const result = minifyXml(input, options);
       setOutput(result);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "XML Minify",
+        tool_action: "Minify",
+      });
     } catch (e: any) {
       setOutput("");
       setError(e?.message || "Failed to minify XML");

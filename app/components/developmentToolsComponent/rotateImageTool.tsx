@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const clamp = (value: number, min: number, max: number) => {
   return Math.min(max, Math.max(min, value));
@@ -100,6 +101,12 @@ const RotateImageTool = () => {
     const ext = downloadFormat === "jpg" ? "jpg" : "png";
     a.download = `${fileName ? fileName.replace(/\.[^.]+$/, '') + '-' : ''}rotated.${ext}`;
     a.click();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Rotate Image Tool",
+      tool_action: "Download",
+    });
   };
 
   const clearAll = () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface ValidationResult {
   isValid: boolean;
@@ -236,6 +237,12 @@ const JsonValidator = () => {
       const results = validateJson(jsonInput);
       setValidationResults(results);
       setIsLoading(false);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON Validator Online",
+        tool_action: "Validate",
+      });
     }, 100);
   };
 
@@ -247,6 +254,12 @@ const JsonValidator = () => {
       const results = validateAgainstSchema(jsonInput, schemaInput);
       setSchemaValidation(results);
       setIsLoading(false);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON Validator Online",
+        tool_action: "Schema Validate",
+      });
     }, 100);
   };
 
@@ -280,6 +293,12 @@ const JsonValidator = () => {
     );
 
     setJsonInput(fixed);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "JSON Validator Online",
+      tool_action: "Smart Repair",
+    });
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Base64Decoder = () => {
   const [encodedText, setEncodedText] = useState("");
@@ -39,6 +40,12 @@ const Base64Decoder = () => {
     if (!decodedText) return;
     try {
       await navigator.clipboard.writeText(decodedText);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Base64 Decoder",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   };
 

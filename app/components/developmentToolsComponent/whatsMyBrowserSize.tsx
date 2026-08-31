@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const WhatsMyBrowserSize = () => {
   const [inner, setInner] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
@@ -24,6 +25,12 @@ const WhatsMyBrowserSize = () => {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Whats My Browser Size",
+        tool_action: "Copy",
+      });
     } catch {}
   };
 

@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Field = "minute" | "hour" | "dom" | "month" | "dow";
 
@@ -238,7 +239,17 @@ const CrontabGenerator = () => {
     setDow(parse(dw));
   };
 
-  const copy = async () => { try { await navigator.clipboard.writeText(cron); } catch {} };
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(cron);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Crontab Generator",
+        tool_action: "Copy",
+      });
+    } catch {}
+  };
 
   return (
     <div className="md:mt-8 mt-4 text-white">

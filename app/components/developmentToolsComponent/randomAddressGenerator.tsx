@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import ReloadIcon from "../theme/Icon/reload";
 import CopyIcon from "../theme/Icon/copyIcon";
 import { CheckIcon } from "../theme/Icon/checkIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type SupportedCountry = "US" | "UK" | "CA" | "AU" | "IN";
 
@@ -127,6 +128,12 @@ const RandomAddressGenerator: React.FC = () => {
     const a = generateOne();
     const full = `${a.buildingNumber} ${a.streetName} ${a.streetType}, ${a.city}, ${a.state} ${a.postalCode}, ${a.country}`;
     setAddresses([full]);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Address Generator",
+      tool_action: "Generate",
+    });
   };
 
   const copySingle = async (text: string, index: number) => {

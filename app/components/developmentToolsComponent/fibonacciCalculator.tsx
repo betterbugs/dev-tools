@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "nth" | "sequence";
 
@@ -98,6 +99,12 @@ const FibonacciCalculator: React.FC = () => {
     } else {
       setOutput(computeSequence(n));
     }
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Fabonacci Calculator",
+      tool_action: "Convert",
+    });
   };
 
   const onCopy = async () => {

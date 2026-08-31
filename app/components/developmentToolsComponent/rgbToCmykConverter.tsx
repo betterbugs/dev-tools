@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 // Options removed with simplified UI
@@ -59,7 +60,15 @@ const RgbToCmykConverter: React.FC = () => {
     try { await navigator.clipboard.writeText(`rgb(${r}, ${g}, ${b})`); } catch (_) {}
   }, [r, g, b]);
   const copyCmyk = useCallback(async () => {
-    try { await navigator.clipboard.writeText(`cmyk(${cOut}%, ${mOut}%, ${yOut}%, ${kOut}%)`); } catch (_) {}
+    try {
+      await navigator.clipboard.writeText(`cmyk(${cOut}%, ${mOut}%, ${yOut}%, ${kOut}%)`);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "RGB to CMYK Converter",
+        tool_action: "Copy",
+      });
+    } catch (_) {}
   }, [cOut, mOut, yOut, kOut]);
 
   return (

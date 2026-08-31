@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import CopyIcon from "../theme/Icon/copyIcon";
 import { CheckIcon } from "../theme/Icon/checkIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const QRCodeGenerator = () => {
   const [inputText, setInputText] = useState("Hello, World!");
@@ -42,6 +43,12 @@ const QRCodeGenerator = () => {
       link.href = canvas.toDataURL("image/png");
       link.click();
       setIsGenerating(false);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "QR Code Generator",
+        tool_action: "Download",
+      });
     }, 500);
   };
 

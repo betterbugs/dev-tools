@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Very lightweight CSS formatter (not a full parser but practical)
 const prettify = (css: string, indentSize: number): string => {
@@ -31,6 +32,12 @@ const CssPrettify = () => {
     const src = input || example;
     const result = prettify(src, indentSize);
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "CSS Prettify",
+      tool_action: "Prettify",
+    });
   };
 
   const copy = async () => output && (await navigator.clipboard.writeText(output));

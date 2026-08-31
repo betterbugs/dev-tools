@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Separator = "newline" | "comma" | "space";
 
@@ -60,6 +61,12 @@ const RandomWordGenerator = () => {
       items.push(randomWord(len));
     }
     setOutput(items.join("\n"));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Word Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => setOutput("");
@@ -108,6 +115,12 @@ const RandomWordGenerator = () => {
         .filter(Boolean);
 
       setOutput(words.join("\n"));
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Random Word Generator",
+        tool_action: "Generate",
+      });
     } catch (error) {
       setError("Failed to generate AI words. Please try again.");
       console.error(error);

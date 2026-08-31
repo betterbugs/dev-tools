@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface SubnetResults {
   networkAddress: string;
@@ -208,6 +209,12 @@ const Ipv4SubnetCalculator: React.FC = () => {
       } else {
         setCidrInput(String(cidr));
       }
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "IPv4 Subnet Calculator",
+        tool_action: "Calculate",
+      });
     }
   }, [ip, cidrInput, maskInput, inputMode]);
 

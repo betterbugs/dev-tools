@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the toast CSS
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const cardConfigs = {
   Visa: { bin: /^4/, length: [16] },
@@ -60,6 +61,12 @@ const CreditCardValidatorComponent = () => {
     const isValidCard = luhnCheck(sanitizedNumber);
     setIsValid(isValidCard);
     setCardType(getCardType(sanitizedNumber));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Credit Card Validator",
+      tool_action: "Validate",
+    });
 
     // Show appropriate toast message
     if (!isValidCard) {

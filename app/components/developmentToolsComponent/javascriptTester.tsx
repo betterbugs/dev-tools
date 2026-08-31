@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type LogEntry = { type: "log" | "warn" | "error"; message: string };
 
@@ -36,6 +37,12 @@ const JavaScriptTester = () => {
     setSrcDoc(wrap);
     // bump key to ensure fresh execution
     setReloadKey((k) => k + 1);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "JavaScript Tester",
+      tool_action: "Run",
+    });
   };
 
   useEffect(() => {

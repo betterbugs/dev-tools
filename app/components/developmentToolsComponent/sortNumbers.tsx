@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Order = "asc" | "desc";
 
@@ -31,6 +32,12 @@ const SortNumbers: React.FC = () => {
     if (uniqueOnly) nums = Array.from(new Set(nums));
     nums.sort((a, b) => (order === "asc" ? a - b : b - a));
     setOutput(nums.join(delimiter === "\\n" ? "\n" : delimiter));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Sort Numbers Online",
+      tool_action: "Sort",
+    });
   };
 
   const onCopy = async () => { try { await navigator.clipboard.writeText(output); } catch {} };

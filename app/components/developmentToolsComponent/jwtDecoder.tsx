@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface JwtParts {
   header: any;
@@ -98,7 +99,19 @@ const JwtDecoder: React.FC = () => {
 
   useEffect(() => { if (autoUpdate) decode(); }, [input, formatJson, showExpiry, autoUpdate, decode]);
 
-  const onCopy = useCallback(async () => { try { await navigator.clipboard.writeText(output); } catch (_) {} }, [output]);
+  const onCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      if (output) {
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "JWT Decoder",
+          tool_action: "Copy",
+        });
+      }
+    } catch (_) {}
+  }, [output]);
   const onDownload = useCallback(() => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);

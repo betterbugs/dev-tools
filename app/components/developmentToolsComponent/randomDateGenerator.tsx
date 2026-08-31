@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState, useRef } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type OutputFormat = "iso" | "locale" | "unix";
 
@@ -70,6 +71,12 @@ const RandomDateGenerator = () => {
       results.push(s);
     }
     setOutput(results.join("\n"));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Date Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => {

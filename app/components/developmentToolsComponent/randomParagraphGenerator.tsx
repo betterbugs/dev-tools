@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState, useRef, useCallback } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const CONSONANTS = "bcdfghjklmnpqrstvwxyz".split("");
 const VOWELS = "aeiou".split("");
@@ -92,6 +93,12 @@ const RandomParagraphGenerator = () => {
     if (!textToCopy) return;
     try {
       await navigator.clipboard.writeText(textToCopy);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Random Paragraph Generator",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type DiffOp = "equal" | "insert" | "delete";
 interface DiffChunk { op: DiffOp; text: string }
@@ -118,6 +119,12 @@ const TextCompare = () => {
   const onCompare = () => {
     if (!left.trim() || !right.trim()) { setError("Please provide both inputs."); setCompared(false); return; }
     setError(null); setCompared(true);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Text Compare",
+      tool_action: "Compare",
+    });
   };
 
   const handleUpload = (side: "left" | "right") => (e: React.ChangeEvent<HTMLInputElement>) => {

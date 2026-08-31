@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const AsciiToDecimalConverter = () => {
   const [input, setInput] = useState<string>("");
@@ -20,7 +21,16 @@ const AsciiToDecimalConverter = () => {
       setOutput("");
       return;
     }
-    setOutput(convertAsciiToDecimal(input));
+    const result = convertAsciiToDecimal(input);
+    setOutput(result);
+    if (!result.startsWith("Error")) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "ASCII to Decimal Converter",
+        tool_action: "Convert",
+      });
+    }
   };
 
   const clearAll = () => {

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const Cmd = ({ children }: { children: string }) => (
   <code className="px-2 py-1 rounded bg-black/40 border border-white/10 font-mono text-xs">
@@ -10,6 +11,12 @@ const Cmd = ({ children }: { children: string }) => (
 const copy = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "What version of Java is installed?",
+      tool_action: "Copy",
+    });
   } catch {}
 };
 

@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const SvgConverter = () => {
   const [svgInput, setSvgInput] = useState("");
@@ -208,6 +209,12 @@ export default SvgIcon;`;
     if (!output) return;
     try {
       await navigator.clipboard.writeText(output);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "SVG to React/CSS Utility",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   };
 

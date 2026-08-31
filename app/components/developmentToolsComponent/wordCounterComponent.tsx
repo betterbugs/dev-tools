@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import CopyButton from "../ui/CopyButton";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const WordCounterComponent = () => {
   const [text, setText] = useState("");
@@ -12,6 +13,16 @@ const WordCounterComponent = () => {
 
   const countWords = () => {
     return text.trim() ? text.trim().split(/\s+/).length : 0;
+  };
+
+  const handleCopyClick = () => {
+    if (!text.trim()) return;
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Word Count Tool",
+      tool_action: "Copy",
+    });
   };
 
   return (
@@ -60,12 +71,14 @@ const WordCounterComponent = () => {
                     Clear Text
                   </button>
 
-                  <CopyButton 
-                    text={text} 
-                    variant="text" 
-                    className={`${DevelopmentToolsStyles.converterButton} w-[280px] text-black font-bold py-3 px-8 rounded-lg items-center transition-transform transform hover:shadow-[2px_2px_1px_0px_rgba(0,0,0,0.5)] shadow-[3px_3px_2px_0px_rgba(0,0,0,0.5)] ${!text ? "opacity-70 cursor-not-allowed" : ""}`}
-                  />
-                  
+                  <span onClick={handleCopyClick}>
+                    <CopyButton
+                      text={text}
+                      variant="text"
+                      className={`${DevelopmentToolsStyles.converterButton} w-[280px] text-black font-bold py-3 px-8 rounded-lg items-center transition-transform transform hover:shadow-[2px_2px_1px_0px_rgba(0,0,0,0.5)] shadow-[3px_3px_2px_0px_rgba(0,0,0,0.5)] ${!text ? "opacity-70 cursor-not-allowed" : ""}`}
+                    />
+                  </span>
+
                 </div>
               </div>
             </div>

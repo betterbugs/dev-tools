@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Separator = "newline" | "comma" | "space";
 
@@ -37,6 +38,12 @@ const RandomClockTimeGenerator = () => {
     const items: string[] = [];
     for (let i = 0; i < n; i++) items.push(randomTime());
     setOutput(items.join("\n"));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Time Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => setOutput("");

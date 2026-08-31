@@ -2,6 +2,7 @@
 
 import React, { useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type HarNameValue = { name: string; value: string };
 
@@ -197,6 +198,14 @@ const HarFileViewer = () => {
     setHar(res.har);
     setError(res.error);
     setActiveId(-1);
+    if (!res.error) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Har File Viewer",
+        tool_action: "Upload",
+      });
+    }
   };
 
   const onPickFile = () => fileInputRef.current?.click();

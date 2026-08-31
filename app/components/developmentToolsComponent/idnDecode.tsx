@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -133,7 +134,19 @@ const IdnDecode: React.FC = () => {
                   <input type="checkbox" className="accent-primary" checked={autoUpdate} onChange={(e) => setAutoUpdate(e.target.checked)} />
                   Auto-update
                 </label>
-                <button onClick={convert} className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm">Decode</button>
+                <button
+                  onClick={() => {
+                    if (!input.trim()) return;
+                    convert();
+                    trackEvent("dev_tool_used", {
+                      page_type: PAGE_TYPE,
+                      platform: getRuntimePlatform(),
+                      tool_name: "IDN Decode",
+                      tool_action: "Decode",
+                    });
+                  }}
+                  className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm"
+                >Decode</button>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 <button onClick={onCopy} className="border border-white/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Copy</button>

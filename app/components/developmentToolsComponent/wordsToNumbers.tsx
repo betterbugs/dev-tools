@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Basic English words-to-number conversion supporting negatives and decimals.
 // Converts number words found anywhere in the text to their numeric forms.
@@ -307,6 +308,12 @@ const WordsToNumbers: React.FC = () => {
     } else {
       setOutput(converted);
     }
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Words to Number Online Converter",
+      tool_action: "Convert",
+    });
   };
   const onCopy = async () => {
     try {

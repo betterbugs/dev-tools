@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Decode basic named entities and numeric (decimal/hex) references
 const decodeEntities = (input: string) => {
@@ -34,7 +35,15 @@ const HtmlEntitiesToTextConverter = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
-  const onConvert = () => setOutput(decodeEntities(input));
+  const onConvert = () => {
+    setOutput(decodeEntities(input));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Entities to Text Converter",
+      tool_action: "Convert",
+    });
+  };
   const onCopy = async () => { try { await navigator.clipboard.writeText(output); } catch {} };
   const onDownload = () => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });

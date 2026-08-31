@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const detectSafari = (): string | null => {
   if (typeof navigator === "undefined") return null;
@@ -24,6 +25,12 @@ const WhatVersionOfSafariDoIHave = () => {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What version of Safari do I have?",
+        tool_action: "Copy",
+      });
     } catch {}
   };
 

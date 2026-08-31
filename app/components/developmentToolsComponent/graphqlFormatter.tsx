@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -254,6 +255,12 @@ const GraphQLFormatter: React.FC = () => {
     try {
       const formatted = formatGraphQL(input, { indentSize });
       setOutput(formatted);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "GraphQL Formatter",
+        tool_action: "Format",
+      });
     } catch (e) {
       setOutput("");
     }

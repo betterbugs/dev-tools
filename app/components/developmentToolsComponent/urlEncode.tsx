@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const encodeSafe = (value: string, spaceAsPlus: boolean) => {
   const encoded = encodeURIComponent(value);
@@ -13,7 +14,15 @@ const URLEncode = () => {
 
   const output = useMemo(() => encodeSafe(input, spaceAsPlus), [input, spaceAsPlus]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "URL Encode",
+      tool_action: "Copy",
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
