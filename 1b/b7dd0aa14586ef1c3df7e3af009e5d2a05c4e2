@@ -1,0 +1,604 @@
+app/components/developmentToolsComponent/sortingList.tsx
+  s_5fc87318e98b97::t_a6cf1909752989 4
+  s_5fc87318e98b97::t_4bbc6155310ed7 61-70
+app/components/developmentToolsComponent/timeCalculator.tsx
+  s_5fc87318e98b97::t_d053c1a2ea1a51 197-202
+  s_5fc87318e98b97::t_d54239c1ca456c 5
+app/components/developmentToolsComponent/base64ToImageConverter.tsx
+  s_5fc87318e98b97::t_428d02d54aecf9 5
+  s_5fc87318e98b97::t_46e5fadfd34c2b 167-172
+app/components/developmentToolsComponent/epochConverter.tsx
+  s_5fc87318e98b97::t_64afae76692257 92-100
+  s_5fc87318e98b97::t_de3f6ffb3e3256 193
+  s_5fc87318e98b97::t_a40b149d53f25c 210
+  s_5fc87318e98b97::t_fd2f2ca3fa2c8a 227
+  s_5fc87318e98b97::t_fb1902bd27f94d 10
+app/components/developmentToolsComponent/shuffleLetters.tsx
+  s_5fc87318e98b97::t_b88fe3215d4f40 4
+  s_5fc87318e98b97::t_7c4329017b13c3 106-115
+app/components/developmentToolsComponent/fibonacciCalculator.tsx
+  s_5fc87318e98b97::t_7c84707e7a32d7 102-107
+  s_5fc87318e98b97::t_356a3b52bc3157 4
+app/components/developmentToolsComponent/shuffleTextLines.tsx
+  s_5fc87318e98b97::t_fa7b16c842f04b 62-71
+  s_5fc87318e98b97::t_10381c51a78085 4
+app/components/developmentToolsComponent/randomDateGenerator.tsx
+  s_5fc87318e98b97::t_52d5010db539b3 4
+  s_5fc87318e98b97::t_b821813fa7da44 74-79
+app/components/developmentToolsComponent/apiKeyGenerator.tsx
+  s_5fc87318e98b97::t_713bfc14d114d9 89-98
+  s_5fc87318e98b97::t_d644345f87b834 253
+  s_5fc87318e98b97::t_f4aa2295c1161c 4
+app/components/developmentToolsComponent/whatVersionOfFlashDoIHave.tsx
+  s_5fc87318e98b97::t_8278c98a00e9dc 3
+  s_5fc87318e98b97::t_68eeddd1cdfcff 25-35
+app/components/developmentToolsComponent/remToPxConverter.tsx
+  s_5fc87318e98b97::t_0ffd32eb748cc1 4
+  s_5fc87318e98b97::t_928785599e2bda 56-65
+  s_5fc87318e98b97::t_929323403df162 170
+app/components/developmentToolsComponent/svgConverter.tsx
+  s_5fc87318e98b97::t_c98d822c092c28 4
+  s_5fc87318e98b97::t_8da1d1d858429f 212-217
+app/components/developmentToolsComponent/decimalToAsciiConverter.tsx
+  s_5fc87318e98b97::t_0fd169e2c2ac7c 4
+  s_5fc87318e98b97::t_9a99ebb3f73a83 39-48
+app/components/developmentToolsComponent/harFileViewer.tsx
+  s_5fc87318e98b97::t_0c000c8e743cc3 5
+  s_5fc87318e98b97::t_221ade78a3f987 201-208
+app/components/developmentToolsComponent/randomParagraphGenerator.tsx
+  s_5fc87318e98b97::t_67688820a10b00 4
+  s_5fc87318e98b97::t_3af734e0c7ed6e 96-101
+app/components/developmentToolsComponent/upperCaseConverterComponent.tsx
+  s_5fc87318e98b97::t_f9a63733e6d87f 17-22
+  s_5fc87318e98b97::t_a8a4d1cf85f5ef 4
+app/components/developmentToolsComponent/cssPrettify.tsx
+  s_5fc87318e98b97::t_7fdaf4c1ccc940 4
+  s_5fc87318e98b97::t_a1f7df2a0ff6a9 35-40
+app/components/developmentToolsComponent/hexToRGBConverter.tsx
+  s_5fc87318e98b97::t_0613c913bc8df4 4
+  s_5fc87318e98b97::t_5b2dbbd3456410 69-74
+app/components/developmentToolsComponent/removeSpaces.tsx
+  s_5fc87318e98b97::t_5d4755f8ac45dd 130
+  s_5fc87318e98b97::t_95e50c6aa2311e 4
+app/components/developmentToolsComponent/rotateImageTool.tsx
+  s_5fc87318e98b97::t_9fdbc75dd69b91 104-109
+  s_5fc87318e98b97::t_7b822988af5abb 4
+app/components/developmentToolsComponent/whatIsMyUserAgent.tsx
+  s_5fc87318e98b97::t_2b50b8c3e40b9d 3
+  s_5fc87318e98b97::t_ad96a7c66a031b 66-71
+app/components/developmentToolsComponent/octalToBinaryConverter.tsx
+  s_5fc87318e98b97::t_73d848a1fee9b6 42-54
+  s_5fc87318e98b97::t_43282b0dd16b59 4
+app/components/developmentToolsComponent/whatVersionOfSafariDoIHave.tsx
+  s_5fc87318e98b97::t_fadfd2c053caae 3
+  s_5fc87318e98b97::t_47b2e079766560 28-33
+app/components/developmentToolsComponent/hexToPantone.tsx
+  s_5fc87318e98b97::t_5544bb0444f585 60-71
+  s_5fc87318e98b97::t_3082d267d1b67e 137
+  s_5fc87318e98b97::t_90eb623dad22a0 4
+app/components/developmentToolsComponent/characterCounterComponent.tsx
+  s_5fc87318e98b97::t_21e750c581c89c 2,4,10-16,19-31
+app/components/developmentToolsComponent/jsObfuscatorComponent.tsx
+  s_5fc87318e98b97::t_fa959446a5460b 7
+  s_5fc87318e98b97::t_357a301e6b3dae 26-31
+app/components/developmentToolsComponent/randomGUIDGenerator.tsx
+  s_5fc87318e98b97::t_78264e8d24047b 49-54
+  s_5fc87318e98b97::t_3ee9295167d917 8
+app/components/developmentToolsComponent/pythonFormatter.tsx
+  s_5fc87318e98b97::t_db31593351f634 4
+  s_5fc87318e98b97::t_ba810cb33572e0 183-196
+app/components/developmentToolsComponent/hexToAscii.tsx
+  s_5fc87318e98b97::t_b91bc5af56e882 4
+  s_5fc87318e98b97::t_c91093f5d2fa5d 105
+  s_5fc87318e98b97::t_865e86f4fb0883 53-62
+app/components/developmentToolsComponent/idnEncode.tsx
+  s_5fc87318e98b97::t_bcde604e3d6235 158-170
+  s_5fc87318e98b97::t_d6c5b2a02bbff5 4
+app/components/developmentToolsComponent/urlParser.tsx
+  s_5fc87318e98b97::t_cd96eddc9e54c7 138-143
+  s_5fc87318e98b97::t_20b3f895fe5265 4
+app/components/developmentToolsComponent/randomIPGenerator.tsx
+  s_5fc87318e98b97::t_e249d238693357 73-81
+  s_5fc87318e98b97::t_f0d16f60dbdc5d 4
+app/components/developmentToolsComponent/randomAddressGenerator.tsx
+  s_5fc87318e98b97::t_36a65f7f6b03e5 6
+  s_5fc87318e98b97::t_91ded85e1aeecb 131-136
+app/components/developmentToolsComponent/curlToCodeConverter.tsx
+  s_5fc87318e98b97::t_ef0dd2ad571e64 6
+  s_5fc87318e98b97::t_94fc0dfd068050 595-600
+app/components/developmentToolsComponent/cmykToRgbConverter.tsx
+  s_5fc87318e98b97::t_9f49d7ae2e0b8e 4
+  s_5fc87318e98b97::t_9a54befef1c7d3 89-97
+app/components/developmentToolsComponent/colorPickerTool.tsx
+  s_5fc87318e98b97::t_38fdf937664a37 143
+  s_5fc87318e98b97::t_99924409be3a99 103-111
+  s_5fc87318e98b97::t_e27ef9f7c3b4a9 177
+  s_5fc87318e98b97::t_fa363da78430bc 4
+app/components/developmentToolsComponent/stringDiffrenceChecker.tsx
+  s_5fc87318e98b97::t_69594f3be4d63c 4
+  s_5fc87318e98b97::t_10bd5f5a57af9f 186-191
+app/components/developmentToolsComponent/sortNumbers.tsx
+  s_5fc87318e98b97::t_7ea5a4ad7997e4 4
+  s_5fc87318e98b97::t_d7389c7406d8d3 35-40
+app/components/developmentToolsComponent/sentenceCounterComponent.tsx
+  s_5fc87318e98b97::t_e31ef85d22094a 2,4,8-14,17-29
+app/components/developmentToolsComponent/htmlToMarkDownComponent.tsx
+  s_5fc87318e98b97::t_23334510d69a23 8
+  s_5fc87318e98b97::t_d67045ee7057d6 66-71
+app/components/developmentToolsComponent/csvToTextConverter.tsx
+  s_5fc87318e98b97::t_54af600e28e3b3 177-182
+  s_5fc87318e98b97::t_627a306e488cea 4
+app/components/developmentToolsComponent/markdownFormatter.tsx
+  s_5fc87318e98b97::t_9eb9e28828a2ad 82-91
+  s_5fc87318e98b97::t_51fb67e71a887b 168
+  s_5fc87318e98b97::t_68f5057969e03d 4
+app/components/developmentToolsComponent/csvToExcelFileConvertor.tsx
+  s_5fc87318e98b97::t_2cef271d5cb865 4
+  s_5fc87318e98b97::t_a9c897cfc10c66 120-125
+app/components/developmentToolsComponent/randomUsernameGenerator.tsx
+  s_5fc87318e98b97::t_173ed05b6b75bf 4
+  s_5fc87318e98b97::t_01af2f0d789df9 229-234
+app/components/developmentToolsComponent/javascriptEscape.tsx
+  s_5fc87318e98b97::t_653d20db4d42df 3
+  s_5fc87318e98b97::t_b2e650ad4989a4 52-62
+app/components/developmentToolsComponent/utf8Encode.tsx
+  s_5fc87318e98b97::t_c1073eb89a2aea 101
+  s_5fc87318e98b97::t_d166a38bf76128 4
+  s_5fc87318e98b97::t_a005c26648491f 63-72
+app/components/developmentToolsComponent/pxToRemConverter.tsx
+  s_5fc87318e98b97::t_9497639d3a0957 56-65
+  s_5fc87318e98b97::t_27e9c3bdcc867c 170
+  s_5fc87318e98b97::t_dffe19df5718cd 4
+app/components/developmentToolsComponent/numbersToWordsConverter.tsx
+  s_5fc87318e98b97::t_5ca48428b5ebb4 188-195
+  s_5fc87318e98b97::t_a72fbb4d5a2253 4
+app/components/developmentToolsComponent/internetSpeedTest.tsx
+  s_5fc87318e98b97::t_f61c28a46996bc 81-86
+  s_5fc87318e98b97::t_86bfd0794b3761 5
+app/components/developmentToolsComponent/sqlToJson.tsx
+  s_5fc87318e98b97::t_0c8cef7049931d 4
+  s_5fc87318e98b97::t_fc7e5b1c5ef333 172-177
+app/components/developmentToolsComponent/svgViewer.tsx
+  s_5fc87318e98b97::t_5abab693a8d9fb 152-157
+  s_5fc87318e98b97::t_0d678105ad673d 5
+app/components/developmentToolsComponent/idnDecode.tsx
+  s_5fc87318e98b97::t_c0e9bb67658ffe 4
+  s_5fc87318e98b97::t_893f6a96045ee9 137-149
+app/components/developmentToolsComponent/jsonToTxt.tsx
+  s_5fc87318e98b97::t_1fff2f80ef9aec 79,86-93
+  s_5fc87318e98b97::t_f89a2de80c3c81 5
+  s_5fc87318e98b97::t_edb7d5a091a75a 190
+app/components/developmentToolsComponent/ipv4SubnetCalculator.tsx
+  s_5fc87318e98b97::t_c756d41356d3f5 212-217
+  s_5fc87318e98b97::t_84998adad44d96 4
+app/components/developmentToolsComponent/xmlPrettify.tsx
+  s_5fc87318e98b97::t_50545a404fad55 89-94
+  s_5fc87318e98b97::t_4c864227c69509 4
+app/components/developmentToolsComponent/javascriptValidatorLinter.tsx
+  s_5fc87318e98b97::t_35d786baf5c089 70-92
+  s_5fc87318e98b97::t_43449ec14451c8 2-3
+app/components/developmentToolsComponent/xmlCompare.tsx
+  s_5fc87318e98b97::t_d2627ae3239c19 10
+  s_5fc87318e98b97::t_7f4deefe1f4ab4 231-239
+app/components/developmentToolsComponent/cssToSass.tsx
+  s_5fc87318e98b97::t_79bba493e4b4ed 3
+  s_5fc87318e98b97::t_5ba5ac3eca1844 106-111
+app/components/developmentToolsComponent/cssValidator.tsx
+  s_5fc87318e98b97::t_22e4810d9ccf98 59,61-62,67-81
+  s_5fc87318e98b97::t_d8db909403464f 60,63-66
+  s_5fc87318e98b97::t_eb6cbe6717b5b8 2-3
+app/components/developmentToolsComponent/wordCounterComponent.tsx
+  s_5fc87318e98b97::t_1de86b07194a42 5,18-25
+  s_5fc87318e98b97::t_8cd6b88d5f96be 74-80
+  s_5fc87318e98b97::t_b7b810148c85c2 26-27,81
+app/components/developmentToolsComponent/textToHtmlEntitiesConvertor.tsx
+  s_5fc87318e98b97::t_48f7246428a27c 4
+  s_5fc87318e98b97::t_761369f7837f5d 43-51
+app/components/developmentToolsComponent/textRepeater.tsx
+  s_5fc87318e98b97::t_2aeb693c91bd3b 4
+  s_5fc87318e98b97::t_d060af27036abc 48-57
+app/components/developmentToolsComponent/jsonMinifierComponent.tsx
+  s_5fc87318e98b97::t_5e25b9b7928497 7
+  s_5fc87318e98b97::t_29250a20564c7a 43-48
+app/components/developmentToolsComponent/loremIpsumGeneratorComponent.tsx
+  s_5fc87318e98b97::t_2257d00d21a525 63-68
+  s_5fc87318e98b97::t_34f1c2a8745e24 5
+app/components/developmentToolsComponent/jsonToCsvConverter.tsx
+  s_5fc87318e98b97::t_f8d26b894e9ae1 92-97
+  s_5fc87318e98b97::t_0b44ae0ccd91ba 4
+app/components/developmentToolsComponent/decimalToGrayCode.tsx
+  s_5fc87318e98b97::t_9410a86c6a672e 4
+  s_5fc87318e98b97::t_48034d454ec241 87-92
+app/components/developmentToolsComponent/asciiToUnicodeConverter.tsx
+  s_5fc87318e98b97::t_514b342c57ecb5 24-29
+  s_5fc87318e98b97::t_6813fc99348d7b 4
+app/components/developmentToolsComponent/phpFormatter.tsx
+  s_5fc87318e98b97::t_5179f217483779 182-195
+  s_5fc87318e98b97::t_ca812567dffa29 4
+app/components/developmentToolsComponent/decimalToOctalConverter.tsx
+  s_5fc87318e98b97::t_717b1bad7fa72a 4
+  s_5fc87318e98b97::t_6b74ca5ef9ca5a 76
+  s_5fc87318e98b97::t_37904cf13584dd 34-45
+app/components/developmentToolsComponent/htmlEntitiesToTextConverter.tsx
+  s_5fc87318e98b97::t_d43bce6c98aa66 4
+  s_5fc87318e98b97::t_8ac1aad168849a 38-46
+app/components/developmentToolsComponent/urlDecode.tsx
+  s_5fc87318e98b97::t_4f4d4ac5383bca 31-39
+  s_5fc87318e98b97::t_bfc282bd480f6e 4
+app/components/developmentToolsComponent/cssToStylus.tsx
+  s_5fc87318e98b97::t_342ee4273e5578 150
+  s_5fc87318e98b97::t_29dbac49461df2 110-119
+  s_5fc87318e98b97::t_78ab430024e415 4
+app/components/developmentToolsComponent/jsonToYamlConverter.tsx
+  s_5fc87318e98b97::t_b5a881ce9de7ac 122-136
+  s_5fc87318e98b97::t_ea58a0eaa39e9f 4
+app/components/developmentToolsComponent/cmykToHexConverter.tsx
+  s_5fc87318e98b97::t_885b39504baf89 5
+  s_5fc87318e98b97::t_c513adb99baf28 115-120
+app/components/developmentToolsComponent/jsonValidator.tsx
+  s_5fc87318e98b97::t_910a1c0c678a0f 296-301
+  s_5fc87318e98b97::t_7b20ac4c50f905 240-245,257-262
+  s_5fc87318e98b97::t_9e85246afd1059 4
+app/components/developmentToolsComponent/hexToCmykConverter.tsx
+  s_5fc87318e98b97::t_83c3f79d880a2b 5
+  s_5fc87318e98b97::t_4c3383476ac590 135-140
+app/components/developmentToolsComponent/jsonCompare.tsx
+  s_5fc87318e98b97::t_1367e3072a4aac 4
+  s_5fc87318e98b97::t_041a74cd5bb556 128-133
+app/components/developmentToolsComponent/wordsToNumbers.tsx
+  s_5fc87318e98b97::t_4d73af638b7937 311-316
+  s_5fc87318e98b97::t_2c602d4a1cda56 4
+app/components/developmentToolsComponent/randomWordGenerator.tsx
+  s_5fc87318e98b97::t_f248244039da10 118-123
+  s_5fc87318e98b97::t_a9f80d86927e0c 64-69
+  s_5fc87318e98b97::t_b0a982ebc6ef3f 4
+app/components/developmentToolsComponent/htmlToBBCode.tsx
+  s_5fc87318e98b97::t_723ebe256c7cc3 4
+  s_5fc87318e98b97::t_38e46e4df47910 99-110
+app/components/developmentToolsComponent/utf8Decode.tsx
+  s_5fc87318e98b97::t_abbe6a2d665093 10
+  s_5fc87318e98b97::t_05cc2ce68cad4d 169-178
+app/components/developmentToolsComponent/base64Encoder.tsx
+  s_5fc87318e98b97::t_8477ac31f5a163 4
+  s_5fc87318e98b97::t_828986ca5f2878 35-40
+app/components/developmentToolsComponent/bitwiseCalculator.tsx
+  s_5fc87318e98b97::t_b035f8999f8656 4
+  s_5fc87318e98b97::t_a3ef1fad5d416a 152-159,167
+  s_5fc87318e98b97::t_445804777bf7e7 86,100-107
+app/components/developmentToolsComponent/randomNumberGenerator.tsx
+  s_5fc87318e98b97::t_f568af960daa7e 159-164
+  s_5fc87318e98b97::t_1513a9a7663c98 4
+app/components/developmentToolsComponent/sortWords.tsx
+  s_5fc87318e98b97::t_47c12ec4d72762 59-64
+  s_5fc87318e98b97::t_8057bf3596bd65 4
+app/components/developmentToolsComponent/htmlCodeGenerator.tsx
+  s_5fc87318e98b97::t_3348d0ee04f316 6
+  s_5fc87318e98b97::t_ee115e470c437b 66-71
+app/components/developmentToolsComponent/cssToScssConverter.tsx
+  s_5fc87318e98b97::t_8c8033ce57b198 118-126
+  s_5fc87318e98b97::t_f5e1dd6ac74f89 4
+app/components/developmentToolsComponent/crontabGenerator.tsx
+  s_5fc87318e98b97::t_afe2fa490f6a6f 3
+  s_5fc87318e98b97::t_903cf5e9e61078 242-252
+app/components/developmentToolsComponent/sqlFormatterAndBeautifier.tsx
+  s_5fc87318e98b97::t_7ca1bf0fc3fce5 157-162
+  s_5fc87318e98b97::t_1fc98be45f7a7a 4
+app/components/developmentToolsComponent/amIUsingTor.tsx
+  s_5fc87318e98b97::t_be8e2130f060fa 129,135-143
+  s_5fc87318e98b97::t_5c6f4a4be51da3 3
+app/components/developmentToolsComponent/bcryptGenerator.tsx
+  s_5fc87318e98b97::t_1c792e864b6104 105-110
+  s_5fc87318e98b97::t_40458212768752 85-90
+  s_5fc87318e98b97::t_92c1a3f17d7856 4
+app/components/developmentToolsComponent/qrCodeGenerator.tsx
+  s_5fc87318e98b97::t_e59db7b8718325 46-51
+  s_5fc87318e98b97::t_6e984e49eab26e 6
+app/components/developmentToolsComponent/milesToKmConverter.tsx
+  s_5fc87318e98b97::t_6dc21285387eaf 4
+  s_5fc87318e98b97::t_348093e65ec88a 35-47
+app/components/developmentToolsComponent/jsonPrittifierComponent.tsx
+  s_5fc87318e98b97::t_462a2c6ff9e9f5 8
+  s_5fc87318e98b97::t_c92d762b391400 52-57
+app/components/developmentToolsComponent/xmlMinify.tsx
+  s_5fc87318e98b97::t_1d334e7ca45095 83-88
+  s_5fc87318e98b97::t_1a3981757db7e7 4
+app/components/developmentToolsComponent/sqlMinify.tsx
+  s_5fc87318e98b97::t_45820d11079ef0 192-197
+  s_5fc87318e98b97::t_2a42a874780f51 4
+app/components/developmentToolsComponent/lowerCaseConverterComponent.tsx
+  s_5fc87318e98b97::t_4792912f0df9e0 4
+  s_5fc87318e98b97::t_83792d9db2e33a 17-22
+app/components/developmentToolsComponent/placeholderImageGenerator.tsx
+  s_5fc87318e98b97::t_3e8d22bbf54c59 4
+  s_5fc87318e98b97::t_2f3cec10cca691 99-104
+app/components/developmentToolsComponent/randomCSVGenerator.tsx
+  s_5fc87318e98b97::t_87427273def08f 215-224
+  s_5fc87318e98b97::t_ea4e622e6eb37b 323
+  s_5fc87318e98b97::t_ca77ce3a3ffde3 4
+app/components/developmentToolsComponent/asciiToDecimalConverter.tsx
+  s_5fc87318e98b97::t_39e7d26b2333b7 4
+  s_5fc87318e98b97::t_b8f823c1578443 24-33
+app/components/developmentToolsComponent/textToOneLine.tsx
+  s_5fc87318e98b97::t_87a2cb54a4f55d 162-170
+  s_5fc87318e98b97::t_27df892cd83693 4
+app/components/developmentToolsComponent/stripHTML.tsx
+  s_5fc87318e98b97::t_79810e23d7457e 40-49
+  s_5fc87318e98b97::t_41ea115a36b280 3
+app/components/developmentToolsComponent/xmlToJsonConverter.tsx
+  s_5fc87318e98b97::t_ec615586d33c24 4
+  s_5fc87318e98b97::t_ca51aa6a83fb0d 136-147
+app/components/developmentToolsComponent/typescriptFormatter.tsx
+  s_5fc87318e98b97::t_d250da41b7abb6 173-186
+  s_5fc87318e98b97::t_57ee5b779bfde8 4
+app/components/developmentToolsComponent/whatVersionOfFirefoxDoIHave.tsx
+  s_5fc87318e98b97::t_7113d288f180d7 23-28
+  s_5fc87318e98b97::t_355d4f657a1f97 3
+app/components/developmentToolsComponent/jsonToXmlConverter.tsx
+  s_5fc87318e98b97::t_1612cd1c81a6fc 4
+  s_5fc87318e98b97::t_3b539317c1f942 153-167
+app/components/developmentToolsComponent/whatIsMyLocalIPAddress.tsx
+  s_5fc87318e98b97::t_52c7ab19362714 79,83-88
+  s_5fc87318e98b97::t_f62f6bc52970a7 3
+app/components/developmentToolsComponent/htmlToJade.tsx
+  s_5fc87318e98b97::t_b26dfb9fc6bd11 4
+  s_5fc87318e98b97::t_d6bb45e59fadd8 147-160
+app/components/developmentToolsComponent/imageToBase64Converter.tsx
+  s_5fc87318e98b97::t_6e55fab228af91 99-104
+  s_5fc87318e98b97::t_943b0f22791b57 5
+app/components/developmentToolsComponent/graphqlFormatter.tsx
+  s_5fc87318e98b97::t_f1ea76a2058e2f 4
+  s_5fc87318e98b97::t_a84a29cbeb1a65 258-263
+app/components/developmentToolsComponent/randomPasswardGenerator.tsx
+  s_5fc87318e98b97::t_93e016b0c685a1 4
+  s_5fc87318e98b97::t_faa3a5507e46ea 67-72
+app/components/developmentToolsComponent/xorCalculator.tsx
+  s_5fc87318e98b97::t_7249a9585790f0 182
+  s_5fc87318e98b97::t_d251c20c7c8fa1 84-93
+  s_5fc87318e98b97::t_350c19a6163b4a 4
+app/components/developmentToolsComponent/randomSentanceGenerator.tsx
+  s_5fc87318e98b97::t_111178a6f27b0a 4
+  s_5fc87318e98b97::t_dfccdfb1f214b0 67-72
+  s_5fc87318e98b97::t_e40ea02d09d910 149-154
+app/components/developmentToolsComponent/urlEncode.tsx
+  s_5fc87318e98b97::t_579218fd9f19aa 4
+  s_5fc87318e98b97::t_ab61ba20215c90 17-25
+app/components/developmentToolsComponent/jsonToTypeScript.tsx
+  s_5fc87318e98b97::t_a603c227b9a0c1 6
+  s_5fc87318e98b97::t_e2cd54b461d86f 135-140
+app/components/developmentToolsComponent/hoursToSecounds.tsx
+  s_5fc87318e98b97::t_a0db92518ea787 33-38
+  s_5fc87318e98b97::t_55fc5edd12a37d 4
+app/components/developmentToolsComponent/base64Decoder.tsx
+  s_5fc87318e98b97::t_d62b36c24cd003 43-48
+  s_5fc87318e98b97::t_81fb6955618f40 4
+app/components/developmentToolsComponent/rgbToCmykConverter.tsx
+  s_5fc87318e98b97::t_3c5aa62cb05e3f 4
+  s_5fc87318e98b97::t_a376987b398fcf 63-71
+app/components/developmentToolsComponent/whatVersionOfIOSDoIHave.tsx
+  s_5fc87318e98b97::t_78a461f2888e28 25-30
+  s_5fc87318e98b97::t_8c3aeb8456eef4 3
+app/components/developmentToolsComponent/scssToCssConverter.tsx
+  s_5fc87318e98b97::t_550febae8c87b2 4
+  s_5fc87318e98b97::t_fd7b78014f43bb 115-123
+app/components/developmentToolsComponent/lineCounterComponent.tsx
+  s_5fc87318e98b97::t_7c905c236616e0 2,4,8-14,17-29
+app/components/developmentToolsComponent/randomCharacterGenerator.tsx
+  s_5fc87318e98b97::t_01f42ccc01184c 93-98
+  s_5fc87318e98b97::t_f79f6122007d0a 4
+app/components/developmentToolsComponent/ipToHexConverter.tsx
+  s_5fc87318e98b97::t_89375bca58689f 4
+  s_5fc87318e98b97::t_049633e3617be5 141
+  s_5fc87318e98b97::t_55763d08a56c19 86,99-106
+app/components/developmentToolsComponent/htmlUnescape.tsx
+  s_5fc87318e98b97::t_a95a9aba10a959 32-41
+  s_5fc87318e98b97::t_44cc5a833b8888 4
+  s_5fc87318e98b97::t_e8097835969800 106
+app/components/developmentToolsComponent/whatVersionOfMacOSDoIHave.tsx
+  s_5fc87318e98b97::t_c0d40fe7e39d46 3
+  s_5fc87318e98b97::t_a290b2743c5798 48-53
+app/components/developmentToolsComponent/reverseTextGenerator.tsx
+  s_5fc87318e98b97::t_2f2ccdfb4310b2 106-110
+  s_5fc87318e98b97::t_a1708138e977e2 4
+  s_5fc87318e98b97::t_eca7ffde9221e4 50-58
+app/components/developmentToolsComponent/jwtDecoder.tsx
+  s_5fc87318e98b97::t_d9f29955592a3b 102-114
+  s_5fc87318e98b97::t_a55370f5f91580 4
+app/components/developmentToolsComponent/randomStringGenerator.tsx
+  s_5fc87318e98b97::t_0d45afa1e51694 4
+  s_5fc87318e98b97::t_688f232396ef69 53-58
+app/components/developmentToolsComponent/cssMinify.tsx
+  s_5fc87318e98b97::t_132442e38758cc 5
+  s_5fc87318e98b97::t_017a28a97079ff 47-52
+app/components/developmentToolsComponent/whatVersionOfJavaDoIHave.tsx
+  s_5fc87318e98b97::t_99a883378c0bbc 14-19
+  s_5fc87318e98b97::t_744a4d9467caf6 3
+app/components/developmentToolsComponent/whatVersionOfAndroidDoIHave.tsx
+  s_5fc87318e98b97::t_f522676c6df484 18-28
+  s_5fc87318e98b97::t_fd89631bde9871 3
+app/components/developmentToolsComponent/unicodeToAsciiConverter.tsx
+  s_5fc87318e98b97::t_743cd6dda1eab5 30-35
+  s_5fc87318e98b97::t_9873f2462ec45e 4
+app/components/developmentToolsComponent/whatVersionOfWindowsDoIHave.tsx
+  s_5fc87318e98b97::t_0cefeb8d4e08ac 4
+  s_5fc87318e98b97::t_bc0998cfa38081 95-100
+app/components/developmentToolsComponent/textToCsv.tsx
+  s_5fc87318e98b97::t_69339add33a586 4
+  s_5fc87318e98b97::t_ae6178cd90fbef 141-154
+app/components/developmentToolsComponent/javascriptMinifierComponent.tsx
+  s_5fc87318e98b97::t_d7b45d1c2f2b7e 7
+  s_5fc87318e98b97::t_1ece447422c764 23-28
+app/components/developmentToolsComponent/csvToJson.tsx
+  s_5fc87318e98b97::t_1c4fd9e8a531fb 4
+  s_5fc87318e98b97::t_357f8f32183fc7 80-85
+app/components/developmentToolsComponent/bcdToDecimalConverter.tsx
+  s_5fc87318e98b97::t_fb0edc16c253de 49-54
+  s_5fc87318e98b97::t_12e29a3a0add49 4
+app/components/developmentToolsComponent/randomTextFromRegEX.tsx
+  s_5fc87318e98b97::t_371cf1f3dd8761 170-175
+  s_5fc87318e98b97::t_a734da2c2b5781 8
+app/components/developmentToolsComponent/randomJsonDataGenerator.tsx
+  s_5fc87318e98b97::t_7aaf500107aa3b 4
+  s_5fc87318e98b97::t_f3f66ab3ecea25 221-226
+app/components/developmentToolsComponent/kmToMilesConverter.tsx
+  s_5fc87318e98b97::t_bc6692c8255c7e 4
+  s_5fc87318e98b97::t_178de6c1ebb847 35-47
+app/components/developmentToolsComponent/textCompare.tsx
+  s_5fc87318e98b97::t_52aafc45e414de 4
+  s_5fc87318e98b97::t_840e71e510a977 122-127
+app/components/developmentToolsComponent/yamlFormatterAndBeautifier.tsx
+  s_5fc87318e98b97::t_b31a35a2c818ec 111-116
+  s_5fc87318e98b97::t_dff53f0944d00a 4
+app/components/developmentToolsComponent/xmlEscape.tsx
+  s_5fc87318e98b97::t_f6ee293feb993c 33-43
+  s_5fc87318e98b97::t_4847de4225d168 3
+app/components/developmentToolsComponent/htmlEscape.tsx
+  s_5fc87318e98b97::t_672247c110a972 4
+  s_5fc87318e98b97::t_02300a10b7ffc9 150
+  s_5fc87318e98b97::t_a78be513ff6863 48-57
+app/components/developmentToolsComponent/decimalToHexConverter.tsx
+  s_5fc87318e98b97::t_c11160d51a2317 4
+  s_5fc87318e98b97::t_8adcefb7a827c9 36-48
+app/components/developmentToolsComponent/whatVersionOfChromeDoIHave.tsx
+  s_5fc87318e98b97::t_b18a2161ad94eb 90-98
+  s_5fc87318e98b97::t_7ffb1b8705bea6 4
+app/components/developmentToolsComponent/codeCompareTool.tsx
+  s_5fc87318e98b97::t_39126d8e9fa033 91-96
+  s_5fc87318e98b97::t_2ad0d32468a95e 4
+app/components/developmentToolsComponent/sqlToCsvConverter.tsx
+  s_5fc87318e98b97::t_0e8b88fe22fb36 4
+  s_5fc87318e98b97::t_2d558d7e6433c2 96-105
+app/components/developmentToolsComponent/javascriptTester.tsx
+  s_5fc87318e98b97::t_a31e80eb829227 3
+  s_5fc87318e98b97::t_1e999bf9f78dbf 40-45
+app/components/developmentToolsComponent/hexToBinaryConverter.tsx
+  s_5fc87318e98b97::t_b23c809e7a29a5 42-54
+  s_5fc87318e98b97::t_caed4b0f92c1e8 4
+app/components/developmentToolsComponent/celsiusFahrenheitConverter.tsx
+  s_5fc87318e98b97::t_baabfdee6283aa 4
+  s_5fc87318e98b97::t_970aa7d519ea2d 54-59
+app/components/developmentToolsComponent/htmlValidator.tsx
+  s_5fc87318e98b97::t_74e06f7a7dbae2 3
+  s_5fc87318e98b97::t_b47349c0a0e53e 69-74
+app/components/developmentToolsComponent/roundingCalculator.tsx
+  s_5fc87318e98b97::t_0701966bc713fc 229-237
+  s_5fc87318e98b97::t_7e7da6291c91d9 4
+app/components/developmentToolsComponent/markDownToHTMLComponent.tsx
+  s_5fc87318e98b97::t_2725a4824d24f6 8
+  s_5fc87318e98b97::t_42717afb85134d 38-43
+app/components/developmentToolsComponent/htmlViewer.tsx
+  s_5fc87318e98b97::t_cfcb0b2f34ddc2 5
+  s_5fc87318e98b97::t_6821ffd3b5a840 43-48
+app/components/developmentToolsComponent/imageResizer.tsx
+  s_5fc87318e98b97::t_91c18f3913fb7e 230-235
+  s_5fc87318e98b97::t_9b6246b0a64ca3 5
+  s_5fc87318e98b97::t_cdd86088c0f2f3 182-187
+app/components/developmentToolsComponent/creditCardValidatorComponent.tsx
+  s_5fc87318e98b97::t_6eb7b0dfa7f902 6
+  s_5fc87318e98b97::t_a55e2273b15f35 64-69
+app/components/developmentToolsComponent/whatIsMyBrowser.tsx
+  s_5fc87318e98b97::t_01cbbbf4b03f52 268-273
+  s_5fc87318e98b97::t_1453aed8a5ab9a 4
+app/components/developmentToolsComponent/morseCodeTranslator.tsx
+  s_5fc87318e98b97::t_ddd1b8909da97d 198
+  s_5fc87318e98b97::t_f3d1298bbf6883 98-109
+  s_5fc87318e98b97::t_087c0121a60779 3
+app/components/developmentToolsComponent/txtToCsvConverter.tsx
+  s_5fc87318e98b97::t_3e4dd1ae268bd5 4
+  s_5fc87318e98b97::t_f59406ab756545 96-101
+app/components/developmentToolsComponent/phoneNumberExtractor.tsx
+  s_5fc87318e98b97::t_7841bca22a0146 4
+  s_5fc87318e98b97::t_579d04e4bae6b0 45-50
+app/components/developmentToolsComponent/htmlMinify.tsx
+  s_5fc87318e98b97::t_bdc9859a70d9ac 38-43
+  s_5fc87318e98b97::t_c135a9df26adae 5
+app/components/developmentToolsComponent/whatIsMyISP.tsx
+  s_5fc87318e98b97::t_1dbdde8a7e29a9 3
+  s_5fc87318e98b97::t_768a99f6b48ac4 78,86-94
+app/components/developmentToolsComponent/rotationCalculatorComponent.tsx
+  s_5fc87318e98b97::t_b126f6582adeaf 5
+  s_5fc87318e98b97::t_9d7852d714276c 51-59
+app/components/developmentToolsComponent/htmlPrettify.tsx
+  s_5fc87318e98b97::t_710693b572642c 4
+  s_5fc87318e98b97::t_f064af0e8c5cab 39-44
+app/components/developmentToolsComponent/decimalToBinaryConverter.tsx
+  s_5fc87318e98b97::t_cbd6abe183c634 79
+  s_5fc87318e98b97::t_0121d58da6b27a 37-48
+  s_5fc87318e98b97::t_b1db447f094ad7 4
+app/components/developmentToolsComponent/barcodeGenerator.tsx
+  s_5fc87318e98b97::t_d90100ee23c5be 528-535
+  s_5fc87318e98b97::t_9839409ae08b40 4
+app/components/developmentToolsComponent/whatOperatingSystemDoIHave.tsx
+  s_5fc87318e98b97::t_e3c9ba4410abdd 4
+  s_5fc87318e98b97::t_2bc55fdd054ec9 110-118
+app/components/developmentToolsComponent/javascriptRegexTester.tsx
+  s_5fc87318e98b97::t_b3d93f757f9dfb 3
+  s_5fc87318e98b97::t_4bb48f9ae283b6 83-88,97-102,106-114
+app/components/developmentToolsComponent/randomColorGenerator.tsx
+  s_5fc87318e98b97::t_2878fd57de2b15 4
+  s_5fc87318e98b97::t_adcb95cb958b90 199-204
+app/components/developmentToolsComponent/rgbToHexConverter.tsx
+  s_5fc87318e98b97::t_298576ea8005c4 150-155
+  s_5fc87318e98b97::t_85fae16dc729cb 4
+app/components/developmentToolsComponent/randomClockTimeGenerator.tsx
+  s_5fc87318e98b97::t_f9ab468b06654b 41-46
+  s_5fc87318e98b97::t_c4c5e9bd3275ce 4
+app/components/developmentToolsComponent/colorInvertor.tsx
+  s_5fc87318e98b97::t_5d5aa1df12e890 3
+  s_5fc87318e98b97::t_3065795a83564b 47-52
+app/components/developmentToolsComponent/htmlTester.tsx
+  s_5fc87318e98b97::t_5cf9aa74596ccc 3
+  s_5fc87318e98b97::t_ee5ef42f82f7b6 141-146
+app/components/developmentToolsComponent/greyCodeToDesimal.tsx
+  s_5fc87318e98b97::t_93f05b94606cb7 4
+  s_5fc87318e98b97::t_f890c213bbf156 86-91
+app/components/developmentToolsComponent/creditCardGeneratorComponent.tsx
+  s_5fc87318e98b97::t_ec005091b2c802 159-164
+  s_5fc87318e98b97::t_22ccbc1eb2e87b 13
+app/components/developmentToolsComponent/rot13EncoderDecoderComponent.tsx
+  s_5fc87318e98b97::t_61ef7f9554afa6 29-37
+  s_5fc87318e98b97::t_2d00699c7cdb9a 5
+app/components/developmentToolsComponent/randomDecimalNumberGenerator.tsx
+  s_5fc87318e98b97::t_4fc7b53c656e17 123,125-130
+  s_5fc87318e98b97::t_bea35e66a0f302 4
+app/components/developmentToolsComponent/octalToDecimalConverter.tsx
+  s_5fc87318e98b97::t_fa2107727f4b34 4
+  s_5fc87318e98b97::t_7e15960658bed5 31-42
+  s_5fc87318e98b97::t_f00cbdc715ee2f 73
+app/components/developmentToolsComponent/whatsMyBrowserSize.tsx
+  s_5fc87318e98b97::t_2d45c6cd5f7cb6 3
+  s_5fc87318e98b97::t_2424fdc3c663be 28-33
+app/components/developmentToolsComponent/cssToLess.tsx
+  s_5fc87318e98b97::t_592375e894eacd 3
+  s_5fc87318e98b97::t_7c589a73d3afde 77-85
+app/components/developmentToolsComponent/findAndReplaceString.tsx
+  s_5fc87318e98b97::t_3d9b8f465a8c31 4
+  s_5fc87318e98b97::t_d88eadbd703782 80,88-98
+  s_5fc87318e98b97::t_8aa59cbb34dbcf 244
+  s_5fc87318e98b97::t_e6fb8e16172e7f 99
+app/components/developmentToolsComponent/binaryToDecimalConverter.tsx
+  s_5fc87318e98b97::t_c92df46b7f234a 42-53
+  s_5fc87318e98b97::t_08aca7ec72ef58 10
+  s_5fc87318e98b97::t_e94896c06f6c14 106
+app/components/developmentToolsComponent/excelCompare.tsx
+  s_5fc87318e98b97::t_d0a03a35f05833 149-154
+  s_5fc87318e98b97::t_f1d5712d9d2c97 3
+app/components/developmentToolsComponent/randomXMLGenerator.tsx
+  s_5fc87318e98b97::t_e8f363e97d386b 76-81
+  s_5fc87318e98b97::t_986b58f2aa84b7 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "1bb7dd0aa14586ef1c3df7e3af009e5d2a05c4e2",
+  "prompts": {},
+  "sessions": {
+    "s_5fc87318e98b97": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6fe3baae-26ee-43d9-930b-a3f3944e571f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Mohit Mali <mohit@linearloop.io>"
+    }
+  }
+}
