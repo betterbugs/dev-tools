@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const safeDecode = (value: string, plusAsSpace: boolean) => {
   try {
@@ -27,7 +28,15 @@ const URLDecode = () => {
     return current;
   }, [input, plusAsSpace, decodeRepeatedly]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "URL Decode",
+      tool_action: "Copy",
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const LowerCaseConverterComponent = () => {
   const [inputText, setInputText] = useState("");
@@ -13,6 +14,12 @@ const LowerCaseConverterComponent = () => {
 
   const transformToLowerCase = () => {
     setTransformedText(inputText.toLowerCase());
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Text to Lowercase Converter",
+      tool_action: "Convert",
+    });
   };
 
   const copyToClipboard = () => {

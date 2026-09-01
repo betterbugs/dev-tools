@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Symbology =
   | "CODE128"
@@ -524,6 +525,14 @@ const BarcodeGenerator: React.FC = () => {
 
   const onGenerate = () => {
     setOutput(result.svg);
+    if (result.svg) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Barcode Generator",
+        tool_action: "Generate",
+      });
+    }
   };
 
   const onCopy = async () => {

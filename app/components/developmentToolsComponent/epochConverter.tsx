@@ -7,6 +7,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { ReloadOutlined, DeleteOutlined, CopyOutlined, CheckOutlined } from "@ant-design/icons";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -86,6 +87,15 @@ const EpochConverter = () => {
         }
       }
     }
+  };
+
+  const trackCopy = () => {
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Unix Timestamp Converter",
+      tool_action: "Copy",
+    });
   };
 
   // Derived values for display
@@ -180,6 +190,7 @@ const EpochConverter = () => {
                           copyable={{
                             text: currentDayjs.format("YYYY-MM-DD HH:mm:ss"),
                             icon: [...copyIconPair],
+                            onCopy: trackCopy,
                           }}
                           className="text-lg font-mono text-green-400 [&_.ant-typography-copy]:text-primary"
                         >
@@ -196,6 +207,7 @@ const EpochConverter = () => {
                           copyable={{
                             text: `${currentDayjs.utc().format("YYYY-MM-DD HH:mm:ss")} UTC`,
                             icon: [...copyIconPair],
+                            onCopy: trackCopy,
                           }}
                           className="text-lg font-mono text-blue-400 [&_.ant-typography-copy]:text-primary"
                         >
@@ -212,6 +224,7 @@ const EpochConverter = () => {
                           copyable={{
                             text: currentDayjs.toISOString(),
                             icon: [...copyIconPair],
+                            onCopy: trackCopy,
                           }}
                           className="text-sm font-mono text-yellow-500 break-all [&_.ant-typography-copy]:text-primary"
                         >

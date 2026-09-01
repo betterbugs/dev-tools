@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const NUMBERS = "0123456789";
@@ -225,6 +226,12 @@ const RandomUsernameGenerator = () => {
     const n = Math.min(200, Math.max(1, count));
     for (let i = 0; i < n; i++) list.push(buildOne());
     setOutput(list.join("\n"));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Username Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => setOutput("");

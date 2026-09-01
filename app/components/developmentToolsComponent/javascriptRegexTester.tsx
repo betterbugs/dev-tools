@@ -1,5 +1,6 @@
 "use client"
 import React, { useMemo, useState } from 'react'
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from '@/app/libs/analytics'
 
 type RegexFlags = {
   i: boolean
@@ -79,6 +80,12 @@ const JavascriptRegexTester = () => {
     try {
       const r = new RegExp(regex.source, flagsString.replace('g',''))
       setText(text.replace(r, replaceWith))
+      trackEvent('dev_tool_used', {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: 'JavaScript Regex Tester',
+        tool_action: 'Replace First',
+      })
     } catch {}
   }
 
@@ -87,10 +94,24 @@ const JavascriptRegexTester = () => {
     try {
       const r = new RegExp(regex.source, flagsString.includes('g') ? flagsString : flagsString + 'g')
       setText(text.replace(r, replaceWith))
+      trackEvent('dev_tool_used', {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: 'JavaScript Regex Tester',
+        tool_action: 'Replace All',
+      })
     } catch {}
   }
 
-  const runTest = () => setManualRunKey((k) => k + 1)
+  const runTest = () => {
+    setManualRunKey((k) => k + 1)
+    trackEvent('dev_tool_used', {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: 'JavaScript Regex Tester',
+      tool_action: 'Test Match',
+    })
+  }
   const resetAll = () => {
     setPattern('')
     setText('')

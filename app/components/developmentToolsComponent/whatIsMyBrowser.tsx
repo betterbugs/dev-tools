@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type BrowserInfo = {
   browserName: string;
@@ -264,6 +265,12 @@ const WhatIsMyBrowser: React.FC = () => {
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(json);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What is My Browser",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   }, [json]);
 

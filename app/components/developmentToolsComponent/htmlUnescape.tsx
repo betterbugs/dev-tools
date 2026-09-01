@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function unescapeHtml(input: string): string {
   // handle numeric decimal, hex, and common named entities
@@ -27,6 +28,16 @@ const HtmlUnescape: React.FC = () => {
     if (!autoUpdate) return;
     run();
   }, [input, autoUpdate]);
+
+  const handleUnescapeClick = () => {
+    run();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Unescape",
+      tool_action: "Unescape",
+    });
+  };
 
   const onCopy = async () => {
     try {
@@ -92,7 +103,7 @@ const HtmlUnescape: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input</label>
                   <button
-                    onClick={run}
+                    onClick={handleUnescapeClick}
                     className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
                   >
                     Unescape

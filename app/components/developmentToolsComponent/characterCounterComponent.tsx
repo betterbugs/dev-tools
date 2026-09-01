@@ -1,14 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const CharacterCounterComponent = () => {
   const [text, setText] = useState("");
   const [includeSpaces, setIncludeSpaces] = useState(true); // State to track space inclusion
   const [includeSpecialChars, setIncludeSpecialChars] = useState(true); // State to track special character inclusion
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+    };
+  }, []);
 
   const handleTextChange = (e: any) => {
-    setText(e.target.value);
+    const value = e.target.value;
+    setText(value);
+    if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+    if (value.trim()) {
+      debounceTimerRef.current = setTimeout(() => {
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "Character Counter",
+          tool_action: "Count",
+        });
+      }, 1000);
+    }
   };
 
   const handleIncludeSpacesChange = (e: any) => {

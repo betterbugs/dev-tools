@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const TextRepeater = () => {
   const [input, setInput] = useState("");
@@ -44,7 +45,16 @@ const TextRepeater = () => {
     return { lines, chars };
   }, [output]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output).then(() => {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Text Repeater",
+        tool_action: "Copy",
+      });
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

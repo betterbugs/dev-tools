@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import CopyIcon from "../theme/Icon/copyIcon";
 import ReloadIcon from "../theme/Icon/reload";
 import { CheckIcon } from "../theme/Icon/checkIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 
 const RandomGUIDGenerator = () => {
@@ -45,6 +46,12 @@ const RandomGUIDGenerator = () => {
       newGUIDs.push(formatGUID(generateGUID()));
     }
     setGeneratedGUIDs(newGUIDs);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random GUID Generator",
+      tool_action: "Generate",
+    });
   };
 
   // Copy to clipboard

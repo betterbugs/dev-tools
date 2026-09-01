@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -227,7 +228,15 @@ const XmlCompare: React.FC = () => {
                   Auto-update
                 </label>
                 <button
-                  onClick={convert}
+                  onClick={() => {
+                    convert();
+                    trackEvent("dev_tool_used", {
+                      page_type: PAGE_TYPE,
+                      platform: getRuntimePlatform(),
+                      tool_name: "XML Compare",
+                      tool_action: "Compare",
+                    });
+                  }}
                   className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm"
                 >
                   Compare

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type GroupSeparator = "" | " " | ":" | "-";
 
@@ -82,7 +83,7 @@ const IpToHexConverter: React.FC = () => {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const convert = useCallback(() => {
+  const convert = useCallback((trackOnSuccess = false) => {
     const v4 = parseIPv4(input);
     const v6 = v4 ? null : parseIPv6(input);
     if (!v4 && !v6) {
@@ -95,6 +96,14 @@ const IpToHexConverter: React.FC = () => {
     let hex = toHex(bytes, uppercase, separator);
     if (prefix0x && separator === "") hex = "0x" + (uppercase ? hex.toUpperCase() : hex.toLowerCase());
     setOutput(hex);
+    if (trackOnSuccess) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "IP to Hex Converter",
+        tool_action: "Convert",
+      });
+    }
   }, [input, uppercase, separator, prefix0x]);
 
   useEffect(() => { if (autoUpdate) convert(); }, [input, uppercase, separator, prefix0x, autoUpdate, convert]);
@@ -129,7 +138,7 @@ const IpToHexConverter: React.FC = () => {
                   <input type="checkbox" className="accent-primary" checked={autoUpdate} onChange={(e) => setAutoUpdate(e.target.checked)} />
                   Auto-update
                 </label>
-                <button onClick={convert} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Convert</button>
+                <button onClick={() => convert(true)} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Convert</button>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 <button onClick={onCopy} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Copy</button>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type CharacterType = "letters" | "numbers" | "symbols" | "mixed" | "custom";
 type CaseType = "lowercase" | "uppercase" | "mixed" | "title";
@@ -89,6 +90,12 @@ const RandomCharacterGenerator = () => {
     if (randomChar) {
       const result = applyCase(randomChar, caseType);
       setOutput(result);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Random Character Generator",
+        tool_action: "Generate",
+      });
     } else {
       setError("No characters available after exclusions");
     }

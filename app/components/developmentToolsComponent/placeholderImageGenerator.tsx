@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ImageFormat = "jpg" | "png" | "webp" | "gif";
 
@@ -95,6 +96,12 @@ const PlaceholderImageGenerator = () => {
 
     const url = generatePlaceholderUrl();
     setOutput(url);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Placeholder Image Generator",
+      tool_action: "Generate",
+    });
   };
 
   const copyUrl = async () => {

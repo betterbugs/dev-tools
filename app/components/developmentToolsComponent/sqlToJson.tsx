@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -168,6 +169,12 @@ const SqlToJson: React.FC = () => {
     } else {
       setError("");
       setOutput(out);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "SQL to JSON",
+        tool_action: "Convert",
+      });
     }
   }, [input, options]);
 

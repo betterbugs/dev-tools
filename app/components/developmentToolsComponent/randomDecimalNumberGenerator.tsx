@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Separator = "newline" | "comma" | "space" | "tab";
 type DecimalFormat = "standard" | "scientific" | "engineering";
@@ -119,8 +120,14 @@ const RandomDecimalNumberGenerator = () => {
     // Format and join numbers
     const formattedNumbers = numbers.map((num) => formatDecimal(num, decimalFormat, decimalPlaces));
     const result = formattedNumbers.join(separatorChar);
-    
+
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Decimal Number Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => {

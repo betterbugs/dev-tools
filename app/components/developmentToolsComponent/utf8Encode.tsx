@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type OutputMode = "percent" | "hex" | "base64" | "unicode";
 
@@ -59,6 +60,16 @@ const Utf8Encode: React.FC = () => {
   const convert = useCallback(() => setOutput(encodeUtf8(input, options.mode, options.hexUppercase, options.hexSeparator)), [input, options]);
   useEffect(() => { if (autoUpdate) convert(); }, [input, options, autoUpdate, convert]);
 
+  const onEncodeClick = useCallback(() => {
+    convert();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "UTF8 Encode",
+      tool_action: "Encode",
+    });
+  }, [convert]);
+
   const onCopy = useCallback(async () => { try { await navigator.clipboard.writeText(output); } catch (_) {} }, [output]);
   const onDownload = useCallback(() => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
@@ -87,7 +98,7 @@ const Utf8Encode: React.FC = () => {
                   <input type="checkbox" className="accent-primary" checked={autoUpdate} onChange={(e) => setAutoUpdate(e.target.checked)} />
                   Auto-update
                 </label>
-                <button onClick={convert} className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm">Encode</button>
+                <button onClick={onEncodeClick} className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm">Encode</button>
               </div>
               <div className="flex items-center gap-2">
                 <button onClick={onCopy} className="border border-white/30 px-3 py-1 rounded text-sm bg-primary hover:bg-primary/90 text-black font-bold">Copy</button>

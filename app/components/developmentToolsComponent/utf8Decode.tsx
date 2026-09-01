@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type InputMode = "percent" | "hex" | "base64" | "raw" | "unicode";
 
@@ -165,7 +166,16 @@ const Utf8Decode: React.FC = () => {
                   Auto-update
                 </label>
                 <button
-                  onClick={convert}
+                  onClick={() => {
+                    if (!input.trim()) return;
+                    convert();
+                    trackEvent("dev_tool_used", {
+                      page_type: PAGE_TYPE,
+                      platform: getRuntimePlatform(),
+                      tool_name: "UTF8 Decode",
+                      tool_action: "Decode",
+                    });
+                  }}
                   className="bg-primary text-black font-semibold border border-black/30 px-3 py-1 rounded text-xs sm:text-sm"
                 >
                   Decode

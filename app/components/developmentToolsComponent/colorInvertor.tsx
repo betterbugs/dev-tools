@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const normalizeHex = (v: string) => {
   let s = v.trim().replace(/[^0-9a-fA-F]/g, "");
@@ -43,6 +44,12 @@ const ColorInvertor: React.FC = () => {
   const copy = async (v: string) => {
     try {
       await navigator.clipboard.writeText(`#${v}`);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Color Inverter",
+        tool_action: "Copy",
+      });
     } catch {}
   };
 

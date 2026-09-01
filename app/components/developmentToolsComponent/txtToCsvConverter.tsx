@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState, useRef } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const TxtToCsvConverter = () => {
   const [text, setText] = useState<string>("");
@@ -92,6 +93,12 @@ const TxtToCsvConverter = () => {
       await navigator.clipboard.writeText(csv);
       setError("CSV copied to clipboard successfully!");
       setTimeout(() => setError(""), 3000);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "TXT to CSV Converter",
+        tool_action: "Copy",
+      });
     } catch (err) {
       setError("Failed to copy to clipboard");
     }

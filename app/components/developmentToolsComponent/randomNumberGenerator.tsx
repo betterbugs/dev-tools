@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type NumberType = "integer" | "decimal" | "percentage" | "currency";
 type Separator = "newline" | "comma" | "space" | "tab";
@@ -155,6 +156,12 @@ const RandomNumberGenerator = () => {
     const result = formattedNumbers.join(separatorChar);
 
     setOutput(result);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random Number Generator",
+      tool_action: "Generate",
+    });
   };
 
   const clearAll = () => {

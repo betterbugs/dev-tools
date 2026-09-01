@@ -5,6 +5,7 @@ import { Editor } from "@monaco-editor/react";
 import TurndownService from "turndown";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
 import "react-toastify/dist/ReactToastify.css"; // Import the toast CSS
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const HtmlToMarkDownComponent = () => {
   const [htmlInput, setHtmlInput] = useState("");
@@ -62,6 +63,12 @@ const HtmlToMarkDownComponent = () => {
     // Update state with the Markdown output
     setMarkdownOutput(markdown);
     toast.success("Conversion successful!");
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML To Markdown",
+      tool_action: "Convert",
+    });
   };
 
   const removeCss = (html: any) => {

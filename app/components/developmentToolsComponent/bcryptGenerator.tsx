@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import bcrypt from 'bcryptjs';
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Custom styles for the range slider
 const sliderStyles = `
@@ -81,6 +82,12 @@ const BcryptGenerator = () => {
     try {
       const hash = await generateHash(password, saltRounds);
       setHashedPassword(hash);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Bcrypt Generator",
+        tool_action: "Generate Hash",
+      });
     } catch (error) {
       console.error('Error generating hash:', error);
     } finally {
@@ -95,6 +102,12 @@ const BcryptGenerator = () => {
     try {
       const isValid = await verifyHash(verifyPassword, verifyHashInput);
       setVerificationResult(isValid);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Bcrypt Generator",
+        tool_action: "Verify Password",
+      });
     } catch (error) {
       console.error('Error verifying password:', error);
       setVerificationResult(false);

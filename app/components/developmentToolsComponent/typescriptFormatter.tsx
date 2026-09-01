@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Options = {
   trimTrailingSpaces: boolean;
@@ -169,7 +170,20 @@ const TypescriptFormatter: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input (TypeScript)</label>
-                  <button onClick={convert} className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold">Format</button>
+                  <button
+                    onClick={() => {
+                      convert();
+                      trackEvent("dev_tool_used", {
+                        page_type: PAGE_TYPE,
+                        platform: getRuntimePlatform(),
+                        tool_name: "TypeScript Formatter",
+                        tool_action: "Format",
+                      });
+                    }}
+                    className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
+                  >
+                    Format
+                  </button>
                 </div>
                 <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={`export interface User{\nname:string\nage:number\n}`} className="w-full h-64 p-4 bg-black/20 border border-white/20 rounded-lg text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-blue-500" />
               </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ParsedUA = {
   browser: string;
@@ -62,6 +63,12 @@ const WhatIsMyUserAgent: React.FC = () => {
       await navigator.clipboard.writeText(ua);
       setCopied(true);
       setTimeout(() => setCopied(false), 1200);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What is My User Agent",
+        tool_action: "Copy",
+      });
     } catch {}
   };
 

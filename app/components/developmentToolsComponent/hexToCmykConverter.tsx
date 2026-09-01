@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function parseHex(hex: string): { r: number; g: number; b: number } | null {
   let h = hex.trim();
@@ -131,6 +132,12 @@ const HexToCmykConverter: React.FC = () => {
       const y = Math.round(cmyk.y * 100);
       const k = Math.round(cmyk.k * 100);
       await navigator.clipboard.writeText(`cmyk(${c}%, ${m}%, ${y}%, ${k}%)`);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "HEX to CMYK Converter",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   }, [cmyk]);
 

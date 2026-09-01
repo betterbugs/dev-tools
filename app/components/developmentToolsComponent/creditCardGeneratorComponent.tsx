@@ -10,6 +10,7 @@ import DinersClubCardIcon from "../theme/Icon/dinersClubCardIcon";
 import DiscoverCardIcon from "../theme/Icon/discoverCardIcon";
 import JCBCardIcon from "../theme/Icon/JCBCardIcon";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Map card types to their respective icons
 const cardIcons: any = {
@@ -155,6 +156,12 @@ const CreditCardGeneratorComponent = () => {
     }
 
     setCards(generatedCards); // ✅ Correctly update the state
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Credit Card Generator",
+      tool_action: "Generate",
+    });
   };
 
   const handleCopy = (fieldId: any, index: any) => {

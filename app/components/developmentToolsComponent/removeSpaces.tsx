@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const removeSpacesConvert = (
   text: string,
@@ -126,7 +127,7 @@ const RemoveSpaces: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input</label>
-                  <button onClick={doConvert} className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold">Convert</button>
+                  <button onClick={() => { doConvert(); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Remove Spaces from Text", tool_action: "Convert" }); }} className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold">Convert</button>
                 </div>
                 <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste or type text here..." className="w-full h-64 p-4 bg-black/20 border border-white/20 rounded-lg text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-blue-500" />
               </div>

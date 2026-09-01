@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type FieldType =
   | "string"
@@ -217,6 +218,12 @@ const RandomJsonDataGenerator = () => {
       result.push(obj);
     }
     setOutput(JSON.stringify(result, null, pretty ? 2 : 0));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "JSON Generator",
+      tool_action: "Generate",
+    });
   };
 
   const copyOutput = async () => {

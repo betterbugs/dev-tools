@@ -3,6 +3,7 @@ import React, { useMemo, useState, useRef } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import ReloadIcon from "../theme/Icon/reload";
 import CopyIcon from "../theme/Icon/copyIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const JsonToTypeScript = () => {
   const [jsonInput, setJsonInput] = useState<string>("");
@@ -131,6 +132,12 @@ const JsonToTypeScript = () => {
       await navigator.clipboard.writeText(typeScriptCode);
       setError("TypeScript code copied to clipboard successfully!");
       setTimeout(() => setError(""), 3000);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Json to Typescript Converter",
+        tool_action: "Copy",
+      });
     } catch (err) {
       setError("Failed to copy to clipboard");
     }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ParseResult = { headers: string[]; rows: string[][] };
 
@@ -92,7 +93,16 @@ const SqlToCsvConverter = () => {
     URL.revokeObjectURL(url);
   };
 
-  const copy = async () => csv && (await navigator.clipboard.writeText(csv));
+  const copy = async () => {
+    if (!csv) return;
+    await navigator.clipboard.writeText(csv);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "SQL to CSV Converter",
+      tool_action: "Copy",
+    });
+  };
   const clearAll = () => { setSql(""); setError(""); };
 
   return (

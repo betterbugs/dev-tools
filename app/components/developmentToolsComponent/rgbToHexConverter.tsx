@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ConvertOptions = {
   includeHash: boolean;
@@ -146,6 +147,12 @@ const RgbToHexConverter: React.FC = () => {
     try {
       setError("");
       setOutput(convertRgbToHex(input, options));
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "RGB to Hex Converter",
+        tool_action: "Convert",
+      });
     } catch (_e: unknown) {
       setError("Failed to convert. Please check your input.");
     }

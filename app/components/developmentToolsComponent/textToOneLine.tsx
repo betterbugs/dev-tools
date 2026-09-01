@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const toOneLine = (
   text: string,
@@ -158,7 +159,15 @@ const TextToOneLine: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input</label>
                   <button
-                    onClick={convert}
+                    onClick={() => {
+                      convert();
+                      trackEvent("dev_tool_used", {
+                        page_type: PAGE_TYPE,
+                        platform: getRuntimePlatform(),
+                        tool_name: "Text to One Line Online Converter",
+                        tool_action: "Convert",
+                      });
+                    }}
                     className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
                   >
                     Convert

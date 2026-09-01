@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function parseOctal(input: string): number | null {
   const clean = input.trim();
@@ -26,6 +27,18 @@ const OctalToDecimalConverter: React.FC = () => {
   }, [input]);
 
   useEffect(() => { if (autoUpdate) convert(); }, [input, autoUpdate, convert]);
+
+  const onConvertClick = useCallback(() => {
+    convert();
+    if (parseOctal(input) !== null) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Octal to Decimal Converter",
+        tool_action: "Convert",
+      });
+    }
+  }, [convert, input]);
 
   const onCopy = useCallback(async () => { try { await navigator.clipboard.writeText(output); } catch (_) {} }, [output]);
   const onDownload = useCallback(() => {
@@ -57,7 +70,7 @@ const OctalToDecimalConverter: React.FC = () => {
                   <input type="checkbox" className="accent-primary" checked={autoUpdate} onChange={(e) => setAutoUpdate(e.target.checked)} />
                   Auto-update
                 </label>
-                <button onClick={convert} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Convert</button>
+                <button onClick={onConvertClick} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Convert</button>
               </div>
               <div className="flex items-center gap-2">
                 <button onClick={onCopy} className="border border-white/30 px-3 py-1 rounded text-sm bg-primary hover:bg-primary/90 text-black font-bold">Copy</button>

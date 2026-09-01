@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type DiffOp = "equal" | "insert" | "delete";
 
@@ -87,6 +88,12 @@ const CodeCompareTool = () => {
   const onCompare = () => {
     if (!left.trim() || !right.trim()) { setError("Please provide both code inputs."); setCompared(false); return; }
     setError(null); setCompared(true);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Code Compare Online Tool",
+      tool_action: "Compare",
+    });
   };
 
   const handleUpload = (side: "left" | "right") => (e: React.ChangeEvent<HTMLInputElement>) => {

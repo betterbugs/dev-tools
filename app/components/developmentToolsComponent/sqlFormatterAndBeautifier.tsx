@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type FormatOptions = {
   indentSize: number;
@@ -153,6 +154,12 @@ const SqlFormatterAndBeautifier: React.FC = () => {
       setError("");
       const formatted = formatSqlHeuristic(input, options);
       setOutput(formatted);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "SQL Formatter and Beautifier",
+        tool_action: "Format",
+      });
     } catch (_e: unknown) {
       setError("Failed to format. Please check your input.");
     }

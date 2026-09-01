@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function parseDecimal(input: string): number | null {
   const clean = input.trim();
@@ -32,7 +33,19 @@ const DecimalToHexConverter: React.FC = () => {
 
   useEffect(() => { if (autoUpdate) convert(); }, [input, uppercase, autoUpdate, convert]);
 
-  const onCopy = useCallback(async () => { try { await navigator.clipboard.writeText(output); } catch (_) {} }, [output]);
+  const onCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      if (output) {
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "Decimal to Hex Converter",
+          tool_action: "Copy",
+        });
+      }
+    } catch (_) {}
+  }, [output]);
   const onDownload = useCallback(() => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);

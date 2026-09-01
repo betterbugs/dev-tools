@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const encodeToEntities = (input: string) => {
   let result = "";
@@ -39,7 +40,15 @@ const TextToHtmlEntitiesConvertor = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
-  const onConvert = () => setOutput(encodeToEntities(input));
+  const onConvert = () => {
+    setOutput(encodeToEntities(input));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Text to HTML Entities Convertor",
+      tool_action: "Convert",
+    });
+  };
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(output);

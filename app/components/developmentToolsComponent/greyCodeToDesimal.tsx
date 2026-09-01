@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ConvertOptions = {
   showMapping: boolean; // show "input -> output" instead of raw numbers
@@ -82,6 +83,12 @@ const GreyCodeToDecimal: React.FC = () => {
       } else {
         setError("");
       }
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Grey Code to Decimal",
+        tool_action: "Convert",
+      });
     } catch (_e: unknown) {
       setError("Failed to convert. Please check your input.");
     }

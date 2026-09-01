@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type CellState = "same" | "diff" | "added" | "removed";
 
@@ -145,6 +146,12 @@ const ExcelCompare = () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Excel Compare",
+      tool_action: "Download",
+    });
   };
 
   return (

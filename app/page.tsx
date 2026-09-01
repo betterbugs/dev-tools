@@ -16,6 +16,7 @@ import ConvertXIcon from './components/theme/Icon/convertXIcon';
 import GenieIcon from './components/theme/Icon/genieIcon';
 import DevUtilsIcon from './components/theme/Icon/devUtilsIcon';
 import { useTheme } from './contexts/themeContext';
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from './libs/analytics';
 
 const CATEGORY_GROUPS = [
   'Text Lab',
@@ -156,16 +157,24 @@ const Page = () => {
     }
   }, []);
 
-  const toggleFavorite = (e: React.MouseEvent, url: string) => {
+  const toggleFavorite = (e: React.MouseEvent, url: string, toolName?: string) => {
     e.preventDefault();
     e.stopPropagation();
     let updatedFavorites;
-    if (favorites.includes(url)) {
+    const wasFavorite = favorites.includes(url);
+    if (wasFavorite) {
       updatedFavorites = favorites.filter(fav => fav !== url);
     } else {
       updatedFavorites = [...favorites, url];
     }
     setFavorites(updatedFavorites);
+
+    trackEvent('dev_tool_favorite_click', {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: toolName,
+      favorite_status: wasFavorite ? 'removed' : 'added',
+    });
 
     try {
       localStorage.setItem('favoriteTools', JSON.stringify(updatedFavorites));
@@ -491,13 +500,20 @@ const Page = () => {
                     key={index}
                     href={`${item?.url}`}
                     className={`bg-white/5 rounded-lg p-8 w-full ${DevelopmentToolsStyles.contentCardHoverEffect} ${DevelopmentToolsStyles.toolCard} group md:min-h-[160px] relative`}
+                    onClick={() =>
+                      trackEvent('dev_tool_card_click', {
+                        page_type: PAGE_TYPE,
+                        platform: getRuntimePlatform(),
+                        tool_name: item?.title,
+                      })
+                    }
                   >
                     <div className="flex justify-between items-start gap-2">
                       <h3 className="text-lg font-semibold pr-6">
                         {item?.title}
                       </h3>
                       <button
-                        onClick={e => toggleFavorite(e, item?.url)}
+                        onClick={e => toggleFavorite(e, item?.url, item?.title)}
                         className="absolute right-4 top-4 text-white/30 hover:text-yellow-400 transition-colors z-10"
                         title={
                           favorites.includes(item?.url)

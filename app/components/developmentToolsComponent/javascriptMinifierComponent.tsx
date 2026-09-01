@@ -4,6 +4,7 @@ import MonacoEditor, { Editor } from "@monaco-editor/react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
 import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
 import "react-toastify/dist/ReactToastify.css"; // Import the toast CSS
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const JavascriptMinifierComponent = () => {
   const [inputJson, setInputJson] = useState("");
@@ -19,6 +20,12 @@ const JavascriptMinifierComponent = () => {
       const parsedJson = JSON.parse(inputJson);
       setMinifiedJson(JSON.stringify(parsedJson));
       toast.success("JSON successfully minified!");
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JavaScript Minifier",
+        tool_action: "Minify",
+      });
     } catch (error) {
       toast.error("Invalid JSON input. Please fix it and try again.");
     }

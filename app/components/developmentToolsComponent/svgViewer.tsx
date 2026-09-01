@@ -2,6 +2,7 @@
 
 import React, { useMemo, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const SAMPLE_SVG = `<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -148,6 +149,12 @@ const SvgViewer = () => {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "SVG Viewer Online",
+        tool_action: "Copy",
+      });
     } catch {
       // ignore
     }

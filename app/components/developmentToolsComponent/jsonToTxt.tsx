@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import CopyButton from "../ui/CopyButton";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "json-lines" | "keys" | "values" | "key=value" | "path=value";
 
@@ -75,13 +76,21 @@ const JsonToTxt: React.FC = () => {
   const [uniqueOnly, setUniqueOnly] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const convert = () => {
+  const convert = (manual = false) => {
     let text = toText(input, mode, pretty);
     if (uniqueOnly && !text.startsWith("Error:")) {
       const lines = text.split(/\r?\n/);
       text = Array.from(new Set(lines)).join("\n");
     }
     setOutput(text);
+    if (manual && !text.startsWith("Error:")) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON to TXT Online Converter",
+        tool_action: "Convert",
+      });
+    }
   };
 
   useEffect(() => {
@@ -178,7 +187,7 @@ const JsonToTxt: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input (JSON)</label>
                   <button
-                    onClick={convert}
+                    onClick={() => convert(true)}
                     className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
                   >
                     Convert

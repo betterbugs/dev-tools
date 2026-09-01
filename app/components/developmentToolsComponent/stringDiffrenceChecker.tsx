@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type DiffOp = "equal" | "insert" | "delete";
 
@@ -182,6 +183,12 @@ const StringDiffrenceChecker = () => {
     }
     setCompareError(null);
     setCompared(true);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "String Difference Checker",
+      tool_action: "Compare",
+    });
   };
 
   return (

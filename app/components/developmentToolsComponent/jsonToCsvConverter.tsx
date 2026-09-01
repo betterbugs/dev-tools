@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Flatten nested objects: {user: {name: "Alice"}} => {"user.name": "Alice"}
 const flattenObject = (obj: any, prefix = ""): Record<string, any> => {
@@ -88,6 +89,12 @@ const JsonToCsvConverter: React.FC = () => {
       }
       const csv = jsonToCsv(parsed, { delimiter, includeHeader, flatten });
       setCsvOut(csv);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "JSON to CSV Converter",
+        tool_action: "Convert",
+      });
     } catch (err) {
       setError("Invalid JSON format");
       setCsvOut("");

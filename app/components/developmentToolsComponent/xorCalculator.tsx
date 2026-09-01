@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type RadixMode = "hex" | "dec" | "bin";
 
@@ -79,6 +80,16 @@ const XorCalculator: React.FC = () => {
   }, [rows, mode, bitWidth, groupSize]);
 
   useEffect(() => { if (autoUpdate) compute(); }, [rows, options, autoUpdate, compute]);
+
+  const onCalculateClick = useCallback(() => {
+    compute();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "XOR Calculator",
+      tool_action: "Calculate",
+    });
+  }, [compute]);
 
   const addRow = () => setRows((rs) => [...rs, { id: crypto.randomUUID(), value: "" }]);
   const removeRow = (id: string) => setRows((rs) => (rs.length > 1 ? rs.filter((r) => r.id !== id) : rs));
@@ -168,7 +179,7 @@ const XorCalculator: React.FC = () => {
                   <input type="checkbox" className="accent-primary" checked={autoUpdate} onChange={(e) => setAutoUpdate(e.target.checked)} />
                   Auto-update
                 </label>
-                <button onClick={compute} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Calculate</button>
+                <button onClick={onCalculateClick} className="border border-black/30 px-3 py-1 rounded text-xs sm:text-sm bg-primary hover:bg-primary/90 text-black font-bold">Calculate</button>
               </div>
               <div className="flex items-center gap-2">
                 <button onClick={onCopy} className="border border-white/30 px-3 py-1 rounded text-sm bg-primary hover:bg-primary/90 text-black font-bold">Copy</button>

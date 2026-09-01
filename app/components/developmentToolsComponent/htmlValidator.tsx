@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Issue = { type: "error" | "warning"; message: string; selector?: string };
 
@@ -65,6 +66,12 @@ const HTMLValidator: React.FC = () => {
 
   const onValidate = () => {
     setIssues(runValidation(html));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "HTML Validator Online",
+      tool_action: "Validate",
+    });
   };
 
   const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

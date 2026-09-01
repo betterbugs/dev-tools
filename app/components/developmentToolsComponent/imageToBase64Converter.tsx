@@ -2,6 +2,7 @@
 
 import React, { useCallback, useRef, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const MAX_BYTES = 10 * 1024 * 1024;
 
@@ -95,6 +96,12 @@ const ImageToBase64Converter: React.FC = () => {
     if (!outputText) return;
     try {
       await navigator.clipboard.writeText(outputText);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Image To Base64 Converter",
+        tool_action: "Copy",
+      });
     } catch {
       // ignore
     }

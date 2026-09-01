@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type VarMap = Record<string, string>;
 
@@ -114,7 +115,15 @@ const CSSToSCSSConverter = () => {
   const [scss, setScss] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const onConvert = () => setScss(convertCssToScss(css));
+  const onConvert = () => {
+    setScss(convertCssToScss(css));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "CSS to SCSS Converter",
+      tool_action: "Convert",
+    });
+  };
   const onCopy = async () => { try { await navigator.clipboard.writeText(scss); } catch {} };
   const onDownload = () => {
     const blob = new Blob([scss], { type: "text/x-scss;charset=utf-8" });

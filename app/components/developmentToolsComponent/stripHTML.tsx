@@ -1,5 +1,6 @@
 "use client"
 import React, { useMemo, useState } from 'react'
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from '@/app/libs/analytics'
 
 const StripHTML = () => {
   const [html, setHtml] = useState('')
@@ -36,7 +37,16 @@ const StripHTML = () => {
   }, [html, preserveLineBreaks, collapseWhitespace, removeComments, dedupeBlankLines, bulletizeListItems])
 
   const copy = async () => {
-    try { await navigator.clipboard.writeText(stripped) } catch {}
+    if (!stripped) return
+    try {
+      await navigator.clipboard.writeText(stripped)
+      trackEvent('dev_tool_used', {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: 'Strip HTML',
+        tool_action: 'Copy',
+      })
+    } catch {}
   }
   const clear = () => setHtml('')
   const paste = async () => { try { const t = await navigator.clipboard.readText(); setHtml(t) } catch {} }

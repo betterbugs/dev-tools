@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Flags = {
   global: boolean;
@@ -76,12 +77,25 @@ const FindAndReplaceString: React.FC = () => {
     setOutput(res.output);
     setCount(res.count);
     setError(res.error);
+    return res;
   };
 
   useEffect(() => {
     if (!autoUpdate) return;
     run();
   }, [input, find, replace, autoUpdate, useRegex, wholeWord, flags]);
+
+  const handleReplaceClick = () => {
+    const res = run();
+    if (!res.error) {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Find and Replace String",
+        tool_action: "Replace",
+      });
+    }
+  };
 
   const onCopy = async () => {
     try {
@@ -227,7 +241,7 @@ const FindAndReplaceString: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input</label>
                   <button
-                    onClick={run}
+                    onClick={handleReplaceClick}
                     className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold"
                   >
                     Replace

@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IndentSize = 2 | 4;
 
@@ -85,6 +86,12 @@ const XmlPrettify = () => {
       setError("");
       const res = prettifyXml(input);
       setOutput(res);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "XML Prettify",
+        tool_action: "Prettify",
+      });
     } catch (e: any) {
       setOutput("");
       setError(e?.message || "Failed to prettify XML");

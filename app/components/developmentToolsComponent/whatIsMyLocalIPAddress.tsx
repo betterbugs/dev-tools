@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type IpInfo = { ip: string; type: "IPv4" | "IPv6"; source: string };
 
@@ -75,9 +76,16 @@ const WhatIsMyLocalIPAddress = () => {
   }, []);
 
   const copyAll = async () => {
+    if (ips.length === 0) return;
     const text = ips.map((i) => `${i.ip} (${i.type})`).join("\n");
     try {
       await navigator.clipboard.writeText(text);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "What Is My Local IP Address",
+        tool_action: "Copy",
+      });
     } catch {}
   };
 

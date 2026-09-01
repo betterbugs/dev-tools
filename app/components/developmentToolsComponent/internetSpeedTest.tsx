@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface SpeedTestResult {
   downloadSpeed: number;
@@ -77,6 +78,12 @@ const InternetSpeedTest = () => {
       const testResult = await simulateSpeedTest();
       setResult(testResult);
       setTestHistory((prev) => [testResult, ...prev.slice(0, 4)]); // Keep last 5 results
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Internet Speed Test",
+        tool_action: "Run Test",
+      });
     } catch (err) {
       setError("Speed test failed. Please try again.");
     } finally {

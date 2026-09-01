@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 // Lightweight markdown formatter: trims trailing spaces, normalizes heading spaces,
 // ensures single blank lines between blocks, normalizes list/blockquote/code fences.
@@ -76,6 +77,16 @@ const MarkdownFormatter: React.FC = () => {
         normalizeCodeFences,
       })
     );
+  };
+
+  const onFormatClick = () => {
+    convert();
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Markdown Formatter",
+      tool_action: "Format",
+    });
   };
 
   useEffect(() => {
@@ -154,7 +165,7 @@ const MarkdownFormatter: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="font-medium">Input (Markdown)</label>
-                  <button onClick={convert} className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold">Format</button>
+                  <button onClick={onFormatClick} className="px-3 py-1 bg-primary hover:bg-primary/80 rounded text-sm transition-colors text-black font-bold">Format</button>
                 </div>
                 <textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="# heading\n\n- list item\n\n> quote" className="w-full h-64 p-4 bg-black/20 border border-white/20 rounded-lg text-white placeholder-gray-400 font-mono text-sm resize-none focus:outline-none focus:border-blue-500" />
               </div>

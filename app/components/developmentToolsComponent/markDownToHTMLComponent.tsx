@@ -5,6 +5,7 @@ import { Editor } from "@monaco-editor/react";
 import { marked } from "marked"; // Import marked.js for Markdown to HTML conversion
 import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const MarkDownToHtmlComponent = () => {
   const [markdownInput, setMarkdownInput] = useState("");
@@ -34,6 +35,12 @@ const MarkDownToHtmlComponent = () => {
     const html: any = marked(markdownWithClassesRestored);
     setHtmlOutput(html);
     toast.success("Conversion successful!"); // Display success toast
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Markdown To HTML",
+      tool_action: "Convert",
+    });
   };
 
   const handleClear = () => {

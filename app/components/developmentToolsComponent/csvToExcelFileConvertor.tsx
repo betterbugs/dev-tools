@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ParsedCSV = {
   rows: string[][];
@@ -116,6 +117,12 @@ const CsvToExcelFileConvertor = () => {
       a.click();
       URL.revokeObjectURL(url);
     }
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "CSV to Excel File Convertor",
+      tool_action: "Download",
+    });
   };
 
   const clearAll = () => {

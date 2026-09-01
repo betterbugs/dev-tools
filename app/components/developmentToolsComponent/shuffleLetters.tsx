@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "letters-in-words" | "all-characters" | "word-order";
 
@@ -102,7 +103,16 @@ const ShuffleLetters = () => {
 
   const stats = useMemo(() => ({ lines: output ? output.split(/\r?\n/).length : 0, chars: output.length }), [output]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output).then(() => {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Shuffle Letters",
+        tool_action: "Copy",
+      });
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

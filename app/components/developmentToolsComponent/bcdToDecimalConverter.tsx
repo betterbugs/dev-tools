@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function parseBcdToDecimal(input: string): string {
   const clean = input.replace(/\s+/g, "");
@@ -45,6 +46,12 @@ const BcdToDecimalConverter: React.FC = () => {
     } else {
       setError("");
       setOutput(res);
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "BCD to Decimal Converter",
+        tool_action: "Convert",
+      });
     }
   }, [input]);
 

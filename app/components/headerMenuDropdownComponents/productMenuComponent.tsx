@@ -16,6 +16,7 @@ import DeveloperIcon from '../theme/Icon/developersLogIcon';
 import AllFeatureIcon from '../theme/Icon/allFeatureIcon';
 import AnnotationIcon from '../theme/Icon/annotationIcon';
 import { WEB_URL } from '@/app/libs/constants';
+import { trackNavInteraction } from '@/app/libs/analytics';
 
 const FeaturesMenu = [
   {
@@ -91,11 +92,18 @@ const BB_FOR = [
 
 interface ProductMenuComponentProps {
   setCollapsed: (d: any) => void;
+  sectionName?: string;
 }
 
 const ProductMenuComponent = (props: ProductMenuComponentProps) => {
-  const { setCollapsed } = props;
+  const { setCollapsed, sectionName = 'Products' } = props;
   const pathname = usePathname();
+
+  const trackDesktop = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('desktop', { sectionName, subSectionName, ctaText, destinationUrl: url });
+
+  const trackMobile = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('mobile', { sectionName, subSectionName, ctaText, destinationUrl: url });
 
   return (
     <div className="relative cursor-pointer">
@@ -132,6 +140,7 @@ const ProductMenuComponent = (props: ProductMenuComponentProps) => {
                     className={`${
                       pathname === menu?.url ? 'text-white' : 'text-white/70'
                     } hover:text-white`}
+                    onClick={() => trackDesktop('FEATURES', menu.label, menu.url)}
                   >
                     <p className="flex items-center text-center font-normal text-base">
                       <span className="mr-2">{menu.icon}</span>
@@ -152,6 +161,9 @@ const ProductMenuComponent = (props: ProductMenuComponentProps) => {
                     className={`${
                       pathname === menu?.url ? 'text-white' : 'text-white/70'
                     } hover:text-white`}
+                    onClick={() =>
+                      trackDesktop('BETTERBUGS FOR', menu.label, menu.url)
+                    }
                   >
                     <p className="flex text-center font-normal text-base">
                       <span className="mr-2 mt-1">{menu.icon}</span>
@@ -176,7 +188,10 @@ const ProductMenuComponent = (props: ProductMenuComponentProps) => {
                 className={`${
                   pathname === menu?.url ? 'text-white' : 'text-white/80'
                 } hover:text-white`}
-                onClick={() => setCollapsed(false)}
+                onClick={() => {
+                  trackMobile('FEATURES', menu.label, menu.url);
+                  setCollapsed(false);
+                }}
               >
                 <p className="flex text-center font-normal text-base">
                   <span className="mr-2 mt-1">{menu.icon}</span>
@@ -197,7 +212,10 @@ const ProductMenuComponent = (props: ProductMenuComponentProps) => {
                 className={`${
                   pathname === menu?.url ? 'text-white' : 'text-white/80'
                 } hover:text-white`}
-                onClick={() => setCollapsed(false)}
+                onClick={() => {
+                  trackMobile('BETTERBUGS FOR', menu.label, menu.url);
+                  setCollapsed(false);
+                }}
               >
                 <p className="flex text-center font-normal text-base">
                   <span className="mr-2 mt-1">{menu.icon}</span>

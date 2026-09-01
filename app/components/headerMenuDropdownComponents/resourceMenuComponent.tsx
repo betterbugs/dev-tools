@@ -16,6 +16,7 @@ import { TrillioIcon } from '../theme/Icon/trillioIcon';
 import { SentryIcon } from '../theme/Icon/sentryIcon';
 import { AzureBoardIcon } from '../theme/Icon/azureBoardIcon';
 import { WEB_URL } from '@/app/libs/constants';
+import { trackNavInteraction } from '@/app/libs/analytics';
 
 const KnowledgeHubMenu = [
   {
@@ -91,12 +92,19 @@ const IntegrationMenu = [
 
 interface ResourceMenuComponentProps {
   setCollapsed: (d: any) => void;
+  sectionName?: string;
 }
 
 const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
-  const { setCollapsed } = props;
+  const { setCollapsed, sectionName = 'Integrations' } = props;
 
   const pathname = usePathname();
+
+  const trackDesktop = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('desktop', { sectionName, subSectionName, ctaText, destinationUrl: url });
+
+  const trackMobile = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('mobile', { sectionName, subSectionName, ctaText, destinationUrl: url });
 
   return (
     <div className="relative">
@@ -127,6 +135,9 @@ const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
                               className={`${
                                 pathname === menu?.url && 'text-white'
                               } text-white/80 hover:text-white`}
+                              onClick={() =>
+                                trackDesktop('INTEGRATION', menu.label, menu.url)
+                              }
                             >
                               <p className="flex flex-col text-left font-normal text-base">
                                 <div className="flex items-center">
@@ -161,6 +172,9 @@ const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
                               className={`${
                                 pathname === menu?.url && 'text-white'
                               } text-white/80 hover:text-white`}
+                              onClick={() =>
+                                trackDesktop('INTEGRATION', menu.label, menu.url)
+                              }
                             >
                               <div className="flex flex-col text-left font-normal text-base">
                                 <div className="flex items-center">
@@ -198,6 +212,9 @@ const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
                       className={`${
                         pathname === menu?.url && 'text-white'
                       } text-white/80 hover:text-white`}
+                      onClick={() =>
+                        trackDesktop('KNOWLEDGE HUB', menu.label, menu.url)
+                      }
                     >
                       <p className="flex text-center font-normal text-base">
                         <span className="mr-2 mt-1">{menu.icon}</span>
@@ -225,7 +242,10 @@ const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
                   className={`${
                     pathname === menu?.url && 'text-white'
                   } text-white/80 hover:text-white`}
-                  onClick={() => setCollapsed(false)}
+                  onClick={() => {
+                    trackMobile('INTEGRATIONS', menu.label, menu.url);
+                    setCollapsed(false);
+                  }}
                 >
                   <div className="flex flex-col text-left font-normal text-base">
                     <div className="flex items-center">
@@ -256,7 +276,10 @@ const ResourceMenuComponent = (props: ResourceMenuComponentProps) => {
                   className={`${
                     pathname === menu?.url && 'text-white'
                   } text-white/80 hover:text-white`}
-                  onClick={() => setCollapsed(false)}
+                  onClick={() => {
+                    trackMobile('KNOWLEDGE HUB', menu.label, menu.url);
+                    setCollapsed(false);
+                  }}
                 >
                   <p className="flex text-center font-normal text-base">
                     <span className="mr-2 mt-1">{menu.icon}</span>

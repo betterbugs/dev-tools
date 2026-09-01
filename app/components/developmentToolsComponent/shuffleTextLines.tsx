@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function createSeededRng(seed: string) {
   let h = 2166136261 >>> 0;
@@ -58,7 +59,16 @@ const ShuffleTextLines = () => {
 
   const stats = useMemo(() => ({ lines: parsed.length }), [parsed]);
 
-  const copy = () => navigator.clipboard.writeText(output);
+  const copy = () => {
+    navigator.clipboard.writeText(output).then(() => {
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Shuffle Text Lines",
+        tool_action: "Copy",
+      });
+    });
+  };
   const download = () => {
     const blob = new Blob([output], { type: "text/plain" });
     const url = URL.createObjectURL(blob);

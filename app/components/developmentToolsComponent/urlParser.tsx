@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 interface QueryParam {
   id: string;
@@ -134,6 +135,12 @@ const UrlParser = () => {
     const updatedParams = [...queryParams, newParam];
     setQueryParams(updatedParams);
     updateUrlFromParams(updatedParams);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "URL Parser & Query String Editor",
+      tool_action: "Add Parameter",
+    });
   };
 
   const updateUrlPart = (part: 'protocol' | 'hostname' | 'pathname' | 'hash', value: string) => {

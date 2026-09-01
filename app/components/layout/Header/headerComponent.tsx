@@ -20,6 +20,12 @@ import SolutionMenuComponent from '../../headerMenuDropdownComponents/solutionMe
 import ResourceMenuComponent from '../../headerMenuDropdownComponents/resourceMenuComponent';
 import ToolsMenuComponent from '../../headerMenuDropdownComponents/toolsMenuComponent';
 import { useTheme } from '@/app/contexts/themeContext';
+import {
+  trackEvent,
+  PAGE_TYPE,
+  PLATFORM,
+  trackNavInteraction,
+} from '@/app/libs/analytics';
 
 const responsiveHeader = [
   // {
@@ -250,7 +256,9 @@ const HeaderComponent = () => {
       url: `${WEB_URL}`,
       dropdown: [
         {
-          label: <ProductMenuComponent {...{ setCollapsed }} />,
+          label: (
+            <ProductMenuComponent {...{ setCollapsed }} sectionName="Products" />
+          ),
         },
       ],
     },
@@ -260,7 +268,12 @@ const HeaderComponent = () => {
       url: `${WEB_URL}`,
       dropdown: [
         {
-          label: <SolutionMenuComponent {...{ setCollapsed }} />,
+          label: (
+            <SolutionMenuComponent
+              {...{ setCollapsed }}
+              sectionName="Solutions"
+            />
+          ),
         },
       ],
     },
@@ -270,7 +283,12 @@ const HeaderComponent = () => {
       url: `${WEB_URL}`,
       dropdown: [
         {
-          label: <ResourceMenuComponent {...{ setCollapsed }} />,
+          label: (
+            <ResourceMenuComponent
+              {...{ setCollapsed }}
+              sectionName="Integrations"
+            />
+          ),
         },
       ],
     },
@@ -280,7 +298,9 @@ const HeaderComponent = () => {
       url: `${WEB_URL}`,
       dropdown: [
         {
-          label: <ToolsMenuComponent {...{ setCollapsed }} />,
+          label: (
+            <ToolsMenuComponent {...{ setCollapsed }} sectionName="Resources" />
+          ),
         },
       ],
     },
@@ -295,25 +315,36 @@ const HeaderComponent = () => {
     {
       key: '1',
       header: 'Products',
-      content: <ProductMenuComponent {...{ setCollapsed }} />,
+      content: (
+        <ProductMenuComponent {...{ setCollapsed }} sectionName="Products" />
+      ),
       url: `${WEB_URL}`,
     },
     {
       key: '2',
       header: 'Solutions',
-      content: <SolutionMenuComponent {...{ setCollapsed }} />,
+      content: (
+        <SolutionMenuComponent {...{ setCollapsed }} sectionName="Solutions" />
+      ),
       url: `${WEB_URL}`,
     },
     {
       key: '3',
       header: 'Integration',
-      content: <ResourceMenuComponent {...{ setCollapsed }} />,
+      content: (
+        <ResourceMenuComponent
+          {...{ setCollapsed }}
+          sectionName="Integrations"
+        />
+      ),
       url: `${WEB_URL}`,
     },
     {
       key: '4',
       header: 'Resources',
-      content: <ToolsMenuComponent {...{ setCollapsed }} />,
+      content: (
+        <ToolsMenuComponent {...{ setCollapsed }} sectionName="Resources" />
+      ),
       url: `${WEB_URL}`,
     },
   ];
@@ -362,7 +393,16 @@ const HeaderComponent = () => {
       >
         <div className="relative">
           <div className="container mx-auto flex items-center justify-between py-3">
-            <Link href={`${WEB_URL}`} className="flex items-center">
+            <Link
+              href={`${WEB_URL}`}
+              className="flex items-center"
+              onClick={() =>
+                trackEvent('logo_click', {
+                  page_type: PAGE_TYPE,
+                  platform: PLATFORM.desktop,
+                })
+              }
+            >
               <Image
                 src={logoSrc}
                 width={190}
@@ -406,7 +446,16 @@ const HeaderComponent = () => {
                         </p>
                       </Dropdown>
                     ) : (
-                      <Link href={menu?.url}>
+                      <Link
+                        href={menu?.url}
+                        onClick={() =>
+                          trackNavInteraction('desktop', {
+                            sectionName: menu?.label,
+                            ctaText: menu?.label,
+                            destinationUrl: menu?.url,
+                          })
+                        }
+                      >
                         <p
                           className={`${
                             router == menu?.url && '!text-white'
@@ -442,6 +491,13 @@ const HeaderComponent = () => {
                     utmSource ? `?utm_source=${utmSource}` : ''
                   }`}
                   target="_blank"
+                  onClick={() =>
+                    trackNavInteraction('desktop', {
+                      sectionName: 'NA',
+                      ctaText: 'Login',
+                      destinationUrl: 'https://app.betterbugs.io/login',
+                    })
+                  }
                 >
                   <div className="flex font-medium items-center text-white/80 hover:text-white py-4 px-6 text-sm">
                     Login
@@ -454,6 +510,12 @@ const HeaderComponent = () => {
                     utmSource ? `?utm_source=${utmSource}` : ''
                   }`}
                   target="_blank"
+                  onClick={() =>
+                    trackEvent('get_started_click', {
+                      page_type: PAGE_TYPE,
+                      platform: PLATFORM.desktop,
+                    })
+                  }
                 >
                   <Button
                     className={`${hederStyles.getStartedButton} font-medium flex items-center rounded-full border !border-light-primary btn-gradient ${
@@ -482,7 +544,15 @@ const HeaderComponent = () => {
               >
                 <MenuIcon className="w-10 h-10" />
               </div>
-              <Link href={`${WEB_URL}`}>
+              <Link
+                href={`${WEB_URL}`}
+                onClick={() =>
+                  trackEvent('logo_click', {
+                    page_type: PAGE_TYPE,
+                    platform: PLATFORM.mobile,
+                  })
+                }
+              >
                 <Image
                   src={logoSrc}
                   width={150}
@@ -509,6 +579,12 @@ const HeaderComponent = () => {
                   utmSource ? `?utm_source=${utmSource}` : ''
                 }`}
                 target="_blank"
+                onClick={() =>
+                  trackEvent('get_started_click', {
+                    page_type: PAGE_TYPE,
+                    platform: PLATFORM.mobile,
+                  })
+                }
               >
                 <Button
                   className={`${hederStyles.getStartedButton} btn-primary font-medium flex items-center rounded-full border !border-light-primary text-[#FFFFFF0D] hover:bg-primary scroll-gradient !text-base px-4 !h-10`}
@@ -561,7 +637,14 @@ const HeaderComponent = () => {
                     <Link href={data.url} key={index}>
                       <p
                         className="text-white text-lg font-medium py-3"
-                        onClick={() => setCollapsed(false)}
+                        onClick={() => {
+                          trackNavInteraction('mobile', {
+                            sectionName: data.header,
+                            ctaText: data.header,
+                            destinationUrl: data.url,
+                          });
+                          setCollapsed(false);
+                        }}
                       >
                         {data.header}
                       </p>
@@ -570,7 +653,18 @@ const HeaderComponent = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center justify-center px-4 mb-5">
-                <Link target="_blank" href={Extension_URL}>
+                <Link
+                  target="_blank"
+                  href={Extension_URL}
+                  onClick={() =>
+                    trackEvent('add_to_chrome_click', {
+                      page_type: PAGE_TYPE,
+                      platform: PLATFORM.mobile,
+                      section_name: 'Header',
+                      cta_text: browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
+                    })
+                  }
+                >
                   <Button className="btn-primary text-sm flex items-center justify-center gap-1 rounded-full px-4">
                     {browser === 'edge' ? (
                       <EdgeIcon className="w-7 h-7" />

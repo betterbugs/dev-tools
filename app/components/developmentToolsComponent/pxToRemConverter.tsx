@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ActiveField = "em" | "px" | "rem" | "percent" | "pt";
 
@@ -50,6 +51,16 @@ const PxToRemConverter = () => {
   const handleBaseChange = (v: string) => {
     const num = Number(v);
     setBasePx(!isNaN(num) && num > 0 ? num : 16);
+  };
+
+  const handleConvertClick = () => {
+    recalcFrom(active, basePx, active === "px" ? px : active === "em" ? em : active === "rem" ? rem : active === "percent" ? percent : pt);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "PX to REM Converter",
+      tool_action: "Convert",
+    });
   };
 
   const reset = () => {
@@ -156,7 +167,7 @@ const PxToRemConverter = () => {
                 <div className="flex items-center gap-4">
                   <button
                     type="button"
-                    onClick={() => recalcFrom(active, basePx, active === "px" ? px : active === "em" ? em : active === "rem" ? rem : active === "percent" ? percent : pt)}
+                    onClick={handleConvertClick}
                     className={`bg-white text-black font-bold py-3 px-6 rounded-lg`}
                   >
                     Convert

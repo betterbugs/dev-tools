@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const HoursToSecounds = () => {
   const [hours, setHours] = useState<string>("");
@@ -29,6 +30,12 @@ const HoursToSecounds = () => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(String(totalSeconds));
+      trackEvent("dev_tool_used", {
+        page_type: PAGE_TYPE,
+        platform: getRuntimePlatform(),
+        tool_name: "Hours to Seconds",
+        tool_action: "Copy",
+      });
     } catch (_) {}
   };
 

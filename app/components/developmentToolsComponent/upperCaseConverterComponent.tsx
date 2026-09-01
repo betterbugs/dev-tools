@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const UpperCaseConverterComponent = () => {
   const [inputText, setInputText] = useState<any>("");
@@ -13,6 +14,12 @@ const UpperCaseConverterComponent = () => {
 
   const transformToUpperCase = () => {
     setTransformedText(inputText.toUpperCase());
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Text to Uppercase Converter",
+      tool_action: "Convert",
+    });
   };
 
   const copyToClipboard = () => {

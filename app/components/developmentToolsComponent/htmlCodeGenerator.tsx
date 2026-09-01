@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import CopyIcon from "../theme/Icon/copyIcon";
 import { CheckIcon } from "../theme/Icon/checkIcon";
 import DownOutlinedIcon from "../theme/Icon/downOutlinedIcon";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 const HtmlCodeGenerator: React.FC = () => {
   const [generated, setGenerated] = useState<string>("");
@@ -62,6 +63,12 @@ const HtmlCodeGenerator: React.FC = () => {
       const data = await res.json();
       if (data?.html) {
         setGenerated(data.html);
+        trackEvent("dev_tool_used", {
+          page_type: PAGE_TYPE,
+          platform: getRuntimePlatform(),
+          tool_name: "HTML Code Generator",
+          tool_action: "Generate",
+        });
       } else if (data?.error) {
         setGenerated(`<!-- Error: ${data.error} -->`);
       }

@@ -11,6 +11,7 @@ import FounderIcon from '../theme/Icon/founderIcon';
 import Image from 'next/image';
 import ComaresionBugHeardIcon from '../theme/Icon/comaresionBugHeardIcon';
 import { WEB_URL } from '@/app/libs/constants';
+import { trackNavInteraction } from '@/app/libs/analytics';
 // import { fetchComparisonAPI } from '@/api/comparison';
 
 const RoleMenu = [
@@ -62,14 +63,21 @@ const defaultComparesionsMenu = [
 
 interface SolutionMenuComponentProps {
   setCollapsed: (d: any) => void;
+  sectionName?: string;
 }
 
 const SolutionMenuComponent = (props: SolutionMenuComponentProps) => {
-  const { setCollapsed } = props;
+  const { setCollapsed, sectionName = 'Solutions' } = props;
   const pathname = usePathname();
   const [comparesionsMenu, setComparesionsMenu] = useState(
     defaultComparesionsMenu
   );
+
+  const trackDesktop = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('desktop', { sectionName, subSectionName, ctaText, destinationUrl: url });
+
+  const trackMobile = (subSectionName: string, ctaText: string, url: string) =>
+    trackNavInteraction('mobile', { sectionName, subSectionName, ctaText, destinationUrl: url });
 
   // useEffect(() => {
   //   const fetchComparisons = async () => {
@@ -144,6 +152,9 @@ const SolutionMenuComponent = (props: SolutionMenuComponentProps) => {
                       className={`${
                         pathname === menu?.url && 'text-white'
                       } text-white/70 hover:text-white`}
+                      onClick={() =>
+                        trackDesktop('SOLUTIONS BY ROLE', menu.label, menu.url)
+                      }
                     >
                       <p className="flex text-center font-normal text-base">
                         <span className="mr-2 mt-1">{menu.icon}</span>
@@ -168,6 +179,9 @@ const SolutionMenuComponent = (props: SolutionMenuComponentProps) => {
                       className={`${
                         pathname === menu?.url && 'text-white'
                       } text-white/70 hover:text-white`}
+                      onClick={() =>
+                        trackDesktop('COMPARISON', menu.label, menu.url)
+                      }
                     >
                       <p className="flex text-center font-normal text-base">
                         <span className="mr-2 mt-1">{menu.icon}</span>
@@ -197,7 +211,10 @@ const SolutionMenuComponent = (props: SolutionMenuComponentProps) => {
                   className={`${
                     pathname === menu?.url && 'text-white'
                   } text-white/80 hover:text-white`}
-                  onClick={() => setCollapsed(false)}
+                  onClick={() => {
+                    trackMobile('SOLUTION BY ROLE', menu.label, menu.url);
+                    setCollapsed(false);
+                  }}
                 >
                   <p className="flex text-center font-normal text-base">
                     <span className="mr-2 mt-1">{menu.icon}</span>
@@ -220,7 +237,10 @@ const SolutionMenuComponent = (props: SolutionMenuComponentProps) => {
                   className={`${
                     pathname === menu?.url && 'text-white'
                   } text-white/80 hover:text-white`}
-                  onClick={() => setCollapsed(false)}
+                  onClick={() => {
+                    trackMobile('COMPARISON', menu.label, menu.url);
+                    setCollapsed(false);
+                  }}
                 >
                   <p className="flex text-center font-normal text-base">
                     <span className="mr-2 mt-1">{menu.icon}</span>

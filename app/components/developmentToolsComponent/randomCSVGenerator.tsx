@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type ColumnType =
   | "string"
@@ -211,6 +212,16 @@ const RandomCSVGenerator = () => {
   const updateColumn = (id: string, patch: Partial<Column>) =>
     setColumns((cols) => cols.map((c) => (c.id === id ? { ...c, ...patch } : c)));
 
+  const handleRegenerate = () => {
+    setRegen((n) => n + 1);
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Random CSV Generator",
+      tool_action: "Regenerate",
+    });
+  };
+
   return (
     <section>
       <div className="md:mt-8 mt-4">
@@ -309,7 +320,7 @@ const RandomCSVGenerator = () => {
                     <div className="flex items-center gap-3 mt-4 flex-wrap">
                       <button
                         type="button"
-                        onClick={() => setRegen((n) => n + 1)}
+                        onClick={handleRegenerate}
                         className="px-4 py-2 bg-primary hover:bg-primary text-black rounded-lg text-sm font-bold"
                       >
                         Regenerate

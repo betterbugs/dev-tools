@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 type Mode = "characters" | "words" | "lines";
 
@@ -46,7 +47,15 @@ const ReverseTextGenerator: React.FC = () => {
     sentences: (input.match(/[^.!?]+[.!?]+/g) || (input.trim() ? [input] : [])).length,
   }), [input]);
 
-  const onReverse = () => setOutput(reverseByMode(input, mode));
+  const onReverse = () => {
+    setOutput(reverseByMode(input, mode));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Reverse Text Generator",
+      tool_action: "Reverse Text",
+    });
+  };
   const onCopy = async () => { try { await navigator.clipboard.writeText(output); } catch {} };
   const onDownload = () => {
     const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
@@ -94,11 +103,11 @@ const ReverseTextGenerator: React.FC = () => {
             {/* Quick Actions */}
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               <button onClick={onReverse} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇄ Reverse Text</button>
-              <button onClick={() => setOutput(mirrorWordLetters(input))} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⟫⟫ Mirrored Text</button>
-              <button onClick={() => setOutput(swapCase(input))} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇄ Letter Flip</button>
-              <button onClick={() => setOutput(input.split(/\s+/).reverse().join(" "))} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇆ Reverse Wording</button>
-              <button onClick={() => setOutput(toMirroredLetters(input))} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">🄂 Mirrored Letters</button>
-              <button onClick={() => setOutput(toUpsideDown(input))} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇵ Upside Down</button>
+              <button onClick={() => { setOutput(mirrorWordLetters(input)); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Reverse Text Generator", tool_action: "Mirrored Text" }); }} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⟫⟫ Mirrored Text</button>
+              <button onClick={() => { setOutput(swapCase(input)); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Reverse Text Generator", tool_action: "Letter Flip" }); }} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇄ Letter Flip</button>
+              <button onClick={() => { setOutput(input.split(/\s+/).reverse().join(" ")); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Reverse Text Generator", tool_action: "Reverse Wording" }); }} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇆ Reverse Wording</button>
+              <button onClick={() => { setOutput(toMirroredLetters(input)); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Reverse Text Generator", tool_action: "Mirrored Letters" }); }} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">🄂 Mirrored Letters</button>
+              <button onClick={() => { setOutput(toUpsideDown(input)); trackEvent("dev_tool_used", { page_type: PAGE_TYPE, platform: getRuntimePlatform(), tool_name: "Reverse Text Generator", tool_action: "Upside Down" }); }} className="px-4 py-2 border border-white/20 rounded-md hover:bg-white/5 text-sm">⇵ Upside Down</button>
             </div>
 
             {/* Output */}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DevelopmentToolsStyles from "../../developmentToolsStyles.module.scss";
+import { trackEvent, PAGE_TYPE, getRuntimePlatform } from "@/app/libs/analytics";
 
 function encodeUnicodeToAsciiEscapes(input: string): string {
   let result = "";
@@ -26,6 +27,12 @@ const UnicodeToAsciiConverter = () => {
       return;
     }
     setOutput(encodeUnicodeToAsciiEscapes(input));
+    trackEvent("dev_tool_used", {
+      page_type: PAGE_TYPE,
+      platform: getRuntimePlatform(),
+      tool_name: "Unicode to ASCII",
+      tool_action: "Convert",
+    });
   };
 
   const clearAll = () => {
