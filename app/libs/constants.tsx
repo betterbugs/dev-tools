@@ -1032,9 +1032,9 @@ export const developmentToolsCategoryContent: any = {
   Category98: [
     {
       url: '/text-repeater',
-      title: 'Text Repeater',
+      title: 'Text Repeater Tool Online',
       description:
-        'Repeat text a chosen number of times with custom separators and line breaks.',
+        'The Text Repeater is a free-to-use online tool on BetterBugs.io that enables you to instantly repeat any text a set number of times with optional separators; Perfect for bulk text generation for QA/Test data.',
     },
   ],
   Category99: [
