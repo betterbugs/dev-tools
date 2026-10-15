@@ -660,7 +660,7 @@ const HeaderComponent = () => {
                     trackEvent('add_to_chrome_click', {
                       page_type: PAGE_TYPE,
                       platform: PLATFORM.mobile,
-                      section_name: 'Header',
+                      section_name: 'Hamburger Menu',
                       cta_text: browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
                     })
                   }

@@ -11591,12 +11591,12 @@ console.log(base64Json);  // "eyJuYW1lIjoiVGVuZ28gS2F3YW5hIiwiYWdlIjozMCwiY291bn
       ],
     },
     meta_data: {
-      meta_title: "Text Repeater – Free Online Repeat Text Generator Tool",
+      meta_title: "Text Repeater: Bulk Text Generator for Testing | BetterBugs",
       meta_description:
-        "Use our free Text Repeater to repeat any word, sentence, or emoji up to thousands of times. A fast repeat text generator with new line and space options.",
-      og_title: "Text Repeater – Free Online Repeat Text Generator Tool",
+        "Use the text repeater online tool on BetterBugs.io to instantly generate repeated text/bulk data generation; perfect for QA/testing — No signup, 100% free.",
+      og_title: "Text Repeater: Bulk Text Generator for Testing | BetterBugs",
       og_description:
-        "Use our free Text Repeater to repeat any word, sentence, or emoji up to thousands of times. A fast repeat text generator with new line and space options.",
+        "This post describes usage steps and the use cases of the Text Repeater free online tool on BetterBugs.io.",
       og_image: "/images/og-images/Cover.png",
     },
   },
