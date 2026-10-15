@@ -236,7 +236,9 @@ const HeaderComponent = () => {
   const searchParams = useSearchParams();
   const utmSource = searchParams.get('utm_source');
   const { isLightTheme, setIsLightTheme } = useTheme();
-  const logoSrc = isLightTheme ? '/images/bb-logo-light.svg' : '/images/bb-logo.svg';
+  const logoSrc = isLightTheme
+    ? '/images/bb-logo-light.svg'
+    : '/images/bb-logo.svg';
   const { collapsed, setCollapsed }: LayoutContextModel =
     useContext(LayoutContext);
 
@@ -257,7 +259,10 @@ const HeaderComponent = () => {
       dropdown: [
         {
           label: (
-            <ProductMenuComponent {...{ setCollapsed }} sectionName="Products" />
+            <ProductMenuComponent
+              {...{ setCollapsed }}
+              sectionName="Products"
+            />
           ),
         },
       ],
@@ -622,16 +627,18 @@ const HeaderComponent = () => {
                   <Collapse
                     accordion
                     ghost
-                    items={responsiveContentHeader?.map((item: any, index: number) => ({
-                      key: index,
-                      className: hederStyles.accordion,
-                      label: (
-                        <p className="text-white text-lg font-medium py-3">
-                          {item.header}
-                        </p>
-                      ),
-                      children: item.content && <p>{item.content}</p>,
-                    }))}
+                    items={responsiveContentHeader?.map(
+                      (item: any, index: number) => ({
+                        key: index,
+                        className: hederStyles.accordion,
+                        label: (
+                          <p className="text-white text-lg font-medium py-3">
+                            {item.header}
+                          </p>
+                        ),
+                        children: item.content && <p>{item.content}</p>,
+                      })
+                    )}
                   />
                   {responsiveHeader?.map((data: any, index: any) => (
                     <Link href={data.url} key={index}>
@@ -660,8 +667,9 @@ const HeaderComponent = () => {
                     trackEvent('add_to_chrome_click', {
                       page_type: PAGE_TYPE,
                       platform: PLATFORM.mobile,
-                      section_name: 'Header',
-                      cta_text: browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
+                      section_name: 'Hamburger Menu',
+                      cta_text:
+                        browser === 'edge' ? 'Add to Edge' : 'Add to Chrome',
                     })
                   }
                 >
